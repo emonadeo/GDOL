@@ -1,7 +1,6 @@
 {
   "recommendations": [
     "svelte.svelte-vscode",
-    "denoland.vscode-deno",
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode"
   ]
