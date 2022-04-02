@@ -10,10 +10,10 @@
 
 ## Structure
 
-| Module               | Version                                                                                                         | Description                                                                                         |
-| -------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| [**Client**](client) | [](https://img.shields.io/github/package-json/v/Emonadeo/GDOpenList/svelte-node?filename=client%2Fpackage.json) | Static Front-end made with [Svelte](https://svelte.dev/)                                            |
-| [**Server**](server) | [](https://img.shields.io/github/package-json/v/Emonadeo/GDOpenList/svelte-node?filename=server%2Fpackage.json) | REST API built on [Fastify](https://www.fastify.io/) (Node.js) and [Prisma](https://www.prisma.io/) |
+| Module               | Version                                                                                                                        | Description                                                                                         |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------- |
+| [**Client**](client) | ![Client Version](https://img.shields.io/github/package-json/v/Emonadeo/GDOpenList/svelte-node?filename=client%2Fpackage.json) | Static Front-end made with [Svelte](https://svelte.dev/)                                            |
+| [**Server**](server) | ![Server Version](https://img.shields.io/github/package-json/v/Emonadeo/GDOpenList/svelte-node?filename=server%2Fpackage.json) | REST API built on [Fastify](https://www.fastify.io/) (Node.js) and [Prisma](https://www.prisma.io/) |
 
 ## Developer Guide
 
