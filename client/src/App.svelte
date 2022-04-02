@@ -1,18 +1,22 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { REST_URL } from 'src/env';
-	import { getYoutubeIdFromUrl } from 'src/util';
+	import { embed } from 'src/util';
 
-	let levels = [];
+	interface Level {
+		id: number;
+		name: string;
+		userName: string;
+		verifierName: string;
+		video: string;
+	}
+
+	let levels: Level[] = [];
 
 	onMount(async () => {
 		const res = await fetch(new URL('/levels', REST_URL).toString());
 		levels = await res.json();
 	});
-
-	function embed(video: string): string {
-		return `https://www.youtube.com/embed/${getYoutubeIdFromUrl(video)}`;
-	}
 </script>
 
 <main>
