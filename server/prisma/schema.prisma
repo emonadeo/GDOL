@@ -11,6 +11,19 @@ datasource db {
 }
 
 model User {
-  id   Int    @id @default(autoincrement())
-  name String @db.VarChar(255)
+  name           String  @id
+  levels         Level[] @relation("Publisher")
+  levelsVerified Level[] @relation("Verifier")
+  levelsCreated  Level[] @relation("Creators")
+}
+
+model Level {
+  id           Int    @id @default(autoincrement())
+  name         String
+  user         User   @relation("Publisher", fields: [userName], references: [name])
+  userName     String
+  verifier     User   @relation("Verifier", fields: [verifierName], references: [name])
+  verifierName String
+  creators     User[] @relation("Creators", references: [name])
+  video        String
 }
