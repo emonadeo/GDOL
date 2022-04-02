@@ -20,7 +20,7 @@
 ### 1. Install dependencies
 
 ```sh
-npm install
+$ npm install
 ```
 
 ### 2. Setup Server
@@ -49,6 +49,12 @@ Push the Prisma schema to the database. Your database needs to be running for th
 
 ```sh
 $ prisma db push
+```
+
+_**Optional:**_ Generate some data
+
+```sh
+$ prisma db seed
 ```
 
 ### 3. Launch
