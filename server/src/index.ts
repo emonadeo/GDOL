@@ -1,9 +1,11 @@
 import Fastify from 'fastify';
+import FastifyCors from 'fastify-cors';
 import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
 const app = Fastify();
+app.register(FastifyCors);
 
 app.get('/users', async (_, res) => {
 	const users = await prisma.user.findMany({
@@ -35,7 +37,7 @@ app.get<{
 });
 
 // Run the server
-app.listen(3000, (err, address) => {
+app.listen(3001, (err, address) => {
 	if (err) {
 		console.error(err);
 		process.exit(1);
