@@ -4,8 +4,8 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"start": "ts-node src/index.ts",
-		"dev": "nodemon src/index.ts"
+		"start": "dotenv -c -- ts-node src/index.ts",
+		"dev": "dotenv -c -- nodemon src/index.ts"
 	},
 	"repository": {
 		"type": "git",
@@ -19,6 +19,7 @@
 	"homepage": "https://github.com/Emonadeo/GDOpenList#readme",
 	"dependencies": {
 		"@prisma/client": "^3.11.1",
+		"dotenv-cli": "^5.1.0",
 		"fastify": "^3.27.4",
 		"fastify-cors": "^6.0.3"
 	},
