@@ -1,0 +1,29 @@
+@use 'src/styles/util/capsize';
+
+@mixin clash-display($cap-height, $line-gap) {
+	font-family: 'Clash Display', sans-serif;
+	@include capsize.capsize(
+		(
+			'capHeight': 670,
+			'ascent': 890,
+			'descent': -250,
+			'unitsPerEm': 1000,
+		),
+		$cap-height,
+		$line-gap
+	);
+}
+
+@mixin lexend-deca($cap-height, $line-gap) {
+	font-family: 'Lexend Deca', sans-serif;
+	@include capsize.capsize(
+		(
+			'capHeight': 700,
+			'ascent': 1000,
+			'descent': -250,
+			'unitsPerEm': 1000,
+		),
+		$cap-height,
+		$line-gap
+	);
+}
