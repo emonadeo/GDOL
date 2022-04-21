@@ -4,7 +4,8 @@
 
 ![Logo](https://gist.githubusercontent.com/Emonadeo/3c3ca5d44d23ee7c9ae3c048c8f3a2c4/raw/GDOL.svg)
 
-![Badge](https://img.shields.io/badge/Get-Stickbugged-brightgreen)
+![Version](https://img.shields.io/github/package-json/v/Emonadeo/GDOL)
+![License](https://img.shields.io/github/license/Emonadeo/GDOL)
 
 **GDOL is a list stack for geometry dash. It aims to keep your list setup experience nice and easy while giving you complete freedom of customization.**
 

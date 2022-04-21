@@ -8,14 +8,14 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/Emonadeo/GDOpenList.git"
+		"url": "git+https://github.com/Emonadeo/GDOL.git"
 	},
-	"author": "",
-	"license": "ISC",
+	"author": "Emanuel Pilz",
+	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/Emonadeo/GDOpenList/issues"
+		"url": "https://github.com/Emonadeo/GDOL/issues"
 	},
-	"homepage": "https://github.com/Emonadeo/GDOpenList#readme",
+	"homepage": "https://github.com/Emonadeo/GDOL#readme",
 	"workspaces": [
 		"client",
 		"server"
