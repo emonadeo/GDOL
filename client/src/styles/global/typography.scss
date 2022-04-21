@@ -1,33 +1,33 @@
 // https://m3.material.io/styles/typography/
 
-@use 'src/styles/util/fonts';
+@use 'src/styles/util/font';
 
 // Display Large
 h1,
 .type-h1,
 .type-display-lg {
-	@include fonts.clash-display(64, 24);
+	@include font.clash-display(64, 24);
 }
 
 // Display Medium
 h2,
 .type-h2,
 .type-display-md {
-	@include fonts.clash-display(32, 16);
+	@include font.clash-display(32, 16);
 }
 
 // Display Small
 h3,
 .type-h3,
 .type-display-sm {
-	@include fonts.clash-display(24, 12);
+	@include font.clash-display(24, 12);
 }
 
 // Headline Large
 h4,
 .type-h4,
 .type-headline-lg {
-	@include fonts.lexend-deca(16, 12);
+	@include font.lexend-deca(16, 12);
 	font-weight: 500;
 }
 
@@ -50,7 +50,7 @@ h4,
 h5,
 .type-h5,
 .type-label-lg {
-	@include fonts.lexend-deca(12, 8);
+	@include font.lexend-deca(12, 8);
 	font-weight: 500;
 }
 
@@ -58,7 +58,7 @@ h5,
 h6,
 .type-h6,
 .type-label-md {
-	@include fonts.lexend-deca(10, 8);
+	@include font.lexend-deca(10, 8);
 	font-weight: 500;
 }
 
@@ -68,7 +68,7 @@ h6,
 // Body Large
 p,
 .type-body-lg {
-	@include fonts.lexend-deca(12, 12);
+	@include font.lexend-deca(12, 12);
 	font-weight: 500;
 }
 

@@ -1,8 +1,8 @@
 import 'modern-css-reset';
-import 'src/styles/main.scss';
-import 'src/styles/typography.scss';
+import 'src/styles/global/main.scss';
+import 'src/styles/global/typography.scss';
 
-import App from './App.svelte';
+import App from 'src/App.svelte';
 
 const app = new App({
 	target: document.getElementById('app'),

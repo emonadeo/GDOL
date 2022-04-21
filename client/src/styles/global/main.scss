@@ -1,0 +1,11 @@
+@use 'src/styles/color';
+
+html,
+body,
+#app {
+	height: 100%;
+}
+
+body {
+	background-color: color.$background;
+}

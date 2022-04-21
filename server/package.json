@@ -2,13 +2,12 @@
 	"name": "@gdol/server",
 	"version": "2.0.0",
 	"description": "REST API built on Fastify and Prisma",
-	"type": "module",
 	"scripts": {
 		"start": "dotenv -c -- ts-node src/index.ts",
 		"dev": "dotenv -c -- nodemon src/index.ts"
 	},
 	"dependencies": {
-		"@prisma/client": "^3.11.1",
+		"@prisma/client": "^3.12.0",
 		"dotenv-cli": "^5.1.0",
 		"fastify": "^3.27.4",
 		"fastify-cors": "^6.0.3"
@@ -16,7 +15,7 @@
 	"devDependencies": {
 		"@types/node": "^17.0.23",
 		"nodemon": "^2.0.15",
-		"prisma": "^3.11.1",
+		"prisma": "^3.12.0",
 		"ts-node": "^10.7.0",
 		"typescript": "^4.6.3"
 	},

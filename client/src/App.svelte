@@ -1,45 +1,29 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import { REST_URL } from 'src/env';
-	import { embed } from 'src/util';
+	import { Route } from 'tinro';
 
-	interface Level {
-		id: number;
-		name: string;
-		userName: string;
-		verifierName: string;
-		video: string;
-	}
-
-	let levels: Level[] = [];
-
-	onMount(async () => {
-		const res = await fetch(new URL('/levels', REST_URL).toString());
-		levels = await res.json();
-	});
+	import Home from 'src/pages/Home.svelte';
+	import Leaderboard from 'src/pages/Leaderboard.svelte';
+	import List from 'src/pages/List.svelte';
 </script>
 
-<main>
-	<h1>GD Open List</h1>
-	<p>Welcome to the GD Open List!</p>
-	<ul>
-		{#each levels as level}
-			<li>
-				<h2>{level.name}</h2>
-				<iframe src={embed(level.video)} frameborder="0" title="Verification" />
-				<p>{level.userName}</p>
-			</li>
-		{/each}
-	</ul>
-</main>
+<nav>
+	<img src="src/assets/logo.svg" alt="Logo" />
+</nav>
+
+<Route path="/">
+	<Home />
+</Route>
+<Route path="/list">
+	<List />
+</Route>
+<Route path="/leaderboard">
+	<Leaderboard />
+</Route>
 
 <style lang="scss">
-	main {
-		text-align: center;
-		margin: 0 auto;
+	@use 'src/styles/color';
 
-		ul {
-			list-style: none;
-		}
+	nav {
+		background-color: color.$background;
 	}
 </style>

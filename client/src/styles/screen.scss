@@ -1,0 +1,130 @@
+// Breakpoints
+$sm: 480;
+$md: 768;
+$lg: 1024;
+$xl: 1280;
+$xxl: 1600;
+
+// Mixins
+@mixin sm {
+	@media (min-width: #{$sm}px) {
+		@content;
+	}
+}
+
+@mixin md {
+	@media (min-width: #{$md}px) {
+		@content;
+	}
+}
+
+@mixin lg {
+	@media (min-width: #{$lg}px) {
+		@content;
+	}
+}
+
+@mixin xl {
+	@media (min-width: #{$xl}px) {
+		@content;
+	}
+}
+
+@mixin xxl {
+	@media (min-width: #{$xxl}px) {
+		@content;
+	}
+}
+
+@mixin lt-sm {
+	@media (max-width: #{$sm - 0.2}px) {
+		@content;
+	}
+}
+
+@mixin lt-md {
+	@media (max-width: #{$md - 0.2}px) {
+		@content;
+	}
+}
+
+@mixin lt-lg {
+	@media (max-width: #{$lg - 0.2}px) {
+		@content;
+	}
+}
+
+@mixin lt-xl {
+	@media (max-width: #{$xl - 0.2}px) {
+		@content;
+	}
+}
+
+@mixin lt-xxl {
+	@media (max-width: #{$xxl - 0.2}px) {
+		@content;
+	}
+}
+
+@mixin between($start, $end) {
+	@media (min-width: #{$start}px) and (max-width: #{$end - 0.2}px) {
+		@content;
+	}
+}
+
+// Utility classes for showing/hiding elements
+.r\:sm {
+	@include lt-sm {
+		display: none !important;
+	}
+}
+
+.r\:md {
+	@include lt-md {
+		display: none !important;
+	}
+}
+
+.r\:lg {
+	@include lt-lg {
+		display: none !important;
+	}
+}
+.r\:xl {
+	@include lt-xl {
+		display: none !important;
+	}
+}
+.r\:xxl {
+	@include lt-xxl {
+		display: none !important;
+	}
+}
+
+.r\:lt-sm {
+	@include sm {
+		display: none !important;
+	}
+}
+
+.r\:lt-md {
+	@include md {
+		display: none !important;
+	}
+}
+
+.r\:lt-lg {
+	@include lg {
+		display: none !important;
+	}
+}
+.r\:lt-xl {
+	@include xl {
+		display: none !important;
+	}
+}
+.r\:lt-xxl {
+	@include xxl {
+		display: none !important;
+	}
+}
