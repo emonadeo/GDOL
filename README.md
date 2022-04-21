@@ -2,18 +2,18 @@
 >
 > This is currently being written! The old code is still available [here](https://github.com/electroflameofficial/gdshittylist/tree/archive), but will be deprecated once the new code is fully functional.
 
-![Logo](https://i.imgur.com/nSZWviX.jpeg)
+![Logo](https://gist.githubusercontent.com/Emonadeo/3c3ca5d44d23ee7c9ae3c048c8f3a2c4/raw/GDOL.svg)
 
 ![Badge](https://img.shields.io/badge/Get-Stickbugged-brightgreen)
 
-**GDOL is A list stack for geometry dash. It aims to keep your list setup experience nice and easy while giving you complete freedom of customization.**
+**GDOL is a list stack for geometry dash. It aims to keep your list setup experience nice and easy while giving you complete freedom of customization.**
 
 ## Structure
 
-| Module               | Version                                                                                                                        | Description                                                                                         |
-| -------------------- | ------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------- |
-| [**Client**](client) | ![Client Version](https://img.shields.io/github/package-json/v/Emonadeo/GDOpenList/svelte-node?filename=client%2Fpackage.json) | Static Front-end made with [Svelte](https://svelte.dev/)                                            |
-| [**Server**](server) | ![Server Version](https://img.shields.io/github/package-json/v/Emonadeo/GDOpenList/svelte-node?filename=server%2Fpackage.json) | REST API built on [Fastify](https://www.fastify.io/) (Node.js) and [Prisma](https://www.prisma.io/) |
+| Module               | Version                                                                                                            | Description                                                                                         |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------- |
+| [**Client**](client) | ![Client Version](https://img.shields.io/github/package-json/v/Emonadeo/GDOpenList?filename=client%2Fpackage.json) | Static Front-end made with [Svelte](https://svelte.dev/)                                            |
+| [**Server**](server) | ![Server Version](https://img.shields.io/github/package-json/v/Emonadeo/GDOpenList?filename=server%2Fpackage.json) | REST API built on [Fastify](https://www.fastify.io/) (Node.js) and [Prisma](https://www.prisma.io/) |
 
 ## Developer Guide
 
@@ -68,13 +68,3 @@ $ npm -w client run dev
 # Starts the server at localhost:3001
 $ npm -w server run dev
 ```
-
-## Contact
-
-If you ever run into problems while setting the stack up, please contact Electro on Discord (Electro#8628), [Twitter](https://twitter.com/GDOpenList), or the [official support server](https://discord.gg/jRAYbe6w6z).
-
-### Repo Maintainers:
-
--   Electro
--   Cyns
--   Prometheus

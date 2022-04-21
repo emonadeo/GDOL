@@ -1,15 +1,13 @@
 {
 	"name": "@gdol/client",
-	"private": true,
-	"version": "0.0.0",
+	"version": "2.0.0",
+	"description": "Static Font-end made with Svelte",
 	"type": "module",
 	"scripts": {
 		"dev": "vite",
 		"build": "vite build",
 		"preview": "vite preview",
-		"check": "svelte-check --tsconfig ./tsconfig.json --compiler-warnings css-unused-selector:ignore",
-		"lint": "prettier --check --plugin-search-dir=. . && eslint .",
-		"format": "prettier --write --plugin-search-dir=. . && eslint --fix ."
+		"check": "svelte-check --tsconfig ./tsconfig.json --compiler-warnings css-unused-selector:ignore"
 	},
 	"devDependencies": {
 		"@sveltejs/vite-plugin-svelte": "^1.0.0-next.30",

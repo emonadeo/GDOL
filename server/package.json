@@ -1,8 +1,8 @@
 {
 	"name": "@gdol/server",
-	"version": "0.0.0",
-	"description": "",
-	"main": "index.js",
+	"version": "2.0.0",
+	"description": "REST API built on Fastify and Prisma",
+	"type": "module",
 	"scripts": {
 		"start": "dotenv -c -- ts-node src/index.ts",
 		"dev": "dotenv -c -- nodemon src/index.ts"
