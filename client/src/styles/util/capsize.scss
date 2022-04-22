@@ -35,13 +35,13 @@
 
 	&::before {
 		content: '';
-		margin-bottom: #{($ascentScale - $capHeightScale - $offset) * -1}em;
+		margin-block-end: #{($ascentScale - $capHeightScale - $offset) * -1}em;
 		display: table;
 	}
 
 	&::after {
 		content: '';
-		margin-top: #{($descentScale - $offset) * -1}em;
+		margin-block-start: #{($descentScale - $offset) * -1}em;
 		display: table;
 	}
 }

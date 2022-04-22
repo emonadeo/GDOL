@@ -1,5 +1,9 @@
 @use 'src/styles/color';
 
+:root {
+	color-scheme: dark;
+}
+
 html,
 body,
 #app {
@@ -9,6 +13,11 @@ body,
 body {
 	background-color: color.$background;
 	color: color.$on-background;
+}
+
+#app {
+	display: flex;
+	flex-direction: column;
 }
 
 // Reset Lists
