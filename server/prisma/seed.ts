@@ -1,43 +1,54 @@
-import { Prisma, PrismaClient } from '@prisma/client';
+import { PrismaClient } from '@prisma/client';
+import axios from 'axios';
 
 const prisma = new PrismaClient();
 
-const userData: Prisma.UserCreateInput[] = [
-	{
-		name: 'Gizbro',
-	},
-	{
-		name: 'Cirtrax',
-	},
-];
+interface Player {
+	id: number;
+	name: string;
+	banned: boolean;
+}
 
-const levelData: Prisma.LevelCreateInput[] = [
-	{
-		name: 'Chromatic Haze',
-		user: {
-			connect: { name: 'Cirtrax' },
-		},
-		verifier: {
-			connect: { name: 'Gizbro' },
-		},
-		creators: {
-			connect: [{ name: 'Gizbro' }, { name: 'Cirtrax' }],
-		},
-		video: 'https://youtu.be/J-qEOHy-IIA',
-	},
-];
+interface Demon {
+	name: string;
+	position?: number;
+	id: number;
+	publisher: Player;
+	verifier: Player;
+	video?: string;
+}
 
 async function main() {
 	console.log(`Start seeding...`);
-	userData.forEach(async (u) => {
-		const user = await prisma.user.create({
-			data: u,
-		});
-		console.log(`Create user with name: ${user.name}`);
-	});
-	levelData.forEach(async (l) => {
+	const { data } = (await axios.get('https://pointercrate.com/api/v2/demons/listed')) as {
+		data: Demon[];
+	};
+	data.forEach(async (demon) => {
 		const level = await prisma.level.create({
-			data: l,
+			data: {
+				name: demon.name,
+				user: {
+					connectOrCreate: {
+						where: {
+							name: demon.publisher.name,
+						},
+						create: {
+							name: demon.publisher.name,
+						},
+					},
+				},
+				verifier: {
+					connectOrCreate: {
+						where: {
+							name: demon.verifier.name,
+						},
+						create: {
+							name: demon.verifier.name,
+						},
+					},
+				},
+				video: demon.video || 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+			},
 		});
 		console.log(`Create level with id: ${level.id}`);
 	});

@@ -24,8 +24,10 @@ export default {
 					{
 						findFileUrl(url) {
 							for (const alias of aliases) {
-								if (url.startsWith(alias[0])) {
-									const path = resolve(url.replace(alias[0], alias[1]));
+								if (url.startsWith(alias.find)) {
+									const path = resolve(
+										url.replace(alias.find, alias.replacement)
+									);
 									return pathToFileURL(path);
 								}
 							}

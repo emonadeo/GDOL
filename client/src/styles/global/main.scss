@@ -8,4 +8,22 @@ body,
 
 body {
 	background-color: color.$background;
+	color: color.$on-background;
+}
+
+// Reset Lists
+
+ul[role='list'],
+ol[role='list'] {
+	padding: 0;
+	margin: 0;
+
+	li {
+		display: block;
+	}
+}
+
+// Default `a` style
+a {
+	text-decoration: none;
 }

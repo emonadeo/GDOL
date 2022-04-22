@@ -9,4 +9,7 @@ export default defineConfig({
 	resolve: {
 		alias,
 	},
+	optimizeDeps: {
+		exclude: ['tinro'],
+	},
 });
