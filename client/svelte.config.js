@@ -41,5 +41,9 @@ export default {
 				map: res.sourceMap,
 			};
 		},
+		onwarn(warning, defaultHandler) {
+			if (warning.code === 'a11y-no-redundant-roles') return;
+			defaultHandler(warning);
+		},
 	}),
 };

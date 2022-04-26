@@ -7,12 +7,13 @@
 		"dev": "vite",
 		"build": "vite build",
 		"preview": "vite preview",
-		"check": "svelte-check --tsconfig ./tsconfig.json --compiler-warnings css-unused-selector:ignore"
+		"check": "svelte-check --tsconfig ./tsconfig.json --compiler-warnings a11y-no-redundant-roles:ignore"
 	},
 	"devDependencies": {
 		"@sveltejs/vite-plugin-svelte": "^1.0.0-next.41",
 		"@tsconfig/svelte": "^2.0.1",
 		"autoprefixer": "^10.4.4",
+		"fuzzysort": "^1.2.1",
 		"modern-css-reset": "^1.4.0",
 		"postcss": "^8.4.12",
 		"sass": "^1.50.1",
