@@ -22,26 +22,28 @@
 	});
 
 	let search: string = '';
+	let toggled: boolean = false;
 
 	// TODO: clean up
 	$: fLevels = search ? fzf.go(search, levels, { key: 'name' }).map((res) => res.obj) : levels;
+
+	// TODO: clean up
+	function toggle() {
+		toggled = !toggled;
+		if (!toggled) search = '';
+	}
 </script>
 
 <div class="page-list">
-	<header class="search">
-		<input
-			class="textfield type-label-lg"
-			type="text"
-			placeholder="Search"
-			bind:value={search}
-		/>
-	</header>
-	<div class="toggle">
-		<button href="">
-			<img src="src/assets/icons/filter.svg" alt="Filter" />
-		</button>
-	</div>
 	<aside>
+		<div class="toggle" style:border-bottom={toggled ? null : 'none'}>
+			<button on:click={toggle}>
+				<img
+					src={toggled ? 'src/assets/icons/close.svg' : 'src/assets/icons/filter.svg'}
+					alt="Filter"
+				/>
+			</button>
+		</div>
 		<ul class="sections" role="list">
 			<li>
 				<a href="" class="type-label-lg">Main</a>
@@ -55,6 +57,15 @@
 		</div>
 	</aside>
 	<main>
+		<div class="search" style:display={toggled ? null : 'none'}>
+			<input
+				class="textfield type-label-lg"
+				type="text"
+				placeholder="Search"
+				bind:value={search}
+			/>
+		</div>
+		<p class="no-results" style:display={fLevels.length === 0 ? null : 'none'}>No results.</p>
 		<ol role="list" class="levels">
 			{#each fLevels as level}
 				<li>
@@ -92,25 +103,39 @@
 
 	@include screen.xl {
 		.page-list {
+			overflow: hidden;
 			flex: 1;
-			overflow: auto;
 			display: grid;
-			grid-template-columns: 4rem 1fr 4rem;
-			grid-template-rows: max-content minmax(0, 1fr) max-content;
-			grid-template-areas:
-				'toggle search search'
-				'aside main .'
-				'. main .';
+			grid-template-columns: 4rem 1fr;
+			grid-template-rows: minmax(0, 1fr);
 
 			aside {
-				grid-area: aside;
-				position: sticky;
-				top: 0;
-				writing-mode: vertical-rl;
-				display: flex;
-				padding-inline: 2rem;
+				display: grid;
+				grid-template-rows: 4rem 1fr max-content;
+				gap: 2rem;
+				padding-bottom: 2rem;
+
+				.toggle {
+					border-bottom: 1px solid color.$surface;
+
+					button {
+						background-color: transparent;
+						border: none;
+						height: 100%;
+						width: 100%;
+						padding: 0;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+
+						&:hover {
+							background-color: color.$surface;
+						}
+					}
+				}
 
 				.sections {
+					writing-mode: vertical-rl;
 					display: flex;
 					gap: 1rem;
 					align-items: center;
@@ -134,47 +159,45 @@
 				}
 
 				.archive {
-					flex: 1;
 					display: flex;
-					justify-content: flex-end;
 					align-items: center;
+					writing-mode: vertical-rl;
 					color: inherit;
 				}
 			}
 
-			.search {
-				grid-area: search;
-				height: 4rem;
-				display: grid;
-				border-bottom: 1px solid color.$surface;
-				padding-left: 2rem;
-				align-items: center;
-				grid-template-columns: calc(6rem + 4px) 1fr 1fr;
-				column-gap: 2rem;
-
-				.textfield {
-					grid-column: 2;
-				}
-			}
-
-			.toggle {
-				border-bottom: 1px solid color.$surface;
-
-				button {
-					background-color: transparent;
-					border: none;
-					height: 100%;
-					width: 100%;
-					padding: 0;
-					display: flex;
-					align-items: center;
-					justify-content: center;
-				}
-			}
-
 			main {
-				grid-area: main;
+				overflow: auto;
+				display: flex;
+				flex-direction: column;
+
+				.search {
+					display: grid;
+					grid-template-columns: calc(6rem + 4px) 1fr 1fr;
+					align-items: center;
+					column-gap: 2rem;
+					height: 4rem;
+					flex-shrink: 0;
+					position: sticky;
+					top: 0;
+					padding-left: 2rem;
+					background-color: color.$background;
+					border-bottom: 1px solid color.$surface;
+
+					.textfield {
+						grid-column: 2;
+					}
+				}
+
+				.no-results {
+					margin-left: calc(10rem + 4px);
+					margin-block: 2rem;
+					color: color.$surface;
+				}
+
 				.levels {
+					max-width: 64rem;
+
 					.level {
 						display: grid;
 						grid-template-columns: max-content 12rem 1fr;
