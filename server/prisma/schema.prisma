@@ -27,3 +27,8 @@ model Level {
   creators     User[] @relation("Creators", references: [name])
   video        String
 }
+
+model List {
+  timestamp DateTime @id @default(now())
+  levelIds  Int[]
+}

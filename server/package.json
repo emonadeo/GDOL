@@ -4,7 +4,10 @@
 	"description": "REST API built on Fastify and Prisma",
 	"scripts": {
 		"start": "dotenv -c -- ts-node src/index.ts",
-		"dev": "dotenv -c -- nodemon src/index.ts"
+		"dev": "dotenv -c -- nodemon src/index.ts",
+		"generate": "prisma generate",
+		"push": "prisma db push",
+		"seed": "prisma db seed"
 	},
 	"dependencies": {
 		"@prisma/client": "^3.12.0",
