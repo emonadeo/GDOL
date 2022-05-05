@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client';
+import { Prisma, PrismaClient } from '@prisma/client';
 import axios from 'axios';
 
 const prisma = new PrismaClient();
@@ -20,12 +20,12 @@ interface Demon {
 
 async function main() {
 	console.log(`Start seeding...`);
-	const { data } = (await axios.get('https://pointercrate.com/api/v2/demons/listed')) as {
-		data: Demon[];
-	};
-	data.forEach(async (demon) => {
-		const level = await prisma.level.create({
-			data: {
+	const res = await axios.get('https://pointercrate.com/api/v2/demons/listed');
+	const data: Demon[] = res.data;
+	const list: Prisma.ListLogLevelCreateWithoutLogInput[] = data.map((demon, index) => ({
+		index,
+		level: {
+			create: {
 				name: demon.name,
 				user: {
 					connectOrCreate: {
@@ -49,8 +49,14 @@ async function main() {
 				},
 				video: demon.video || 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
 			},
-		});
-		console.log(`Create level with id: ${level.id}`);
+		},
+	}));
+	await prisma.listLog.create({
+		data: {
+			list: {
+				create: list,
+			},
+		},
 	});
 	console.log(`Seeding finished.`);
 }

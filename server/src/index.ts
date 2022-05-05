@@ -3,42 +3,13 @@ import cors from 'fastify-cors';
 
 import { prisma } from './prisma';
 
-import { list } from './routes/list';
+import list from './list/route';
 
 const app = Fastify();
 
 app.register(cors);
 
 app.register(list);
-
-app.get('/users', async (_, res) => {
-	const users = await prisma.user.findMany({
-		include: {
-			levels: true,
-		},
-	});
-	res.send(users);
-});
-
-app.get('/levels', async (_, res) => {
-	const levels = await prisma.level.findMany();
-	res.send(levels);
-});
-
-app.get<{
-	Params: LevelByIdParam;
-}>('/levels/:id', async (req, res) => {
-	const { id } = req.params;
-	const level = await prisma.level.findUnique({
-		where: { id: Number(id) },
-		include: {
-			creators: true,
-			user: true,
-			verifier: true,
-		},
-	});
-	res.send(level);
-});
 
 // Run the server
 app.listen(3001, (err, address) => {
@@ -47,7 +18,3 @@ app.listen(3001, (err, address) => {
 		process.exit(1);
 	}
 });
-
-interface LevelByIdParam {
-	id: string;
-}
