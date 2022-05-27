@@ -1,0 +1,73 @@
+openapi: 3.0.2
+info:
+  title: GDOL
+  version: 2.0.0
+tags:
+  - name: list
+    description: Everything list related
+components:
+  schemas:
+    level:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        userName:
+          type: string
+        verifierName:
+          type: string
+        video:
+          type: string
+paths:
+  '/list':
+    get:
+      summary: Get the list
+      description: Retrieves all levels on the list in order
+      tags:
+        - list
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/level'
+        'default':
+          description: Unexpected Error
+    post:
+      summary: Updates the list
+      description: Move, add or a delete a level on the list
+      tags:
+        - list
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        'default':
+          description: Unexpected Error
+  '/list/{rank}':
+    get:
+      summary: Get level by list placement
+      description: Retrieves the level at the given rank on the list
+      tags:
+        - list
+      parameters:
+        - name: rank
+          description: Position on the list
+          in: path
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+        'default':
+          description: Unexpected Error
