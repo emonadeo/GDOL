@@ -1,32 +1,85 @@
 openapi: 3.0.2
+servers:
+  - url: https://example.com/
 info:
   title: GDOL
   version: 2.0.0
+  description: API for GDOL
+  termsOfService: none
+  contact:
+    name: Emonadeo
+    email: emonadeo@gmail.com
+    url: https://github.com/Emonadeo/GDOL
+  license:
+    name: MIT
+    url: https://spdx.org/licenses/MIT.html
+externalDocs:
+  url: https://github.com/Emonadeo/GDOL
 tags:
-  - name: list
+  - name: List
     description: Everything list related
 components:
   schemas:
-    level:
+    Error:
+      type: object
+      properties:
+        error_message:
+          type: string
+    Level:
       type: object
       properties:
         id:
           type: integer
+          example: 0
         name:
           type: string
+          example: Chromatic Haze
         userName:
           type: string
+          example: Cirtrax
         verifierName:
           type: string
+          example: Gizbro
         video:
           type: string
+          example: https://www.youtube.com/watch?v=QZf8vX4DF0A
+  responses:
+    Unauthorized:
+      description: Access token is missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Forbidden:
+      description: Access token is valid, but does not have the required permissions
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Default:
+      description: Unexpected Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    Bearer:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
 paths:
   '/list':
     get:
-      summary: Get the list
-      description: Retrieves all levels on the list in order
+      summary: Get Levels on List
+      description: Retrieves all levels on the list ordered by rank
       tags:
-        - list
+        - List
       responses:
         '200':
           description: OK
@@ -35,27 +88,33 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/level'
-        'default':
-          description: Unexpected Error
+                  $ref: '#/components/schemas/Level'
     post:
-      summary: Updates the list
-      description: Move, add or a delete a level on the list
+      summary: Add/Move Level on List
+      description: Add or Move a Level on the List
       tags:
-        - list
+        - List
+      security:
+        - Bearer: []
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                type: boolean
         '401':
-          description: Unauthorized
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
         'default':
-          description: Unexpected Error
+          $ref: '#/components/responses/Default'
   '/list/{rank}':
     get:
       summary: Get level by list placement
       description: Retrieves the level at the given rank on the list
       tags:
-        - list
+        - List
       parameters:
         - name: rank
           description: Position on the list
@@ -68,6 +127,30 @@ paths:
         '200':
           description: OK
         '404':
-          description: Not Found
+          $ref: '#/components/responses/NotFound'
         'default':
-          description: Unexpected Error
+          $ref: '#/components/responses/Default'
+    delete:
+      summary: Remove Level from List
+      description: Manually archive a level
+      tags:
+        - List
+      security:
+        - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reason:
+                  type: string
+      responses:
+        '200':
+          description: OK
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        'default':
+          $ref: '#/components/responses/Default'
