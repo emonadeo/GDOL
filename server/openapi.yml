@@ -43,6 +43,17 @@ components:
         name:
           type: string
           example: Gizbro
+  parameters:
+    At:
+      in: query
+      name: at
+      required: false
+      description: ISO 8601-formatted Timestamp of the List
+      style: form
+      schema:
+        type: string
+        pattern: /^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d(\.\d+)?(([+-]\d\d:\d\d)|Z)?$/i
+      example: 2022-05-24
   responses:
     Unauthorized:
       description: Access token is missing or invalid
@@ -81,6 +92,8 @@ paths:
       description: Retrieves all levels on the list ordered by rank
       tags:
         - List
+      parameters:
+        - $ref: '#/components/parameters/At'
       responses:
         '200':
           description: OK
@@ -111,19 +124,21 @@ paths:
         'default':
           $ref: '#/components/responses/Default'
   '/list/{rank}':
+    parameters:
+      - in: path
+        name: rank
+        description: Position on the list
+        required: true
+        schema:
+          type: integer
+          minimum: 1
     get:
       summary: Get Level by Rank
       description: Retrieves the level at the given rank on the list
       tags:
         - List
       parameters:
-        - name: rank
-          description: Position on the list
-          in: path
-          required: true
-          schema:
-            type: integer
-            minimum: 1
+        - $ref: '#/components/parameters/At'
       responses:
         '200':
           description: OK
@@ -175,6 +190,13 @@ paths:
                 items:
                   $ref: '#/components/schemas/Level'
   '/levels/{id}':
+    parameters:
+      - in: path
+        name: id
+        description: Level ID
+        required: true
+        schema:
+          type: integer
     get:
       summary: Get Level by ID
       tags:
@@ -204,6 +226,13 @@ paths:
                 items:
                   $ref: '#/components/schemas/User'
   '/users/{id}':
+    parameters:
+      - in: path
+        name: id
+        description: User ID
+        required: true
+        schema:
+          type: integer
     get:
       summary: Get User by ID
       tags:
