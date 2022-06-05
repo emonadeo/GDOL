@@ -15,9 +15,6 @@ info:
     url: https://spdx.org/licenses/MIT.html
 externalDocs:
   url: https://github.com/Emonadeo/GDOL
-tags:
-  - name: List
-    description: Everything list related
 components:
   schemas:
     Error:
@@ -34,15 +31,18 @@ components:
         name:
           type: string
           example: Chromatic Haze
-        userName:
-          type: string
-          example: Cirtrax
-        verifierName:
+        user:
+          $ref: '#/components/schemas/User'
+        verifier:
+          $ref: '#/components/schemas/User'
+        video:
+          $ref: '#/components/schemas/User'
+    User:
+      type: object
+      properties:
+        name:
           type: string
           example: Gizbro
-        video:
-          type: string
-          example: https://www.youtube.com/watch?v=QZf8vX4DF0A
   responses:
     Unauthorized:
       description: Access token is missing or invalid
@@ -74,6 +74,7 @@ components:
       scheme: bearer
       bearerFormat: JWT
 paths:
+  # List
   '/list':
     get:
       summary: Get Levels on List
@@ -111,7 +112,7 @@ paths:
           $ref: '#/components/responses/Default'
   '/list/{rank}':
     get:
-      summary: Get level by list placement
+      summary: Get Level by Rank
       description: Retrieves the level at the given rank on the list
       tags:
         - List
@@ -126,12 +127,16 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Level'
         '404':
           $ref: '#/components/responses/NotFound'
         'default':
           $ref: '#/components/responses/Default'
     delete:
-      summary: Remove Level from List
+      summary: Delete Level from List
       description: Manually archive a level
       tags:
         - List
@@ -154,3 +159,61 @@ paths:
           $ref: '#/components/responses/Forbidden'
         'default':
           $ref: '#/components/responses/Default'
+  # Levels
+  '/levels':
+    get:
+      summary: Get Levels
+      tags:
+        - Level
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Level'
+  '/levels/{id}':
+    get:
+      summary: Get Level by ID
+      tags:
+        - Level
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Level'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  # Users
+  '/users':
+    get:
+      summary: Get Users
+      tags:
+        - User
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+  '/users/{id}':
+    get:
+      summary: Get User by ID
+      tags:
+        - User
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '404':
+          $ref: '#/components/responses/NotFound'
