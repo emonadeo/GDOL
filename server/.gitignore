@@ -1,1 +1,3 @@
 *.local
+generated/
+prisma/pointercrate.json

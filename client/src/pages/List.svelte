@@ -16,7 +16,7 @@
 	let levels: Level[] = [];
 
 	onMount(async () => {
-		const res = await fetch(new URL('/levels', REST_URL).toString());
+		const res = await fetch(new URL('/list', REST_URL).toString());
 		const rlevels: any[] = await res.json();
 		levels = rlevels.map((lvl, i) => ({ ...lvl, rank: i + 1 }));
 	});

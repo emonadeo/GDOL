@@ -1,5 +1,8 @@
-import { Prisma, PrismaClient } from '@prisma/client';
+import { Prisma, PrismaClient } from '../src/generated/prisma';
 import axios from 'axios';
+import { readFileSync } from 'fs';
+import { resolve } from 'path';
+import { ListLogAction } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
@@ -20,8 +23,35 @@ interface Demon {
 
 async function main() {
 	console.log(`Start seeding...`);
-	const res = await axios.get('https://pointercrate.com/api/v2/demons/listed');
-	const data: Demon[] = res.data;
+	const data: Demon[] = JSON.parse(
+		readFileSync('./prisma/pointercrate.json', { encoding: 'utf-8' })
+	);
+	const level = await prisma.level.create({
+		data: {
+			name: 'Placeholder',
+			video: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+			user: {
+				connectOrCreate: {
+					where: {
+						name: 'Placeholder',
+					},
+					create: {
+						name: 'Placeholder',
+					},
+				},
+			},
+			verifier: {
+				connectOrCreate: {
+					where: {
+						name: 'Placeholder',
+					},
+					create: {
+						name: 'Placeholder',
+					},
+				},
+			},
+		},
+	});
 	const list: Prisma.ListLogLevelCreateWithoutLogInput[] = data.map((demon, index) => ({
 		index,
 		level: {
@@ -53,6 +83,12 @@ async function main() {
 	}));
 	await prisma.listLog.create({
 		data: {
+			action: ListLogAction.ADD,
+			level: {
+				connect: {
+					id: level.id,
+				},
+			},
 			list: {
 				create: list,
 			},

@@ -1,11 +1,11 @@
-import { FastifyPluginAsync, RouteHandlerMethod } from 'fastify';
-import { Level } from '@prisma/client';
+import { FastifyPluginAsync } from 'fastify';
+import { List } from '../generated/openapi';
 import { getCurrent } from './model';
 
 const plugin: FastifyPluginAsync = async function (fastify) {
 	// Get List
 	fastify.get<{
-		Reply: Level[];
+		Reply: List.GetList.ResponseBody;
 	}>('/list', async function (_, res) {
 		res.send(await getCurrent());
 	});

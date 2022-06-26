@@ -91,6 +91,7 @@ paths:
     get:
       summary: Get Levels on List
       description: Retrieves all levels on the list ordered by rank
+      operationId: GetList
       tags:
         - List
       parameters:
@@ -107,6 +108,7 @@ paths:
     post:
       summary: Add/Move Level on List
       description: Add a Level to the List at a given rank. If it is already on the list, it will be moved to the specified rank.
+      operationId: PostList
       tags:
         - List
       security:
@@ -149,6 +151,7 @@ paths:
     get:
       summary: Get Level by Rank
       description: Retrieves the level at the given rank on the list
+      operationId: GetListLevel
       tags:
         - List
       parameters:
@@ -167,6 +170,7 @@ paths:
     delete:
       summary: Delete Level from List
       description: Manually archive a level
+      operationId: DeleteListLevel
       tags:
         - List
       security:
@@ -192,6 +196,7 @@ paths:
   '/levels':
     get:
       summary: Get Levels
+      operationId: GetLevels
       tags:
         - Level
       responses:
@@ -213,6 +218,7 @@ paths:
           type: integer
     get:
       summary: Get Level by ID
+      operationId: GetLevel
       tags:
         - Level
       responses:
@@ -228,6 +234,7 @@ paths:
   '/users':
     get:
       summary: Get Users
+      operationId: GetUsers
       tags:
         - User
       responses:
@@ -249,6 +256,7 @@ paths:
           type: integer
     get:
       summary: Get User by ID
+      operationId: GetUser
       tags:
         - User
       responses:
