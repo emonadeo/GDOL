@@ -28,14 +28,26 @@ model Level {
   video        String
   log          ListLogLevel[]
   archive      Archive[]
+  listLog      ListLog[]
 }
 
 model ListLog {
   timestamp DateTime       @id @default(now())
   list      ListLogLevel[]
-  // TODO: Document Changes
+  action    ListLogAction
+  level     Level          @relation(fields: [levelId], references: [id])
+  levelId   Int
+  from      Int?
+  to        Int?
 }
 
+enum ListLogAction {
+  ADD // Level has been added
+  MOVE // Level has been moved
+  DELETE // Level has been deleted
+}
+
+// Level Wrapper to include the ordinal rank on the list
 model ListLogLevel {
   log          ListLog  @relation(fields: [logTimestamp], references: [timestamp])
   logTimestamp DateTime

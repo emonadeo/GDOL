@@ -36,7 +36,8 @@ components:
         verifier:
           $ref: '#/components/schemas/User'
         video:
-          $ref: '#/components/schemas/User'
+          type: string
+          example: https://www.youtube.com/watch?v=QZf8vX4DF0A
     User:
       type: object
       properties:
@@ -105,11 +106,24 @@ paths:
                   $ref: '#/components/schemas/Level'
     post:
       summary: Add/Move Level on List
-      description: Add or Move a Level on the List
+      description: Add a Level to the List at a given rank. If it is already on the list, it will be moved to the specified rank.
       tags:
         - List
       security:
         - Bearer: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                level:
+                  type: integer
+                  description: Level ID
+                rank:
+                  type: integer
+                  description: (New) position on the list
+                  minimum: 1
       responses:
         '200':
           description: OK
