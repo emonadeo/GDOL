@@ -12,24 +12,25 @@ datasource db {
 }
 
 model User {
-  name           String  @id
+  id             Int     @id @default(autoincrement())
+  name           String  @unique
   levels         Level[] @relation("Publisher")
   levelsVerified Level[] @relation("Verifier")
   levelsCreated  Level[] @relation("Creators")
 }
 
 model Level {
-  id           Int            @id @default(autoincrement())
-  name         String
-  user         User           @relation("Publisher", fields: [userName], references: [name])
-  userName     String
-  verifier     User           @relation("Verifier", fields: [verifierName], references: [name])
-  verifierName String
-  creators     User[]         @relation("Creators", references: [name])
-  video        String
-  log          ListLogLevel[]
-  archive      Archive[]
-  listLog      ListLog[]
+  id         Int            @id @default(autoincrement())
+  name       String
+  user       User           @relation("Publisher", fields: [userId], references: [id])
+  userId     Int
+  verifier   User           @relation("Verifier", fields: [verifierId], references: [id])
+  verifierId Int
+  creators   User[]         @relation("Creators")
+  video      String
+  log        ListLogLevel[]
+  archive    Archive[]
+  listLog    ListLog[]
 }
 
 model ListLog {

@@ -4,12 +4,20 @@
 	import { REST_URL } from 'src/env';
 	import { getYoutubeIdFromUrl } from 'src/util';
 
+	// TODO: Use OpenAPI generation
+
+	interface User {
+		id: number;
+		name: string;
+	}
+
 	interface Level {
 		rank: number;
 		id: number;
 		name: string;
-		userName: string;
-		verifierName: string;
+		user: User;
+		verifier: User;
+		creators: User[];
 		video: string;
 	}
 
@@ -88,7 +96,7 @@
 						/>
 						<div class="meta">
 							<h2>{level.name}</h2>
-							<p>{level.userName}</p>
+							<p>{level.user.name}</p>
 						</div>
 					</a>
 				</li>

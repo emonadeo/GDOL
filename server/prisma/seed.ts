@@ -1,7 +1,5 @@
 import { Prisma, PrismaClient } from '../src/generated/prisma';
-import axios from 'axios';
 import { readFileSync } from 'fs';
-import { resolve } from 'path';
 import { ListLogAction } from '@prisma/client';
 
 const prisma = new PrismaClient();

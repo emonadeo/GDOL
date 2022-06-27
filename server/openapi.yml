@@ -22,6 +22,8 @@ components:
       properties:
         error_message:
           type: string
+      required:
+        - error_message
     Level:
       type: object
       properties:
@@ -35,15 +37,32 @@ components:
           $ref: '#/components/schemas/User'
         verifier:
           $ref: '#/components/schemas/User'
+        creators:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
         video:
           type: string
           example: https://www.youtube.com/watch?v=QZf8vX4DF0A
+      required:
+        - id
+        - name
+        - user
+        - verifier
+        - creators
+        - video
     User:
       type: object
       properties:
+        id:
+          type: integer
+          example: 0
         name:
           type: string
           example: Gizbro
+      required:
+        - id
+        - name
   parameters:
     At:
       in: query
@@ -118,6 +137,9 @@ paths:
           application/json:
             schema:
               type: object
+              required:
+                - level
+                - rank
               properties:
                 level:
                   type: integer
@@ -129,10 +151,6 @@ paths:
       responses:
         '200':
           description: OK
-          content:
-            application/json:
-              schema:
-                type: boolean
         '401':
           $ref: '#/components/responses/Unauthorized'
         '403':
