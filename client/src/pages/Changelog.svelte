@@ -100,6 +100,8 @@
 	@include screen.xl {
 		.page-changelog {
 			display: grid;
+			overflow: auto;
+			flex: 1;
 			grid-template-columns: calc(8rem + 4px) 1fr calc(8rem + 4px);
 			padding-inline: calc(6rem + 1px);
 

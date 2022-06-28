@@ -17,6 +17,8 @@ interface Demon {
 	publisher: Player;
 	verifier: Player;
 	video?: string;
+	requirement: number;
+	level_id: number;
 }
 
 async function main() {
@@ -48,6 +50,8 @@ async function main() {
 					},
 				},
 			},
+			requirement: 100,
+			levelId: 1,
 		},
 	});
 	const list: Prisma.ListLogLevelCreateWithoutLogInput[] = data.map((demon, index) => ({
@@ -76,6 +80,8 @@ async function main() {
 					},
 				},
 				video: demon.video || 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+				levelId: demon.level_id,
+				requirement: demon.requirement,
 			},
 		},
 	}));

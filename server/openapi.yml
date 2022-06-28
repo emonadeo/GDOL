@@ -30,6 +30,9 @@ components:
         id:
           type: integer
           example: 0
+        gdId:
+          type: integer
+          example: 60587128
         name:
           type: string
           example: Chromatic Haze
@@ -108,6 +111,12 @@ components:
         pattern: /^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d(\.\d+)?(([+-]\d\d:\d\d)|Z)?$/i
       example: 2022-05-24
   responses:
+    BadRequest:
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
     Unauthorized:
       description: Access token is missing or invalid
       content:
@@ -259,6 +268,78 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Level'
+    post:
+      summary: Create Level
+      operationId: PostLevels
+      tags:
+        - Level
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Name of the level
+                  example: Chromatic Haze
+                levelId:
+                  type: integer
+                  description: Level ID in Geometry Dash
+                  example: 60587128
+                userId:
+                  type: number
+                  description: ID of the user who published the level
+                  example: 3
+                verifierId:
+                  type: number
+                  description: ID of the user who verified the level
+                  example: 42
+                creatorIds:
+                  type: array
+                  description: |
+                    IDs of the users who created the a part of the level.  
+                    If the level was created and published by the same person, this should contain the user id of the publisher.
+                  example:
+                    - 3
+                  items:
+                    type: number
+                  minItems: 1
+                video:
+                  type: string
+                  description: URL to a video showcasing the level. In most cases this is the verification video.
+                  example: https://www.youtube.com/watch?v=QZf8vX4DF0A
+                requirement:
+                  type: number
+                  description: Minimum percentage newly submitted records have to be. Defaults to 100
+                  minimum: 0
+                  maximum: 100
+                  default: 100
+                  example: 57.4
+                rank:
+                  type: integer
+                  description: Rank on the List. Level will not be ranked if omitted. Unranked levels can be ranked afterwards.
+                  example: 12
+                  minimum: 1
+
+              required:
+                - name
+                - levelId
+                - userId
+                - verifierId
+                - creatorIds
+                - video
+      responses:
+        '200':
+          description: OK
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        'default':
+          $ref: '#/components/responses/Default'
   '/levels/{id}':
     parameters:
       - in: path

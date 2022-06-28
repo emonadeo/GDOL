@@ -20,17 +20,19 @@ model User {
 }
 
 model Level {
-  id         Int            @id @default(autoincrement())
-  name       String
-  user       User           @relation("Publisher", fields: [userId], references: [id])
-  userId     Int
-  verifier   User           @relation("Verifier", fields: [verifierId], references: [id])
-  verifierId Int
-  creators   User[]         @relation("Creators")
-  video      String
-  log        ListLogLevel[]
-  archive    Archive[]
-  listLog    ListLog[]
+  id          Int            @id @default(autoincrement())
+  name        String
+  levelId     Int            @unique
+  user        User           @relation("Publisher", fields: [userId], references: [id])
+  userId      Int
+  verifier    User           @relation("Verifier", fields: [verifierId], references: [id])
+  verifierId  Int
+  creators    User[]         @relation("Creators")
+  video       String
+  requirement Int
+  log         ListLogLevel[]
+  archive     Archive[]
+  listLog     ListLog[]
 }
 
 model ListLog {
