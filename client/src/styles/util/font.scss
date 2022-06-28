@@ -27,3 +27,17 @@
 		$line-gap
 	);
 }
+
+@mixin fira-mono($cap-height, $line-gap) {
+	font-family: 'Fira Mono', monospace;
+	@include capsize.capsize(
+		(
+			'capHeight': 700,
+			'ascent': 1000,
+			'descent': -250,
+			'unitsPerEm': 1000,
+		),
+		$cap-height,
+		$line-gap
+	);
+}

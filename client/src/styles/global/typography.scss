@@ -70,6 +70,11 @@ p,
 .type-body-lg {
 	@include font.lexend-deca(12, 12);
 	font-weight: 500;
+
+	&.mono {
+		@include font.fira-mono(12, 12);
+		font-weight: 500;
+	}
 }
 
 // Body Medium

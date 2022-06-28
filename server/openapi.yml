@@ -63,6 +63,39 @@ components:
       required:
         - id
         - name
+    Changelog:
+      type: object
+      required:
+        - timestamp
+        - list
+        - action
+        - level
+      properties:
+        timestamp:
+          type: string
+          description: ISO 8601-formatted Timestamp of the List
+          pattern: /^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d(\.\d+)?(([+-]\d\d:\d\d)|Z)?$/i
+          example: 2022-05-24
+        list:
+          type: array
+          description: State of the List after the changes
+          items:
+            $ref: '#/components/schemas/Level'
+        action:
+          type: string
+          description: Type of change
+          enum: [ADD, MOVE, DELETE]
+        level:
+          $ref: '#/components/schemas/Level'
+        from:
+          type: integer
+          description: Rank that the level got moved or deleted from
+          minimum: 1
+        to:
+          type: integer
+          description: Rank that the level got moved or added to
+          minimum: 1
+
   parameters:
     At:
       in: query
@@ -286,3 +319,18 @@ paths:
                 $ref: '#/components/schemas/User'
         '404':
           $ref: '#/components/responses/NotFound'
+  '/changelog':
+    get:
+      summary: Get List Changelog
+      operationId: GetChangelog
+      tags:
+        - Changelog
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Changelog'

@@ -4,6 +4,7 @@
 	import Home from 'src/pages/Home.svelte';
 	import Leaderboard from 'src/pages/Leaderboard.svelte';
 	import List from 'src/pages/List.svelte';
+	import Changelog from 'src/pages/Changelog.svelte';
 </script>
 
 <nav>
@@ -29,6 +30,9 @@
 </Route>
 <Route path="/leaderboard">
 	<Leaderboard />
+</Route>
+<Route path="/changelog">
+	<Changelog />
 </Route>
 
 <style lang="scss">
