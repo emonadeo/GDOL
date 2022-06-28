@@ -72,13 +72,17 @@
 						<div class="before" class:self={index === 1}>
 							<p>{level.name}</p>
 						</div>
-						<p class="before-rank" class:self={index === 1}>#{index + entry.from}</p>
+						<p class="before-rank" class:self={index === 1}>
+							#{index + entry.from - 1}
+						</p>
 					{/each}
 					<div class="icon">
 						<img src={getIcon(entry)} alt="change" />
 					</div>
 					{#each entry.list.slice(entry.to - 2, entry.to + 1) as level, index}
-						<p class="after-rank" class:self={index === 1}>#{index + entry.to}</p>
+						<p class="after-rank" class:self={index === 1}>
+							#{index + entry.to - 1}
+						</p>
 						<div class="after" class:self={index === 1}>
 							<p>{level.name}</p>
 						</div>
