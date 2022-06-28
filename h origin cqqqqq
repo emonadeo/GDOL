@@ -1,0 +1,363 @@
+[33mcommit 09d8dfccfd70548d10f20d3d187eaca39de28b7f[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: Emonadeo <emonadeo@gmail.com>
+Date:   Tue Jun 28 21:56:22 2022 +0200
+
+    Added Create Level API & Expanded Level Model
+
+[33mcommit 9aa82853a785b9caa52cd1875c5c60d059c065bf[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Emonadeo <emonadeo@gmail.com>
+Date:   Tue Jun 28 20:40:41 2022 +0200
+
+    Fixed Rank offset in Changelog
+
+[33mcommit ff9c87f9f21dfac1e5bd098509df4241fb36a3dc[m
+Author: Emonadeo <emonadeo@gmail.com>
+Date:   Tue Jun 28 20:38:19 2022 +0200
+
+    Added Changelog
+
+[33mcommit 7583bd5e41895c554b7d326944de6ed07729df00[m
+Author: Emonadeo <emonadeo@gmail.com>
+Date:   Tue Jun 28 01:17:29 2022 +0200
+
+    Implemented Post List & Refined OpenAPI and Prisma
+
+[33mcommit 9b855a9efc79c130035866b229c33053f30998bf[m
+Author: Emonadeo <emonadeo@gmail.com>
+Date:   Mon Jun 27 01:58:46 2022 +0200
+
+    Added code generator for OpenAPI types
+
+[33mcommit 416465a6a63f2f0e16efc596e7cf68312987fefd[m
+Author: Emonadeo <emonadeo@gmail.com>
+Date:   Sun Jun 26 03:37:51 2022 +0200
+
+    Added OpenAPI RequestBody & ListLog details in Prisma
+
+[33mcommit 83e1207933527a1132c7e6b55c41f482b16df71d[m
+Author: Emonadeo <emonadeo@gmail.com>
+Date:   Sun Jun 5 02:48:48 2022 +0200
+
+    Added OpenAPI Path & Query Parameters
+
+[33mcommit 12cd57fd568524182aaedc227c0b75a3a7dc2236[m
+Author: Emonadeo <emonadeo@gmail.com>
+Date:   Sun Jun 5 02:14:02 2022 +0200
+
+    Added OpenAPI Level and User GET-Methods
+
+[33mcommit d321fac6ab0d914914694a6afa31615aae44a8da[m
+Author: Emonadeo <emonadeo@gmail.com>
+Date:   Fri Jun 3 05:45:39 2022 +0200
+
+    Moved docs to root
+
+[33mcommit 9c0ac560d9c5ace2f2634997b3f2181829429d00[m
+Author: Emonadeo <emonadeo@gmail.com>
+Date:   Fri Jun 3 05:43:45 2022 +0200
+
+    Added OpenAPI docs
+
+[33mcommit 7568ca8921630d523c9b528349e1da2b27f61906[m
+Author: Emonadeo <emonadeo@gmail.com>
+Date:   Fri Jun 3 05:16:51 2022 +0200
+
+    Added OpenAPI list request specifications
+
+[33mcommit 5675e2ee2eae558f67dc59fe9e4ef3013d33a2e8[m
+Author: Emonadeo <emonadeo@gmail.com>
+Date:   Fri May 27 19:12:19 2022 +0200
+
+    Added initial OpenAPI schema
+
+[33mcommit 36694f9e23b4a4ed11e95c9150eb1d7499259762[m
+Author: Emonadeo <emonadeo@gmail.com>
+Date:   Thu May 5 04:23:07 2022 +0200
+
+    Added List to Prisma and API
+
+[33mcommit 303c7c1718eee7e54af0c0a18c2537682e82cf0c[m
+Author: Emonadeo <emonadeo@gmail.com>
+Date:   Wed May 4 06:25:12 2022 +0200
+
+    Added /list endpoint
+
+[33mcommit 3f242fd3720c82e5e0fa3a11c36c7c35de11de9e[m
+Author: Emonadeo <emonadeo@gmail.com>
+Date:   Wed Apr 27 00:11:54 2022 +0200
+
+    Added collapsibility to search bar
+
+[33mcommit 5d3650fd71fc0edb032f640b1358a4c47546401f[m
+Author: Emonadeo <emonadeo@gmail.com>
+Date:   Tue Apr 26 23:09:19 2022 +0200
+
+    Added fuzzy finder to list
+
+[33mcommit 815c5d1ee582b832fe2be789d5e2141367b10d12[m
+Author: Emonadeo <emonadeo@gmail.com>
+Date:   Fri Apr 22 02:37:49 2022 +0200
+
+    Added list sections (hardcoded atm)
+
+[33mcommit aa2f4fe216d87459034dfac796fa6ff8e50a79bb[m
+Author: Emonadeo <emonadeo@gmail.com>
+Date:   Fri Apr 22 02:16:10 2022 +0200
+
+    Added levels & Fixed SCSS issue
+
+[33mcommit 73e92392f19e42b133520e05f957f74d8775d497[m
+Author: Emonadeo <emonadeo@gmail.com>
+Date:   Thu Apr 21 23:55:23 2022 +0200
+
+    Added router & alias
+
+[33mcommit 131e3f5bb4914ab5b5227bae24a02c17e7b77cae[m
+Author: Emonadeo <emonadeo@gmail.com>
+Date:   Thu Apr 21 21:11:47 2022 +0200
+
+    Updated License & package.json
+
+[33mcommit 26876a2f6210f6e71cfd0a57a61e2f8583e2267b[m
+Author: Emonadeo <emonadeo@gmail.com>
+Date:   Thu Apr 21 20:58:41 2022 +0200
+
+    Updated Meta
+
+[33mcommit 1eb34c53c9bb8d85f25a7a0215cb2bb61331b4ef[m[33m ([m[1;31morigin/svelte-node[m[33m, [m[1;32msvelte-node[m[33m)[m
+Author: Emonadeo <emonadeo@gmail.com>
+Date:   Thu Apr 21 05:15:46 2022 +0200
+
+    Added base styles & favicons
+
+[33mcommit ea955ee8aa65f1a428e25deeee0e432bbfb9b2ff[m
+Author: Emonadeo <emonadeo@gmail.com>
+Date:   Sat Apr 2 22:02:14 2022 +0200
+
+    Added persistent volume to docker-compose.yml
+
+[33mcommit 68dcfc2a285f60b6af5dfccde1f88da329cc9249[m
+Author: Emonadeo <emonadeo@gmail.com>
+Date:   Sat Apr 2 21:47:27 2022 +0200
+
+    Removed client README
+
+[33mcommit 92a358c0018fdf44b083a4c5c53feebb52d2db7e[m
+Author: Emonadeo <emonadeo@gmail.com>
+Date:   Sat Apr 2 21:29:53 2022 +0200
+
+    Fixed file casing & images
+
+[33mcommit 32e707f4818d890b8cb735d03ce98d7004045918[m
+Author: Emonadeo <emonadeo@gmail.com>
+Date:   Sat Apr 2 21:26:19 2022 +0200
+
+    Updated .env and README.md
+
+[33mcommit 74aad4f8b4d2cf30ae18ce5acda30413e00f59ff[m
+Author: Emonadeo <emonadeo@gmail.com>
+Date:   Sat Apr 2 20:15:02 2022 +0200
+
+    Moved embed() to util.ts
+
+[33mcommit bfbcd3fd30b519b20d18407a8322362936f891ac[m
+Author: Emonadeo <emonadeo@gmail.com>
+Date:   Sat Apr 2 19:29:25 2022 +0200
+
+    Implemented rudimentary front-end
+
+[33mcommit 5436bb5bd8ec351e47229e9a68005dc202665f35[m
+Author: Emonadeo <emonadeo@gmail.com>
+Date:   Sat Apr 2 18:46:53 2022 +0200
+
+    Added sample REST endpoints
+
+[33mcommit cf4c301a9e93893bf5cf82d2e8d1d8983aacc7d6[m
+Author: Emonadeo <emonadeo@gmail.com>
+Date:   Sat Apr 2 03:27:41 2022 +0200
+
+    Added basic relations to sample schema
+
+[33mcommit a89d8d946437e163086887342ca48e9ea0e68f97[m
+Author: Emonadeo <emonadeo@gmail.com>
+Date:   Fri Apr 1 04:27:14 2022 +0200
+
+    Added Prisma to recommended extensions
+
+[33mcommit 7626ecbafab24607a4f92f8869943a8b8d221e8f[m
+Author: Emonadeo <emonadeo@gmail.com>
+Date:   Fri Apr 1 04:23:12 2022 +0200
+
+    Scaffold using Svelte & Prisma (Node)
+
+[33mcommit a0b5df92f0a5f1fe92800b9f9cd18c8371f346c1[m[33m ([m[1;31morigin/svelte-deno[m[33m, [m[1;32msvelte-deno[m[33m)[m
+Author: Emonadeo <emonadeo@gmail.com>
+Date:   Thu Mar 31 19:41:07 2022 +0200
+
+    Added .gitignore & Renamed some files
+
+[33mcommit 7b3d2a03e5c353dfc7b155d6bac72077bd3c6d54[m
+Author: Emonadeo <emonadeo@gmail.com>
+Date:   Thu Mar 31 05:30:51 2022 +0200
+
+    Scaffold using Svelte & Oak (Deno)
+
+[33mcommit 644f6742cd17e0d8c21a580bc8d20062b51d91cf[m
+Author: Electro <51268650+ElectroFlameOfficial@users.noreply.github.com>
+Date:   Mon Jan 24 23:57:51 2022 -0500
+
+    Update FUNDING.yml
+
+[33mcommit cbeb29844bc95f0b2eb17899b15154712264ea47[m
+Author: Prometheus <33342399+Prometheus-03@users.noreply.github.com>
+Date:   Sat Dec 18 12:16:37 2021 +0800
+
+    Made some changes to UI, including login screen and staff interface
+
+[33mcommit 408da74202fd6af4f46360303847969440707442[m
+Merge: 28c3c43 0526648
+Author: Prometheus <33342399+Prometheus-03@users.noreply.github.com>
+Date:   Fri Oct 29 12:56:31 2021 +0800
+
+    Merge pull request #4 from ElectroFlameOfficial/Staff-UI
+    
+    Staff login UI made, Electro approved
+
+[33mcommit 05266488c95f79beea174603a740d055cbb0a390[m
+Author: Prometheus <33342399+Prometheus-03@users.noreply.github.com>
+Date:   Fri Oct 29 12:52:25 2021 +0800
+
+    Staff login UI made
+
+[33mcommit 28c3c4349e7fe97be9fe3b5aef6c2fee6672c488[m
+Author: Electro <51268650+ElectroFlameOfficial@users.noreply.github.com>
+Date:   Sun Oct 10 14:48:25 2021 -0400
+
+    Update readme.md
+
+[33mcommit 59ae91364e21f7a2a663cd0f883781b43eb16c2f[m
+Author: Electro <51268650+ElectroFlameOfficial@users.noreply.github.com>
+Date:   Sat Oct 9 23:49:38 2021 -0400
+
+    Update copyright.md
+
+[33mcommit a6d72ed20300b0b6b7e6017e61773f6ccb5e2523[m
+Author: Electro <51268650+ElectroFlameOfficial@users.noreply.github.com>
+Date:   Sat Oct 9 23:27:16 2021 -0400
+
+    Update readme.md
+
+[33mcommit ad9c6356cf0c1dff9e6d820a676d258c7b4301fe[m
+Merge: 0f46b59 5dbc600
+Author: Elec <asemnada991@gmail.com>
+Date:   Sun Oct 3 15:46:40 2021 -0400
+
+    Merge branch 'main' of https://github.com/electroflameofficial/gdshittylist
+
+[33mcommit 0f46b59187fd50877462caaf808738ca198aa2fa[m
+Author: Elec <asemnada991@gmail.com>
+Date:   Sun Oct 3 15:45:17 2021 -0400
+
+    declutter readme.md
+
+[33mcommit 12dc6059fa39003150895aa8cc907cf007f15f05[m
+Author: Elec <asemnada991@gmail.com>
+Date:   Sun Oct 3 15:12:01 2021 -0400
+
+    declutter readme.md
+
+[33mcommit 5dbc600b0a827e30a1745d0566504b273e9deaf9[m
+Author: Prometheus <33342399+Prometheus-03@users.noreply.github.com>
+Date:   Sun Oct 3 23:23:11 2021 +0800
+
+    Not a PR oof
+
+[33mcommit 83a21467d6124129825ef98eeba061b932a78cb1[m
+Author: Prometheus <33342399+Prometheus-03@users.noreply.github.com>
+Date:   Sun Oct 3 23:22:46 2021 +0800
+
+    Preview of the new HTML
+    
+    Note that this code WILL NOT REPLACE the existing list code YET. There still needs to be changes done to allow list data to be actually loaded.
+
+[33mcommit 51b18ca21eb65d7ef67d98f1fd677be048cbcf86[m
+Author: Elec <asemnada991@gmail.com>
+Date:   Wed Sep 29 23:46:27 2021 -0400
+
+    add disclaimer to readme.md
+
+[33mcommit e499952ea2cb47e3ea8959bef8a8862a7fac55a7[m
+Author: Elec <asemnada991@gmail.com>
+Date:   Wed Sep 29 21:43:07 2021 -0400
+
+    update main branch
+
+[33mcommit 24750da6ba7dd3a346d16ae073641f676c680a05[m
+Merge: 83951f3 079ef36
+Author: Electro <51268650+ElectroFlameOfficial@users.noreply.github.com>
+Date:   Tue May 18 08:57:06 2021 -0400
+
+    Merge pull request #2 from Optimal7/main
+    
+    dark mode tbh
+
+[33mcommit 079ef36cc63b1c42645ebe67faaf9764b207ffb8[m
+Author: Optimal <80202462+Optimal7@users.noreply.github.com>
+Date:   Tue May 18 12:13:17 2021 +0200
+
+    Update User List Box
+    
+    The white box messed with the colors of the font so its updated that the record box for players is black and not white.
+
+[33mcommit 5ba6e5955d20f73c23cf408b5dea5d6c6eb9aba8[m
+Author: Optimal <80202462+Optimal7@users.noreply.github.com>
+Date:   Tue May 18 12:12:13 2021 +0200
+
+    HTML Update
+    
+    Note: Rename line 7 to
+    <link href="css/stylesheet-new.css" type="text/css" rel="stylesheet">
+    
+    And copy line 148 - 167 and paste into the current one since that is the CSS for the A tag
+
+[33mcommit 728b4b5b387952868943c27bffd6b81a8f2feffe[m
+Author: Optimal <80202462+Optimal7@users.noreply.github.com>
+Date:   Tue May 18 12:10:13 2021 +0200
+
+    New CSS (Dark)
+
+[33mcommit 83951f3c8ee6dc29044c650db483caff42579fdb[m
+Author: Electro <51268650+ElectroFlameOfficial@users.noreply.github.com>
+Date:   Thu Apr 8 10:47:03 2021 -0400
+
+    Create LICENSE
+
+[33mcommit 9e027679a57e4a231b000ec13cba45e3f6da050f[m
+Author: Electro <51268650+ElectroFlameOfficial@users.noreply.github.com>
+Date:   Thu Apr 8 10:20:45 2021 -0400
+
+    Create FUNDING.yml
+
+[33mcommit 96343d8ef7d7e56cd84b0647eb6fa8e51ceb44fb[m
+Author: Electro <51268650+ElectroFlameOfficial@users.noreply.github.com>
+Date:   Thu Apr 8 10:08:53 2021 -0400
+
+    Create copyright.md
+
+[33mcommit 0b70482f0a884997cccfbecd2cfcbb3a74840965[m
+Author: Electro <51268650+ElectroFlameOfficial@users.noreply.github.com>
+Date:   Wed Feb 24 09:37:05 2021 -0500
+
+    updated info about shitty list template :3
+
+[33mcommit dbe5874d1887cabe190c0fe722133e363cb742d7[m[33m ([m[1;33mtag: 1.0.0[m[33m)[m
+Author: Electro <51268650+ElectroFlameOfficial@users.noreply.github.com>
+Date:   Sun Feb 21 16:13:53 2021 -0500
+
+    Add files via upload
+
+[33mcommit fc0636606f6ce0ba595d2100d5dc7cb18b03a24e[m
+Author: Electro <51268650+ElectroFlameOfficial@users.noreply.github.com>
+Date:   Mon Feb 15 12:00:35 2021 -0500
+
+    Add files via upload

@@ -273,6 +273,8 @@ paths:
       operationId: PostLevels
       tags:
         - Level
+      security:
+        - Bearer: []
       requestBody:
         content:
           application/json:
