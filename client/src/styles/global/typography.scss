@@ -78,7 +78,15 @@ p,
 }
 
 // Body Medium
-// {}
+.type-body-md {
+	@include font.lexend-deca(10, 8);
+	font-weight: 500;
+
+	&.mono {
+		@include font.fira-mono(10, 8);
+		font-weight: 500;
+	}
+}
 
 // Body Small
 // {}
