@@ -65,6 +65,36 @@ export async function postList(body: List.PostList.RequestBody): Promise<void> {
 					data: newList.map((levelId, index) => ({ levelId, index })),
 				},
 			},
+			reason: body.reason,
+		},
+	});
+}
+
+/**
+ * Archive level on the list
+ */
+export async function archiveListLevel(rank: number, reason?: string): Promise<void> {
+	const currentList: Level[] = await getCurrentList();
+
+	// Rank out of range
+	if (rank < 1 || rank > currentList.length) return;
+
+	const newList: number[] = currentList.map((level) => level.id);
+
+	// Remove level
+	newList.splice(rank - 1, 1);
+
+	await prisma.listLog.create({
+		data: {
+			action: ListLogAction.DELETE,
+			from: rank,
+			levelId: currentList[rank - 1].id,
+			list: {
+				createMany: {
+					data: newList.map((levelId, index) => ({ levelId, index })),
+				},
+			},
+			reason,
 		},
 	});
 }

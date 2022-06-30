@@ -190,6 +190,9 @@ paths:
                   type: integer
                   description: (New) position on the list
                   minimum: 1
+                reason:
+                  type: string
+                  description: Optional reason for movement or addition
       responses:
         '200':
           description: OK

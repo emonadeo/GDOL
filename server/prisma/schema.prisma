@@ -43,6 +43,7 @@ model ListLog {
   levelId   Int
   from      Int?
   to        Int?
+  reason    String?
 }
 
 enum ListLogAction {

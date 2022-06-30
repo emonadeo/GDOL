@@ -27,7 +27,7 @@
 	const dict = {
 		ADD: 'Added',
 		MOVE: 'Moved',
-		DELETE: 'Deleted',
+		DELETE: 'Archived',
 	};
 
 	let changelog: Log[] = [];
@@ -95,15 +95,13 @@
 					</p>
 				</div>
 				<div class="changes">
-					{#if entry.from !== undefined}
+					{#if entry.from !== undefined && !isDelete}
 						<p class="from">#{entry.from}</p>
 					{/if}
 					<div class="icon">
 						<img src={getIcon(entry)} alt="change" />
 					</div>
-					{#if entry.to !== undefined}
-						<p class="to">#{entry.to}</p>
-					{/if}
+					<p class="to">#{isDelete ? entry.from : entry.to}</p>
 				</div>
 				<div class="actions">
 					<p />
@@ -136,7 +134,7 @@
 							<div class="before" class:self={index === 1}>
 								<div class="stripe" />
 								<p class="level">{level.name}</p>
-								<p class="rank" class:self={index === 1}>
+								<p class="rank">
 									#{index + (isAdd ? entry.to - 1 : entry.from) - 1}
 								</p>
 							</div>
@@ -158,7 +156,7 @@
 							</div>
 						{:else}
 							<div class="after" class:self={index === 1}>
-								<p class="rank" class:self={index === 1}>
+								<p class="rank">
 									#{index + (isDelete ? entry.from - 1 : entry.to) - 1}
 								</p>
 								<p class="level">{level.name}</p>
@@ -362,6 +360,14 @@
 								right: 0.5rem;
 								background-image: radial-gradient(
 									circle at top 1px left 1px,
+									rgba(color.$on-background, 0.4) $dot-size,
+									color.$background $dot-size
+								);
+							}
+
+							&.self .stripe::before {
+								background-image: radial-gradient(
+									circle at top 1px left 1px,
 									color.$on-background $dot-size,
 									color.$background $dot-size
 								);
@@ -382,7 +388,7 @@
 							grid-column: 3;
 
 							&.gradient {
-								background-image: linear-gradient(90deg, transparent, #ff0000);
+								background-image: linear-gradient(90deg, #ff0000, transparent);
 								align-self: stretch;
 							}
 
@@ -394,10 +400,18 @@
 								left: 0.5rem;
 								background-image: radial-gradient(
 									circle at top 1px right 1px,
-									color.$on-background $dot-size,
+									rgba(color.$on-background, 0.4) $dot-size,
 									color.$background $dot-size
 								);
 								background-position: top right;
+							}
+
+							&.self .stripe::before {
+								background-image: radial-gradient(
+									circle at top 1px right 1px,
+									color.$on-background $dot-size,
+									color.$background $dot-size
+								);
 							}
 						}
 
