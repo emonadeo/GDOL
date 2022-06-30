@@ -57,7 +57,7 @@ export async function postList(body: List.PostList.RequestBody): Promise<void> {
 	await prisma.listLog.create({
 		data: {
 			action: levelExistsInList ? ListLogAction.MOVE : ListLogAction.ADD,
-			from: currentIndex + 1,
+			from: levelExistsInList ? currentIndex + 1 : undefined,
 			to: body.rank,
 			levelId: body.level,
 			list: {
