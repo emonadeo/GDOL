@@ -58,20 +58,36 @@
 		return '';
 	}
 
-	type ChangeDetailsEntry = Level | 'begin' | 'end' | 'gradient';
-	function listChangeDetails(
+	type ChangeMarker = 'begin' | 'end' | 'gradient';
+
+	/**
+	 * Cursed function, but it works pretty well.
+	 * Assembles the visualization for the list changes.
+	 * Inserting Begin/End Markers or Gradients where necessary, while maintaining proper Indexes.
+	 */
+	function getChangeDetails(
 		list: Level[],
 		rank: number,
 		addOrDelete: boolean
-	): ChangeDetailsEntry[] {
+	): Array<[Level, number] | ChangeMarker> {
 		// Rank is assumed to be withing list bounds
-		const sublist: ChangeDetailsEntry[] = list.slice(Math.max(rank - 2, 0), rank + 1);
+		const sublist: Array<Level | 'begin' | 'end'> = list.slice(Math.max(rank - 2, 0), rank + 1);
 		if (rank === 1) sublist.unshift('begin');
 		else if (rank === list.length) sublist.push('end');
 
-		if (addOrDelete) sublist.splice(1, 1, 'gradient');
+		if (addOrDelete) {
+			sublist.splice(1, 1);
+		}
 
-		return sublist;
+		const res: Array<[Level, number] | ChangeMarker> = sublist.map((lvl, i) =>
+			lvl === 'begin' || lvl === 'end' ? lvl : [lvl, i]
+		);
+
+		if (addOrDelete) {
+			res.splice(1, 0, 'gradient');
+		}
+
+		return res;
 	}
 </script>
 
@@ -119,23 +135,23 @@
 					</div>
 				{/if}
 				<div class="details-changes">
-					{#each isAdd ? listChangeDetails(entry.list, entry.to, true) : listChangeDetails(before, entry.from, false) as level, index}
-						{#if level === 'gradient'}
+					{#each isAdd ? getChangeDetails(entry.list, entry.to, true) : getChangeDetails(before, entry.from, false) as change, i}
+						{#if change === 'gradient'}
 							<div class="before gradient" />
-						{:else if level === 'begin'}
+						{:else if change === 'begin'}
 							<div class="before begin">
 								<p class="type-label-md">Top of List</p>
 							</div>
-						{:else if level === 'end'}
+						{:else if change === 'end'}
 							<div class="before end">
 								<p class="type-label-md">End of List</p>
 							</div>
 						{:else}
-							<div class="before" class:self={index === 1}>
+							<div class="before" class:self={i === 1}>
 								<div class="stripe" />
-								<p class="level">{level.name}</p>
+								<p class="level">{change[0].name}</p>
 								<p class="rank">
-									#{index + (isAdd ? entry.to - 1 : entry.from) - 1}
+									#{change[1] + (isAdd ? entry.to : entry.from) - 1}
 								</p>
 							</div>
 						{/if}
@@ -143,23 +159,23 @@
 					<div class="icon">
 						<img src={getIcon(entry)} alt="change" />
 					</div>
-					{#each isDelete ? listChangeDetails(before, entry.from, true) : listChangeDetails(entry.list, entry.to, false) as level, index}
-						{#if level === 'gradient'}
+					{#each isDelete ? getChangeDetails(before, entry.from, true) : getChangeDetails(entry.list, entry.to, false) as change, i}
+						{#if change === 'gradient'}
 							<div class="after gradient" />
-						{:else if level === 'begin'}
+						{:else if change === 'begin'}
 							<div class="after begin">
 								<p class="type-label-md">Top of List</p>
 							</div>
-						{:else if level === 'end'}
+						{:else if change === 'end'}
 							<div class="after end">
 								<p class="type-label-md">End of List</p>
 							</div>
 						{:else}
-							<div class="after" class:self={index === 1}>
+							<div class="after" class:self={i === 1}>
 								<p class="rank">
-									#{index + (isDelete ? entry.from - 1 : entry.to) - 1}
+									#{change[1] + (isDelete ? entry.from : entry.to) - 1}
 								</p>
-								<p class="level">{level.name}</p>
+								<p class="level">{change[0].name}</p>
 								<div class="stripe" />
 							</div>
 						{/if}
