@@ -98,3 +98,34 @@ export async function archiveListLevel(rank: number, reason?: string): Promise<v
 		},
 	});
 }
+
+/**
+ * Get level by rank
+ */
+export async function getListLevelByRank(rank: number): Promise<Level | undefined> {
+	const res = await prisma.listLog.findFirst({
+		include: {
+			list: {
+				include: {
+					level: {
+						include: {
+							creators: true,
+							user: true,
+							verifier: true,
+						},
+					},
+				},
+				where: {
+					index: rank - 1,
+				},
+			},
+		},
+		orderBy: {
+			timestamp: 'desc',
+		},
+	});
+
+	if (!res) return undefined;
+
+	return res.list[0].level;
+}

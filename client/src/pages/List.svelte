@@ -69,7 +69,7 @@
 		<ol role="list" class="levels">
 			{#each fLevels as level}
 				<li>
-					<a href="#" class="level">
+					<a href={`/list/${level.rank}`} class="level">
 						<div class="rank">
 							<h2 class:outline={level.rank < 100}>
 								{Math.floor((level.rank / 100) % 10)}

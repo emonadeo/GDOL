@@ -4,11 +4,12 @@
 	import Home from 'src/pages/Home.svelte';
 	import Leaderboard from 'src/pages/Leaderboard.svelte';
 	import List from 'src/pages/List.svelte';
+	import Level from 'src/pages/Level.svelte';
 	import Changelog from 'src/pages/Changelog.svelte';
 </script>
 
 <nav>
-	<img class="logo" src="src/assets/logo.svg" alt="Logo" />
+	<img class="logo" src="/src/assets/logo.svg" alt="Logo" />
 	<ul class="links" role="list">
 		<li class="link">
 			<a class="type-label-lg" href="/" use:active data-exact>Home</a>
@@ -25,8 +26,13 @@
 <Route path="/">
 	<Home />
 </Route>
-<Route path="/list">
-	<List />
+<Route path="/list/*" firstmatch>
+	<Route path="/:rank" let:meta>
+		<Level rank={Number(meta.params.rank)} />
+	</Route>
+	<Route path="/">
+		<List />
+	</Route>
 </Route>
 <Route path="/leaderboard">
 	<Leaderboard />

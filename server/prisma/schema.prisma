@@ -12,11 +12,12 @@ datasource db {
 }
 
 model User {
-  id             Int     @id @default(autoincrement())
-  name           String  @unique
-  levels         Level[] @relation("Publisher")
-  levelsVerified Level[] @relation("Verifier")
-  levelsCreated  Level[] @relation("Creators")
+  id             Int      @id @default(autoincrement())
+  name           String   @unique
+  levels         Level[]  @relation("Publisher")
+  levelsVerified Level[]  @relation("Verifier")
+  levelsCreated  Level[]  @relation("Creators")
+  records        Record[]
 }
 
 model Level {
@@ -33,6 +34,17 @@ model Level {
   log         ListLogLevel[]
   archive     Archive[]
   listLog     ListLog[]
+  records     Record[]
+}
+
+model Record {
+  id         Int     @id @default(autoincrement())
+  user       User    @relation(fields: [userId], references: [id])
+  level      Level   @relation(fields: [levelId], references: [id])
+  percentage Float
+  video      String?
+  userId     Int
+  levelId    Int
 }
 
 model ListLog {

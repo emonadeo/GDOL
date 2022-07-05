@@ -46,6 +46,7 @@ components:
             $ref: '#/components/schemas/User'
         video:
           type: string
+          description: URL to a video showcasing the level. In most cases this is the verification video.
           example: https://www.youtube.com/watch?v=QZf8vX4DF0A
       required:
         - id
@@ -66,6 +67,31 @@ components:
       required:
         - id
         - name
+    Record:
+      type: object
+      required:
+        - id
+        - user
+        - level
+        - percentage
+      properties:
+        id:
+          type: integer
+          example: 0
+        user:
+          $ref: '#/components/schemas/User'
+        level:
+          $ref: '#/components/schemas/Level'
+        percentage:
+          type: number
+          description: Progress on the level in percent
+          minimum: 0
+          maximum: 100
+          example: 57.6
+        video:
+          type: string
+          description: URL to a video recording of the record
+          example: https://www.youtube.com/watch?v=QZf8vX4DF0A
     Changelog:
       type: object
       required:
@@ -101,7 +127,6 @@ components:
         reason:
           type: string
           description: Optional reason for movement or addition
-
   parameters:
     At:
       in: query
@@ -169,6 +194,8 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Level'
+        'default':
+          $ref: '#/components/responses/Default'
     post:
       summary: Add/Move Level on List
       description: Add a Level to the List at a given rank. If it is already on the list, it will be moved to the specified rank.
@@ -274,6 +301,8 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Level'
+        'default':
+          $ref: '#/components/responses/Default'
     post:
       summary: Create Level
       operationId: PostLevels
@@ -370,6 +399,35 @@ paths:
                 $ref: '#/components/schemas/Level'
         '404':
           $ref: '#/components/responses/NotFound'
+        'default':
+          $ref: '#/components/responses/Default'
+  '/levels/{id}/records':
+    parameters:
+      - in: path
+        name: id
+        description: Level ID
+        required: true
+        schema:
+          type: integer
+    get:
+      summary: Get Records of Level
+      operationId: GetLevelRecords
+      tags:
+        - Level
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Record'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        'default':
+          $ref: '#/components/responses/Default'
+
   # Users
   '/users':
     get:
@@ -408,6 +466,7 @@ paths:
                 $ref: '#/components/schemas/User'
         '404':
           $ref: '#/components/responses/NotFound'
+  # Changelog
   '/changelog':
     get:
       summary: Get List Changelog

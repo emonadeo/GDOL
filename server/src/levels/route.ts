@@ -1,6 +1,6 @@
 import { FastifyPluginAsync } from 'fastify';
 import { Levels } from '../generated/openapi';
-import { createLevel } from './model';
+import { createLevel, getLevelRecords } from './model';
 
 const plugin: FastifyPluginAsync = async function (fastify) {
 	// Create Level
@@ -13,6 +13,17 @@ const plugin: FastifyPluginAsync = async function (fastify) {
 	}>('/levels', async function (req, res) {
 		await createLevel(req.body);
 		res.send();
+	});
+
+	// Get Level Records
+	fastify.get<{
+		Body: Levels.GetLevelRecords.RequestBody;
+		Querystring: Levels.GetLevelRecords.RequestQuery;
+		Params: Levels.GetLevelRecords.RequestParams;
+		Headers: Levels.GetLevelRecords.RequestHeaders;
+		Reply: Levels.GetLevelRecords.ResponseBody;
+	}>('/levels/:id/records', async function (req, res) {
+		res.send(await getLevelRecords(Number(req.params.id)));
 	});
 };
 

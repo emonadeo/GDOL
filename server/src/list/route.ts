@@ -1,6 +1,6 @@
 import { FastifyPluginAsync } from 'fastify';
 import { List } from '../generated/openapi';
-import { archiveListLevel, getCurrentList, postList } from './model';
+import { archiveListLevel, getCurrentList, getListLevelByRank, postList } from './model';
 
 const plugin: FastifyPluginAsync = async function (fastify) {
 	// Get List
@@ -24,6 +24,17 @@ const plugin: FastifyPluginAsync = async function (fastify) {
 	}>('/list', async function (req, res) {
 		await postList(req.body);
 		res.send();
+	});
+
+	// Get List Level
+	fastify.get<{
+		Body: List.GetListLevel.RequestBody;
+		Querystring: List.GetListLevel.RequestQuery;
+		Params: List.GetListLevel.RequestParams;
+		Headers: List.GetListLevel.RequestHeaders;
+		Reply: List.GetListLevel.ResponseBody;
+	}>('/list/:rank', async function (req, res) {
+		res.send(await getListLevelByRank(req.params.rank));
 	});
 
 	// Archive List Level
