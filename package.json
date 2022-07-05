@@ -4,7 +4,8 @@
 	"description": "Geometry Dash Open List",
 	"scripts": {
 		"lint": "prettier --check --plugin-search-dir=. . && eslint .",
-		"format": "prettier --write --plugin-search-dir=. . && eslint --fix ."
+		"format": "prettier --write --plugin-search-dir=. . && eslint --fix .",
+		"generate": "npm -w client run generate && npm -w server run generate"
 	},
 	"repository": {
 		"type": "git",

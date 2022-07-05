@@ -98,6 +98,9 @@ components:
           type: integer
           description: Rank that the level got moved or added to
           minimum: 1
+        reason:
+          type: string
+          description: Optional reason for movement or addition
 
   parameters:
     At:

@@ -7,7 +7,9 @@
 		"dev": "vite",
 		"build": "vite build",
 		"preview": "vite preview",
-		"check": "svelte-check --tsconfig ./tsconfig.json --compiler-warnings a11y-no-redundant-roles:ignore"
+		"check": "svelte-check --tsconfig ./tsconfig.json --compiler-warnings a11y-no-redundant-roles:ignore",
+		"generate": "npm run generate-openapi",
+		"generate-openapi": "swagger-typescript-api -p ../openapi.yml -o ./src/generated -n openapi.ts"
 	},
 	"devDependencies": {
 		"@sveltejs/vite-plugin-svelte": "^1.0.0-next.41",

@@ -1,31 +1,23 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import fzf from 'fuzzysort';
-	import { REST_URL } from 'src/env';
 	import { getYoutubeIdFromUrl } from 'src/util';
+	import type { Level } from 'src/generated/openapi';
+	import { api } from 'src/api';
 
-	// TODO: Use OpenAPI generation
+	type LevelAndRank = Level & { rank: number };
 
-	interface User {
-		id: number;
-		name: string;
-	}
-
-	interface Level {
-		rank: number;
-		id: number;
-		name: string;
-		user: User;
-		verifier: User;
-		creators: User[];
-		video: string;
-	}
-
-	let levels: Level[] = [];
+	let levels: LevelAndRank[] = [];
 
 	onMount(async () => {
-		const res = await fetch(new URL('/list', REST_URL).toString());
-		const rlevels: any[] = await res.json();
+		const res = await api.list.getList();
+
+		if (!res.ok) {
+			// TODO: Show Error
+			return;
+		}
+
+		const rlevels = res.data;
 		levels = rlevels.map((lvl, i) => ({ ...lvl, rank: i + 1 }));
 	});
 

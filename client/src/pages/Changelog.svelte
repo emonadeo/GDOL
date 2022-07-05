@@ -1,28 +1,11 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { REST_URL } from 'src/env';
 	import iconAdd from 'src/assets/icons/changelog/add.svg';
 	import iconDelete from 'src/assets/icons/changelog/delete.svg';
 	import iconLower from 'src/assets/icons/changelog/lower.svg';
 	import iconRaise from 'src/assets/icons/changelog/raise.svg';
-	import List from 'src/pages/List.svelte';
-
-	// TODO: Use OpenAPI generation
-
-	interface Log {
-		action: string;
-		from?: number;
-		to?: number;
-		timestamp: string;
-		level: Level;
-		list: Level[];
-		reason?: string;
-	}
-
-	interface Level {
-		id: number;
-		name: string;
-	}
+	import { api } from 'src/api';
+	import type { Changelog, Level } from 'src/generated/openapi';
 
 	const dict = {
 		ADD: 'Added',
@@ -30,23 +13,29 @@
 		DELETE: 'Archived',
 	};
 
-	let changelog: Log[] = [];
+	let changelog: Changelog[] = [];
 
 	onMount(async () => {
-		const res = await fetch(new URL('/changelog', REST_URL).toString());
-		changelog = await res.json();
+		const res = await api.changelog.getChangelog();
+
+		if (!res.ok) {
+			// TODO: Show Error
+			return;
+		}
+
+		changelog = res.data;
 	});
 
 	// Undo the log changes to restore list before changes
 	// TODO: Maybe store this in the database changelog instead of recalculating every time?
-	function calcBefore(entry: Log): any[] {
+	function calcBefore(entry: Changelog): any[] {
 		const list = entry.list.slice();
 		if (entry.to) list.splice(entry.to - 1, 1);
 		if (entry.from) list.splice(entry.from - 1, 0, entry.level);
 		return list;
 	}
 
-	function getIcon(entry: Log): string {
+	function getIcon(entry: Changelog): string {
 		switch (entry.action) {
 			case 'ADD':
 				return iconAdd;
@@ -55,7 +44,6 @@
 			case 'MOVE':
 				return entry.to > entry.from ? iconLower : iconRaise;
 		}
-		return '';
 	}
 
 	type ChangeMarker = 'begin' | 'end' | 'gradient';

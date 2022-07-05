@@ -38,6 +38,6 @@ export async function getChangelog(): Promise<Changelog.GetChangelog.ResponseBod
 		from: log.from || undefined,
 		to: log.to || undefined,
 		timestamp: log.timestamp.toISOString(),
-		reason: log.reason,
+		reason: log.reason || undefined,
 	}));
 }

@@ -7,7 +7,7 @@
 		"dev": "dotenv -c -- nodemon src/index.ts",
 		"generate": "npm run generate-prisma && npm run generate-openapi",
 		"generate-prisma": "prisma generate",
-		"generate-openapi": "swagger-typescript-api -p openapi.yml -o ./src/generated -n openapi.ts --no-client --route-types",
+		"generate-openapi": "swagger-typescript-api -p ../openapi.yml -o ./src/generated -n openapi.ts --no-client --route-types",
 		"push": "prisma db push",
 		"seed": "prisma db seed",
 		"studio": "prisma studio"
