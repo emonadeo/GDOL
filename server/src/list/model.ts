@@ -1,5 +1,5 @@
 import { Level, List } from '../generated/openapi';
-import { ListLogAction, Prisma } from '../generated/prisma';
+import { ListLogAction } from '../generated/prisma';
 import { prisma } from '../prisma';
 
 /**

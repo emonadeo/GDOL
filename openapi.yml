@@ -70,18 +70,20 @@ components:
     Record:
       type: object
       required:
-        - id
         - user
         - level
+        - timestamp
         - percentage
       properties:
-        id:
-          type: integer
-          example: 0
         user:
           $ref: '#/components/schemas/User'
         level:
           $ref: '#/components/schemas/Level'
+        timestamp:
+          type: string
+          description: ISO 8601-formatted Timestamp of when the Record was added
+          pattern: /^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d(\.\d+)?(([+-]\d\d:\d\d)|Z)?$/i
+          example: 2022-05-24
         percentage:
           type: number
           description: Progress on the level in percent
@@ -427,7 +429,41 @@ paths:
           $ref: '#/components/responses/NotFound'
         'default':
           $ref: '#/components/responses/Default'
-
+    post:
+      summary: Create a Record on a Level
+      operationId: PostLevelRecords
+      tags:
+        - Level
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - userId
+              properties:
+                userId:
+                  type: integer
+                  description: User ID of record holder
+                  example: 0
+                percentage:
+                  type: number
+                  description: Progress on the level in percent
+                  minimum: 0
+                  maximum: 100
+                  example: 57.6
+                  default: 100
+                video:
+                  type: string
+                  description: URL to a video recording of the record
+                  example: https://www.youtube.com/watch?v=QZf8vX4DF0A
+      responses:
+        '200':
+          description: OK
+        '404':
+          $ref: '#/components/responses/NotFound'
+        'default':
+          $ref: '#/components/responses/Default'
   # Users
   '/users':
     get:

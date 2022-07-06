@@ -61,7 +61,7 @@ async function main() {
 					demon_id: demon.id,
 				},
 			});
-			const records: Record[] = res.data;
+			const records: Record[] = res.data.sort((a: Demon, b: Demon) => (a.id = b.id));
 
 			const ret: Prisma.ListLogLevelCreateWithoutLogInput = {
 				index,

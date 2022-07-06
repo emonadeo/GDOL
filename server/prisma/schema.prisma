@@ -38,13 +38,15 @@ model Level {
 }
 
 model Record {
-  id         Int     @id @default(autoincrement())
-  user       User    @relation(fields: [userId], references: [id])
-  level      Level   @relation(fields: [levelId], references: [id])
+  timestamp  DateTime @default(now())
+  user       User     @relation(fields: [userId], references: [id])
+  level      Level    @relation(fields: [levelId], references: [id])
   percentage Float
   video      String?
   userId     Int
   levelId    Int
+
+  @@id([userId, levelId])
 }
 
 model ListLog {

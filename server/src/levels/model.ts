@@ -38,10 +38,35 @@ export async function getLevelRecords(levelId: number): Promise<Record[]> {
 			},
 			user: true,
 		},
-		orderBy: {
-			percentage: 'desc',
-		},
+		orderBy: [
+			{
+				percentage: 'desc',
+			},
+			{
+				timestamp: 'asc',
+			},
+		],
 	});
 
-	return res.map((record) => ({ ...record, video: record.video || undefined }));
+	return res.map((record) => ({
+		...record,
+		timestamp: record.timestamp.toISOString(),
+		video: record.video || undefined,
+	}));
+}
+
+export async function createLevelRecord(
+	levelId: number,
+	userId: number,
+	percentage: number,
+	video: string | undefined
+): Promise<void> {
+	await prisma.record.create({
+		data: {
+			levelId,
+			userId,
+			percentage,
+			video,
+		},
+	});
 }

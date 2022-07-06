@@ -1,0 +1,10 @@
+@mixin text-gradient($top, $bottom, $fallback) {
+	padding-block: 0.125rem;
+	margin-block: -0.125rem;
+	color: $fallback;
+	@supports (-webkit-background-clip: text) {
+		background: linear-gradient($top 0%, $bottom 80%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+}

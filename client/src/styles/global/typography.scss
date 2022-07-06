@@ -1,6 +1,6 @@
 // https://m3.material.io/styles/typography/
 
-@use 'src/styles/util/font';
+@use 'src/styles/lib/font';
 
 // Display Large
 h1,
@@ -38,25 +38,33 @@ h4,
 // {}
 
 // Title Large
-// {}
+h5,
+.type-h5,
+.type-title-lg {
+	@include font.press-start(14, 8);
+	text-transform: uppercase;
+	letter-spacing: 2px;
+}
 
 // Title Medium
-// {}
+h6,
+.type-h6,
+.type-title-md {
+	@include font.press-start(12, 8);
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
 
 // Title Small
 // {}
 
 // Label Large
-h5,
-.type-h5,
 .type-label-lg {
 	@include font.lexend-deca(12, 8);
 	font-weight: 500;
 }
 
 // Label Medium
-h6,
-.type-h6,
 .type-label-md {
 	@include font.lexend-deca(10, 8);
 	font-weight: 500;
@@ -72,8 +80,7 @@ p,
 	font-weight: 500;
 
 	&.mono {
-		@include font.fira-mono(12, 12);
-		font-weight: 500;
+		@include font.code-new-roman(12, 12);
 	}
 }
 
@@ -83,8 +90,7 @@ p,
 	font-weight: 500;
 
 	&.mono {
-		@include font.fira-mono(10, 8);
-		font-weight: 500;
+		@include font.code-new-roman(10, 8);
 	}
 }
 
