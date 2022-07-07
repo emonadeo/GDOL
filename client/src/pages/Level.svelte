@@ -4,6 +4,7 @@
 	import type { Level, Record } from 'src/generated/openapi';
 	import { embed, ordinal } from 'src/util';
 	import { onMount } from 'svelte';
+	import { create_out_transition } from 'svelte/internal';
 
 	export let rank: number;
 
@@ -31,6 +32,25 @@
 				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 				allowfullscreen
 			/>
+			<dl class="credits">
+				<div class="publisher">
+					<dt class="type-title-sm">Publisher</dt>
+					<dd class="type-body-lg">{level.user.name}</dd>
+				</div>
+				<div class="verifier">
+					<dt class="type-title-sm">Verifier</dt>
+					<dd class="type-body-lg">{level.verifier.name}</dd>
+				</div>
+				<div class="creators">
+					<dt class="type-title-sm">Creators</dt>
+					<dd class="type-body-lg">
+						{#each level.creators as creator, i}
+							<a href={`/user/${creator.id}`}>{creator.name}</a
+							>{#if i < level.creators.length - 1}<span>, </span>{/if}
+						{/each}
+					</dd>
+				</div>
+			</dl>
 		</div>
 		<div class="records">
 			<h5>Leaderboard</h5>
@@ -55,7 +75,9 @@
 							<p class="mono" class:bold={complete}>{record.percentage}%</p>
 						</td>
 						<td class="user">
-							<p>{record.user.name}</p>
+							<a href={`/user/${record.user.id}`}>
+								<p>{record.user.name}</p>
+							</a>
 						</td>
 						<td class="video">
 							<a href={record.video} target="_blank">
@@ -73,6 +95,11 @@
 	@use 'src/styles/screen';
 	@use 'src/styles/color';
 	@use 'src/styles/util';
+
+	// TODO: Accessibility: Links
+	a {
+		color: inherit;
+	}
 
 	@include screen.xl {
 		.page-level {
@@ -100,6 +127,24 @@
 					width: 100%;
 					aspect-ratio: 16 / 9;
 				}
+
+				.credits {
+					display: grid;
+					grid-template-columns: 1fr 1fr;
+					grid-auto-rows: max-content;
+					gap: 1.5rem;
+
+					> div {
+						display: flex;
+						flex-direction: column;
+						gap: 0.75rem;
+					}
+
+					.creators {
+						grid-row: 2;
+						grid-column: span 2;
+					}
+				}
 			}
 
 			.records {
@@ -115,7 +160,7 @@
 							white-space: nowrap;
 
 							&:not(:first-child) {
-								padding-left: 1rem;
+								padding-left: 1.25rem;
 							}
 						}
 
@@ -149,6 +194,18 @@
 
 						td.user {
 							width: 100%;
+
+							a {
+								display: flex;
+								align-items: center;
+							}
+						}
+
+						&:hover td.user a::after {
+							content: '';
+							flex: 1;
+							border-top: 1px solid color.$on-background;
+							margin-left: 1.25rem;
 						}
 
 						td.video {

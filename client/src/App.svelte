@@ -15,10 +15,10 @@
 			<a class="type-label-lg" href="/" use:active data-exact>Home</a>
 		</li>
 		<li class="link">
-			<a class="type-label-lg" href="/list" use:active data-exact>List</a>
+			<a class="type-label-lg" href="/list" use:active>List</a>
 		</li>
 		<li class="link">
-			<a class="type-label-lg" href="/leaderboard" use:active data-exact>Leaderboard</a>
+			<a class="type-label-lg" href="/leaderboard" use:active>Leaderboard</a>
 		</li>
 	</ul>
 </nav>

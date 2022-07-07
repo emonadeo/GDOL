@@ -22,6 +22,28 @@ interface Demon {
 	level_id: number;
 }
 
+interface DemonFull extends Demon {
+	creators: Player[];
+	records: Record[];
+}
+
+interface Record {
+	id: number;
+	progress: number;
+	video: string;
+	status: string;
+	demon: {
+		id: number;
+		position: number;
+		name: string;
+	};
+	player: {
+		id: number;
+		name: string;
+		banned: boolean;
+	};
+}
+
 async function main() {
 	console.log(`Start seeding...`);
 	const res = await axios.get('https://pointercrate.com/api/v2/demons/listed');
@@ -56,12 +78,9 @@ async function main() {
 	});
 	const list: Prisma.ListLogLevelCreateWithoutLogInput[] = await Promise.all(
 		data.map(async (demon, index) => {
-			const res = await axios.get('https://pointercrate.com/api/v1/records/', {
-				params: {
-					demon_id: demon.id,
-				},
-			});
-			const records: Record[] = res.data.sort((a: Demon, b: Demon) => (a.id = b.id));
+			const res = await axios.get(`https://pointercrate.com/api/v2/demons/${demon.id}`);
+			const fullDemon: DemonFull = res.data.data;
+			const records: Record[] = fullDemon.records.sort((a, b) => (a.id = b.id));
 
 			const ret: Prisma.ListLogLevelCreateWithoutLogInput = {
 				index,
@@ -87,6 +106,16 @@ async function main() {
 									name: demon.verifier.name,
 								},
 							},
+						},
+						creators: {
+							connectOrCreate: fullDemon.creators.map((u) => ({
+								where: {
+									name: u.name,
+								},
+								create: {
+									name: u.name,
+								},
+							})),
 						},
 						video: demon.video || 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
 						levelId: demon.level_id,
@@ -133,20 +162,3 @@ async function main() {
 main().finally(async () => {
 	await prisma.$disconnect();
 });
-
-interface Record {
-	id: number;
-	progress: number;
-	video: string;
-	status: string;
-	demon: {
-		id: number;
-		position: number;
-		name: string;
-	};
-	player: {
-		id: number;
-		name: string;
-		banned: boolean;
-	};
-}
