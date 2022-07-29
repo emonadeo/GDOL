@@ -12,19 +12,19 @@
 		"generate-openapi": "swagger-typescript-api -p ../openapi.yml -o ./src/generated -n openapi.ts"
 	},
 	"devDependencies": {
-		"@sveltejs/vite-plugin-svelte": "^1.0.0-next.41",
-		"@tsconfig/svelte": "^2.0.1",
-		"autoprefixer": "^10.4.4",
-		"fuzzysort": "^1.2.1",
+		"@sveltejs/vite-plugin-svelte": "^1.0.1",
+		"@tsconfig/svelte": "^3.0.0",
+		"autoprefixer": "^10.4.8",
+		"fuzzysort": "^2.0.1",
 		"modern-css-reset": "^1.4.0",
-		"postcss": "^8.4.12",
-		"sass": "^1.50.1",
-		"svelte": "^3.47.0",
-		"svelte-check": "^2.7.0",
-		"svelte-preprocess": "^4.10.6",
+		"postcss": "^8.4.14",
+		"sass": "^1.54.0",
+		"svelte": "^3.49.0",
+		"svelte-check": "^2.8.0",
+		"svelte-preprocess": "^4.10.7",
 		"tinro": "^0.6.12",
-		"tslib": "^2.3.1",
-		"typescript": "^4.5.4",
-		"vite": "^2.9.0"
+		"tslib": "^2.4.0",
+		"typescript": "^4.7.4",
+		"vite": "^3.0.4"
 	}
 }
