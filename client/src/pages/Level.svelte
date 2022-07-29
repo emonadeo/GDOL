@@ -119,6 +119,7 @@
 				position: sticky;
 				bottom: 0;
 				align-self: end;
+				height: max-content;
 				// TODO: Better way using container size?
 				min-height: calc(100vh - 16rem);
 
@@ -151,6 +152,13 @@
 				display: flex;
 				flex-direction: column;
 				gap: 1.5rem;
+
+				position: sticky;
+				bottom: 0;
+				align-self: end;
+				height: max-content;
+				// TODO: Better way using container size?
+				min-height: calc(100vh - 16rem);
 
 				table {
 					tr.record {
