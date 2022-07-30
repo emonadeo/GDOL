@@ -86,7 +86,12 @@
 				top: calc(4rem - 1px);
 				margin-top: calc(10rem - 1px);
 				padding-right: 0.75rem;
+				justify-self: end;
 				align-self: start;
+
+				.medal {
+					height: 14.25rem;
+				}
 			}
 
 			main {
@@ -96,13 +101,16 @@
 					padding-block: 6rem;
 
 					tr {
-						border-color: rgba(color.$on-background, 0.2);
+						&:hover td {
+							border-top-color: color.$on-background;
+							border-bottom-color: color.$on-background;
 
-						&:hover {
-							border-color: white;
+							&:first-child {
+								border-left-color: color.$on-background;
+							}
 
-							& + tr {
-								border-top-color: white;
+							&:last-child {
+								border-right-color: color.$on-background;
 							}
 						}
 
@@ -124,23 +132,13 @@
 						}
 
 						td {
-							border-style: solid none none solid;
-							border-width: 1px;
-							border-color: rgba(color.$on-background, 0.2);
-							border-top-color: inherit;
-
-							&:first-child {
-								border-left-color: inherit;
-							}
+							border-top: 1px solid transparent;
+							border-bottom: 1px solid rgba(color.$on-background, 0.2);
+							border-left: 1px solid rgba(color.$on-background, 0.2);
 
 							&:last-child {
-								border-right-style: solid;
-								border-right-color: inherit;
+								border-right: 1px solid rgba(color.$on-background, 0.2);
 							}
-						}
-
-						&:nth-child(2) td {
-							border-top-style: none;
 						}
 
 						th.rank,
