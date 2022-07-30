@@ -28,7 +28,7 @@
 </script>
 
 <div class="page-leaderboard">
-	<aside class="medal">
+	<aside class="medal" style:display={fUsers.length < 8 ? 'none' : null}>
 		<img src="/src/assets/medal.svg" alt="" />
 	</aside>
 	<aside class="filter">
@@ -53,7 +53,8 @@
 				</th>
 				<th class="stats" />
 			</tr>
-			{#each fUsers as user}
+			<!-- TODO: Pagination -->
+			{#each fUsers as user (user.id)}
 				<tr>
 					<td
 						class="rank"
@@ -93,6 +94,7 @@
 			flex: 1 0 0;
 			display: grid;
 			grid-template-columns: calc(6rem + 1px) calc(8rem + 4px) 1fr 8rem calc(6rem + 1px);
+			grid-template-rows: max-content 1fr;
 
 			aside.medal {
 				position: sticky;
