@@ -1,4 +1,5 @@
 <script lang="ts">
+	import fzf from 'fuzzysort';
 	import { api } from 'src/api';
 
 	import type { UserWithRecords } from 'src/generated/openapi';
@@ -6,17 +7,37 @@
 
 	import { onMount } from 'svelte';
 
-	let users: UserWithRecords[] = [];
+	type UserAndRank = UserWithRecords & { rank: number; fzfp: Fuzzysort.Prepared };
+
+	let users: UserAndRank[] = [];
+	let search: string = '';
+
+	// TODO: clean up
+	$: fUsers = search
+		? fzf.go(search, users, { key: 'fzfp', limit: 25 }).map((res) => res.obj)
+		: users;
 
 	onMount(async () => {
 		const res = await api.users.getUsers();
-		users = res.data;
+		users = res.data.map((u, i) => ({
+			...u,
+			rank: i + 1,
+			fzfp: fzf.prepare(u.name), // Prepare for Fuzzysort (Better Performance)
+		}));
 	});
 </script>
 
 <div class="page-leaderboard">
-	<aside>
-		<img class="medal" src="/src/assets/medal.svg" alt="" />
+	<aside class="medal">
+		<img src="/src/assets/medal.svg" alt="" />
+	</aside>
+	<aside class="filter">
+		<input
+			class="textfield type-label-lg"
+			type="text"
+			placeholder="Search"
+			bind:value={search}
+		/>
 	</aside>
 	<main>
 		<table>
@@ -32,35 +53,28 @@
 				</th>
 				<th class="stats" />
 			</tr>
-			{#each users as user, i}
-				{@const rank = i + 1}
+			{#each fUsers as user}
 				<tr>
 					<td
 						class="rank"
-						class:gold={i === 0}
-						class:silver={i === 1}
-						class:bronze={i === 2}
+						class:gold={user.rank === 1}
+						class:silver={user.rank === 2}
+						class:bronze={user.rank === 3}
 					>
 						<p class="mono">
-							<span>{rank}</span><span>{ordinal(rank)}</span>
+							<span>{user.rank}</span><span>{ordinal(user.rank)}</span>
 						</p>
 					</td>
 					<td class="score">
-						<p class="mono">
-							{user.score}
-						</p>
+						<p class="mono">{user.score}</p>
 					</td>
 					<td class="player">
 						<a href={`/users/${user.id}`}>
-							<p>
-								{user.name}
-							</p>
+							<p>{user.name}</p>
 						</a>
 					</td>
 					<td class="stats">
-						<p>
-							{user.records.length} Records
-						</p>
+						<p>{user.records.length} Records</p>
 					</td>
 				</tr>
 			{/each}
@@ -75,30 +89,44 @@
 
 	@include screen.xl {
 		.page-leaderboard {
-			overflow: auto;
+			overflow-y: scroll;
 			flex: 1 0 0;
-			padding-inline: calc(6rem + 1px);
 			display: grid;
-			grid-template-columns: calc(8rem + 4px) 1fr 8rem;
+			grid-template-columns: calc(6rem + 1px) calc(8rem + 4px) 1fr 8rem calc(6rem + 1px);
 
-			aside {
+			aside.medal {
 				position: sticky;
-				top: calc(4rem - 1px);
-				margin-top: calc(10rem - 1px);
+				top: 8rem;
+				margin-top: 8rem;
 				padding-right: 0.75rem;
 				justify-self: end;
 				align-self: start;
+				grid-column: 2;
 
-				.medal {
+				img {
 					height: 14.25rem;
 				}
 			}
 
+			aside.filter {
+				grid-column: 1 / 6;
+				grid-row: 1;
+				height: 4rem;
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				column-gap: 2rem;
+				align-items: center;
+				padding-left: calc(14rem + 4px);
+				background-color: color.$background;
+				border-bottom: 1px solid rgba(color.$on-background, 0.2);
+			}
+
 			main {
-				grid-column: 2;
+				grid-row: 2;
+				grid-column: 3;
 
 				table {
-					padding-block: 6rem;
+					padding-bottom: 6rem;
 
 					tr {
 						&:hover td {
