@@ -67,7 +67,7 @@ components:
       required:
         - id
         - name
-    UserWithScore:
+    UserWithRecords:
       allOf:
         - $ref: '#/components/schemas/User'
         - type: object
@@ -75,8 +75,13 @@ components:
             score:
               type: number
               example: 4502.75
+            records:
+              type: array
+              items:
+                $ref: '#/components/schemas/Record'
           required:
             - score
+            - records
     Record:
       type: object
       required:
@@ -489,7 +494,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/UserWithScore'
+                  $ref: '#/components/schemas/UserWithRecords'
   '/users/{id}':
     parameters:
       - in: path
@@ -509,7 +514,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UserWithScore'
+                $ref: '#/components/schemas/UserWithRecords'
         '404':
           $ref: '#/components/responses/NotFound'
   # Changelog

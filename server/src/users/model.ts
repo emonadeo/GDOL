@@ -1,4 +1,4 @@
-import { UserWithScore } from '../generated/openapi';
+import { UserWithRecords } from '../generated/openapi';
 import { prisma } from '../prisma';
 
 // TODO: outsource function
@@ -15,19 +15,26 @@ export function getPoints(rank: number, requirement: number, percentage: number)
 // TODO: Use redis over global variable
 export const scores: { [userId: number]: number } = {};
 
-export async function getUsers(): Promise<UserWithScore[]> {
+export async function getUsers(): Promise<UserWithRecords[]> {
 	const users = await prisma.user.findMany();
-	const usersWithScore: UserWithScore[] = await Promise.all(
+	const usersWithRecords: UserWithRecords[] = await Promise.all(
 		users.map(async (user) => {
+			const records = await prisma.record.findMany({
+				where: {
+					userId: user.id,
+				},
+				include: {
+					level: {
+						include: {
+							user: true,
+							creators: true,
+							verifier: true,
+						},
+					},
+					user: true,
+				},
+			});
 			if (scores[user.id] === undefined) {
-				const records = await prisma.record.findMany({
-					where: {
-						userId: user.id,
-					},
-					include: {
-						level: true,
-					},
-				});
 				let score = 0;
 				for (const record of records) {
 					const rank = await getRank(record.levelId);
@@ -38,12 +45,17 @@ export async function getUsers(): Promise<UserWithScore[]> {
 			return {
 				id: user.id,
 				name: user.name,
+				records: records.map((record) => ({
+					...record,
+					timestamp: record.timestamp.toISOString(),
+					video: record.video || undefined,
+				})),
 				score: scores[user.id],
 			};
 		})
 	);
 
-	return usersWithScore.sort((a, b) => b.score - a.score);
+	return usersWithRecords.sort((a, b) => b.score - a.score);
 }
 
 async function getRank(levelId: number): Promise<number | undefined> {
