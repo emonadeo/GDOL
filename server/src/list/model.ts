@@ -31,7 +31,10 @@ export async function getCurrentList(): Promise<List.GetList.ResponseBody> {
 
 	if (!res) return [];
 
-	return res.list.map((log) => log.level);
+	return res.list.map((log, i) => ({
+		...log.level,
+		rank: i + 1,
+	}));
 }
 
 /**
@@ -127,5 +130,8 @@ export async function getListLevelByRank(rank: number): Promise<Level | undefine
 
 	if (!res) return undefined;
 
-	return res.list[0].level;
+	return {
+		...res.list[0].level,
+		rank,
+	};
 }

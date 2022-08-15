@@ -4,7 +4,6 @@
 	import type { Level, Record } from 'src/generated/openapi';
 	import { embed, ordinal } from 'src/util';
 	import { onMount } from 'svelte';
-	import { create_out_transition } from 'svelte/internal';
 
 	export let rank: number;
 
@@ -45,7 +44,7 @@
 					<dt class="type-title-sm">Creators</dt>
 					<dd class="type-body-lg">
 						{#each level.creators as creator, i}
-							<a href={`/user/${creator.id}`}>{creator.name}</a
+							<a href={`/users/${creator.id}`}>{creator.name}</a
 							>{#if i < level.creators.length - 1}<span>, </span>{/if}
 						{/each}
 					</dd>
@@ -75,7 +74,7 @@
 							<p class="mono" class:bold={complete}>{record.percentage}%</p>
 						</td>
 						<td class="user">
-							<a href={`/user/${record.user.id}`}>
+							<a href={`/users/${record.user.id}`}>
 								<p>{record.user.name}</p>
 							</a>
 						</td>
@@ -219,6 +218,7 @@
 						td.video {
 							padding-block: 0;
 							vertical-align: middle;
+							padding-left: 1rem;
 
 							a {
 								display: flex;
@@ -237,6 +237,10 @@
 									height: 1.25rem;
 								}
 							}
+						}
+
+						&:not(:hover) td.video a {
+							display: none;
 						}
 					}
 				}

@@ -34,6 +34,15 @@ export async function getLevelRecords(levelId: number): Promise<Record[]> {
 					user: true,
 					verifier: true,
 					creators: true,
+					log: {
+						take: 1,
+						select: {
+							index: true,
+						},
+						orderBy: {
+							logTimestamp: 'desc',
+						},
+					},
 				},
 			},
 			user: true,
@@ -49,7 +58,12 @@ export async function getLevelRecords(levelId: number): Promise<Record[]> {
 	});
 
 	return res.map((record) => ({
-		...record,
+		level: {
+			...record.level,
+			rank: record.level.log[0]?.index + 1,
+		},
+		user: record.user,
+		percentage: record.percentage,
 		timestamp: record.timestamp.toISOString(),
 		video: record.video || undefined,
 	}));

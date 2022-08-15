@@ -36,6 +36,9 @@ components:
         name:
           type: string
           example: Chromatic Haze
+        rank:
+          type: integer
+          minimum: 1
         user:
           $ref: '#/components/schemas/User'
         verifier:

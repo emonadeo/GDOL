@@ -5,9 +5,7 @@
 	import type { Level } from 'src/generated/openapi';
 	import { api } from 'src/api';
 
-	type LevelAndRank = Level & { rank: number };
-
-	let levels: LevelAndRank[] = [];
+	let levels: Level[] = [];
 
 	onMount(async () => {
 		const res = await api.list.getList();
@@ -17,8 +15,7 @@
 			return;
 		}
 
-		const rlevels = res.data;
-		levels = rlevels.map((lvl, i) => ({ ...lvl, rank: i + 1 }));
+		levels = res.data;
 	});
 
 	let search: string = '';

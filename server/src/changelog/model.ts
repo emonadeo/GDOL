@@ -33,8 +33,14 @@ export async function getChangelog(): Promise<Changelog.GetChangelog.ResponseBod
 
 	return res.map((log) => ({
 		action: log.action,
-		level: log.level,
-		list: log.list.map((llvl) => llvl.level),
+		level: {
+			...log.level,
+			rank: log.to || undefined,
+		},
+		list: log.list.map((llvl, i) => ({
+			...llvl.level,
+			rank: i + 1,
+		})),
 		from: log.from || undefined,
 		to: log.to || undefined,
 		timestamp: log.timestamp.toISOString(),

@@ -1,4 +1,4 @@
-import { UserFull, UserWithScore } from '../generated/openapi';
+import { Record, UserFull, UserWithScore } from '../generated/openapi';
 import { prisma } from '../prisma';
 
 // TODO: outsource function
@@ -51,7 +51,7 @@ async function getScore(userId: number): Promise<number> {
 	return score;
 }
 
-async function getRecords(userId: number) {
+async function getRecords(userId: number): Promise<Record[]> {
 	const records = await prisma.user
 		.findUnique({
 			where: { id: userId },
@@ -64,12 +64,26 @@ async function getRecords(userId: number) {
 						user: true,
 						creators: true,
 						verifier: true,
+						log: {
+							take: 1,
+							select: {
+								index: true,
+							},
+							orderBy: {
+								logTimestamp: 'desc',
+							},
+						},
 					},
 				},
 			},
 		});
 	return records.map((record) => ({
-		...record,
+		user: record.user,
+		level: {
+			...record.level,
+			rank: record.level.log[0]?.index + 1 || 0,
+		},
+		percentage: record.percentage,
 		timestamp: record.timestamp.toISOString(),
 		video: record.video || undefined,
 	}));
@@ -117,6 +131,15 @@ export async function getUserById(userId: number): Promise<UserFull | undefined>
 					user: true,
 					verifier: true,
 					creators: true,
+					log: {
+						take: 1,
+						select: {
+							index: true,
+						},
+						orderBy: {
+							logTimestamp: 'desc',
+						},
+					},
 				},
 			},
 			levelsCreated: {
@@ -124,6 +147,15 @@ export async function getUserById(userId: number): Promise<UserFull | undefined>
 					user: true,
 					verifier: true,
 					creators: true,
+					log: {
+						take: 1,
+						select: {
+							index: true,
+						},
+						orderBy: {
+							logTimestamp: 'desc',
+						},
+					},
 				},
 			},
 			levelsVerified: {
@@ -131,6 +163,15 @@ export async function getUserById(userId: number): Promise<UserFull | undefined>
 					user: true,
 					verifier: true,
 					creators: true,
+					log: {
+						take: 1,
+						select: {
+							index: true,
+						},
+						orderBy: {
+							logTimestamp: 'desc',
+						},
+					},
 				},
 			},
 		},
@@ -138,9 +179,18 @@ export async function getUserById(userId: number): Promise<UserFull | undefined>
 	const userFull: UserFull | null = user && {
 		id: user.id,
 		name: user.name,
-		levels: user.levels,
-		levelsCreated: user.levelsCreated,
-		levelsVerified: user.levelsVerified,
+		levels: user.levels.map((level) => ({
+			...level,
+			rank: level.log[0]?.index + 1 || undefined,
+		})),
+		levelsCreated: user.levelsCreated.map((level) => ({
+			...level,
+			rank: level.log[0]?.index + 1 || undefined,
+		})),
+		levelsVerified: user.levelsVerified.map((level) => ({
+			...level,
+			rank: level.log[0]?.index + 1 || undefined,
+		})),
 		// TODO: Confirm that Records and Score get batched by Prisma
 		records: await getRecords(user.id),
 		score: await getScore(user.id),

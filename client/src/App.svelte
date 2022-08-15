@@ -5,6 +5,7 @@
 	import Leaderboard from 'src/pages/Leaderboard.svelte';
 	import List from 'src/pages/List.svelte';
 	import Level from 'src/pages/Level.svelte';
+	import User from 'src/pages/User.svelte';
 	import Changelog from 'src/pages/Changelog.svelte';
 </script>
 
@@ -36,6 +37,9 @@
 </Route>
 <Route path="/leaderboard">
 	<Leaderboard />
+</Route>
+<Route path="/users/:id" let:meta>
+	<User id={Number(meta.params.id)} />
 </Route>
 <Route path="/changelog">
 	<Changelog />
