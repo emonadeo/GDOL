@@ -1,4 +1,4 @@
-import { UserWithRecords } from '../generated/openapi';
+import { UserFull, UserWithScore } from '../generated/openapi';
 import { prisma } from '../prisma';
 
 // TODO: outsource function
@@ -29,13 +29,20 @@ async function getScore(userId: number): Promise<number> {
 		return scores[userId];
 	}
 
-	// TODO: Remove duplicate, e.g. use DataLoader
-	const records = await getRecords(userId);
+	const records = await prisma.user
+		.findUnique({
+			where: { id: userId },
+		})
+		.records({
+			include: {
+				level: true,
+			},
+		});
 
 	let score = 0;
 
 	for (const record of records) {
-		const rank = await getRank(record.level.id);
+		const rank = await getRank(record.levelId);
 		if (rank) score += getPoints(rank, record.level.requirement, record.percentage);
 	}
 
@@ -45,21 +52,22 @@ async function getScore(userId: number): Promise<number> {
 }
 
 async function getRecords(userId: number) {
-	const records = await prisma.record.findMany({
-		where: {
-			userId,
-		},
-		include: {
-			level: {
-				include: {
-					user: true,
-					creators: true,
-					verifier: true,
+	const records = await prisma.user
+		.findUnique({
+			where: { id: userId },
+		})
+		.records({
+			include: {
+				user: true,
+				level: {
+					include: {
+						user: true,
+						creators: true,
+						verifier: true,
+					},
 				},
 			},
-			user: true,
-		},
-	});
+		});
 	return records.map((record) => ({
 		...record,
 		timestamp: record.timestamp.toISOString(),
@@ -70,25 +78,23 @@ async function getRecords(userId: number) {
 // TODO: Use redis over global variable
 export const scores: { [userId: number]: number } = {};
 
-export async function getUsers(): Promise<UserWithRecords[]> {
+export async function getUsers(): Promise<UserWithScore[]> {
 	const users = await prisma.user.findMany();
-	const usersWithRecords: UserWithRecords[] = await Promise.all(
+	const usersWithScore: UserWithScore[] = await Promise.all(
 		users.map(async (user) => {
-			// TODO: Remove duplicate
 			return {
 				id: user.id,
 				name: user.name,
-				// TODO: Remove duplicate, e.g. use DataLoader
-				records: await getRecords(user.id),
 				score: await getScore(user.id),
 			};
 		})
 	);
 
-	return usersWithRecords.sort((a, b) => b.score - a.score);
+	return usersWithScore.sort((a, b) => b.score - a.score);
 }
 
-export async function getUserById(userId: number): Promise<UserWithRecords | undefined> {
+export async function getUserById(userId: number): Promise<UserFull | undefined> {
+	// TODO: Add (redis) cache
 	const user = await prisma.user.findUnique({
 		where: {
 			id: userId,
@@ -106,18 +112,38 @@ export async function getUserById(userId: number): Promise<UserWithRecords | und
 					user: true,
 				},
 			},
-			levels: true,
-			levelsCreated: true,
-			levelsVerified: true,
+			levels: {
+				include: {
+					user: true,
+					verifier: true,
+					creators: true,
+				},
+			},
+			levelsCreated: {
+				include: {
+					user: true,
+					verifier: true,
+					creators: true,
+				},
+			},
+			levelsVerified: {
+				include: {
+					user: true,
+					verifier: true,
+					creators: true,
+				},
+			},
 		},
 	});
-	// TODO: Remove duplicate
-	const userWithRecords = user && {
+	const userFull: UserFull | null = user && {
 		id: user.id,
 		name: user.name,
-		// TODO: Remove duplicate, e.g. use DataLoader
+		levels: user.levels,
+		levelsCreated: user.levelsCreated,
+		levelsVerified: user.levelsVerified,
+		// TODO: Confirm that Records and Score get batched by Prisma
 		records: await getRecords(user.id),
 		score: await getScore(user.id),
 	};
-	return userWithRecords || undefined;
+	return userFull || undefined;
 }

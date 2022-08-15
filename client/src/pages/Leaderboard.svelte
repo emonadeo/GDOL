@@ -2,12 +2,12 @@
 	import fzf from 'fuzzysort';
 	import { api } from 'src/api';
 
-	import type { UserWithRecords } from 'src/generated/openapi';
+	import type { UserWithScore } from 'src/generated/openapi';
 	import { ordinal } from 'src/util';
 
 	import { onMount } from 'svelte';
 
-	type UserAndRank = UserWithRecords & { rank: number; fzfp: Fuzzysort.Prepared };
+	type UserAndRank = UserWithScore & { rank: number; fzfp: Fuzzysort.Prepared };
 
 	let users: UserAndRank[] = [];
 	let search: string = '';
@@ -51,7 +51,6 @@
 				<th class="player">
 					<p class="type-title-md">Player</p>
 				</th>
-				<th class="stats" />
 			</tr>
 			<!-- TODO: Pagination -->
 			{#each fUsers as user (user.id)}
@@ -73,9 +72,6 @@
 						<a href={`/users/${user.id}`}>
 							<p>{user.name}</p>
 						</a>
-					</td>
-					<td class="stats">
-						<p>{user.records.length} Records</p>
 					</td>
 				</tr>
 			{/each}
@@ -197,23 +193,16 @@
 						th.score,
 						td.score {
 							text-align: right;
-							width: 20%;
+							width: 30%;
 						}
 
 						th.player,
 						td.player {
-							width: 40%;
+							width: 70%;
 
 							a {
 								color: inherit;
 							}
-						}
-
-						th.stats,
-						td.stats {
-							width: 40%;
-							border-left: none;
-							color: rgba(color.$on-background, 0.2);
 						}
 					}
 				}
