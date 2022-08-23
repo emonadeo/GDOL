@@ -46,8 +46,6 @@ interface Record {
 
 async function main() {
 	console.log(`Start seeding...`);
-	const res = await axios.get('https://pointercrate.com/api/v2/demons/listed');
-	const data: Demon[] = res.data;
 	const level = await prisma.level.create({
 		data: {
 			name: 'Placeholder',
@@ -76,6 +74,11 @@ async function main() {
 			levelId: 1,
 		},
 	});
+	const resMain = await axios.get('https://pointercrate.com/api/v2/demons/listed?limit=75');
+	const resExtended = await axios.get(
+		'https://pointercrate.com/api/v2/demons/listed?limit=75&after=75'
+	);
+	const data: Demon[] = resMain.data.concat(resExtended.data);
 	const list: Prisma.ListLogLevelCreateWithoutLogInput[] = await Promise.all(
 		data.map(async (demon, index) => {
 			const res = await axios.get(`https://pointercrate.com/api/v2/demons/${demon.id}`);

@@ -109,7 +109,7 @@
 			aside {
 				display: grid;
 				grid-template-rows: 4rem 1fr max-content;
-				gap: 2rem;
+				gap: 1.5rem;
 				padding-bottom: 2rem;
 
 				.toggle {

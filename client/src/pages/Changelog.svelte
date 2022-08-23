@@ -183,8 +183,9 @@
 			display: grid;
 			overflow: auto;
 			flex: 1;
-			grid-template-columns: calc(8rem + 4px) 1fr calc(8rem + 4px);
+			grid-template-columns: calc(6.5rem + 4px) 1fr calc(6.5rem + 4px);
 			padding-inline: calc(6rem + 1px);
+			column-gap: 1.5rem;
 
 			h1,
 			.log {

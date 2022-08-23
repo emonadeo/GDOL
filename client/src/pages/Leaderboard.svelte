@@ -89,17 +89,19 @@
 			overflow-y: scroll;
 			flex: 1 0 0;
 			display: grid;
-			grid-template-columns: calc(6rem + 1px) calc(8rem + 4px) 1fr 8rem calc(6rem + 1px);
+			grid-template-columns: calc(6.5rem + 4px) 1fr 8rem;
 			grid-template-rows: max-content 1fr;
+			padding-left: calc(6rem + 1px);
+			padding-right: calc(6rem + 1px);
+			column-gap: 1.5rem;
 
 			aside.medal {
 				position: sticky;
 				top: 8rem;
 				margin-top: 8rem;
-				padding-right: 0.75rem;
 				justify-self: end;
 				align-self: start;
-				grid-column: 2;
+				grid-column: 1;
 
 				img {
 					height: 14.25rem;
@@ -107,21 +109,21 @@
 			}
 
 			aside.filter {
-				grid-column: 1 / 6;
+				grid-column: 1 / 4;
 				grid-row: 1;
 				height: 4rem;
 				display: grid;
 				grid-template-columns: 1fr 1fr;
-				column-gap: 2rem;
+				column-gap: 1.5rem;
 				align-items: center;
-				padding-left: calc(14rem + 4px);
+				padding-left: calc(8rem + 4px);
 				background-color: color.$background;
-				border-bottom: 1px solid rgba(color.$on-background, 0.2);
+				// border-bottom: 1px solid rgba(color.$on-background, 0.2);
 			}
 
 			main {
 				grid-row: 2;
-				grid-column: 3;
+				grid-column: 2;
 
 				table {
 					padding-bottom: 6rem;

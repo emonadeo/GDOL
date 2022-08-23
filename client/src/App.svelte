@@ -61,7 +61,8 @@
 			// TODO: Unify Grid Layout
 			display: grid;
 			padding-inline: calc(6rem + 1px);
-			grid-template-columns: calc(8rem + 4px) 1fr max-content;
+			grid-template-columns: calc(6.5rem + 4px) 1fr max-content;
+			column-gap: 1.5rem;
 
 			.logo {
 				height: 27px;
