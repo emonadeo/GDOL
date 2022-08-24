@@ -66,7 +66,7 @@
 						</p>
 					</td>
 					<td class="score">
-						<p class="mono">{user.score}</p>
+						<p class="mono">{user.score.toFixed(2)}</p>
 					</td>
 					<td class="player">
 						<a href={`/users/${user.id}`}>
