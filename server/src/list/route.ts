@@ -1,6 +1,6 @@
 import { FastifyPluginAsync } from 'fastify';
-import { List } from '../generated/openapi';
-import { archiveListLevel, getCurrentList, getListLevelByRank, postList } from './model';
+import { List } from '../generated/openapi.js';
+import { archiveListLevel, getCurrentList, getListLevelByRank, postList } from './model.js';
 
 const plugin: FastifyPluginAsync = async function (fastify) {
 	// Get List

@@ -1,6 +1,6 @@
 import { FastifyPluginAsync } from 'fastify';
-import { Changelog } from '../generated/openapi';
-import { getChangelog } from './model';
+import { Changelog } from '../generated/openapi.js';
+import { getChangelog } from './model.js';
 
 const plugin: FastifyPluginAsync = async function (fastify) {
 	// Get Changelog

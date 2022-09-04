@@ -1,6 +1,6 @@
 import { FastifyPluginAsync } from 'fastify';
-import { Users } from '../generated/openapi';
-import { getUserById, getUsers } from './model';
+import { Users } from '../generated/openapi.js';
+import { getUserById, getUsers } from './model.js';
 
 const plugin: FastifyPluginAsync = async function (fastify) {
 	// Get Users

@@ -1,6 +1,6 @@
-import { Level, List } from '../generated/openapi';
-import { ListLogAction } from '../generated/prisma';
-import { prisma } from '../prisma';
+import { Level, List } from '../generated/openapi.js';
+import { ListLogAction } from '../generated/prisma/index.js';
+import { prisma } from '../prisma.js';
 
 /**
  * Extracts the list of levels from the latest log record

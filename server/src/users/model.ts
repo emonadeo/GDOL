@@ -1,5 +1,5 @@
-import { Record, UserFull, UserWithScore } from '../generated/openapi';
-import { prisma } from '../prisma';
+import { Record, UserFull, UserWithScore } from '../generated/openapi.js';
+import { prisma } from '../prisma.js';
 
 // TODO: outsource function, remove pointercrate implementation before release
 /**

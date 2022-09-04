@@ -2,9 +2,10 @@
 	"name": "@gdol/server",
 	"version": "2.0.0",
 	"description": "REST API built on Fastify and Prisma",
+	"type": "module",
 	"scripts": {
-		"start": "dotenv -c -- ts-node src/index.ts",
-		"dev": "dotenv -c -- nodemon src/index.ts",
+		"start": "dotenv -c -- ts-node --esm src/index.ts",
+		"dev": "dotenv -c -- node-dev --no-notify --loader ts-node/esm -- src/index.ts",
 		"generate": "npm run generate-prisma && npm run generate-openapi",
 		"generate-prisma": "prisma generate",
 		"generate-openapi": "swagger-typescript-api -p ../openapi.yml -o ./src/generated -n openapi.ts --no-client --route-types",
@@ -13,15 +14,17 @@
 		"studio": "prisma studio"
 	},
 	"dependencies": {
+		"@fastify/cors": "^8.1.0",
 		"@prisma/client": "^4.0.0",
 		"dotenv-cli": "^5.1.0",
-		"fastify": "^3.27.4",
-		"fastify-cors": "^6.0.3"
+		"fastify": "^4.5.3",
+		"openapi-validator-middleware": "^3.2.6",
+		"redis-om": "^0.3.6"
 	},
 	"devDependencies": {
 		"@types/node": "^18.6.2",
 		"axios": "^0.27.2",
-		"nodemon": "^2.0.19",
+		"node-dev": "^7.4.3",
 		"prisma": "^4.1.1",
 		"swagger-typescript-api": "^9.3.1",
 		"ts-node": "^10.9.1",

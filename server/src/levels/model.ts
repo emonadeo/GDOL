@@ -1,6 +1,6 @@
-import { Levels, Record } from '../generated/openapi';
-import { postList } from '../list/model';
-import { prisma } from '../prisma';
+import { Levels, Record } from '../generated/openapi.js';
+import { postList } from '../list/model.js';
+import { prisma } from '../prisma.js';
 
 export async function createLevel(level: Levels.PostLevels.RequestBody): Promise<void> {
 	const res = await prisma.level.create({

@@ -1,5 +1,5 @@
-import { Changelog } from '../generated/openapi';
-import { prisma } from '../prisma';
+import { Changelog } from '../generated/openapi.js';
+import { prisma } from '../prisma.js';
 
 export async function getChangelog(): Promise<Changelog.GetChangelog.ResponseBody> {
 	const res = await prisma.listLog.findMany({

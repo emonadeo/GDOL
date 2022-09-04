@@ -1,6 +1,6 @@
 import { FastifyPluginAsync } from 'fastify';
-import { Levels } from '../generated/openapi';
-import { createLevel, createLevelRecord, getLevelRecords } from './model';
+import { Levels } from '../generated/openapi.js';
+import { createLevel, createLevelRecord, getLevelRecords } from './model.js';
 
 const plugin: FastifyPluginAsync = async function (fastify) {
 	// Create Level
