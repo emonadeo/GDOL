@@ -1,0 +1,37 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "command": "docker-compose up",
+            "problemMatcher": [],
+            "label": "Docker Compose: Up",
+            "detail": "docker-compose up"
+        },
+        {
+            "type": "npm",
+            "script": "dev",
+            "path": "client",
+            "problemMatcher": [
+                "$vite"
+            ],
+            "label": "Client: Dev",
+            "detail": "vite"
+        },
+        {
+            "type": "npm",
+            "script": "dev",
+            "path": "server",
+            "problemMatcher": [],
+            "label": "Server: Dev",
+            "detail": "dotenv -c -- node-dev --no-notify --loader ts-node/esm -- src/index.ts"
+        },
+        {
+            "type": "npm",
+            "script": "generate",
+            "problemMatcher": [],
+            "label": "Generate",
+            "detail": "npm -w client run generate && npm -w server run generate"
+        }
+    ]
+}

@@ -8,23 +8,24 @@
 		"build": "vite build",
 		"preview": "vite preview",
 		"check": "svelte-check --tsconfig ./tsconfig.json --compiler-warnings a11y-no-redundant-roles:ignore",
-		"generate": "npm run generate-openapi",
-		"generate-openapi": "swagger-typescript-api -p ../openapi.yml -o ./src/generated -n openapi.ts"
+		"generate": "npm run generate:openapi",
+		"generate:openapi": "swagger-typescript-api -p ../openapi.yml -o ./src/generated -n openapi.ts"
 	},
 	"devDependencies": {
-		"@sveltejs/vite-plugin-svelte": "^1.0.1",
+		"@sveltejs/vite-plugin-svelte": "^1.0.8",
 		"@tsconfig/svelte": "^3.0.0",
-		"autoprefixer": "^10.4.8",
+		"autoprefixer": "^10.4.12",
 		"fuzzysort": "^2.0.1",
 		"modern-css-reset": "^1.4.0",
-		"postcss": "^8.4.14",
-		"sass": "^1.54.0",
-		"svelte": "^3.49.0",
-		"svelte-check": "^2.8.0",
+		"postcss": "^8.4.16",
+		"sass": "^1.55.0",
+		"svelte": "^3.50.1",
+		"svelte-check": "^2.9.0",
 		"svelte-preprocess": "^4.10.7",
+		"swagger-typescript-api": "^10.0.1",
 		"tinro": "^0.6.12",
 		"tslib": "^2.4.0",
-		"typescript": "^4.7.4",
-		"vite": "^3.0.4"
+		"typescript": "^4.8.3",
+		"vite": "^3.1.3"
 	}
 }

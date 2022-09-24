@@ -6,29 +6,29 @@
 	"scripts": {
 		"start": "dotenv -c -- ts-node --esm src/index.ts",
 		"dev": "dotenv -c -- node-dev --no-notify --loader ts-node/esm -- src/index.ts",
-		"generate": "npm run generate-prisma && npm run generate-openapi",
-		"generate-prisma": "prisma generate",
-		"generate-openapi": "swagger-typescript-api -p ../openapi.yml -o ./src/generated -n openapi.ts --no-client --route-types",
+		"generate": "npm run generate:prisma && npm run generate:openapi",
+		"generate:prisma": "prisma generate",
+		"generate:openapi": "swagger-typescript-api -p ../openapi.yml -o ./src/generated -n openapi.ts --no-client --route-types",
 		"push": "prisma db push",
 		"seed": "prisma db seed",
 		"studio": "prisma studio"
 	},
 	"dependencies": {
 		"@fastify/cors": "^8.1.0",
-		"@prisma/client": "^4.0.0",
-		"dotenv-cli": "^5.1.0",
-		"fastify": "^4.5.3",
+		"@prisma/client": "^4.3.1",
+		"dotenv-cli": "^6.0.0",
+		"fastify": "^4.6.0",
 		"openapi-validator-middleware": "^3.2.6",
 		"redis-om": "^0.3.6"
 	},
 	"devDependencies": {
-		"@types/node": "^18.6.2",
+		"@types/node": "^18.7.19",
 		"axios": "^0.27.2",
 		"node-dev": "^7.4.3",
-		"prisma": "^4.1.1",
-		"swagger-typescript-api": "^9.3.1",
+		"prisma": "^4.3.1",
+		"swagger-typescript-api": "^10.0.1",
 		"ts-node": "^10.9.1",
-		"typescript": "^4.7.4"
+		"typescript": "^4.8.3"
 	},
 	"prisma": {
 		"seed": "ts-node prisma/seed.ts"
