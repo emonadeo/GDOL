@@ -1,7 +1,8 @@
-import { Prisma, PrismaClient } from '../src/generated/prisma';
-import { readFileSync } from 'fs';
-import { ListLogAction } from '@prisma/client';
-import axios from 'axios';
+import { Prisma, PrismaClient, ListLogAction } from '../src/generated/prisma/index.js';
+import { mkdir, readFile, writeFile } from 'fs/promises';
+import _axios from 'axios';
+import { resolve } from 'path';
+const axios = _axios.default;
 
 const prisma = new PrismaClient();
 
@@ -46,6 +47,7 @@ interface Record {
 
 async function main() {
 	console.log(`Start seeding...`);
+	await mkdir(resolve('./src/generated/pointercrate'));
 	const level = await prisma.level.create({
 		data: {
 			name: 'Placeholder',
@@ -74,39 +76,59 @@ async function main() {
 			levelId: 1,
 		},
 	});
+	// FETCH
 	const resMain = await axios.get('https://pointercrate.com/api/v2/demons/listed?limit=75');
 	const resExtended = await axios.get(
 		'https://pointercrate.com/api/v2/demons/listed?limit=75&after=75'
 	);
 	const data: Demon[] = resMain.data.concat(resExtended.data);
+	await writeFile(
+		resolve(`./src/generated/pointercrate/_list.json`),
+		JSON.stringify(data.map((d) => d.id)),
+		'utf-8'
+	);
+	// LOAD
+	// const data: number[] = JSON.parse(
+	// 	await readFile('./src/generated/pointercrate/_list.json', 'utf-8')
+	// );
 	const list: Prisma.ListLogLevelCreateWithoutLogInput[] = await Promise.all(
 		data.map(async (demon, index) => {
+			// FETCH
 			const res = await axios.get(`https://pointercrate.com/api/v2/demons/${demon.id}`);
 			const fullDemon: DemonFull = res.data.data;
+			await writeFile(
+				resolve(`./src/generated/pointercrate/${demon.id}.json`),
+				JSON.stringify(fullDemon),
+				'utf-8'
+			);
+			// LOAD
+			// const fullDemon: DemonFull = JSON.parse(
+			// 	await readFile(`./src/generated/pointercrate/${demon}.json`, 'utf-8')
+			// );
 			const records: Record[] = fullDemon.records.sort((a, b) => (a.id = b.id));
 
 			const ret: Prisma.ListLogLevelCreateWithoutLogInput = {
 				index,
 				level: {
 					create: {
-						name: demon.name,
+						name: fullDemon.name,
 						user: {
 							connectOrCreate: {
 								where: {
-									name: demon.publisher.name,
+									name: fullDemon.publisher.name,
 								},
 								create: {
-									name: demon.publisher.name,
+									name: fullDemon.publisher.name,
 								},
 							},
 						},
 						verifier: {
 							connectOrCreate: {
 								where: {
-									name: demon.verifier.name,
+									name: fullDemon.verifier.name,
 								},
 								create: {
-									name: demon.verifier.name,
+									name: fullDemon.verifier.name,
 								},
 							},
 						},
@@ -120,9 +142,9 @@ async function main() {
 								},
 							})),
 						},
-						video: demon.video || 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-						levelId: demon.level_id,
-						requirement: demon.requirement,
+						video: fullDemon.video || 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+						levelId: fullDemon.level_id,
+						requirement: fullDemon.requirement,
 						records: {
 							create: records.map((r) => ({
 								percentage: r.progress,

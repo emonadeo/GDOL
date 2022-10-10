@@ -23,7 +23,7 @@ model User {
 model Level {
   id          Int            @id @default(autoincrement())
   name        String
-  levelId     Int            @unique
+  levelId     Int?           @unique
   user        User           @relation("Publisher", fields: [userId], references: [id])
   userId      Int
   verifier    User           @relation("Verifier", fields: [verifierId], references: [id])

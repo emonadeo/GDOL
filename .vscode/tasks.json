@@ -2,6 +2,17 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "label": "Dev",
+            "detail": "launch docker, client and server",
+            "dependsOn": [
+                "Docker Compose: Up",
+                "Client: Dev",
+                "Server: Dev"
+            ],
+            "dependsOrder": "parallel",
+            "problemMatcher": []
+        },
+        {
             "type": "shell",
             "command": "docker-compose up",
             "problemMatcher": [],
@@ -32,6 +43,14 @@
             "problemMatcher": [],
             "label": "Generate",
             "detail": "npm -w client run generate && npm -w server run generate"
+        },
+        {
+            "type": "npm",
+            "script": "studio",
+            "path": "server",
+            "problemMatcher": [],
+            "label": "Server: Prisma Studio",
+            "detail": "prisma studio"
         }
     ]
 }
