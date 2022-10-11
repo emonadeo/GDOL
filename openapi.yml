@@ -51,6 +51,10 @@ components:
           type: string
           description: URL to a video showcasing the level. In most cases this is the verification video.
           example: https://www.youtube.com/watch?v=QZf8vX4DF0A
+        color:
+          type: string
+          description: Hex
+          example: \#000000
       required:
         - id
         - name

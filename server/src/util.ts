@@ -1,3 +1,5 @@
+import { getColor, getPalette } from 'colorthief';
+
 // TODO: outsource function, remove pointercrate implementation before release
 /**
  * Calculate the amount of points given to a player for a record on a level
@@ -31,4 +33,22 @@ export function getPoints(rank: number, requirement: number, percentage: number)
 	}
 
 	return beatenScore;
+}
+
+export async function extractColor(video: string): Promise<string> {
+	const youtubeId =
+		video.match(/.*(?:youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=)([^#\&\?]*).*/)?.[1] ?? '';
+	// const url = `https://i.ytimg.com/vi/${youtubeId}/maxresdefault.jpg`;
+	const url = `https://img.youtube.com/vi/${youtubeId}/mqdefault.jpg`;
+	const palette = await getPalette(url);
+	let color = palette[0];
+	let sum = color.reduce((s, c) => s + c, 0);
+	palette.forEach((c) => {
+		const _s = c.reduce((s, c) => s + c, 0);
+		if (_s < sum) {
+			color = c;
+			sum = _s;
+		}
+	});
+	return `rgb(${color.join(', ')})`;
 }

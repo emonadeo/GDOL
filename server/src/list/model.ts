@@ -1,6 +1,7 @@
 import { Level, List } from '../generated/openapi.js';
 import { ListLogAction } from '../generated/prisma/index.js';
 import { prisma } from '../prisma.js';
+import { extractColor } from '../util.js';
 
 /**
  * Extracts the list of levels from the latest log record
@@ -130,8 +131,11 @@ export async function getListLevelByRank(rank: number): Promise<Level | undefine
 
 	if (!res) return undefined;
 
+	const level = res.list[0].level;
+
 	return {
-		...res.list[0].level,
+		...level,
 		rank,
+		color: await extractColor(level.video),
 	};
 }

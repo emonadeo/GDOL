@@ -1,8 +1,8 @@
 <script lang="ts">
+	import { colorBackground } from 'src/store';
 	import { api } from 'src/api';
-
 	import type { Level, Record } from 'src/generated/openapi';
-	import { embed, ordinal } from 'src/util';
+	import { embed, getYoutubeIdFromUrl, ordinal } from 'src/util';
 	import { onMount } from 'svelte';
 
 	export let rank: number;
@@ -13,6 +13,8 @@
 	onMount(async () => {
 		const res = await api.list.getListLevel(rank);
 		level = res.data;
+
+		$colorBackground = level.color;
 
 		const res2 = await api.levels.getLevelRecords(level.id);
 		records = res2.data;

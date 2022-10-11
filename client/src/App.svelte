@@ -7,43 +7,47 @@
 	import Level from 'src/pages/Level.svelte';
 	import User from 'src/pages/User.svelte';
 	import Changelog from 'src/pages/Changelog.svelte';
+
+	import { colorBackground } from 'src/store';
 </script>
 
-<nav>
-	<img class="logo" src="/src/assets/logo.svg" alt="Logo" />
-	<ul class="links" role="list">
-		<li class="link">
-			<a class="type-label-lg" href="/" use:active data-exact>Home</a>
-		</li>
-		<li class="link">
-			<a class="type-label-lg" href="/list" use:active>List</a>
-		</li>
-		<li class="link">
-			<a class="type-label-lg" href="/leaderboard" use:active>Leaderboard</a>
-		</li>
-	</ul>
-</nav>
+<div id="root" style={`--background-color: ${$colorBackground}`}>
+	<nav>
+		<img class="logo" src="/src/assets/logo.svg" alt="Logo" />
+		<ul class="links" role="list">
+			<li class="link">
+				<a class="type-label-lg" href="/" use:active data-exact>Home</a>
+			</li>
+			<li class="link">
+				<a class="type-label-lg" href="/list" use:active>List</a>
+			</li>
+			<li class="link">
+				<a class="type-label-lg" href="/leaderboard" use:active>Leaderboard</a>
+			</li>
+		</ul>
+	</nav>
 
-<Route path="/">
-	<Home />
-</Route>
-<Route path="/list/*" firstmatch>
-	<Route path="/:rank" let:meta>
-		<Level rank={Number(meta.params.rank)} />
-	</Route>
 	<Route path="/">
-		<List />
+		<Home />
 	</Route>
-</Route>
-<Route path="/leaderboard">
-	<Leaderboard />
-</Route>
-<Route path="/users/:id" let:meta>
-	<User id={Number(meta.params.id)} />
-</Route>
-<Route path="/changelog">
-	<Changelog />
-</Route>
+	<Route path="/list/*" firstmatch>
+		<Route path="/:rank" let:meta>
+			<Level rank={Number(meta.params.rank)} />
+		</Route>
+		<Route path="/">
+			<List />
+		</Route>
+	</Route>
+	<Route path="/leaderboard">
+		<Leaderboard />
+	</Route>
+	<Route path="/users/:id" let:meta>
+		<User id={Number(meta.params.id)} />
+	</Route>
+	<Route path="/changelog">
+		<Changelog />
+	</Route>
+</div>
 
 <style lang="scss">
 	@use 'src/styles/color';

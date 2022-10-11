@@ -6,18 +6,16 @@
 
 html,
 body,
-#app {
+#app,
+#root {
 	height: 100%;
 }
 
-body {
-	background-color: color.$background;
-	color: color.$on-background;
-}
-
-#app {
+#root {
 	display: flex;
 	flex-direction: column;
+	background-color: color.$background;
+	color: color.$on-background;
 }
 
 // Reset Lists

@@ -1,4 +1,7 @@
 {
+	"ts-node": {
+		"files": true,
+	},
 	"compilerOptions": {
 		"module": "NodeNext",
 		"moduleResolution": "NodeNext",
@@ -6,7 +9,9 @@
 		"sourceMap": true,
 		"outDir": "dist",
 		"strict": true,
-		"lib": ["ESNext"],
+		"lib": [
+			"ESNext"
+		],
 		"esModuleInterop": true
 	}
 }
