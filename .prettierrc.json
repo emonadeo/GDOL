@@ -1,4 +1,5 @@
 {
+	"plugins": ["prettier-plugin-sql"],
 	"useTabs": true,
 	"singleQuote": true,
 	"trailingComma": "es5",

@@ -1,0 +1,4 @@
+client/
+server/
+server/generated/
+server/prisma/pointercrate.json

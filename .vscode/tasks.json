@@ -1,56 +1,52 @@
 {
-    "version": "2.0.0",
-    "tasks": [
-        {
-            "label": "Dev",
-            "detail": "launch docker, client and server",
-            "dependsOn": [
-                "Docker Compose: Up",
-                "Client: Dev",
-                "Server: Dev"
-            ],
-            "dependsOrder": "parallel",
-            "problemMatcher": []
-        },
-        {
-            "type": "shell",
-            "command": "docker-compose up",
-            "problemMatcher": [],
-            "label": "Docker Compose: Up",
-            "detail": "docker-compose up"
-        },
-        {
-            "type": "npm",
-            "script": "dev",
-            "path": "client",
-            "problemMatcher": [
-                "$vite"
-            ],
-            "label": "Client: Dev",
-            "detail": "vite"
-        },
-        {
-            "type": "npm",
-            "script": "dev",
-            "path": "server",
-            "problemMatcher": [],
-            "label": "Server: Dev",
-            "detail": "dotenv -c -- node-dev --no-notify --loader ts-node/esm -- src/index.ts"
-        },
-        {
-            "type": "npm",
-            "script": "generate",
-            "problemMatcher": [],
-            "label": "Generate",
-            "detail": "npm -w client run generate && npm -w server run generate"
-        },
-        {
-            "type": "npm",
-            "script": "studio",
-            "path": "server",
-            "problemMatcher": [],
-            "label": "Server: Prisma Studio",
-            "detail": "prisma studio"
-        }
-    ]
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Dev",
+			"detail": "launch docker, client and server",
+			"dependsOn": ["Docker Compose: Up", "Client: Dev", "Server: Dev"],
+			"dependsOrder": "parallel",
+			"problemMatcher": []
+		},
+		{
+			"type": "shell",
+			"command": "docker-compose up",
+			"problemMatcher": [],
+			"label": "Docker Compose: Up",
+			"detail": "docker-compose up"
+		},
+		{
+			"type": "npm",
+			"script": "dev",
+			"path": "client",
+			"problemMatcher": ["$vite"],
+			"label": "Client: Dev",
+			"detail": "vite"
+		},
+		{
+			"type": "shell",
+			"command": "air",
+			"options": {
+				"cwd": "${workspaceFolder}/server-go"
+			},
+			"problemMatcher": ["$go"],
+			"label": "Server: Dev",
+			"detail": "air"
+		},
+		{
+			"type": "npm",
+			"script": "generate",
+			"problemMatcher": [],
+			"label": "Generate",
+			"detail": "npm -w client run generate && npm -w server run generate"
+		},
+		{
+			"type": "npm",
+			"script": "studio",
+			"path": "server",
+			"problemMatcher": [],
+			"label": "Server: Prisma Studio",
+			"detail": "prisma studio"
+		}
+	]
 }
