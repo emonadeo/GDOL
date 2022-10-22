@@ -2,8 +2,9 @@ version: '2'
 sql:
     - schema: 'schema.sql'
       queries:
+      - 'cmd/seed/query.sql'
       engine: 'postgresql'
       gen:
           go:
-              package: 'authors'
-              out: 'postgresql'
+              package: 'sqlc'
+              out: 'pkg/generated/sqlc'

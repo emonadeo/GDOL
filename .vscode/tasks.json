@@ -4,7 +4,11 @@
 		{
 			"label": "Dev",
 			"detail": "launch docker, client and server",
-			"dependsOn": ["Docker Compose: Up", "Client: Dev", "Server: Dev"],
+			"dependsOn": [
+				"Docker Compose: Up",
+				"Client: Dev",
+				"Server: Dev"
+			],
 			"dependsOrder": "parallel",
 			"problemMatcher": []
 		},
@@ -19,19 +23,23 @@
 			"type": "npm",
 			"script": "dev",
 			"path": "client",
-			"problemMatcher": ["$vite"],
+			"problemMatcher": [
+				"$vite"
+			],
 			"label": "Client: Dev",
 			"detail": "vite"
 		},
 		{
 			"type": "shell",
-			"command": "air",
+			"command": "go run cmd/api/main.go",
 			"options": {
-				"cwd": "${workspaceFolder}/server-go"
+				"cwd": "${workspaceFolder}/server"
 			},
-			"problemMatcher": ["$go"],
+			"problemMatcher": [
+				"$go"
+			],
 			"label": "Server: Dev",
-			"detail": "air"
+			"detail": "go run cmd/api/main.go"
 		},
 		{
 			"type": "npm",

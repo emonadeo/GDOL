@@ -1,3 +1,4 @@
-*.local
-generated/
-prisma/pointercrate.json
+bin/
+tmp/
+
+pkg/generated/
