@@ -2,20 +2,29 @@
 	import { onMount } from 'svelte';
 	import fzf from 'fuzzysort';
 	import { getYoutubeIdFromUrl } from 'src/util';
-	import type { Level } from 'src/generated/openapi';
-	import { api } from 'src/api';
+
+	interface Level {
+		rank: number;
+		id: number;
+		gd_id?: number;
+		name: string;
+		user: string;
+		video: string;
+	}
 
 	let levels: Level[] = [];
 
 	onMount(async () => {
-		const res = await api.list.getList();
+		// TODO: Use OpenAPI
+		const res = await fetch('http://localhost:3000/list')
 
 		if (!res.ok) {
 			// TODO: Show Error
 			return;
 		}
 
-		levels = res.data;
+		const _levels: Level[] = await res.json()
+		levels = _levels.map((lvl, i) => ({...lvl, rank: i + 1}))
 	});
 
 	let search: string = '';
@@ -85,7 +94,7 @@
 						/>
 						<div class="meta">
 							<h2>{level.name}</h2>
-							<p>{level.user.name}</p>
+							<p>{level.user}</p>
 						</div>
 					</a>
 				</li>

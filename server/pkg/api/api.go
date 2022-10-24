@@ -7,6 +7,8 @@ import (
 	"github.com/emonadeo/gdol/pkg/api/list"
 	listHttp "github.com/emonadeo/gdol/pkg/api/list/http"
 	"github.com/emonadeo/gdol/pkg/server"
+	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
 )
 
 func Start() error {
@@ -20,6 +22,11 @@ func Start() error {
 	// queries := sqlc.New(db)
 
 	e := server.New()
+
+	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
+		AllowOrigins: []string{"*"},
+		AllowHeaders: []string{echo.HeaderOrigin, echo.HeaderContentType, echo.HeaderAccept},
+	}))
 
 	v1 := e.Group("")
 
