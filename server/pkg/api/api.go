@@ -5,21 +5,18 @@ import (
 	"database/sql"
 
 	"github.com/emonadeo/gdol/pkg/api/list"
-	listHttp "github.com/emonadeo/gdol/pkg/api/list/http"
 	"github.com/emonadeo/gdol/pkg/server"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 )
 
 func Start() error {
-	c := context.Background()
+	ctx := context.Background()
 
 	db, err := sql.Open("postgres", "user=example password=example dbname=gdol sslmode=disable")
 	if err != nil {
 		return err
 	}
-
-	// queries := sqlc.New(db)
 
 	e := server.New()
 
@@ -28,9 +25,7 @@ func Start() error {
 		AllowHeaders: []string{echo.HeaderOrigin, echo.HeaderContentType, echo.HeaderAccept},
 	}))
 
-	v1 := e.Group("")
-
-	listHttp.NewHTTP(list.Initialize(c, db), v1)
+	list.Bind(e, ctx, db)
 
 	// TODO Outsource config
 	server.Start(e, &server.Config{

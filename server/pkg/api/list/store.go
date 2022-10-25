@@ -1,4 +1,4 @@
-package store
+package list
 
 import (
 	"context"
@@ -8,7 +8,10 @@ import (
 	"github.com/emonadeo/gdol/pkg/model"
 )
 
-type List struct{}
+type Store struct {
+	Ctx context.Context
+	DB  sqlc.DBTX
+}
 
 const sqlGet = `
 SELECT levels.id, levels.gd_id, levels.name, users.name as user, levels.video FROM (
@@ -23,8 +26,8 @@ ON users.id = levels.user_id
 ORDER BY ordinality ASC;
 `
 
-func (l List) Get(c context.Context, db sqlc.DBTX) (model.List, error) {
-	rows, err := db.QueryContext(c, sqlGet)
+func (l Store) Find() (model.List, error) {
+	rows, err := l.DB.QueryContext(l.Ctx, sqlGet)
 	if err != nil {
 		return nil, err
 	}
