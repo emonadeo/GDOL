@@ -16,7 +16,7 @@
 			"type": "shell",
 			"command": "docker-compose up",
 			"problemMatcher": [],
-			"label": "Docker Compose: Up",
+			"label": "Docker Compose",
 			"detail": "docker-compose up"
 		},
 		{
@@ -31,7 +31,7 @@
 		},
 		{
 			"type": "shell",
-			"command": "go run cmd/api/main.go",
+			"command": "gin -i -p 3001 -d cmd/api cmd/api/main.go",
 			"options": {
 				"cwd": "${workspaceFolder}/server"
 			},
@@ -39,22 +39,17 @@
 				"$go"
 			],
 			"label": "Server: Dev",
-			"detail": "go run cmd/api/main.go"
+			"detail": "gin run cmd/api/main.go"
 		},
 		{
-			"type": "npm",
-			"script": "generate",
+			"type": "shell",
+			"command": "mkdir -p bin && swagger generate spec -o bin/openapi.yml",
+			"label": "Generate: OpenAPI",
+			"detail": "swagger generate spec -o bin/openapi.yml",
 			"problemMatcher": [],
-			"label": "Generate",
-			"detail": "npm -w client run generate && npm -w server run generate"
-		},
-		{
-			"type": "npm",
-			"script": "studio",
-			"path": "server",
-			"problemMatcher": [],
-			"label": "Server: Prisma Studio",
-			"detail": "prisma studio"
+			"options": {
+				"cwd": "${workspaceFolder}/server"
+			},
 		}
 	]
 }

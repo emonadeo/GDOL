@@ -9,23 +9,42 @@ import (
 )
 
 type List struct {
-	c     context.Context
+	ctx   context.Context
 	db    sqlc.DBTX
 	store Store
 }
 
 type Service interface {
-	Get() (model.List, error)
+	Get(ctx echo.Context) (model.List, error)
+}
+
+// swagger:response GetListResponse
+type GetListResponse []struct {
+	Id    int    `json:"id"`
+	GdId  int    `json:"gd_id"`
+	Name  string `json:"name"`
+	User  string `json:"user"`
+	Video string `json:"video"`
 }
 
 func Bind(e *echo.Echo, ctx context.Context, db sqlc.DBTX) {
 	list := List{
-		c:     ctx,
+		ctx:   ctx,
 		db:    db,
 		store: Store{Ctx: ctx, DB: db},
-		// TODO
+		// TODO DRY
 	}
-	router := Router{list}
+	router := Router{service: list}
 	group := e.Group("/list")
+
+	// swagger:route GET /list List GetList
+	//
+	// Get Levels on List
+	//
+	// Retrieves all levels on the list ordered by rank
+	//
+	// Responses:
+	//     default: GenericErrorResponse
+	//     200: GetListResponse
 	group.GET("", router.get)
 }

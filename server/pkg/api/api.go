@@ -1,3 +1,30 @@
+// GDOL
+//
+// API for GDOL
+//
+//	Schemes: http, https
+//	Host: localhost
+//	BasePath: /
+//	Version: 2.0.0
+//	License: MIT http://opensource.org/licenses/MIT
+//	Contact: Emanuel Pilz<emonadeo@gmail.com> http://github.com/emonadeo
+//
+//	Consumes:
+//	- application/json
+//
+//	Produces:
+//	- application/json
+//
+//	Security:
+//	- bearer:
+//
+//	SecurityDefinitions:
+//	bearer:
+//	    type: apiKey
+//	    name: Authorization
+//	    in: header
+//
+// swagger:meta
 package api
 
 import (

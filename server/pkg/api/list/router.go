@@ -10,10 +10,10 @@ type Router struct {
 	service Service
 }
 
-func (r Router) get(c echo.Context) error {
-	list, err := r.service.Get()
+func (r Router) get(ctx echo.Context) error {
+	list, err := r.service.Get(ctx)
 	if err != nil {
 		return err
 	}
-	return c.JSON(http.StatusOK, list)
+	return ctx.JSON(http.StatusOK, list)
 }
