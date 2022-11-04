@@ -21,7 +21,7 @@ func (store Store) Archive(rank int16, archive model.ListArchive) error {
 		},
 		Reason: sql.NullString{
 			String: archive.Reason,
-			Valid:  archive.Reason == "",
+			Valid:  archive.Reason != "",
 		},
 	})
 	if err != nil {

@@ -8,9 +8,9 @@
 	import type { Changelog, Level } from 'src/generated/openapi';
 
 	const dict = {
-		ADD: 'Added',
-		MOVE: 'Moved',
-		DELETE: 'Archived',
+		add: 'Added',
+		move: 'Moved',
+		delete: 'Archived',
 	};
 
 	let changelog: Changelog[] = [];
@@ -37,11 +37,11 @@
 
 	function getIcon(entry: Changelog): string {
 		switch (entry.action) {
-			case 'ADD':
+			case 'add':
 				return iconAdd;
-			case 'DELETE':
+			case 'delete':
 				return iconDelete;
-			case 'MOVE':
+			case 'move':
 				return entry.to > entry.from ? iconLower : iconRaise;
 		}
 	}
@@ -84,8 +84,8 @@
 	<ol role="list" class="log">
 		{#each changelog as entry}
 			{@const before = calcBefore(entry)}
-			{@const isAdd = entry.action === 'ADD'}
-			{@const isDelete = entry.action === 'DELETE'}
+			{@const isAdd = entry.action === 'add'}
+			{@const isDelete = entry.action === 'delete'}
 			<li class="entry">
 				<div class="date">
 					<p class="mono">
