@@ -4,11 +4,7 @@
 		{
 			"label": "Dev",
 			"detail": "launch docker, client and server",
-			"dependsOn": [
-				"Docker Compose: Up",
-				"Client: Dev",
-				"Server: Dev"
-			],
+			"dependsOn": ["Docker Compose", "Client: Dev", "Server: Dev"],
 			"dependsOrder": "parallel",
 			"problemMatcher": []
 		},
@@ -23,9 +19,7 @@
 			"type": "npm",
 			"script": "dev",
 			"path": "client",
-			"problemMatcher": [
-				"$vite"
-			],
+			"problemMatcher": [],
 			"label": "Client: Dev",
 			"detail": "vite"
 		},
@@ -35,9 +29,7 @@
 			"options": {
 				"cwd": "${workspaceFolder}/server"
 			},
-			"problemMatcher": [
-				"$go"
-			],
+			"problemMatcher": ["$go"],
 			"label": "Server: Dev",
 			"detail": "gin run cmd/api/main.go"
 		},
@@ -49,7 +41,17 @@
 			"problemMatcher": [],
 			"options": {
 				"cwd": "${workspaceFolder}/server"
-			},
+			}
+		},
+		{
+			"type": "shell",
+			"command": "sqlc generate",
+			"label": "Generate: ORM",
+			"detail": "sqlc generate",
+			"problemMatcher": [],
+			"options": {
+				"cwd": "${workspaceFolder}/server"
+			}
 		}
 	]
 }

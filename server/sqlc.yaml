@@ -3,6 +3,7 @@ sql:
     - schema: 'schema.sql'
       queries:
       - 'cmd/seed/query.sql'
+      - 'pkg/api/list/store'
       engine: 'postgresql'
       gen:
           go:

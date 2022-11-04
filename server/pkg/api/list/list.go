@@ -3,38 +3,22 @@ package list
 import (
 	"context"
 
+	"github.com/emonadeo/gdol/pkg/api/list/store"
 	"github.com/emonadeo/gdol/pkg/generated/sqlc"
-	"github.com/emonadeo/gdol/pkg/model"
 	"github.com/labstack/echo/v4"
 )
 
 type List struct {
 	ctx   context.Context
-	db    sqlc.DBTX
-	store Store
+	store store.Store
 }
 
-type Service interface {
-	Get(ctx echo.Context) (model.List, error)
-}
-
-// swagger:response GetListResponse
-type GetListResponse []struct {
-	Id    int    `json:"id"`
-	GdId  int    `json:"gd_id"`
-	Name  string `json:"name"`
-	User  string `json:"user"`
-	Video string `json:"video"`
-}
-
-func Bind(e *echo.Echo, ctx context.Context, db sqlc.DBTX) {
+func Bind(e *echo.Echo, ctx context.Context, db sqlc.DBTX, queries *sqlc.Queries) {
 	list := List{
 		ctx:   ctx,
-		db:    db,
-		store: Store{Ctx: ctx, DB: db},
-		// TODO DRY
+		store: store.New(ctx, db, queries),
 	}
-	router := Router{service: list}
+	router := Router{list}
 	group := e.Group("/list")
 
 	// swagger:route GET /list List GetList
@@ -46,5 +30,16 @@ func Bind(e *echo.Echo, ctx context.Context, db sqlc.DBTX) {
 	// Responses:
 	//     default: GenericErrorResponse
 	//     200: GetListResponse
-	group.GET("", router.get)
+	group.GET("", router.Get)
+
+	// swagger:route GET /list/{rank} List GetList
+	//
+	// Get Level by Rank
+	//
+	// Retrieves the level at the given rank on the list
+	//
+	// Responses:
+	//     default: GenericErrorResponse
+	//     200: GetLevelResponse
+	group.GET("/:rank", router.GetLevel)
 }

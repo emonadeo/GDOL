@@ -32,6 +32,7 @@ import (
 	"database/sql"
 
 	"github.com/emonadeo/gdol/pkg/api/list"
+	"github.com/emonadeo/gdol/pkg/generated/sqlc"
 	"github.com/emonadeo/gdol/pkg/server"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
@@ -45,6 +46,8 @@ func Start() error {
 		return err
 	}
 
+	queries := sqlc.New(db)
+
 	e := server.New()
 
 	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
@@ -52,7 +55,7 @@ func Start() error {
 		AllowHeaders: []string{echo.HeaderOrigin, echo.HeaderContentType, echo.HeaderAccept},
 	}))
 
-	list.Bind(e, ctx, db)
+	list.Bind(e, ctx, db, queries)
 
 	// TODO Outsource config
 	server.Start(e, &server.Config{
