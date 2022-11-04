@@ -2,6 +2,7 @@ package list
 
 import (
 	"context"
+	"database/sql"
 
 	"github.com/emonadeo/gdol/pkg/api/list/store"
 	"github.com/emonadeo/gdol/pkg/generated/sqlc"
@@ -13,7 +14,7 @@ type List struct {
 	store store.Store
 }
 
-func Bind(e *echo.Echo, ctx context.Context, db sqlc.DBTX, queries *sqlc.Queries) {
+func Bind(e *echo.Echo, ctx context.Context, db *sql.DB, queries *sqlc.Queries) {
 	list := List{
 		ctx:   ctx,
 		store: store.New(ctx, db, queries),
@@ -21,7 +22,7 @@ func Bind(e *echo.Echo, ctx context.Context, db sqlc.DBTX, queries *sqlc.Queries
 	router := Router{list}
 	group := e.Group("/list")
 
-	// swagger:route GET /list List GetList
+	// swagger:route GET /list List ListGet
 	//
 	// Get Levels on List
 	//
@@ -32,7 +33,7 @@ func Bind(e *echo.Echo, ctx context.Context, db sqlc.DBTX, queries *sqlc.Queries
 	//     200: GetListResponse
 	group.GET("", router.Get)
 
-	// swagger:route GET /list/{rank} List GetList
+	// swagger:route GET /list/{rank} List ListGetLevel
 	//
 	// Get Level by Rank
 	//
@@ -42,4 +43,26 @@ func Bind(e *echo.Echo, ctx context.Context, db sqlc.DBTX, queries *sqlc.Queries
 	//     default: GenericErrorResponse
 	//     200: GetLevelResponse
 	group.GET("/:rank", router.GetLevel)
+
+	// swagger:route POST /list List ListUpdate
+	//
+	// Get Level by Rank
+	//
+	// Retrieves the level at the given rank on the list
+	//
+	// Responses:
+	//     default: GenericErrorResponse
+	//     200:
+	group.POST("", router.Update)
+
+	// swagger:route DELETE /list/{rank} List ListArchive
+	//
+	// Get Level by Rank
+	//
+	// Retrieves the level at the given rank on the list
+	//
+	// Responses:
+	//     default: GenericErrorResponse
+	//     200:
+	group.DELETE("/:rank", router.Archive)
 }

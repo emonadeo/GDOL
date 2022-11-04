@@ -4,6 +4,7 @@ import (
 	"net/http"
 	"strconv"
 
+	"github.com/emonadeo/gdol/pkg/model"
 	"github.com/labstack/echo/v4"
 )
 
@@ -32,4 +33,23 @@ func (r Router) GetLevel(ctx echo.Context) error {
 	}
 
 	return ctx.JSON(http.StatusOK, level)
+}
+
+func (r Router) Update(ctx echo.Context) error {
+	// TODO: Implement
+	return nil
+}
+
+func (r Router) Archive(ctx echo.Context) error {
+	rank, err := strconv.Atoi(ctx.Param("rank"))
+	if err != nil {
+		return err
+	}
+
+	var archive model.ListArchive
+	if err := ctx.Bind(&archive); err != nil {
+		return err
+	}
+
+	return r.list.Archive(int16(rank), archive)
 }

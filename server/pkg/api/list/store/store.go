@@ -2,16 +2,17 @@ package store
 
 import (
 	"context"
+	"database/sql"
 
 	"github.com/emonadeo/gdol/pkg/generated/sqlc"
 )
 
 type Store struct {
 	Ctx     context.Context
-	DB      sqlc.DBTX
+	DB      *sql.DB
 	Queries *sqlc.Queries
 }
 
-func New(ctx context.Context, db sqlc.DBTX, queries *sqlc.Queries) Store {
+func New(ctx context.Context, db *sql.DB, queries *sqlc.Queries) Store {
 	return Store{ctx, db, queries}
 }

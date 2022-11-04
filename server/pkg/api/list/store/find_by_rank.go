@@ -21,12 +21,9 @@ const sqlFindByRank = `
 		array_agg(creators.nationality),
 		levels.video
 	FROM (
-		SELECT * FROM (
-			SELECT * FROM list_log
-			ORDER BY list_log.timestamp DESC
-			LIMIT 1
-		) AS latest_list_log, UNNEST(latest_list_log.list_level_ids) WITH ORDINALITY AS "list_level_id"
-		WHERE ordinality = $1
+		SELECT list_level_ids[$1] AS list_level_id FROM list_log
+		ORDER BY list_log.timestamp DESC
+		LIMIT 1
 	) AS _
 	JOIN levels ON levels.id = list_level_id
 	JOIN users ON users.id = levels.user_id
