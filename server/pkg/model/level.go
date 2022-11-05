@@ -1,8 +1,8 @@
 package model
 
 type Level struct {
-	Id       int32  `json:"id"`
-	GdId     int32  `json:"gd_id,omitempty"`
+	Id       int64  `json:"id"`
+	GdId     int64  `json:"gd_id,omitempty"`
 	Name     string `json:"name"`
 	Rank     int32  `json:"rank,omitempty"`
 	User     User   `json:"user"`

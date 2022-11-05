@@ -37,8 +37,8 @@ const sqlFindByRank = `
 `
 
 type Level struct {
-	Id       int32
-	GdId     int32
+	Id       int64
+	GdId     int64
 	Name     string
 	User     sqlc.User
 	Verifier sqlc.User
@@ -47,6 +47,8 @@ type Level struct {
 }
 
 func (store Store) FindByRank(rank int) (model.Level, error) {
+	// Cannot use sqlc because of sql.NullString being unsupported in arrays
+	// See: https://github.com/kyleconroy/sqlc/issues/185
 	row := store.DB.QueryRowContext(store.Ctx, sqlFindByRank, rank)
 	var level Level
 	creatorIds := []string{}
@@ -78,7 +80,7 @@ func (store Store) FindByRank(rank int) (model.Level, error) {
 			return model.Level{}, err
 		}
 		creators = append(creators, model.User{
-			Id:          int32(id),
+			Id:          int64(id),
 			Name:        creatorNames[i],
 			Nationality: creatorNationalities[i].String,
 		})
@@ -89,12 +91,12 @@ func (store Store) FindByRank(rank int) (model.Level, error) {
 		GdId: level.GdId,
 		Name: level.Name,
 		User: model.User{
-			Id:          int32(level.User.ID),
+			Id:          level.User.ID,
 			Name:        level.User.Name,
 			Nationality: level.User.Nationality.String,
 		},
 		Verifier: model.User{
-			Id:          int32(level.Verifier.ID),
+			Id:          level.Verifier.ID,
 			Name:        level.Verifier.Name,
 			Nationality: level.Verifier.Nationality.String,
 		},
