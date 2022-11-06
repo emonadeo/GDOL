@@ -10,3 +10,10 @@ type Level struct {
 	Creators []User `json:"creators"`
 	Video    string `json:"video"`
 }
+
+type LevelRecord struct {
+	Timestamp  string `json:"id"`
+	Percentage int16  `json:"percentage"`
+	Video      string `json:"video"`
+	User       User   `json:"user"`
+}

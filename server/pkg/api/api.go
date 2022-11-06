@@ -32,6 +32,7 @@ import (
 	"database/sql"
 
 	"github.com/emonadeo/gdol/pkg/api/changelog"
+	"github.com/emonadeo/gdol/pkg/api/level"
 	"github.com/emonadeo/gdol/pkg/api/list"
 	"github.com/emonadeo/gdol/pkg/generated/sqlc"
 	"github.com/emonadeo/gdol/pkg/server"
@@ -58,6 +59,7 @@ func Start() error {
 
 	list.Bind(e, ctx, db, queries)
 	changelog.Bind(e, ctx, db, queries)
+	level.Bind(e, ctx, db, queries)
 
 	// TODO Outsource config
 	server.Start(e, &server.Config{

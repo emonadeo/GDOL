@@ -52,6 +52,16 @@
 			"options": {
 				"cwd": "${workspaceFolder}/server"
 			}
+		},
+		{
+			"type": "shell",
+			"command": "go run cmd/seed/seed.go",
+			"label": "Server: Seed",
+			"detail": "go run cmd/seed/seed.go",
+			"problemMatcher": [],
+			"options": {
+				"cwd": "${workspaceFolder}/server"
+			}
 		}
 	]
 }

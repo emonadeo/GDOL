@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"database/sql"
 	dbsql "database/sql"
 	"encoding/json"
 	"os"
@@ -20,26 +21,23 @@ type User struct {
 }
 
 type Level struct {
-	Id        int    `json:"id"`
-	Level_id  int    `json:"level_id"`
-	Name      string `json:"name"`
-	Position  int    `json:"position"`
-	Publisher User   `json:"publisher"`
-	Creators  []User `json:"creators"`
-	Verifier  User   `json:"verifier"`
-	Video     string `json:"video"`
-	Records   []struct {
-		Id          int `json:"id"`
-		Nationality struct {
-			Country_code string `json:"country_code"`
-			Nation       string `json:"nation"`
-			Subdivision  string `json:"subdivision"`
-		} `json:"nationality"`
-		Player   User   `json:"player"`
-		Progress int    `json:"progress"`
-		Status   string `json:"status"`
-		Video    string `json:"video"`
-	} `json:"records"`
+	Id        int      `json:"id"`
+	Level_id  int      `json:"level_id"`
+	Name      string   `json:"name"`
+	Position  int      `json:"position"`
+	Publisher User     `json:"publisher"`
+	Creators  []User   `json:"creators"`
+	Verifier  User     `json:"verifier"`
+	Video     string   `json:"video"`
+	Records   []Record `json:"records"`
+}
+
+type Record struct {
+	Id       int    `json:"id"`
+	Player   User   `json:"player"`
+	Progress int    `json:"progress"`
+	Status   string `json:"status"`
+	Video    string `json:"video"`
 }
 
 func main() {
@@ -139,6 +137,9 @@ func main() {
 		if err != nil {
 			panic(err)
 		}
+
+		// Seed Records
+		seedRecords(queries, ctx, levelId, level.Records)
 	}
 
 	tx.Commit()
@@ -174,4 +175,42 @@ func seedUsers(qry *sqlc.Queries, ctx context.Context, users []User) []int64 {
 		ids = append(ids, seedUser(qry, ctx, user))
 	}
 	return ids
+}
+
+func seedRecord(qry *sqlc.Queries, ctx context.Context, levelId int64, record Record) {
+	recordExists, err := qry.HasRecord(ctx, sqlc.HasRecordParams{
+		UserID:  int64(record.Player.Id),
+		LevelID: levelId,
+	})
+	if err != nil {
+		panic(err)
+	}
+
+	if recordExists {
+		return
+	}
+
+	playerId := seedUser(qry, ctx, record.Player)
+
+	err = qry.InsertRecords(ctx, sqlc.InsertRecordsParams{
+		Percentage: sql.NullInt16{
+			Int16: int16(record.Progress),
+			Valid: true,
+		},
+		Video: sql.NullString{
+			String: record.Video,
+			Valid:  record.Video != "",
+		},
+		UserID:  playerId,
+		LevelID: levelId,
+	})
+	if err != nil {
+		panic(err)
+	}
+}
+
+func seedRecords(qry *sqlc.Queries, ctx context.Context, levelId int64, records []Record) {
+	for _, record := range records {
+		seedRecord(qry, ctx, levelId, record)
+	}
 }

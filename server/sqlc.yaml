@@ -4,6 +4,8 @@ sql:
       queries:
       - 'cmd/seed/query.sql'
       - 'pkg/api/list/store'
+      - 'pkg/api/changelog/store'
+      - 'pkg/api/level/store'
       engine: 'postgresql'
       gen:
           go:
