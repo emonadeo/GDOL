@@ -2,7 +2,6 @@ package main
 
 import (
 	"context"
-	"database/sql"
 	dbsql "database/sql"
 	"encoding/json"
 	"os"
@@ -21,15 +20,16 @@ type User struct {
 }
 
 type Level struct {
-	Id        int      `json:"id"`
-	Level_id  int      `json:"level_id"`
-	Name      string   `json:"name"`
-	Position  int      `json:"position"`
-	Publisher User     `json:"publisher"`
-	Creators  []User   `json:"creators"`
-	Verifier  User     `json:"verifier"`
-	Video     string   `json:"video"`
-	Records   []Record `json:"records"`
+	Id          int      `json:"id"`
+	Level_id    int      `json:"level_id"`
+	Name        string   `json:"name"`
+	Position    int      `json:"position"`
+	Requirement int      `json:"requirement"`
+	Publisher   User     `json:"publisher"`
+	Creators    []User   `json:"creators"`
+	Verifier    User     `json:"verifier"`
+	Video       string   `json:"video"`
+	Records     []Record `json:"records"`
 }
 
 type Record struct {
@@ -97,7 +97,7 @@ func main() {
 				Valid:  level.Video != "",
 			},
 			Requirement: dbsql.NullInt16{
-				Int16: 100,
+				Int16: int16(level.Requirement),
 				Valid: true,
 			},
 		})
@@ -193,11 +193,11 @@ func seedRecord(qry *sqlc.Queries, ctx context.Context, levelId int64, record Re
 	playerId := seedUser(qry, ctx, record.Player)
 
 	err = qry.InsertRecords(ctx, sqlc.InsertRecordsParams{
-		Percentage: sql.NullInt16{
+		Percentage: dbsql.NullInt16{
 			Int16: int16(record.Progress),
 			Valid: true,
 		},
-		Video: sql.NullString{
+		Video: dbsql.NullString{
 			String: record.Video,
 			Valid:  record.Video != "",
 		},
