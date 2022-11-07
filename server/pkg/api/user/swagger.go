@@ -7,3 +7,9 @@ type GetUsersResponse struct {
 	// in: body
 	Body []model.User
 }
+
+// swagger:response
+type GetUserByNameResponse struct {
+	// in: body
+	Body model.UserFull
+}

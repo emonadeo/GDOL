@@ -17,3 +17,8 @@ type LevelRecord struct {
 	Video      string `json:"video"`
 	User       User   `json:"user"`
 }
+
+type LevelSlim struct {
+	Id   int64  `json:"id"`
+	Name string `json:"name"`
+}

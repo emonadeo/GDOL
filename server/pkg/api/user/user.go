@@ -32,4 +32,15 @@ func Bind(e *echo.Echo, ctx context.Context, db *sql.DB, queries *sqlc.Queries) 
 	//     default: GenericErrorResponse
 	//     200: GetUsersResponse
 	group.GET("", router.GetUsers)
+
+	// swagger:route GET /users/{name} User UsersGet
+	//
+	// Get User By Name
+	//
+	// Get a user by their name
+	//
+	// Responses:
+	//     default: GenericErrorResponse
+	//     200: GetUserByNameRespone
+	group.GET("/:name", router.GetUserByName)
 }

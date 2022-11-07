@@ -1,4 +1,4 @@
--- name: GetUsers :many
+-- name: UserFind :many
 SELECT users.id,
     users.name,
     users.nationality,

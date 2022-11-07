@@ -2,8 +2,8 @@ package store
 
 import "github.com/emonadeo/gdol/pkg/model"
 
-func (store Store) FindUsers() ([]model.UserWithScore, error) {
-	users, err := store.Queries.GetUsers(store.Ctx)
+func (store Store) Find() ([]model.UserWithScore, error) {
+	users, err := store.Queries.UserFind(store.Ctx)
 	if err != nil {
 		return nil, err
 	}

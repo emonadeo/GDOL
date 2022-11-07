@@ -88,4 +88,4 @@ FROM users
 	JOIN records ON users.id = records.user_id
 	JOIN levels ON levels.id = records.level_id
 GROUP BY users.id
-ORDER BY score DESC
+ORDER BY score DESC;

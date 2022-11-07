@@ -5,5 +5,9 @@ import (
 )
 
 func (user User) GetUsers() ([]model.UserWithScore, error) {
-	return user.store.FindUsers()
+	return user.store.Find()
+}
+
+func (user User) GetUserByName(name string) (model.UserFull, error) {
+	return user.store.FindByName(name)
 }
