@@ -35,8 +35,11 @@
 		<List />
 	</Route>
 </Route>
-<Route path="/leaderboard">
-	<Leaderboard />
+<Route path="/leaderboard" let:meta>
+	<Leaderboard
+		paginationPage={Number(meta.query.page || 1)}
+		paginationPerPage={Number(meta.query.perPage || 25)}
+	/>
 </Route>
 <Route path="/users/:id" let:meta>
 	<User id={Number(meta.params.id)} />

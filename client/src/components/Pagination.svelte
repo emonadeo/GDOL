@@ -1,32 +1,32 @@
 <script lang="ts">
 	const perPageOptions = [10, 25, 50, 100];
 
-	export let paginationPage = 0;
-	export let paginationPerPage = perPageOptions[1];
+	export let paginationPage: number = 1;
+	export let paginationPerPage: number = perPageOptions[1];
 	export let items: number;
 	export let paginationStart: number = 0;
-	$: paginationStart = paginationPage * paginationPerPage;
+	$: paginationStart = (paginationPage - 1) * paginationPerPage;
 	export let paginationEnd: number = 25;
-	$: paginationEnd = (paginationPage + 1) * paginationPerPage;
+	$: paginationEnd = paginationPage * paginationPerPage;
 
 	let pageAmount: number;
-	$: pageAmount = Math.floor(items / paginationPerPage);
+	$: pageAmount = Math.ceil(items / paginationPerPage);
 	let pager: Array<number | null>;
 	$: pager = buildPager(paginationPage, paginationPerPage, items);
 
 	// TODO: Code kinda ugly ngl
 	function buildPager(page: number, perPage: number, items: number): Array<number | null> {
-		const last = Math.floor(items / perPage);
+		const last = Math.ceil(items / perPage);
 		if (pageAmount <= 7) {
 			return [...Array(pageAmount).keys()];
 		}
 		if (page <= 3) {
-			return [0, 1, 2, 3, 4, null, last];
+			return [1, 2, 3, 4, 5, null, last];
 		}
 		if (page >= last - 4) {
-			return [0, null, last - 4, last - 3, last - 2, last - 1, last];
+			return [1, null, last - 4, last - 3, last - 2, last - 1, last];
 		}
-		return [0, null, page - 1, page, page + 1, null, last];
+		return [1, null, page - 1, page, page + 1, null, last];
 	}
 </script>
 
@@ -35,12 +35,10 @@
 		<li>
 			<a
 				class="icon"
-				class:disabled={paginationPage <= 0}
-				href=""
-				on:click={() => {
-					if (paginationPage <= 0) return;
-					paginationPage--;
-				}}
+				class:disabled={paginationPage <= 1}
+				href={paginationPage <= 1
+					? ''
+					: `?page=${paginationPage - 1}&perPage=${paginationPerPage}`}
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -61,13 +59,10 @@
 					<span class="type-label-lg">...</span>
 				{:else}
 					<a
-						href=""
+						href={`?page=${p}&perPage=${paginationPerPage}`}
 						class:selected={paginationPage === p}
-						on:click={() => {
-							paginationPage = p;
-						}}
 					>
-						<span class="type-label-lg">{p + 1}</span>
+						<span class="type-label-lg">{p}</span>
 					</a>
 				{/if}
 			</li>
@@ -76,11 +71,9 @@
 			<a
 				class="icon"
 				class:disabled={paginationPage >= pageAmount - 1}
-				href=""
-				on:click={() => {
-					if (paginationPage >= pageAmount - 1) return;
-					paginationPage++;
-				}}
+				href={paginationPage >= pageAmount - 1
+					? ''
+					: `?page=${paginationPage + 1}&perPage=${paginationPerPage}`}
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -98,13 +91,9 @@
 	<ol role="list">
 		{#each perPageOptions as option}
 			<li>
-				<a
-					href=""
-					class:selected={paginationPerPage === option}
-					on:click={() => {
-						paginationPerPage = option;
-					}}><span class="type-label-lg">{option}</span></a
-				>
+				<a href={`?page=1&perPage=${option}`} class:selected={paginationPerPage === option}>
+					<span class="type-label-lg">{option}</span>
+				</a>
 			</li>
 		{/each}
 	</ol>

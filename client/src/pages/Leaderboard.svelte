@@ -14,8 +14,8 @@
 	let search: string = '';
 
 	// Pagination
-	let paginationPerPage: number;
-	let paginationPage: number;
+	export let paginationPerPage: number;
+	export let paginationPage: number;
 	let paginationStart: number;
 	let paginationEnd: number;
 
