@@ -1,4 +1,2 @@
-client/
+client/src/generated
 server/
-server/generated/
-server/prisma/pointercrate.json

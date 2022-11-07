@@ -1,6 +1,7 @@
 <script lang="ts">
 	import fzf from 'fuzzysort';
 	import { api } from 'src/api';
+	import Pagination from 'src/components/Pagination.svelte';
 
 	import type { UserWithScore } from 'src/generated/openapi';
 	import { ordinal } from 'src/util';
@@ -12,10 +13,14 @@
 	let users: UserAndRank[] = [];
 	let search: string = '';
 
+	// Pagination
+	let paginationPerPage: number;
+	let paginationPage: number;
+	let paginationStart: number;
+	let paginationEnd: number;
+
 	// TODO: clean up
-	$: fUsers = search
-		? fzf.go(search, users, { key: 'fzfp', limit: 25 }).map((res) => res.obj)
-		: users;
+	$: fUsers = search ? fzf.go(search, users, { key: 'fzfp' }).map((res) => res.obj) : users;
 
 	onMount(async () => {
 		const res = await api.users.getUsers();
@@ -28,9 +33,6 @@
 </script>
 
 <div class="page-leaderboard">
-	<aside class="medal" style:display={fUsers.length < 8 ? 'none' : null}>
-		<img src="/src/assets/medal.svg" alt="" />
-	</aside>
 	<aside class="filter">
 		<input
 			class="textfield type-label-lg"
@@ -38,6 +40,18 @@
 			placeholder="Search"
 			bind:value={search}
 		/>
+		<div class="pagination">
+			<Pagination
+				items={fUsers.length}
+				bind:paginationStart
+				bind:paginationEnd
+				bind:paginationPerPage
+				bind:paginationPage
+			/>
+		</div>
+	</aside>
+	<aside class="medal" style:display={fUsers.length < 8 ? 'none' : null}>
+		<img src="/src/assets/medal.svg" alt="" />
 	</aside>
 	<main>
 		<table>
@@ -53,7 +67,7 @@
 				</th>
 			</tr>
 			<!-- TODO: Pagination -->
-			{#each fUsers as user (user.id)}
+			{#each fUsers.slice(paginationStart, paginationEnd) as user (user.id)}
 				<tr>
 					<td
 						class="rank"
@@ -77,6 +91,17 @@
 			{/each}
 		</table>
 	</main>
+	<aside class="filter">
+		<div class="pagination">
+			<Pagination
+				items={fUsers.length}
+				bind:paginationStart
+				bind:paginationEnd
+				bind:paginationPerPage
+				bind:paginationPage
+			/>
+		</div>
+	</aside>
 </div>
 
 <style lang="scss">
@@ -95,6 +120,10 @@
 			padding-right: calc(6rem + 1px);
 			column-gap: 1.5rem;
 
+			&:last-child {
+				padding-bottom: 6rem;
+			}
+
 			aside.medal {
 				position: sticky;
 				top: 8rem;
@@ -110,15 +139,18 @@
 
 			aside.filter {
 				grid-column: 1 / 4;
-				grid-row: 1;
-				height: 4rem;
 				display: grid;
 				grid-template-columns: 1fr 1fr;
-				column-gap: 1.5rem;
+				gap: 1.5rem;
 				align-items: center;
+				padding-top: 1.5rem;
 				padding-left: calc(8rem + 4px);
+				padding-right: 9.5rem;
 				background-color: color.$background;
-				// border-bottom: 1px solid rgba(color.$on-background, 0.2);
+
+				.pagination {
+					grid-column: 1 / 3;
+				}
 			}
 
 			main {
@@ -126,8 +158,6 @@
 				grid-column: 2;
 
 				table {
-					padding-bottom: 6rem;
-
 					tr {
 						&:hover td {
 							border-top-color: color.$on-background;
@@ -145,8 +175,9 @@
 						th,
 						td {
 							text-align: start;
-							vertical-align: bottom;
-							padding: 0.75rem 1rem;
+							vertical-align: middle;
+							padding-inline: 0.75rem;
+							height: 42px;
 							white-space: nowrap;
 						}
 
