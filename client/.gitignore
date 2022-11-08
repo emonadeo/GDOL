@@ -11,4 +11,11 @@ dist
 dist-ssr
 *.local
 
+.svelte-kit/
+build/
 generated/
+package/
+
+.DS_Store
+.env.local
+node_modules

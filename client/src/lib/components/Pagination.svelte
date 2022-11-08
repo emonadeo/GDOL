@@ -18,7 +18,7 @@
 	function buildPager(page: number, perPage: number, items: number): Array<number | null> {
 		const last = Math.ceil(items / perPage);
 		if (pageAmount <= 7) {
-			return [...Array(pageAmount).keys()];
+			return [...Array(pageAmount).keys()].map((k) => k + 1);
 		}
 		if (page <= 3) {
 			return [1, 2, 3, 4, 5, null, last];
@@ -36,9 +36,7 @@
 			<a
 				class="icon"
 				class:disabled={paginationPage <= 1}
-				href={paginationPage <= 1
-					? ''
-					: `?page=${paginationPage - 1}&perPage=${paginationPerPage}`}
+				href={paginationPage <= 1 ? '' : `?page=${paginationPage - 1}&perPage=${paginationPerPage}`}
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -58,10 +56,7 @@
 				{#if skip}
 					<span class="type-label-lg">...</span>
 				{:else}
-					<a
-						href={`?page=${p}&perPage=${paginationPerPage}`}
-						class:selected={paginationPage === p}
-					>
+					<a href={`?page=${p}&perPage=${paginationPerPage}`} class:selected={paginationPage === p}>
 						<span class="type-label-lg">{p}</span>
 					</a>
 				{/if}
@@ -100,7 +95,7 @@
 </nav>
 
 <style lang="scss">
-	@use 'src/styles/color';
+	@use '$lib/styles/color';
 
 	.pagination {
 		display: flex;

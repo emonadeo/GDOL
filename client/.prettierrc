@@ -1,11 +1,12 @@
 {
-	"plugins": ["prettier-plugin-sql", "prettier-plugin-svelte"],
 	"useTabs": true,
 	"singleQuote": true,
 	"trailingComma": "es5",
 	"printWidth": 100,
-	"tabWidth": 4,
+	"plugins": ["prettier-plugin-svelte"],
+	"pluginSearchDirs": ["."],
 	"overrides": [
+		{ "files": "*.svelte", "options": { "parser": "svelte" } },
 		{
 			"files": ["*.yml"],
 			"options": {

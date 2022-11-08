@@ -1,4 +1,4 @@
-@use 'src/styles/lib/capsize';
+@use '$lib/styles/lib/capsize';
 
 @mixin clash-display($cap-height, $line-gap) {
 	font-family: 'Clash Display', sans-serif;
