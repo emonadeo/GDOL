@@ -7,20 +7,21 @@
 	const listLength = 150; // TODO: Configurable
 	const legendCount = 5;
 
-	export let id: number;
+	export let name: string;
 
 	let user: UserFull;
 	let recordsAndVerifications: Record[];
 
 	onMount(async () => {
-		const res = await api.users.getUser(id);
+		const res = await api.users.getUser(name);
 		user = res.data;
 		// TODO: Sort records by level rank on server?
-		user.records.sort((a, b) => a.level.rank - b.level.rank);
+		// TODO: Don't use ids to sort, use ranks instead
+		user.records.sort((a, b) => a.level.id - b.level.id);
 		recordsAndVerifications = [
 			...user.records,
-			...user.levelsVerified.map((lvl) => ({
-				user: lvl.verifier,
+			...user.levels_verified.map((lvl) => ({
+				user: user,
 				level: lvl,
 				percentage: 100,
 				timestamp: null,
@@ -59,8 +60,9 @@
 		<div class="chart">
 			<div class="bar">
 				{#each recordsAndVerifications as record}
+					<!-- Don't user ids, use rank -->
 					<div
-						style:left={`${(record.level.rank - 1) * (100 / listLength)}%`}
+						style:left={`${(record.level.id - 1) * (100 / listLength)}%`}
 						style:width={`${100 / listLength}%`}
 						class:incomplete={record.percentage !== 100}
 						title={`${record.level.name}: ${record.percentage}%`}

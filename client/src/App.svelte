@@ -41,8 +41,8 @@
 		paginationPerPage={Number(meta.query.perPage || 25)}
 	/>
 </Route>
-<Route path="/users/:id" let:meta>
-	<User id={Number(meta.params.id)} />
+<Route path="/users/:name" let:meta>
+	<User name={meta.params.name} />
 </Route>
 <Route path="/changelog">
 	<Changelog />
