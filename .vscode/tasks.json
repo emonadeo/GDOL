@@ -25,13 +25,13 @@
 		},
 		{
 			"type": "shell",
-			"command": "gin -i -p 3001 -d cmd/api cmd/api/main.go",
+			"command": "v watch run .",
 			"options": {
 				"cwd": "${workspaceFolder}/server"
 			},
-			"problemMatcher": ["$go"],
+			"problemMatcher": ["$vsls"],
 			"label": "Server: Dev",
-			"detail": "gin run cmd/api/main.go"
+			"detail": "v watch run ."
 		},
 		{
 			"type": "shell",
