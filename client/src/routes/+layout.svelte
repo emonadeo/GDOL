@@ -6,6 +6,8 @@
 
 	import logo from '$lib/assets/logo.svg';
 
+	import { page } from '$app/stores';
+
 	export const prerender = true;
 	export const ssr = false;
 </script>
@@ -13,13 +15,16 @@
 <nav>
 	<img class="logo" src={logo} alt="Logo" />
 	<ul class="links" role="list">
-		<li class="link">
+		<li class="link" aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
 			<a class="type-label-lg" href="/">Home</a>
 		</li>
-		<li class="link">
+		<li class="link" aria-current={$page.url.pathname.startsWith('/list') ? 'page' : undefined}>
 			<a class="type-label-lg" href="/list">List</a>
 		</li>
-		<li class="link">
+		<li
+			class="link"
+			aria-current={$page.url.pathname.startsWith('/leaderboard') ? 'page' : undefined}
+		>
 			<a class="type-label-lg" href="/leaderboard">Leaderboard</a>
 		</li>
 	</ul>
@@ -62,10 +67,10 @@
 						align-items: center;
 						color: inherit;
 						border-bottom: 1px solid transparent;
+					}
 
-						.active {
-							border-bottom-color: color.$on-surface;
-						}
+					&[aria-current='page'] a {
+						border-bottom-color: color.$on-surface;
 					}
 				}
 			}

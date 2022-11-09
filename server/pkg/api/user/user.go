@@ -41,6 +41,6 @@ func Bind(e *echo.Echo, ctx context.Context, db *sql.DB, queries *sqlc.Queries) 
 	//
 	// Responses:
 	//     default: GenericErrorResponse
-	//     200: GetUserByNameRespone
+	//     200: GetUserByNameResponse
 	group.GET("/:name", router.GetUserByName)
 }
