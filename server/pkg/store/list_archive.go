@@ -3,18 +3,18 @@ package store
 import (
 	"database/sql"
 
-	"github.com/emonadeo/gdol/pkg/generated/sqlc"
+	"github.com/emonadeo/gdol/generated/sqlc"
 	"github.com/emonadeo/gdol/pkg/model"
 )
 
-func (store Store) Archive(rank int16, archive model.ListArchive) error {
-	tx, err := store.DB.Begin()
+func (store Store) ListArchive(rank int16, archive model.ListArchive) error {
+	tx, err := store.db.Begin()
 	if err != nil {
 		return err
 	}
 	defer tx.Rollback()
-	qtx := store.Queries.WithTx(tx)
-	levelId, err := qtx.ListDelete(store.Ctx, sqlc.ListDeleteParams{
+	qtx := store.orm.WithTx(tx)
+	levelId, err := qtx.ListDelete(store.ctx, sqlc.ListDeleteParams{
 		From: sql.NullInt16{
 			Int16: int16(rank),
 			Valid: true,
@@ -27,7 +27,7 @@ func (store Store) Archive(rank int16, archive model.ListArchive) error {
 	if err != nil {
 		return err
 	}
-	err = qtx.ListArchive(store.Ctx, levelId)
+	err = qtx.ListArchive(store.ctx, levelId)
 	if err != nil {
 		return err
 	}

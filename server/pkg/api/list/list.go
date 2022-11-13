@@ -1,26 +1,18 @@
 package list
 
 import (
-	"context"
-	"database/sql"
-
-	"github.com/emonadeo/gdol/pkg/api/list/store"
-	"github.com/emonadeo/gdol/pkg/generated/sqlc"
+	"github.com/emonadeo/gdol/pkg/api/list/routes"
+	"github.com/emonadeo/gdol/pkg/store"
 	"github.com/labstack/echo/v4"
 )
 
-type List struct {
-	ctx   context.Context
-	store store.Store
-}
-
-func Bind(e *echo.Echo, ctx context.Context, db *sql.DB, queries *sqlc.Queries) {
-	list := List{
-		ctx:   ctx,
-		store: store.New(ctx, db, queries),
+func Bind(group *echo.Group) {
+	store, err := store.New()
+	if err != nil {
+		panic(err)
 	}
-	router := Router{list}
-	group := e.Group("/list")
+
+	r := routes.Router{Store: store}
 
 	// swagger:route GET /list List ListGet
 	//
@@ -31,18 +23,7 @@ func Bind(e *echo.Echo, ctx context.Context, db *sql.DB, queries *sqlc.Queries) 
 	// Responses:
 	//     default: GenericErrorResponse
 	//     200: GetListResponse
-	group.GET("", router.Get)
-
-	// swagger:route GET /list/{rank} List ListGetLevel
-	//
-	// Get Level by Rank
-	//
-	// Retrieves the level at the given rank on the list
-	//
-	// Responses:
-	//     default: GenericErrorResponse
-	//     200: GetLevelResponse
-	group.GET("/:rank", router.GetLevel)
+	group.GET("", r.Get)
 
 	// swagger:route POST /list List ListUpdate
 	//
@@ -53,7 +34,18 @@ func Bind(e *echo.Echo, ctx context.Context, db *sql.DB, queries *sqlc.Queries) 
 	// Responses:
 	//     default: GenericErrorResponse
 	//     200:
-	group.POST("", router.Update)
+	group.POST("", r.Post)
+
+	// swagger:route GET /list/{rank} List ListGetLevel
+	//
+	// Get Level by Rank
+	//
+	// Retrieves the level at the given rank on the list
+	//
+	// Responses:
+	//     default: GenericErrorResponse
+	//     200: GetLevelResponse
+	group.GET("/:rank", r.GetLevelByRank)
 
 	// swagger:route DELETE /list/{rank} List ListArchive
 	//
@@ -64,5 +56,5 @@ func Bind(e *echo.Echo, ctx context.Context, db *sql.DB, queries *sqlc.Queries) 
 	// Responses:
 	//     default: GenericErrorResponse
 	//     200:
-	group.DELETE("/:rank", router.Archive)
+	group.DELETE("/:rank", r.Delete)
 }

@@ -4,10 +4,19 @@ CREATE TABLE users (
 	"name" text not null unique,
 	"nationality" char(2) -- https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
 );
+CREATE TABLE roles (
+	"id" smallserial primary key,
+	"name" text not null unique,
+	"permissions" text []
+);
+CREATE TABLE user_has_role (
+	"user_id" bigint references users (id) not null,
+	"role_id" smallint references roles (id) not null
+);
 CREATE TABLE levels (
 	"id" bigserial primary key,
 	"name" text not null,
-	"gd_id" bigint not null,
+	"gd_id" bigint,
 	"user_id" bigint references users (id) not null,
 	"verifier_id" bigint references users (id) not null,
 	"video" text,

@@ -11,4 +11,4 @@ sql:
       gen:
           go:
               package: 'sqlc'
-              out: 'pkg/generated/sqlc'
+              out: 'generated/sqlc'

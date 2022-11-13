@@ -1,6 +1,5 @@
 bin/
 tmp/
-
-pkg/generated/
+generated/
 
 gin-bin

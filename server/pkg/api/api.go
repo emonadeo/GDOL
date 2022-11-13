@@ -28,29 +28,14 @@
 package api
 
 import (
-	"context"
-	"database/sql"
-
-	"github.com/emonadeo/gdol/pkg/api/changelog"
-	"github.com/emonadeo/gdol/pkg/api/level"
+	"github.com/emonadeo/gdol/pkg/api/auth"
 	"github.com/emonadeo/gdol/pkg/api/list"
-	"github.com/emonadeo/gdol/pkg/api/user"
-	"github.com/emonadeo/gdol/pkg/generated/sqlc"
 	"github.com/emonadeo/gdol/pkg/server"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 )
 
 func Start() error {
-	ctx := context.Background()
-
-	db, err := sql.Open("postgres", "user=example password=example dbname=gdol sslmode=disable")
-	if err != nil {
-		return err
-	}
-
-	queries := sqlc.New(db)
-
 	e := server.New()
 
 	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
@@ -58,10 +43,11 @@ func Start() error {
 		AllowHeaders: []string{echo.HeaderOrigin, echo.HeaderContentType, echo.HeaderAccept},
 	}))
 
-	list.Bind(e, ctx, db, queries)
-	changelog.Bind(e, ctx, db, queries)
-	level.Bind(e, ctx, db, queries)
-	user.Bind(e, ctx, db, queries)
+	auth.Bind(e.Group("/auth"))
+	list.Bind(e.Group("/list"))
+	// changelog.Bind(e.Group("/changelog"), ctx, db, queries)
+	// level.Bind(e.Group("/levels"), ctx, db, queries)
+	// user.Bind(e.Group("/users"), ctx, db, queries)
 
 	// TODO Outsource config
 	server.Start(e, &server.Config{

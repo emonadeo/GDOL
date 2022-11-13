@@ -2,14 +2,14 @@ package store
 
 import "github.com/emonadeo/gdol/pkg/model"
 
-func (store Store) FindByName(name string) (model.UserFull, error) {
+func (store Store) FindByName(name string) (model.UserWithScoreAndRank, error) {
 	user, err := store.Queries.UserFindByName(store.Ctx, name)
 	if err != nil {
-		return model.UserFull{}, err
+		return model.UserWithScoreAndRank{}, err
 	}
 
 	// Records
-	var records []model.UserRecord
+	var records []model.RecordWithLevel
 	for i := range user.RecordTimestamps {
 		records = append(records, model.UserRecord{
 			Timestamp:  user.RecordTimestamps[i],
