@@ -2,13 +2,13 @@ package main
 
 import (
 	"context"
-	dbsql "database/sql"
+	"database/sql"
 	"encoding/json"
 	"os"
 	"path/filepath"
 	"strconv"
 
-	"github.com/emonadeo/gdol/pkg/generated/sqlc"
+	"github.com/emonadeo/gdol/generated/sqlc"
 
 	_ "github.com/lib/pq"
 )
@@ -43,7 +43,7 @@ type Record struct {
 func main() {
 	ctx := context.Background()
 
-	db, err := dbsql.Open("postgres", "user=example password=example dbname=gdol sslmode=disable")
+	db, err := sql.Open("postgres", "user=example password=example dbname=gdol sslmode=disable")
 	if err != nil {
 		panic(err)
 	}
@@ -55,7 +55,7 @@ func main() {
 		panic(err)
 	}
 
-	file, err := filepath.Abs("pkg/generated/pointercrate/_list.json")
+	file, err := filepath.Abs("generated/pointercrate/_list.json")
 	if err != nil {
 		panic(err)
 	}
@@ -71,7 +71,7 @@ func main() {
 
 	currentLevelIds := []int64{}
 	for i, v := range list {
-		levelRaw, err := os.ReadFile("pkg/generated/pointercrate/" + strconv.Itoa(v) + ".json")
+		levelRaw, err := os.ReadFile("generated/pointercrate/" + strconv.Itoa(v) + ".json")
 		if err != nil {
 			panic(err)
 		}
@@ -88,15 +88,18 @@ func main() {
 
 		// Insert level
 		levelId, err := queries.InsertLevel(ctx, sqlc.InsertLevelParams{
-			Name:       level.Name,
-			GdID:       int64(level.Level_id),
+			Name: level.Name,
+			GdID: sql.NullInt64{
+				Int64: int64(level.Level_id),
+				Valid: true,
+			},
 			UserID:     publisherId,
 			VerifierID: verifierId,
-			Video: dbsql.NullString{
+			Video: sql.NullString{
 				String: level.Video,
 				Valid:  level.Video != "",
 			},
-			Requirement: dbsql.NullInt16{
+			Requirement: sql.NullInt16{
 				Int16: int16(level.Requirement),
 				Valid: true,
 			},
@@ -124,11 +127,11 @@ func main() {
 			Action:       sqlc.ListLogActionAdd,
 			LevelID:      levelId,
 			ListLevelIds: currentLevelIds,
-			From: dbsql.NullInt16{
+			From: sql.NullInt16{
 				Int16: 0,
 				Valid: false,
 			},
-			To: dbsql.NullInt16{
+			To: sql.NullInt16{
 				Int16: int16(i + 1),
 				Valid: true,
 			},
@@ -161,7 +164,7 @@ func seedUser(qry *sqlc.Queries, ctx context.Context, user User) int64 {
 
 	id, err := qry.InsertUser(ctx, sqlc.InsertUserParams{
 		Name:        user.Name,
-		Nationality: dbsql.NullString{Valid: false},
+		Nationality: sql.NullString{Valid: false},
 	})
 	if err != nil {
 		panic(err)
@@ -193,11 +196,11 @@ func seedRecord(qry *sqlc.Queries, ctx context.Context, levelId int64, record Re
 	playerId := seedUser(qry, ctx, record.Player)
 
 	err = qry.InsertRecords(ctx, sqlc.InsertRecordsParams{
-		Percentage: dbsql.NullInt16{
+		Percentage: sql.NullInt16{
 			Int16: int16(record.Progress),
 			Valid: true,
 		},
-		Video: dbsql.NullString{
+		Video: sql.NullString{
 			String: record.Video,
 			Valid:  record.Video != "",
 		},

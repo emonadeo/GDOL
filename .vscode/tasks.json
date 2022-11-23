@@ -25,13 +25,13 @@
 		},
 		{
 			"type": "shell",
-			"command": "gin -i -p 3001 -d cmd/api cmd/api/main.go",
+			"command": "gin -i -p 3001 -d cmd/ cmd/main.go",
 			"options": {
 				"cwd": "${workspaceFolder}/server"
 			},
 			"problemMatcher": ["$go"],
 			"label": "Server: Dev",
-			"detail": "gin run cmd/api/main.go"
+			"detail": "gin run cmd/main.go"
 		},
 		{
 			"type": "shell",

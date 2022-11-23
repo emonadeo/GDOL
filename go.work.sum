@@ -1,3 +1,5 @@
+github.com/labstack/echo/v5 v5.0.0-20220201181537-ed2888cfa198 h1:lFz33AOOXwTpqOiHvrN8nmTdkxSfuNLHLPjgQ1muPpU=
+github.com/labstack/echo/v5 v5.0.0-20220201181537-ed2888cfa198/go.mod h1:uh3YlzsEJj7OG57rDWj6c3WEkOF1ZHGBQkDuUZw3rE8=
 github.com/mattn/go-colorable v0.1.11 h1:nQ+aFkoE2TMGc0b68U2OKSexC+eq46+XwZzWXHRmPYs=
 github.com/mattn/go-isatty v0.0.14 h1:yVuAays6BHfxijgZPzw+3Zlu5yQgKGP2/hcQbHb7S9Y=
 github.com/stretchr/objx v0.1.0 h1:4G4v2dO3VZwixGIRoQ5Lfboy6nUhCyYzaqnIAPPhYs4=

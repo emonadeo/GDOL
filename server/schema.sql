@@ -2,7 +2,8 @@ CREATE TYPE list_log_action AS ENUM ('add', 'move', 'delete');
 CREATE TABLE users (
 	"id" bigserial primary key,
 	"name" text not null unique,
-	"nationality" char(2) -- https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
+	"nationality" char(2), -- https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
+	"discord_id" text
 );
 CREATE TABLE roles (
 	"id" smallserial primary key,

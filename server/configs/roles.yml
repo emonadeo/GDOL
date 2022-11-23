@@ -1,0 +1,12 @@
+# can manage users
+admin:
+- "list.write"
+
+# can edit the list
+editor:
+- "list.write" # add, move, archive list levels
+
+# can review and accept record submissions
+reviewer:
+- "submissions.read"
+- "submissions.write"
