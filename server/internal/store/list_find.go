@@ -9,48 +9,17 @@ import (
 	"github.com/lib/pq"
 )
 
-const qryMono = `
-SELECT
-    levels.id,
-    levels.name,
-    levels.gd_id,
-    levels.video,
-    levels.requirement,
-    users.id,
-    users.name,
-    users.nationality,
-    verifier.id,
-    verifier.name,
-    verifier.nationality,
-    array_agg(creators.id),
-    array_agg(creators.name),
-    array_agg(creators.nationality)
-FROM (
-        SELECT list_log.list_level_ids
-        FROM list_log
-        ORDER BY list_log.timestamp DESC
-        LIMIT 1
-    ) AS latest_list_log,
-    UNNEST(latest_list_log.list_level_ids) WITH ORDINALITY AS list_level_id
-    JOIN levels ON levels.id = list_level_id
-    JOIN users ON users.id = levels.user_id
-    JOIN users verifier ON verifier.id = levels.verifier_id
-    JOIN user_created_level ON user_created_level.level_id = list_level_id
-    JOIN users creators ON creators.id = user_created_level.user_id
-GROUP BY levels.id,
-    users.id,
-    verifier.id,
-    ordinality
-ORDER BY ordinality ASC;
-`
-
 func (store Store) ListFind(ctx context.Context) (model.List, error) {
-	rows, err := store.db.QueryContext(ctx, qryMono)
+	// Cannot use sqlc because of https://github.com/kyleconroy/sqlc/issues/185
+	rows, err := store.db.QueryContext(ctx, "SELECT * FROM list")
 	if err != nil {
 		return nil, err
 	}
+
 	list := model.List{}
+
 	for rows.Next() {
+		var rank int16
 		var id int64
 		var name string
 		var gdId sql.NullInt64
@@ -59,14 +28,18 @@ func (store Store) ListFind(ctx context.Context) (model.List, error) {
 		var userId int64
 		var userName string
 		var userNationality sql.NullString
+		var userDiscordId sql.NullString
 		var verifierId int64
 		var verifierName string
 		var verifierNationality sql.NullString
-		var creatorIds []int64
-		var creatorNames []string
-		var creatorNationalities []sql.NullString
+		var verifierDiscordId sql.NullString
+		var creatorsId []int64
+		var creatorsName []string
+		var creatorsNationality []sql.NullString
+		var creatorsDiscordId []sql.NullString
 
 		rows.Scan(
+			&rank,
 			&id,
 			&name,
 			&gdId,
@@ -75,20 +48,23 @@ func (store Store) ListFind(ctx context.Context) (model.List, error) {
 			&userId,
 			&userName,
 			&userNationality,
+			&userDiscordId,
 			&verifierId,
 			&verifierName,
 			&verifierNationality,
-			pq.Array(&creatorIds),
-			pq.Array(&creatorNames),
-			pq.Array(&creatorNationalities),
+			&verifierDiscordId,
+			pq.Array(&creatorsId),
+			pq.Array(&creatorsName),
+			pq.Array(&creatorsNationality),
+			pq.Array(&creatorsDiscordId),
 		)
 
 		creators := []model.User{}
-		for i, id := range creatorIds {
+		for i, id := range creatorsId {
 			creators = append(creators, model.User{
 				Id:          id,
-				Name:        creatorNames[i],
-				Nationality: util.NullString(creatorNationalities[i]),
+				Name:        creatorsName[i],
+				Nationality: util.NullString(creatorsNationality[i]),
 			})
 		}
 

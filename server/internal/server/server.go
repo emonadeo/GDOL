@@ -17,6 +17,9 @@ func Init() (*echo.Echo, error) {
 
 	e := echo.New()
 
+	// GZip
+	e.Use(echoMiddleware.Gzip())
+
 	// CORS
 	e.Use(echoMiddleware.CORSWithConfig(echoMiddleware.CORSConfig{
 		AllowOrigins: []string{"*"},
