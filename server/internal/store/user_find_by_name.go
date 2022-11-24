@@ -7,7 +7,7 @@ import (
 	"github.com/emonadeo/gdol/internal/util"
 )
 
-func (store Store) FindByName(ctx context.Context, name string) (model.UserWithScoreAndRank, error) {
+func (store Store) UserFindByName(ctx context.Context, name string) (model.UserWithScoreAndRank, error) {
 	user, err := store.qry.UserFindByName(ctx, name)
 	if err != nil {
 		return model.UserWithScoreAndRank{}, err

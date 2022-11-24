@@ -1,6 +1,7 @@
 version: '2'
 sql:
-    - schema: 'schema.sql'
+    - schema:
+      - 'schema'
       queries:
       - 'cmd/seed/query.sql'
       - 'internal/store'

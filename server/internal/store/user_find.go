@@ -7,7 +7,7 @@ import (
 	"github.com/emonadeo/gdol/internal/util"
 )
 
-func (store Store) Find(ctx context.Context) ([]model.UserWithScoreAndRank, error) {
+func (store Store) UserFind(ctx context.Context) ([]model.UserWithScoreAndRank, error) {
 	users, err := store.qry.UserFind(ctx)
 	if err != nil {
 		return nil, err

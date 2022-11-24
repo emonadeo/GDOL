@@ -2,10 +2,14 @@ package api
 
 import (
 	"github.com/emonadeo/gdol/internal/core"
+	"github.com/emonadeo/gdol/internal/server/api/changelog"
 	"github.com/emonadeo/gdol/internal/server/api/list"
+	"github.com/emonadeo/gdol/internal/server/api/users"
 	"github.com/labstack/echo/v5"
 )
 
 func Init(app core.App, e *echo.Echo) {
 	list.Bind(app, e.Group("/list"))
+	users.Bind(app, e.Group("/users"))
+	changelog.Bind(app, e.Group("/changelog"))
 }

@@ -88,7 +88,7 @@
 					</p>
 				</div>
 				<div class="changes">
-					{#if entry.from !== undefined && !isDelete}
+					{#if entry.from != null && !isDelete}
 						<p class="from">#{entry.from}</p>
 					{/if}
 					<div class="icon">
