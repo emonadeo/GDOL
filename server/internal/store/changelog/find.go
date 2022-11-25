@@ -5,8 +5,8 @@ import (
 	"database/sql"
 	"strconv"
 
-	"github.com/emonadeo/gdol/pkg/model"
-	"github.com/emonadeo/gdol/pkg/util"
+	"github.com/emonadeo/gdol/internal/model"
+	"github.com/emonadeo/gdol/internal/util"
 	"github.com/lib/pq"
 )
 

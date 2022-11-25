@@ -4,8 +4,8 @@ import (
 	"context"
 	"database/sql"
 
+	"github.com/emonadeo/gdol/internal/model"
 	"github.com/emonadeo/gdol/internal/util"
-	"github.com/emonadeo/gdol/pkg/model"
 	"github.com/lib/pq"
 )
 
