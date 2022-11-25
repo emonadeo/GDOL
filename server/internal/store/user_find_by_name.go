@@ -63,6 +63,7 @@ func (store Store) UserFindByName(ctx context.Context, name string) (model.UserW
 			Nationality: util.NullString(user.Nationality),
 		},
 		Score: user.Score,
+		Rank:  int(user.Rank),
 		// Records: records,
 		// Levels:  levels,
 		// LevelsVerified: levelsVerified,

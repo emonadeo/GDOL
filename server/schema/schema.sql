@@ -58,53 +58,17 @@ CREATE TABLE list_log (
 	"reason" text
 );
 
-CREATE VIEW users_with_score AS
-SELECT
-	users.id,
-	users.name,
-	users.nationality,
-	users.discord_id,
-	SUM(
-		calc_score(
-			get_rank(levels.id),
-			levels.requirement,
-			records.percentage
-		)
-	) :: float AS score
-FROM
-	users
-	JOIN records ON users.id = records.user_id
-	JOIN levels ON levels.id = records.level_id
-GROUP BY
-	users.id
-ORDER BY
-	score DESC;
-
-CREATE VIEW users_with_score_and_rank AS
-SELECT
-	users_with_score.id,
-	users_with_score.name,
-	users_with_score.nationality,
-	users_with_score.discord_id,
-	users_with_score.score,
-	row_number() OVER(
-		ORDER BY
-			users_with_score.score DESC
-	) AS rank
-FROM
-	users_with_score
-ORDER BY
-	rank ASC;
-
-CREATE
-OR REPLACE VIEW list AS
+CREATE VIEW list AS
 SELECT
 	list.rank,
 	levels.id,
 	levels.name,
 	levels.gd_id,
 	levels.video,
-	levels.requirement,
+	CASE
+		WHEN list.rank > 75 THEN 100 :: smallint
+		ELSE levels.requirement
+	END AS requirement,
 	users.id AS user_id,
 	users.name AS user_name,
 	users.nationality AS user_nationality,
@@ -147,6 +111,53 @@ GROUP BY
 	verifier.id
 ORDER BY
 	list.rank ASC;
+
+CREATE VIEW users_with_score AS
+SELECT
+	users. *,
+	SUM(calc_score(rank, requirement, percentage)) :: float AS score
+FROM
+	(
+		-- Records
+		SELECT
+			records.user_id,
+			list.rank :: smallint,
+			list.requirement,
+			records.percentage
+		FROM
+			list
+			JOIN records ON records.level_id = list.id
+		UNION
+		-- Verifications
+		SELECT
+			list.verifier_id,
+			list.rank :: smallint,
+			list.requirement,
+			100 :: smallint
+		FROM
+			list
+	) AS records_and_verifications
+	JOIN users ON records_and_verifications.user_id = users.id
+GROUP BY
+	users.id
+ORDER BY
+	SUM(calc_score(rank, requirement, percentage)) DESC;
+
+CREATE VIEW users_with_score_and_rank AS
+SELECT
+	users_with_score.id,
+	users_with_score.name,
+	users_with_score.nationality,
+	users_with_score.discord_id,
+	users_with_score.score,
+	row_number() OVER(
+		ORDER BY
+			users_with_score.score DESC
+	) AS rank
+FROM
+	users_with_score
+ORDER BY
+	rank ASC;
 
 CREATE
 OR REPLACE FUNCTION get_rank(level_id bigint) RETURNS smallint LANGUAGE SQL IMMUTABLE RETURNS NULL ON NULL INPUT AS $$

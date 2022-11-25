@@ -25,8 +25,13 @@ h constant float := 25.071;
 l constant float := 3.912023005428146;
 
 begin
-    if 55 < rank
-    and rank <= 150 then beaten_score = 56.191 * 2 ^((54.147 - (rank + 3.2)) * (l / 99)) + b;
+    if percentage != 100
+    and rank > 75 then return 0.0;
+
+end if;
+
+if 55 < rank
+and rank <= 150 then beaten_score = 56.191 * 2 ^((54.147 - (rank + 3.2)) * (l / 99)) + b;
 
 elseif 35 < rank
 and rank <= 55 then beaten_score = 212.61 * g ^(1 - rank) + h;
@@ -39,8 +44,7 @@ and rank <= 20 then beaten_score = (250 - f) * e ^(1 - rank) + f;
 
 end if;
 
-if percentage != 100
-and rank <= 75 then return beaten_score * 5 ^((percentage - requirement) / (100 - requirement)) / 10;
+if percentage != 100 then return beaten_score * 5 ^((percentage - requirement) / (100 - requirement)) / 10;
 
 end if;
 
