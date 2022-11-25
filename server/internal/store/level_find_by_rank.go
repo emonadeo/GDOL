@@ -2,38 +2,86 @@ package store
 
 import (
 	"context"
+	"database/sql"
 
+	"github.com/emonadeo/gdol/internal/util"
 	"github.com/emonadeo/gdol/pkg/model"
+	"github.com/lib/pq"
 )
 
-const sqlFindByRank = `
-	SELECT
-		levels.id,
-		levels.gd_id,
-		levels.name,
-		users.*,
-		verifier.*,
-		array_agg(creators.id),
-		array_agg(creators.name),
-		array_agg(creators.nationality),
-		levels.video
-	FROM (
-		SELECT list_level_ids[$1] AS list_level_id FROM list_log
-		ORDER BY list_log.timestamp DESC
-		LIMIT 1
-	) AS _
-	JOIN levels ON levels.id = list_level_id
-	JOIN users ON users.id = levels.user_id
-	JOIN users verifier ON verifier.id = levels.verifier_id
-	JOIN user_created_level ON user_created_level.level_id = levels.id
-	JOIN users creators ON user_created_level.user_id = creators.id
-	GROUP BY
-		levels.id,
-		users.id,
-		verifier.id
-`
+func (store Store) LevelFindByRank(ctx context.Context, rank int16) (model.Level, error) {
+	// Cannot use sqlc because of https://github.com/kyleconroy/sqlc/issues/185
+	row := store.db.QueryRowContext(ctx, "SELECT * FROM list WHERE list.rank = $1", rank)
 
-// TODO
-func (store Store) LevelFindByRank(ctx context.Context, rank int) (model.Level, error) {
-	return model.Level{}, nil
+	var id int64
+	var name string
+	var gdId sql.NullInt64
+	var video sql.NullString
+	var requirement sql.NullInt16
+	var userId int64
+	var userName string
+	var userNationality sql.NullString
+	var userDiscordId sql.NullString
+	var verifierId int64
+	var verifierName string
+	var verifierNationality sql.NullString
+	var verifierDiscordId sql.NullString
+	var creatorsId []int64
+	var creatorsName []string
+	var creatorsNationality []sql.NullString
+	var creatorsDiscordId []sql.NullString
+
+	err := row.Scan(
+		&rank,
+		&id,
+		&name,
+		&gdId,
+		&video,
+		&requirement,
+		&userId,
+		&userName,
+		&userNationality,
+		&userDiscordId,
+		&verifierId,
+		&verifierName,
+		&verifierNationality,
+		&verifierDiscordId,
+		pq.Array(&creatorsId),
+		pq.Array(&creatorsName),
+		pq.Array(&creatorsNationality),
+		pq.Array(&creatorsDiscordId),
+	)
+	if err != nil {
+		return model.Level{}, err
+	}
+
+	creators := []model.User{}
+	for i, id := range creatorsId {
+		creators = append(creators, model.User{
+			Id:          id,
+			Name:        creatorsName[i],
+			Nationality: util.NullString(creatorsNationality[i]),
+		})
+	}
+
+	level := model.Level{
+		Id:          id,
+		Name:        name,
+		GdId:        util.NullInt64(gdId),
+		Video:       util.NullString(video),
+		Requirement: util.NullInt16(requirement),
+		User: model.User{
+			Id:          userId,
+			Name:        userName,
+			Nationality: util.NullString(userNationality),
+		},
+		Verifier: model.User{
+			Id:          verifierId,
+			Name:        verifierName,
+			Nationality: util.NullString(verifierNationality),
+		},
+		Creators: creators,
+	}
+
+	return level, nil
 }

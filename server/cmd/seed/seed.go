@@ -196,10 +196,7 @@ func seedRecord(qry *sqlc.Queries, ctx context.Context, levelId int64, record Re
 	playerId := seedUser(qry, ctx, record.Player)
 
 	err = qry.InsertRecords(ctx, sqlc.InsertRecordsParams{
-		Percentage: sql.NullInt16{
-			Int16: int16(record.Progress),
-			Valid: true,
-		},
+		Percentage: int16(record.Progress),
 		Video: sql.NullString{
 			String: record.Video,
 			Valid:  record.Video != "",

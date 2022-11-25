@@ -1,9 +1,9 @@
 package model
 
 type Record struct {
-	Timestamp  string `json:"timestamp"`
-	Percentage int16  `json:"percentage"`
-	Video      string `json:"video"`
+	Timestamp  string  `json:"timestamp"`
+	Percentage int16   `json:"percentage"`
+	Video      *string `json:"video"`
 }
 
 type RecordWithUser struct {

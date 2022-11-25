@@ -11,8 +11,11 @@
 		id: number;
 		gd_id?: number;
 		name: string;
-		user: string;
-		video: string;
+		user: {
+			id: number;
+			name: string;
+		};
+		video?: string;
 	}
 
 	let levels: Level[] = [];
@@ -82,12 +85,14 @@
 						</div>
 						<img
 							class="thumbnail"
-							src={`https://img.youtube.com/vi/${getYoutubeIdFromUrl(level.video)}/mqdefault.jpg`}
+							src={`https://img.youtube.com/vi/${getYoutubeIdFromUrl(
+								level.video || 'https://www.youtube.com/watch?v=oHg5SJYRHA0'
+							)}/mqdefault.jpg`}
 							alt="Thumbnail"
 						/>
 						<div class="meta">
 							<h2>{level.name}</h2>
-							<p>{level.user}</p>
+							<p>{level.user.name}</p>
 						</div>
 					</a>
 				</li>

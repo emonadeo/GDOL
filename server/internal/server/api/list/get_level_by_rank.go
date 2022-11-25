@@ -7,11 +7,11 @@ import (
 )
 
 func (api api) getLevelByRank(c echo.Context) error {
-	levelId, err := strconv.Atoi(c.PathParam("rank"))
+	rank, err := strconv.Atoi(c.PathParam("rank"))
 	if err != nil {
 		return err
 	}
-	level, err := api.app.Store.LevelFindByRank(c.Request().Context(), levelId)
+	level, err := api.app.Store.LevelFindByRank(c.Request().Context(), int16(rank))
 	if err != nil {
 		return err
 	}
