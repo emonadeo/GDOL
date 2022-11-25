@@ -2,6 +2,7 @@ package api
 
 import (
 	"github.com/emonadeo/gdol/internal/core"
+	"github.com/emonadeo/gdol/internal/server/api/auth"
 	"github.com/emonadeo/gdol/internal/server/api/changelog"
 	"github.com/emonadeo/gdol/internal/server/api/levels"
 	"github.com/emonadeo/gdol/internal/server/api/list"
@@ -10,6 +11,7 @@ import (
 )
 
 func Init(app core.App, e *echo.Echo) {
+	auth.Bind(app, e.Group("/auth"))
 	changelog.Bind(app, e.Group("/changelog"))
 	levels.Bind(app, e.Group("/levels"))
 	list.Bind(app, e.Group("/list"))

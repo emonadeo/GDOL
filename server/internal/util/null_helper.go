@@ -2,6 +2,8 @@ package util
 
 import "database/sql"
 
+// TODO: Move into store
+
 func NullString(v sql.NullString) *string {
 	if v.Valid {
 		return &v.String
