@@ -1,4 +1,4 @@
-package store
+package levels
 
 import (
 	"context"
@@ -9,9 +9,9 @@ import (
 	"github.com/lib/pq"
 )
 
-func (store Store) LevelFindByRank(ctx context.Context, rank int16) (model.Level, error) {
+func (l Levels) FindByRank(ctx context.Context, rank int16) (model.Level, error) {
 	// Cannot use sqlc because of https://github.com/kyleconroy/sqlc/issues/185
-	row := store.db.QueryRowContext(ctx, "SELECT * FROM list WHERE list.rank = $1", rank)
+	row := l.DB.QueryRowContext(ctx, "SELECT * FROM list WHERE list.rank = $1", rank)
 
 	var id int64
 	var name string

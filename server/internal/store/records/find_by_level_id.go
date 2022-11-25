@@ -1,4 +1,4 @@
-package store
+package records
 
 import (
 	"context"
@@ -7,8 +7,8 @@ import (
 	"github.com/emonadeo/gdol/internal/util"
 )
 
-func (store Store) RecordsFindByLevelId(ctx context.Context, levelId int64) ([]model.RecordWithUser, error) {
-	rows, err := store.qry.RecordsFindByLevelId(ctx, levelId)
+func (r Records) FindByLevelId(ctx context.Context, levelId int64) ([]model.RecordWithUser, error) {
+	rows, err := r.Qry.RecordsFindByLevelId(ctx, levelId)
 	if err != nil {
 		return nil, err
 	}

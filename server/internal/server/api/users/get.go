@@ -5,7 +5,7 @@ import (
 )
 
 func (api api) get(c echo.Context) error {
-	list, err := api.app.Store.UserFind(c.Request().Context())
+	list, err := api.app.Store.Users.Find(c.Request().Context())
 	if err != nil {
 		return err
 	}

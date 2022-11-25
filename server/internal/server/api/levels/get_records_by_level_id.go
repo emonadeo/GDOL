@@ -11,7 +11,7 @@ func (api api) getRecordsByLevelId(c echo.Context) error {
 	if err != nil {
 		return err
 	}
-	list, err := api.app.Store.RecordsFindByLevelId(c.Request().Context(), int64(levelId))
+	list, err := api.app.Store.Records.FindByLevelId(c.Request().Context(), int64(levelId))
 	if err != nil {
 		return err
 	}

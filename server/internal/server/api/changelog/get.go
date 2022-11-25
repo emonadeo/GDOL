@@ -5,7 +5,7 @@ import (
 )
 
 func (api api) get(c echo.Context) error {
-	list, err := api.app.Store.ChangelogFind(c.Request().Context())
+	list, err := api.app.Store.Changelog.Find(c.Request().Context())
 	if err != nil {
 		return err
 	}

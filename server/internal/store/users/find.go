@@ -1,4 +1,4 @@
-package store
+package users
 
 import (
 	"context"
@@ -7,8 +7,8 @@ import (
 	"github.com/emonadeo/gdol/internal/util"
 )
 
-func (store Store) UserFind(ctx context.Context) ([]model.UserWithScoreAndRank, error) {
-	users, err := store.qry.UserFind(ctx)
+func (u Users) Find(ctx context.Context) ([]model.UserWithScoreAndRank, error) {
+	users, err := u.Qry.UsersFind(ctx)
 	if err != nil {
 		return nil, err
 	}

@@ -1,4 +1,4 @@
--- name: ListDelete :one
+-- name: ListDeleteByRankPushLog :one
 INSERT INTO
   list_log (
     "list_level_ids",
@@ -20,7 +20,7 @@ ORDER BY
 LIMIT
   1 RETURNING level_id;
 
--- name: ListArchive :exec
+-- name: ListDeleteByRankPushArchive :exec
 INSERT INTO
   list_archive ("level_id")
 VALUES

@@ -6,7 +6,7 @@ import (
 
 func (api api) getByName(c echo.Context) error {
 	name := c.PathParam("name")
-	level, err := api.app.Store.UserFindByName(c.Request().Context(), name)
+	level, err := api.app.Store.Users.FindByName(c.Request().Context(), name)
 	if err != nil {
 		return err
 	}

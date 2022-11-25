@@ -1,4 +1,4 @@
--- name: UserFindByName :one
+-- name: UsersFindByName :one
 SELECT
     *
 FROM

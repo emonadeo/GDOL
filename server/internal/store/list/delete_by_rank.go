@@ -1,4 +1,4 @@
-package store
+package list
 
 import (
 	"context"
@@ -8,14 +8,14 @@ import (
 	"github.com/emonadeo/gdol/internal/model"
 )
 
-func (store Store) ListArchive(ctx context.Context, rank int16, archive model.ListArchive) error {
-	tx, err := store.db.Begin()
+func (l List) DeleteByRank(ctx context.Context, rank int16, archive model.ListArchive) error {
+	tx, err := l.DB.Begin()
 	if err != nil {
 		return err
 	}
 	defer tx.Rollback()
-	qtx := store.qry.WithTx(tx)
-	levelId, err := qtx.ListDelete(ctx, sqlc.ListDeleteParams{
+	qtx := l.Qry.WithTx(tx)
+	levelId, err := qtx.ListDeleteByRankPushLog(ctx, sqlc.ListDeleteByRankPushLogParams{
 		From: sql.NullInt16{
 			Int16: int16(rank),
 			Valid: true,
@@ -28,7 +28,7 @@ func (store Store) ListArchive(ctx context.Context, rank int16, archive model.Li
 	if err != nil {
 		return err
 	}
-	err = qtx.ListArchive(ctx, levelId)
+	err = qtx.ListDeleteByRankPushArchive(ctx, levelId)
 	if err != nil {
 		return err
 	}

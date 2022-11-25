@@ -1,4 +1,4 @@
-package store
+package list
 
 import (
 	"context"
@@ -9,9 +9,9 @@ import (
 	"github.com/lib/pq"
 )
 
-func (store Store) ListFind(ctx context.Context) (model.List, error) {
+func (l List) Find(ctx context.Context) (model.List, error) {
 	// Cannot use sqlc because of https://github.com/kyleconroy/sqlc/issues/185
-	rows, err := store.db.QueryContext(ctx, "SELECT * FROM list")
+	rows, err := l.DB.QueryContext(ctx, "SELECT * FROM list")
 	if err != nil {
 		return nil, err
 	}

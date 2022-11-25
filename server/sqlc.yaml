@@ -4,7 +4,11 @@ sql:
       - 'schema'
       queries:
       - 'cmd/seed/query.sql'
-      - 'internal/store'
+      - 'internal/store/changelog'
+      - 'internal/store/levels'
+      - 'internal/store/list'
+      - 'internal/store/records'
+      - 'internal/store/users'
       engine: 'postgresql'
       gen:
           go:

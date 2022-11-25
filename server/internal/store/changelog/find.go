@@ -1,4 +1,4 @@
-package store
+package changelog
 
 import (
 	"context"
@@ -10,7 +10,8 @@ import (
 	"github.com/lib/pq"
 )
 
-const sqlChangelogFind = `
+// TODO: Use sqlc (workaround needed)
+const sqlFind = `
 SELECT
 	list_log.timestamp,
 	list_log.action,
@@ -43,8 +44,8 @@ type Entry struct {
 	}
 }
 
-func (store Store) ChangelogFind(ctx context.Context) ([]model.Changelog, error) {
-	rows, err := store.db.QueryContext(ctx, sqlChangelogFind)
+func (c Changelog) Find(ctx context.Context) ([]model.Changelog, error) {
+	rows, err := c.DB.QueryContext(ctx, sqlFind)
 	if err != nil {
 		return nil, err
 	}
