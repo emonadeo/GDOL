@@ -2,7 +2,6 @@ package store
 
 import (
 	"database/sql"
-	"fmt"
 
 	"github.com/emonadeo/gdol/generated/sqlc"
 	"github.com/emonadeo/gdol/internal/store/changelog"
@@ -13,13 +12,6 @@ import (
 )
 
 // TODO: Make configurable
-const (
-	dbUser     = "example"
-	dbPassword = "example"
-	dbName     = "gdol"
-	dbSslMode  = "disable"
-)
-
 type Store struct {
 	Changelog changelog.Changelog
 	Levels    levels.Levels
@@ -28,8 +20,8 @@ type Store struct {
 	Users     users.Users
 }
 
-func New() (*Store, error) {
-	db, err := sql.Open("postgres", fmt.Sprintf("user=%s password=%s dbname=%s sslmode=%s", dbUser, dbPassword, dbName, dbSslMode))
+func New(url string) (*Store, error) {
+	db, err := sql.Open("postgres", url)
 	if err != nil {
 		return nil, err
 	}

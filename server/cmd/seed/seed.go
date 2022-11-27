@@ -43,7 +43,7 @@ type Record struct {
 func main() {
 	ctx := context.Background()
 
-	db, err := sql.Open("postgres", "user=example password=example dbname=gdol sslmode=disable")
+	db, err := sql.Open("postgres", "user=user password=password dbname=gdol sslmode=disable")
 	if err != nil {
 		panic(err)
 	}

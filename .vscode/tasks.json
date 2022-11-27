@@ -9,59 +9,76 @@
 			"problemMatcher": []
 		},
 		{
-			"type": "shell",
-			"command": "docker-compose up",
-			"problemMatcher": [],
-			"label": "Docker Compose",
-			"detail": "docker-compose up"
-		},
-		{
+			"label": "Client: Dev",
+			"detail": "vite",
 			"type": "npm",
 			"script": "dev",
 			"path": "client",
-			"problemMatcher": [],
-			"label": "Client: Dev",
-			"detail": "vite"
+			"problemMatcher": []
 		},
 		{
+			"label": "Client: Build",
+			"detail": "vite build",
+			"type": "npm",
+			"script": "build",
+			"path": "client",
+			"group": "build",
+			"problemMatcher": []
+		},
+		{
+			"label": "Client: Preview",
+			"detail": "vite preview",
+			"type": "npm",
+			"script": "preview",
+			"path": "client",
+			"problemMatcher": []
+		},
+		{
+			"label": "Server: Dev",
+			"detail": "gin run cmd/main.go",
 			"type": "shell",
 			"command": "gin -i -p 3001 -d cmd/ cmd/main.go",
 			"options": {
 				"cwd": "${workspaceFolder}/server"
 			},
-			"problemMatcher": ["$go"],
-			"label": "Server: Dev",
-			"detail": "gin run cmd/main.go"
+			"problemMatcher": ["$go"]
 		},
 		{
+			"label": "Server: Generate OpenAPI",
+			"detail": "swagger generate spec -o bin/openapi.yml",
 			"type": "shell",
 			"command": "mkdir -p bin && swagger generate spec -o bin/openapi.yml",
-			"label": "Generate: OpenAPI",
-			"detail": "swagger generate spec -o bin/openapi.yml",
 			"problemMatcher": [],
 			"options": {
 				"cwd": "${workspaceFolder}/server"
 			}
 		},
 		{
+			"label": "Server: Generate ORM",
+			"detail": "sqlc generate",
 			"type": "shell",
 			"command": "sqlc generate",
-			"label": "Generate: ORM",
-			"detail": "sqlc generate",
 			"problemMatcher": [],
 			"options": {
 				"cwd": "${workspaceFolder}/server"
 			}
 		},
 		{
-			"type": "shell",
-			"command": "go run cmd/seed/seed.go",
 			"label": "Server: Seed",
 			"detail": "go run cmd/seed/seed.go",
+			"type": "shell",
+			"command": "go run cmd/seed/seed.go",
 			"problemMatcher": [],
 			"options": {
 				"cwd": "${workspaceFolder}/server"
 			}
+		},
+		{
+			"label": "Docker Compose",
+			"detail": "docker-compose up",
+			"type": "shell",
+			"command": "docker-compose up",
+			"problemMatcher": []
 		}
 	]
 }

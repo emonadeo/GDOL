@@ -7,9 +7,6 @@
 	import logo from '$lib/assets/logo.svg';
 
 	import { page } from '$app/stores';
-
-	export const prerender = true;
-	export const ssr = false;
 </script>
 
 <nav>

@@ -10,6 +10,7 @@ func LoadAuthContext() echo.MiddlewareFunc {
 			if token == "" {
 				return next(c)
 			}
+			
 			return next(c)
 		}
 	}

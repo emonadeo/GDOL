@@ -15,10 +15,9 @@ func (api api) get(c echo.Context) error {
 
 	userId, err := discord.GetIdFromCode(code)
 	if err != nil {
-		// TODO: This results in a 500 error, which is often incorrect.
-		// This also fails e.g. when the code is incorrect.
-		// More error differentiation is needed.
-		return err
+		// TODO: This error can have multiple causes. More differentiation is needed.
+		// Usually this is when the code is incorrect, but it can also be an internal error.
+		return c.NoContent(400)
 	}
 
 	// TODO: Fetch roles from db

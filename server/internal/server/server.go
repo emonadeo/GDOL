@@ -9,8 +9,8 @@ import (
 	echoMiddleware "github.com/labstack/echo/v5/middleware"
 )
 
-func Init() (*echo.Echo, error) {
-	app, err := core.NewApp()
+func New(postgresUrl string) (*echo.Echo, error) {
+	app, err := core.NewApp(postgresUrl)
 	if err != nil {
 		return nil, err
 	}

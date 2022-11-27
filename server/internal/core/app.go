@@ -6,8 +6,8 @@ type App struct {
 	Store *store.Store
 }
 
-func NewApp() (App, error) {
-	store, err := store.New()
+func NewApp(postgresUrl string) (App, error) {
+	store, err := store.New(postgresUrl)
 	if err != nil {
 		return App{}, err
 	}
