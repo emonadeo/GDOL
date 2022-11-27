@@ -10,7 +10,7 @@ import (
 	"github.com/labstack/echo/v5"
 )
 
-func Init(app core.App, e *echo.Echo) {
+func Bind(app core.App, e *echo.Echo) {
 	auth.Bind(app, e.Group("/auth"))
 	changelog.Bind(app, e.Group("/changelog"))
 	levels.Bind(app, e.Group("/levels"))

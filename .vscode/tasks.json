@@ -35,9 +35,9 @@
 		},
 		{
 			"label": "Server: Dev",
-			"detail": "gin run cmd/main.go",
+			"detail": "pnpx nodemon --exec go run cmd/main.go --signal SIGTERM",
 			"type": "shell",
-			"command": "gin -i -p 3001 -d cmd/ cmd/main.go",
+			"command": "pnpx nodemon --exec go run cmd/main.go --signal SIGTERM",
 			"options": {
 				"cwd": "${workspaceFolder}/server"
 			},

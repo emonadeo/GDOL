@@ -12,15 +12,12 @@ import (
 // TODO
 const (
 	apiEndpoint = "https://discord.com/api/v10"
-	clientId    = "1040755745903358083"
-	// TODO: Use environment variable
-	clientSecret = ""
 	// TODO: Redirect URI
-	redirectUri = "http://localhost:5173"
+	redirectUri = "http://localhost:5173/auth"
 )
 
-func GetIdFromCode(code string) (string, error) {
-	accessToken, err := exchangeAccessToken(code)
+func GetIdFromCode(code string, clientId string, clientSecret string) (string, error) {
+	accessToken, err := exchangeAccessToken(code, clientId, clientSecret)
 	if err != nil {
 		return "", err
 	}
@@ -46,7 +43,7 @@ type getCurrentUserResponse struct {
 	// ...
 }
 
-func exchangeAccessToken(code string) (string, error) {
+func exchangeAccessToken(code string, clientId string, clientSecret string) (string, error) {
 	form := url.Values{
 		"client_id":     []string{clientId},
 		"client_secret": []string{clientSecret},
@@ -62,6 +59,7 @@ func exchangeAccessToken(code string) (string, error) {
 	if err != nil {
 		return "", err
 	}
+	println(form.Encode())
 	if res.StatusCode != http.StatusOK {
 		// TODO: Might not always be a bad request (but most likely is a faulty code)
 		return "", fmt.Errorf("invalid code")

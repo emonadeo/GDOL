@@ -16,7 +16,11 @@ export const load: PageLoad = async function ({ url, fetch }) {
 
 	// Exchange token
 	const params = new URLSearchParams({ code });
-	fetch(`${PUBLIC_REST_URL}/auth?${params}`);
+	const res = await fetch(`${PUBLIC_REST_URL}/auth?${params}`);
+	const json = await res.json();
+
+	// TODO
+	// json.access_token
 
 	return {};
 };

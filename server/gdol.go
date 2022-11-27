@@ -36,21 +36,16 @@ Serving API on %s
 	keyDiscordWebhookUrl   = "discord_webhook_url"
 )
 
-type GDOL struct {
+// appWrapper serves as a private core.App instance wrapper.
+type appWrapper struct {
 	core.App
+}
 
-	env string
+type GDOL struct {
+	*appWrapper
 
-	// Config
-	port   string
-	secret string
-
-	postgresUrl string
-	redisUrl    string
-
-	discordClientId     string
-	discordClientSecret string
-	discordWebhookUrl   string
+	env  string
+	port string
 }
 
 func New() *GDOL {
@@ -91,23 +86,32 @@ func New() *GDOL {
 		panic(err.Error())
 	}
 
-	return &GDOL{
-		env: env,
-
-		port:   v.GetString(keyPort),
-		secret: v.GetString(keySecret),
-
-		postgresUrl: v.GetString(keyPostgresUrl),
-		redisUrl:    v.GetString(keyRedisUrl),
-
-		discordClientId:     v.GetString(keyDiscordClientId),
-		discordClientSecret: v.GetString(keyDiscordClientSecret),
-		discordWebhookUrl:   v.GetString(keyDiscordWebhookUrl),
+	gdol := &GDOL{
+		env:  env,
+		port: v.GetString(keyPort),
 	}
+
+	app, err := core.NewApp(core.Config{
+		Secret: v.GetString(keySecret),
+
+		PostgresUrl: v.GetString(keyPostgresUrl),
+		RedisUrl:    v.GetString(keyRedisUrl),
+
+		DiscordClientId:     v.GetString(keyDiscordClientId),
+		DiscordClientSecret: v.GetString(keyDiscordClientSecret),
+		DiscordWebhookUrl:   v.GetString(keyDiscordWebhookUrl),
+	})
+	if err != nil {
+		panic(err.Error())
+	}
+
+	gdol.appWrapper = &appWrapper{app}
+
+	return gdol
 }
 
 func (gdol GDOL) Start() {
-	server, err := server.New(gdol.postgresUrl)
+	server, err := server.New(gdol.appWrapper.App)
 	if err != nil {
 		panic(err.Error())
 	}

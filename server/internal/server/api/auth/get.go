@@ -13,11 +13,12 @@ func (api api) get(c echo.Context) error {
 		return c.NoContent(400)
 	}
 
-	userId, err := discord.GetIdFromCode(code)
+	userId, err := discord.GetIdFromCode(code, api.app.Config.DiscordClientId, api.app.Config.DiscordClientSecret)
 	if err != nil {
 		// TODO: This error can have multiple causes. More differentiation is needed.
 		// Usually this is when the code is incorrect, but it can also be an internal error.
-		return c.NoContent(400)
+		return err
+		// return c.NoContent(400)
 	}
 
 	// TODO: Fetch roles from db

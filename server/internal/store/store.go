@@ -20,8 +20,8 @@ type Store struct {
 	Users     users.Users
 }
 
-func New(url string) (*Store, error) {
-	db, err := sql.Open("postgres", url)
+func New(postgresUrl string) (*Store, error) {
+	db, err := sql.Open("postgres", postgresUrl)
 	if err != nil {
 		return nil, err
 	}
