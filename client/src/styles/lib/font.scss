@@ -1,0 +1,57 @@
+@use 'src/styles/lib/capsize';
+
+@mixin clash-display($cap-height, $line-gap) {
+	font-family: 'Clash Display', sans-serif;
+	@include capsize.capsize(
+		(
+			'capHeight': 670,
+			'ascent': 890,
+			'descent': -250,
+			'unitsPerEm': 1000,
+		),
+		$cap-height,
+		$line-gap
+	);
+}
+
+@mixin lexend-deca($cap-height, $line-gap) {
+	font-family: 'Lexend Deca', sans-serif;
+	@include capsize.capsize(
+		(
+			'capHeight': 700,
+			'ascent': 1000,
+			'descent': -250,
+			'unitsPerEm': 1000,
+		),
+		$cap-height,
+		$line-gap
+	);
+}
+
+@mixin code-new-roman($cap-height, $line-gap) {
+	font-family: 'Code New Roman', monospace;
+	@include capsize.capsize(
+		(
+			'capHeight': 1307,
+			'ascent': 1700,
+			'descent': -337,
+			'unitsPerEm': 2048,
+		),
+		$cap-height,
+		$line-gap
+	);
+}
+
+@mixin press-start($cap-height, $line-gap) {
+	font-family: 'Press Start 2P', monospace;
+	@include capsize.capsize(
+		(
+			'capHeight': 1024,
+			'ascent': 896,
+			'descent': -128,
+			'unitsPerEm': 1024,
+		),
+		$cap-height,
+		$line-gap
+	);
+}

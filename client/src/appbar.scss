@@ -1,0 +1,64 @@
+@use 'src/styles/color';
+@use 'src/styles/screen';
+
+$height: 4rem;
+
+.appbar {
+	grid-area: appbar;
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) 4rem 4rem;
+	border-top: 1px solid color.$surface;
+
+	.menu {
+		display: grid;
+		grid-template-columns: 4rem minmax(0, 1fr);
+		align-items: center;
+
+		img {
+			justify-self: center;
+		}
+	}
+
+	.search,
+	.user {
+		border-left: 1px solid color.$surface;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}
+
+@include screen.xl {
+	.appbar {
+		// TODO: Unify Grid Layout
+		display: grid;
+		padding-inline: calc(6rem + 1px);
+		grid-template-columns: calc(6.5rem + 4px) 1fr max-content;
+		column-gap: 1.5rem;
+		border-bottom: 1px solid color.$surface;
+
+		.logo {
+			height: 27px;
+			align-self: center;
+		}
+
+		.links {
+			display: flex;
+			gap: 4rem;
+
+			.link {
+				a {
+					height: $height;
+					display: flex;
+					align-items: center;
+					color: inherit;
+					border-bottom: 1px solid transparent;
+				}
+
+				&[aria-current='page'] a {
+					border-bottom-color: color.$on-surface;
+				}
+			}
+		}
+	}
+}

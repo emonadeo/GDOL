@@ -1,0 +1,116 @@
+@use 'src/styles/color';
+@use 'src/styles/screen';
+
+aside.sidebar {
+	nav.stops {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 4rem;
+		width: 4rem;
+		background-color: color.$background;
+		border-left: 1px solid color.$surface;
+
+		ol {
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+
+			li {
+				width: 100%;
+				height: 4rem;
+
+				a {
+					height: 100%;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+				}
+			}
+
+			.connector {
+				flex: 1;
+				border-left: 1px solid color.$on-background;
+				align-self: center;
+			}
+		}
+
+		&.slide-enter-active,
+		&.slide-exit-active {
+			transition: transform 250ms ease-in-out;
+		}
+
+		&.slide-enter,
+		&.slide-exit-to {
+			transform: translateX(4rem);
+		}
+
+		&.slide-enter-to,
+		&.slide-exit {
+			transform: none;
+		}
+	}
+
+	button.toggle {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		height: 4rem;
+		width: 4rem;
+		grid-row: 2;
+		background-color: color.$background;
+		border-top: 1px solid color.$surface;
+		border-left: 1px solid color.$surface;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		img {
+			transition: transform 250ms ease-in-out;
+		}
+
+		&.uncollapsed img {
+			transform: rotate(180deg);
+		}
+	}
+}
+
+@include screen.xl {
+	aside.sidebar {
+		display: grid;
+		grid-template-rows: 4rem 1fr max-content;
+		gap: 1.5rem;
+		padding-bottom: 2rem;
+
+		.sections {
+			writing-mode: vertical-rl;
+			display: flex;
+			gap: 1rem;
+			align-items: center;
+
+			> li {
+				display: flex;
+				align-items: center;
+				gap: 1rem;
+
+				a {
+					color: inherit;
+				}
+			}
+
+			> li::after {
+				content: '';
+				height: 6rem;
+				display: block;
+				border-left: 1px solid white;
+			}
+		}
+
+		.archive {
+			display: flex;
+			align-items: center;
+			writing-mode: vertical-rl;
+			color: inherit;
+		}
+	}
+}

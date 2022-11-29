@@ -1,0 +1,26 @@
+@use 'src/styles/color';
+@use 'src/styles/screen';
+
+#app {
+	height: 100%;
+	display: grid;
+	grid-template-rows: minmax(0, 1fr) 4rem;
+	grid-template-columns: minmax(0, 1fr);
+	grid-template-areas:
+		'page'
+		'appbar';
+
+	.page {
+		grid-area: page;
+		overflow-y: auto;
+	}
+}
+
+@include screen.xl {
+	#app {
+		grid-template-rows: 4rem minmax(0, 1fr);
+		grid-template-areas:
+			'appbar'
+			'page';
+	}
+}

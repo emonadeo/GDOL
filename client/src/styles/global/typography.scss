@@ -1,0 +1,113 @@
+// https://m3.material.io/styles/typography/
+
+@use 'src/styles/lib/font';
+
+// Display Large
+h1,
+.type-h1,
+.type-display-lg {
+	display: block;
+	@include font.clash-display(64, 24);
+}
+
+// Display Medium
+h2,
+.type-h2,
+.type-display-md {
+	display: block;
+	@include font.clash-display(32, 16);
+}
+
+// Display Small
+h3,
+.type-h3,
+.type-display-sm {
+	display: block;
+	@include font.clash-display(24, 12);
+}
+
+// Headline Large
+h4,
+.type-h4,
+.type-headline-lg {
+	display: block;
+	@include font.lexend-deca(16, 12);
+	font-weight: 500;
+}
+
+// Headline Medium
+// {}
+
+// Headline Small
+// {}
+
+// Title Large
+h5,
+.type-h5,
+.type-title-lg {
+	display: block;
+	@include font.press-start(14, 8);
+	text-transform: uppercase;
+	letter-spacing: 2px;
+}
+
+// Title Medium
+h6,
+.type-h6,
+.type-title-md {
+	display: block;
+	@include font.press-start(12, 8);
+	text-transform: uppercase;
+	letter-spacing: 2px;
+}
+
+// Title Small
+.type-title-sm {
+	display: block;
+	@include font.press-start(10, 8);
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+
+// Label Large
+.type-label-lg {
+	display: block;
+	@include font.lexend-deca(12, 8);
+	font-weight: 500;
+}
+
+// Label Medium
+.type-label-md {
+	display: block;
+	@include font.lexend-deca(10, 8);
+	font-weight: 500;
+}
+
+// Label Small
+// {}
+
+// Body Large
+p,
+.type-body-lg {
+	display: block;
+	@include font.lexend-deca(12, 12);
+	font-weight: 500;
+
+	&.mono {
+		@include font.code-new-roman(12, 12);
+	}
+}
+
+// Body Medium
+.type-body-md {
+	display: block;
+	@include font.lexend-deca(10, 8);
+	font-weight: 500;
+
+	&.mono {
+		@include font.code-new-roman(10, 8);
+	}
+}
+
+// Body Small
+// {}

@@ -1,0 +1,59 @@
+@use 'src/styles/screen';
+
+// Utility classes for showing/hiding elements
+
+.r\:sm {
+	@include screen.lt-sm {
+		display: none !important;
+	}
+}
+
+.r\:md {
+	@include screen.lt-md {
+		display: none !important;
+	}
+}
+
+.r\:lg {
+	@include screen.lt-lg {
+		display: none !important;
+	}
+}
+.r\:xl {
+	@include screen.lt-xl {
+		display: none !important;
+	}
+}
+.r\:xxl {
+	@include screen.lt-xxl {
+		display: none !important;
+	}
+}
+
+.r\:lt-sm {
+	@include screen.sm {
+		display: none !important;
+	}
+}
+
+.r\:lt-md {
+	@include screen.md {
+		display: none !important;
+	}
+}
+
+.r\:lt-lg {
+	@include screen.lg {
+		display: none !important;
+	}
+}
+.r\:lt-xl {
+	@include screen.xl {
+		display: none !important;
+	}
+}
+.r\:lt-xxl {
+	@include screen.xxl {
+		display: none !important;
+	}
+}

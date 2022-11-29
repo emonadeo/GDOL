@@ -1,8 +1,18 @@
-import { sveltekit } from '@sveltejs/kit/vite';
-import type { UserConfig } from 'vite';
+import { defineConfig } from 'vite';
+import solidPlugin from 'vite-plugin-solid';
+import { resolve } from 'path';
 
-const config: UserConfig = {
-	plugins: [sveltekit()],
-};
-
-export default config;
+export default defineConfig({
+	plugins: [solidPlugin()],
+	build: {
+		target: 'esnext',
+	},
+	resolve: {
+		alias: [
+			{
+				find: 'src',
+				replacement: resolve(__dirname, 'src'),
+			},
+		],
+	},
+});

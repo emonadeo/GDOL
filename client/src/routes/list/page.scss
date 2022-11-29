@@ -1,0 +1,34 @@
+@use 'src/styles/color';
+@use 'src/styles/screen';
+
+.page-list {
+	position: relative;
+
+	main {
+		height: 100%;
+		overflow-y: auto;
+	}
+}
+
+@include screen.xl {
+	.page-list {
+		overflow: hidden;
+		flex: 1;
+		display: grid;
+		grid-template-columns: 4rem 1fr;
+		grid-template-rows: minmax(0, 1fr);
+
+		main {
+			padding: 0;
+			overflow: auto;
+			display: flex;
+			flex-direction: column;
+
+			.no-results {
+				margin-left: calc(10rem + 4px);
+				margin-block: 2rem;
+				color: color.$surface;
+			}
+		}
+	}
+}
