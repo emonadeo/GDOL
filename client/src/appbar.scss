@@ -6,25 +6,44 @@ $height: 4rem;
 .appbar {
 	grid-area: appbar;
 	display: grid;
-	grid-template-columns: minmax(0, 1fr) 4rem 4rem;
-	border-top: 1px solid color.$surface;
+	grid-template-columns: 4rem minmax(0, 1fr) 4rem 4rem;
 
-	.menu {
-		display: grid;
-		grid-template-columns: 4rem minmax(0, 1fr);
+	.menu,
+	.search,
+	.user {
+		display: flex;
 		align-items: center;
+		justify-content: center;
+	}
 
-		img {
-			justify-self: center;
-		}
+	.location {
+		display: flex;
+		align-items: center;
 	}
 
 	.search,
 	.user {
 		border-left: 1px solid color.$surface;
-		display: flex;
-		justify-content: center;
-		align-items: center;
+	}
+}
+
+@include screen.lt-sm {
+	.appbar {
+		border-top: 1px solid color.$surface;
+	}
+}
+
+@include screen.sm {
+	.appbar {
+		border-bottom: 1px solid color.$surface;
+
+		.menu {
+			border-right: 1px solid color.$surface;
+		}
+
+		.location {
+			padding-left: 4rem;
+		}
 	}
 }
 

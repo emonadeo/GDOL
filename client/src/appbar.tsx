@@ -1,12 +1,11 @@
-import { useLocation, useMatch } from '@solidjs/router';
+import { useMatch } from '@solidjs/router';
 import { Component } from 'solid-js';
 
 import logo from 'src/assets/logo.svg';
 
 import iconMenu from 'src/assets/icons/menu.svg';
-import iconUser from 'src/assets/icons/user.svg';
 import iconSearch from 'src/assets/icons/search.svg';
-import iconClose from 'src/assets/icons/close.svg';
+import iconUser from 'src/assets/icons/user.svg';
 
 import './appbar.scss';
 
@@ -46,10 +45,14 @@ export const AppBar: Component = function () {
 					</a>
 				</li>
 			</ul>
+			{/* Menu */}
 			<a class="menu" href="">
 				<img src={iconMenu} alt="Menu" width={24} height={24} />
-				<p class="type-label-lg">Leaderboard</p>
 			</a>
+			{/* Location */}
+			<div class="location">
+				<p class="type-title-md">List</p>
+			</div>
 			{/* Search */}
 			<a class="search" href="">
 				<img src={iconSearch} alt="Search" width={24} height={24} />

@@ -16,7 +16,7 @@
 	}
 }
 
-@include screen.xl {
+@include screen.sm {
 	#app {
 		grid-template-rows: 4rem minmax(0, 1fr);
 		grid-template-areas:

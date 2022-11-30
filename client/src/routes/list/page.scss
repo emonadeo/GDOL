@@ -10,6 +10,17 @@
 	}
 }
 
+@include screen.sm {
+	.page-list {
+		display: grid;
+		grid-template-columns: 4rem minmax(0, 1fr);
+
+		main {
+			padding: 2rem;
+		}
+	}
+}
+
 @include screen.xl {
 	.page-list {
 		overflow: hidden;

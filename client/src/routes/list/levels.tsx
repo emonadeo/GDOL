@@ -27,7 +27,7 @@ interface LevelProps {
 
 export const Level: Component<LevelProps> = function (props) {
 	return (
-		<li id={`rank-${props.level.rank}`}>
+		<li id={props.level.rank.toString()}>
 			<a href={`/list/${props.level.rank}`} class="level">
 				<div class="rank">
 					<h2 classList={{ outline: props.level.rank < 100 }}>
@@ -46,7 +46,7 @@ export const Level: Component<LevelProps> = function (props) {
 					alt="Thumbnail"
 				/>
 				<div class="meta">
-					<h2>{props.level.name}</h2>
+					<h2 class="name">{props.level.name}</h2>
 					<p>{props.level.user.name}</p>
 				</div>
 			</a>
