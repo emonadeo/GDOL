@@ -11,6 +11,7 @@ import 'src/styles/global/typography.scss';
 import './index.scss';
 
 import { AppBar } from 'src/appbar';
+import { ListData } from 'src/openapi';
 
 const App: Component = function () {
 	return (
@@ -18,7 +19,11 @@ const App: Component = function () {
 			<AppBar />
 			<Routes>
 				<Route path="/" />
-				<Route path="/list" component={lazy(() => import('src/routes/list/page'))} />
+				<Route
+					path="/list"
+					component={lazy(() => import('src/routes/list/page'))}
+					data={ListData}
+				/>
 				<Route path="/leaderboard" />
 				<Route path="/debug" component={lazy(() => import('src/routes/debug/page'))} />
 			</Routes>

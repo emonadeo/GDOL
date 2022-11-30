@@ -35,6 +35,11 @@
 						display: flex;
 						align-items: center;
 						justify-content: center;
+
+						&:hover,
+						&:focus-visible {
+							border: 1px solid color.$on-background;
+						}
 					}
 				}
 
@@ -47,11 +52,20 @@
 		}
 
 		.archive {
-			display: flex;
-			align-items: center;
-			padding: 1.5rem 0;
-			writing-mode: vertical-rl;
-			border-top: 1px solid color.$surface;
+			a {
+				width: 100%;
+				display: flex;
+				align-items: center;
+				padding: 1.5rem 0;
+				writing-mode: vertical-rl;
+				border: 1px solid transparent;
+				border-top-color: color.$surface;
+
+				&:hover,
+				&:focus-visible {
+					border-color: color.$on-background;
+				}
+			}
 		}
 	}
 }

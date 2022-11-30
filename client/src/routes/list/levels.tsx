@@ -28,13 +28,13 @@ export const ListLevel: Component<ListLevelProps> = function (props) {
 		<li class="page-list-level" id={props.level.rank.toString()}>
 			<a href={`/list/${props.level.rank}`}>
 				<div class="rank">
-					<h2 classList={{ outline: props.level.rank < 100 }}>
+					<span class="type-display-md" classList={{ outline: props.level.rank < 100 }}>
 						{Math.floor((props.level.rank / 100) % 10)}
-					</h2>
-					<h2 classList={{ outline: props.level.rank < 10 }}>
+					</span>
+					<span class="type-display-md" classList={{ outline: props.level.rank < 10 }}>
 						{Math.floor((props.level.rank / 10) % 10)}
-					</h2>
-					<h2>{Math.floor(props.level.rank % 10)}</h2>
+					</span>
+					<span class="type-display-md">{Math.floor(props.level.rank % 10)}</span>
 				</div>
 				<img
 					class="thumbnail"
