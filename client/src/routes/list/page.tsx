@@ -1,18 +1,13 @@
-import {
-	Accessor,
-	Component,
-	createResource,
-	createSignal,
-	For,
-	onCleanup,
-	Setter,
-} from 'solid-js';
+import { Component, createResource, createSignal, For } from 'solid-js';
 
 import './page.scss';
 
 import { Level as ILevel } from 'src/openapi';
-import { Level, Levels } from 'src/routes/list/levels';
-import { Sidebar } from 'src/routes/list/sidebar';
+import { ListLevel, ListLevels } from 'src/routes/list/levels';
+import { ListSidebar } from 'src/routes/list/sidebar';
+import { observeScroll as _observeScroll } from 'src/directives/observeScroll';
+
+const observeScroll = _observeScroll;
 
 async function fetchList(): Promise<ILevel[]> {
 	// TODO: Use OpenAPI
@@ -32,44 +27,19 @@ const Page: Component = function () {
 
 	const [scrollPosition, setScrollPosition] = createSignal(0);
 
-	// use:observeScroll
-	const observeScroll = function (el: Element, value: Accessor<Setter<number>>) {
-		const setScrollPosition = value();
-
-		function so() {
-			setScrollPosition(el.scrollTop / (el.scrollHeight - el.clientHeight));
-		}
-
-		el.addEventListener('scroll', so);
-
-		onCleanup(() => {
-			el.removeEventListener('scroll', so);
-		});
-	};
-
 	return (
 		<div class="page page-list">
-			<Sidebar length={list()?.length || 0} scrollPosition={scrollPosition()} />
+			<ListSidebar length={list()?.length || 0} scrollPosition={scrollPosition()} />
 			<main use:observeScroll={setScrollPosition}>
 				<p class="no-results" style={list()?.length === 0 ? undefined : { display: 'none' }}>
 					No results.
 				</p>
-				<Levels>
-					<For each={list()}>{(level) => <Level level={level} />}</For>
-				</Levels>
+				<ListLevels>
+					<For each={list()}>{(level) => <ListLevel level={level} />}</For>
+				</ListLevels>
 			</main>
 		</div>
 	);
 };
 
 export default Page;
-
-// Required for type checking
-// See https://www.solidjs.com/docs/latest/api#use___
-declare module 'solid-js' {
-	namespace JSX {
-		interface Directives {
-			observeScroll: Setter<number>;
-		}
-	}
-}

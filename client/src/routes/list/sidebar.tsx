@@ -1,10 +1,13 @@
-import { Accessor, Component, createMemo, createSignal, For, Setter, Show } from 'solid-js';
+import { Component, createMemo, createSignal, For, Show } from 'solid-js';
 
 import './sidebar.scss';
 
 import iconChevrons from 'src/assets/icons/chevrons.svg';
+import { observeHeight as _observeHeight } from 'src/directives/observeHeight';
 
-interface SidebarProps {
+const observeHeight = _observeHeight;
+
+interface ListSidebarProps {
 	length: number;
 	scrollPosition: number;
 }
@@ -14,7 +17,7 @@ const stopsMinGap = 64;
 const minStopsAmount = 2;
 const maxStopsAmount = 5;
 
-export const Sidebar: Component<SidebarProps> = function (props) {
+export const ListSidebar: Component<ListSidebarProps> = function (props) {
 	const [collapsed, setCollapsed] = createSignal(true);
 
 	const [scrollHeight, setScrollHeight] = createSignal(0);
@@ -92,24 +95,3 @@ export const ScrollIndicator: Component<ScrollIndicatorProps> = function (props)
 		</svg>
 	);
 };
-
-// use:observeHeight
-const observeHeight = function (el: Element, value: Accessor<Setter<number>>) {
-	const setHeight = value();
-	const ro = new ResizeObserver((es) => {
-		const height = es.at(0)?.borderBoxSize.at(0)?.blockSize;
-		if (!height) return;
-		setHeight(height);
-	});
-	ro.observe(el, { box: 'border-box' });
-};
-
-// Required for type checking
-// See https://www.solidjs.com/docs/latest/api#use___
-declare module 'solid-js' {
-	namespace JSX {
-		interface Directives {
-			observeHeight: Setter<number>;
-		}
-	}
-}

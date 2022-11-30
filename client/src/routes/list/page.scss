@@ -7,6 +7,7 @@
 	main {
 		height: 100%;
 		overflow-y: auto;
+		scroll-behavior: smooth;
 	}
 }
 
@@ -17,6 +18,13 @@
 
 		main {
 			padding: 2rem;
+		}
+	}
+}
+
+@include screen.md {
+	.page-list {
+		main {
 		}
 	}
 }

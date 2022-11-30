@@ -1,34 +1,32 @@
 import { children, Component, JSX } from 'solid-js';
 
-import { Level as ILevel } from 'src/openapi';
+import { Level } from 'src/openapi';
 import { getYoutubeIdFromUrl } from 'src/util';
 
 import './levels.scss';
 
-interface LevelsProps {
+interface ListLevelsProps {
 	children: JSX.Element;
 }
 
-export const Levels: Component<LevelsProps> = function (props) {
+export const ListLevels: Component<ListLevelsProps> = function (props) {
 	const levels = children(() => props.children);
 
 	return (
-		<>
-			<ol role="list" class="levels">
-				{levels()}
-			</ol>
-		</>
+		<ol role="list" class="page-list-levels">
+			{levels()}
+		</ol>
 	);
 };
 
-interface LevelProps {
-	level: ILevel;
+interface ListLevelProps {
+	level: Level;
 }
 
-export const Level: Component<LevelProps> = function (props) {
+export const ListLevel: Component<ListLevelProps> = function (props) {
 	return (
-		<li id={props.level.rank.toString()}>
-			<a href={`/list/${props.level.rank}`} class="level">
+		<li class="page-list-level" id={props.level.rank.toString()}>
+			<a href={`/list/${props.level.rank}`}>
 				<div class="rank">
 					<h2 classList={{ outline: props.level.rank < 100 }}>
 						{Math.floor((props.level.rank / 100) % 10)}
