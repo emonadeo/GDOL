@@ -42,19 +42,16 @@ $height: 4rem;
 		}
 
 		.location {
-			padding-left: 4rem;
+			padding-left: 2rem;
 		}
 	}
 }
 
-@include screen.xl {
+@include screen.lg {
 	.appbar {
 		// TODO: Unify Grid Layout
-		display: grid;
-		padding-inline: calc(6rem + 1px);
-		grid-template-columns: calc(6.5rem + 4px) 1fr max-content;
-		column-gap: 1.5rem;
-		border-bottom: 1px solid color.$surface;
+		grid-template-columns: calc(8rem + 4px) 1fr 4rem 4rem;
+		padding-left: calc(6rem + 1px);
 
 		.logo {
 			height: 27px;
@@ -79,5 +76,11 @@ $height: 4rem;
 				}
 			}
 		}
+	}
+}
+
+@include screen.xl {
+	.appbar {
+		grid-template-columns: calc(9.5rem + 4px) 1fr 4rem 4rem;
 	}
 }

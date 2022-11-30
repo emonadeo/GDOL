@@ -1,0 +1,28 @@
+@use 'src/styles/color';
+@use 'src/styles/screen';
+
+.page-debug {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	padding: 2rem;
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		white-space: nowrap;
+	}
+
+	p {
+		max-width: 40rem;
+	}
+}
+
+@include screen.xl {
+	.page-debug {
+		padding: 6rem calc(14rem + 5px);
+	}
+}

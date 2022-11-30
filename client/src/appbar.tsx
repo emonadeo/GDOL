@@ -21,36 +21,36 @@ export const AppBar: Component = function () {
 	return (
 		<nav class="appbar">
 			{/* Logo */}
-			<img class="logo screen:xl" src={logo} alt="Logo" />
+			<img class="logo screen:lg" src={logo} alt="Logo" />
 			{/* Pages */}
-			<ul class="links screen:xl" role="list">
+			<ul class="links screen:lg" role="list">
 				<li class="link" aria-current={ariaCurrent('/')}>
-					<a class="type-label-lg" href="/">
+					<a class="type-title-md" href="/">
 						Home
 					</a>
 				</li>
 				<li class="link" aria-current={ariaCurrent('/list/*')}>
-					<a class="type-label-lg" href="/list">
+					<a class="type-title-md" href="/list">
 						List
 					</a>
 				</li>
 				<li class="link" aria-current={ariaCurrent('/leaderboard/*')}>
-					<a class="type-label-lg" href="/leaderboard">
+					<a class="type-title-md" href="/leaderboard">
 						Leaderboard
 					</a>
 				</li>
 				<li class="link" aria-current={ariaCurrent('/more/*')}>
-					<a class="type-label-lg" href="/more">
+					<a class="type-title-md" href="/more">
 						More
 					</a>
 				</li>
 			</ul>
 			{/* Menu */}
-			<a class="menu" href="">
+			<a class="menu screen:lt-lg" href="">
 				<img src={iconMenu} alt="Menu" width={24} height={24} />
 			</a>
 			{/* Location */}
-			<div class="location">
+			<div class="location screen:lt-lg">
 				<p class="type-title-md">List</p>
 			</div>
 			{/* Search */}

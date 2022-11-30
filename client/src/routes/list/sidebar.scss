@@ -107,36 +107,3 @@
 		}
 	}
 }
-
-@include screen.xl {
-	.page-list-sidebar {
-		display: grid;
-		grid-template-rows: 4rem 1fr max-content;
-		gap: 1.5rem;
-		padding-bottom: 2rem;
-
-		.sections {
-			writing-mode: vertical-rl;
-			display: flex;
-			gap: 1rem;
-			align-items: center;
-
-			> li {
-				display: flex;
-				align-items: center;
-				gap: 1rem;
-
-				a {
-					color: inherit;
-				}
-			}
-
-			> li::after {
-				content: '';
-				height: 6rem;
-				display: block;
-				border-left: 1px solid white;
-			}
-		}
-	}
-}

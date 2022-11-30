@@ -20,6 +20,7 @@ const App: Component = function () {
 				<Route path="/" />
 				<Route path="/list" component={lazy(() => import('src/routes/list/page'))} />
 				<Route path="/leaderboard" />
+				<Route path="/debug" component={lazy(() => import('src/routes/debug/page'))} />
 			</Routes>
 		</div>
 	);
