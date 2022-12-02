@@ -1,5 +1,5 @@
 import { useRouteData } from '@solidjs/router';
-import { Component, For } from 'solid-js';
+import { Component, createMemo, createSignal, For } from 'solid-js';
 
 import { createPagination } from 'src/components/pagination';
 import { UsersData } from 'src/openapi';
@@ -12,14 +12,28 @@ import assetMedal from 'src/assets/medal.svg';
 const Page: Component = function () {
 	const users = useRouteData<typeof UsersData>();
 
-	const [usersPaginated, UsersPagination] = createPagination(() => users() || []);
+	const [filter, setFilter] = createSignal<string>('');
+
+	// TODO: Use fuzzysort, or remove altogether in favor of universal search?
+	const filteredUsers = createMemo(() =>
+		users()?.filter((u) => u.name.toLowerCase().startsWith(filter().toLowerCase()))
+	);
+
+	const [usersPaginated, UsersPagination] = createPagination(() => filteredUsers() || []);
 
 	return (
 		<div class="page-leaderboard">
+			{/* TODO: Use fuzzysort, or remove altogether in favor of universal search? */}
 			<aside class="filter">
-				<input class="textfield type-label-lg" type="text" placeholder="Search" />
+				<input
+					class="textfield type-label-lg"
+					type="text"
+					placeholder="Search"
+					onInput={(e) => setFilter((e.target as HTMLInputElement).value)}
+				/>
 				<UsersPagination />
 			</aside>
+			{/*  */}
 			<aside class="medal" style={usersPaginated().length < 8 ? { display: 'none' } : undefined}>
 				<img src={assetMedal} alt="Medal" />
 			</aside>

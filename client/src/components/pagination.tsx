@@ -36,6 +36,9 @@ export const createPagination = function <T>(
 	createEffect(() => setSearchParams({ page: page() }));
 	createEffect(() => setSearchParams({ perPage: perPage() }));
 
+	// Reset current page when perPage changes to avoid out of bounds
+	createEffect(() => perPage() && setPage(1));
+
 	// Items currently active in the pagination
 	const paginated = createMemo<Array<T>>(() => {
 		const paginationStart = (page() - 1) * perPage();
