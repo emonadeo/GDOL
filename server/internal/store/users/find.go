@@ -21,6 +21,7 @@ func (u Users) Find(ctx context.Context) ([]model.UserWithScoreAndRank, error) {
 				Nationality: util.NullString(user.Nationality),
 			},
 			Score: user.Score,
+			Rank:  user.Rank,
 		})
 	}
 	return userss, nil

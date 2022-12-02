@@ -9,5 +9,5 @@ type User struct {
 type UserWithScoreAndRank struct {
 	User
 	Score float64 `json:"score"`
-	Rank  int     `json:"rank"`
+	Rank  int64   `json:"rank"`
 }
