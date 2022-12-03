@@ -1,0 +1,156 @@
+@use 'src/styles/screen';
+@use 'src/styles/color';
+@use 'src/styles/util';
+
+// TODO: Accessibility: Links
+a {
+	color: inherit;
+}
+
+@include screen.xl {
+	.page-level {
+		overflow: auto;
+		flex: 1 0 0;
+		display: grid;
+		padding-block: 6rem;
+		padding-inline: calc(6rem + 1px);
+		grid-template-columns: 3fr 2fr;
+		column-gap: 1.5rem;
+		box-sizing: content-box;
+
+		.details {
+			display: flex;
+			flex-direction: column;
+			gap: 1.5rem;
+			position: sticky;
+			bottom: 0;
+			align-self: end;
+			height: max-content;
+			// TODO: Better way using container size?
+			min-height: calc(100vh - 16rem);
+
+			.video {
+				border-top: 1px solid color.$on-background;
+				width: 100%;
+				aspect-ratio: 16 / 9;
+			}
+
+			.credits {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				grid-auto-rows: max-content;
+				gap: 1.5rem;
+
+				> div {
+					display: flex;
+					flex-direction: column;
+					gap: 0.75rem;
+				}
+
+				.creators {
+					grid-row: 2;
+					grid-column: span 2;
+				}
+			}
+		}
+
+		.records {
+			display: flex;
+			flex-direction: column;
+			gap: 1.5rem;
+
+			position: sticky;
+			bottom: 0;
+			align-self: end;
+			height: max-content;
+			// TODO: Better way using container size?
+			min-height: calc(100vh - 16rem);
+
+			table {
+				tr.record {
+					td {
+						vertical-align: bottom;
+						padding-block: 0.75rem;
+						white-space: nowrap;
+
+						&:not(:first-child) {
+							padding-left: 1.25rem;
+						}
+					}
+
+					td.rank {
+						text-align: right;
+
+						p:not(.type-body-md) {
+							font-weight: 700;
+						}
+
+						&.gold p {
+							@include util.text-gradient(#ffd700, #e89e00, #ffd700);
+						}
+
+						&.silver p {
+							@include util.text-gradient(#ffffff, #c0c0c0, #c0c0c0);
+						}
+
+						&.bronze p {
+							@include util.text-gradient(#ff8e31, #d45d00, #e8721d);
+						}
+					}
+
+					td.percentage {
+						text-align: right;
+
+						p.bold {
+							font-weight: 700;
+						}
+					}
+
+					td.user {
+						width: 100%;
+
+						a {
+							display: flex;
+							align-items: center;
+						}
+					}
+
+					&:hover td.user a::after {
+						content: '';
+						flex: 1;
+						border-top: 1px solid color.$on-background;
+						margin-left: 1.25rem;
+					}
+
+					td.video {
+						padding-block: 0;
+						vertical-align: middle;
+						padding-left: 1rem;
+
+						a {
+							display: flex;
+							height: 2.25rem;
+							width: 2.25rem;
+							border-radius: 100%;
+							align-items: center;
+							justify-content: center;
+
+							&:hover,
+							&:focus-visible {
+								background-color: rgba(color.$on-background, 0.2);
+							}
+
+							img {
+								height: 1.25rem;
+							}
+						}
+					}
+
+					&:not(:hover) td.video a {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+}
