@@ -19,10 +19,10 @@ const Page: Component = function () {
 		users()?.filter((u) => u.name.toLowerCase().startsWith(filter().toLowerCase()))
 	);
 
-	const [usersPaginated, UsersPagination] = createPagination(() => filteredUsers() || []);
+	const [usersPaginated, UsersPage, UsersPerPage] = createPagination(() => filteredUsers() || []);
 
 	return (
-		<div class="page-leaderboard">
+		<div class="page page-leaderboard">
 			{/* TODO: Use fuzzysort, or remove altogether in favor of universal search? */}
 			<aside class="filter">
 				<input
@@ -31,10 +31,14 @@ const Page: Component = function () {
 					placeholder="Search"
 					onInput={(e) => setFilter((e.target as HTMLInputElement).value)}
 				/>
-				<UsersPagination />
+				<UsersPage />
+				<UsersPerPage />
 			</aside>
 			{/*  */}
-			<aside class="medal" style={usersPaginated().length < 8 ? { display: 'none' } : undefined}>
+			<aside
+				class="medal screen:lg"
+				style={usersPaginated().length < 8 ? { display: 'none' } : undefined}
+			>
 				<img src={assetMedal} alt="Medal" />
 			</aside>
 			<main>
@@ -83,8 +87,10 @@ const Page: Component = function () {
 					</tbody>
 				</table>
 			</main>
-			<aside class="filter">
-				<UsersPagination />
+			{/* Only show secondary Pagination on larger screens */}
+			<aside class="filter-secondary screen:lg">
+				<UsersPage />
+				<UsersPerPage />
 			</aside>
 		</div>
 	);

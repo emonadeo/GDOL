@@ -24,7 +24,7 @@ const perPageOptions = [10, 25, 50, 100];
  */
 export const createPagination = function <T>(
 	items: Accessor<Array<T>>
-): [Accessor<Array<T>>, Component] {
+): [Accessor<Array<T>>, Component, Component] {
 	const [searchParams, setSearchParams] = useSearchParams();
 
 	const [page, setPage] = createSignal<number>(Number(searchParams['page']) || 1);
@@ -32,12 +32,14 @@ export const createPagination = function <T>(
 		Number(searchParams['perPage'] || perPageOptions[1])
 	);
 
-	// Update SearchParams whenever
+	const totalPageAmount = createMemo<number>(() => Math.ceil(items().length / perPage()));
+
+	// Update SearchParams whenever page or perPage change
 	createEffect(() => setSearchParams({ page: page() }));
 	createEffect(() => setSearchParams({ perPage: perPage() }));
 
-	// Reset current page when perPage changes to avoid out of bounds
-	createEffect(() => perPage() && setPage(1));
+	// Reset current page when items or perPage change to avoid out of bounds
+	createEffect(() => items() && perPage() && setPage(1));
 
 	// Items currently active in the pagination
 	const paginated = createMemo<Array<T>>(() => {
@@ -46,109 +48,93 @@ export const createPagination = function <T>(
 		return items().slice(paginationStart, paginationEnd);
 	});
 
-	const PaginationComponent = createPaginationComponent<T>(
-		items,
-		page,
-		setPage,
-		perPage,
-		setPerPage
-	);
+	const PageComponent = createPageComponent(totalPageAmount, page, setPage);
+	const PerPageComponent = createPerPageComponent(perPage, setPerPage);
 
-	return [paginated, PaginationComponent];
+	return [paginated, PageComponent, PerPageComponent];
 };
 
-//
-function createPaginationComponent<T>(
-	items: Accessor<Array<T>>,
+function createPageComponent(
+	perPageAmount: Accessor<number>,
 	page: Accessor<number>,
-	setPage: Setter<number>,
-	perPage: Accessor<number>,
-	setPerPage: Setter<number>
+	setPage: Setter<number>
 ): Component {
-	const pageAmount = createMemo<number>(() => Math.ceil(items().length / perPage()));
-
 	// TODO: Code kinda ugly ngl
 	const pager = createMemo<Array<number | null>>(() => {
-		if (pageAmount() <= 7) {
-			return [...Array(pageAmount()).keys()].map((k) => k + 1);
+		if (perPageAmount() <= 7) {
+			return [...Array(perPageAmount()).keys()].map((k) => k + 1);
 		}
 		if (page() <= 3) {
-			return [1, 2, 3, 4, 5, null, pageAmount()];
+			return [1, 2, 3, 4, 5, null, perPageAmount()];
 		}
-		if (page() >= pageAmount() - 4) {
+		if (page() >= perPageAmount() - 4) {
 			return [
 				1,
 				null,
-				pageAmount() - 4,
-				pageAmount() - 3,
-				pageAmount() - 2,
-				pageAmount() - 1,
-				pageAmount(),
+				perPageAmount() - 4,
+				perPageAmount() - 3,
+				perPageAmount() - 2,
+				perPageAmount() - 1,
+				perPageAmount(),
 			];
 		}
-		return [1, null, page() - 1, page(), page() + 1, null, pageAmount()];
+		return [1, null, page() - 1, page(), page() + 1, null, perPageAmount()];
 	});
 
-	return function () {
-		return (
-			<nav class="pagination">
-				<ol role="list">
-					<li>
-						<button class="icon" disabled={page() <= 1} onClick={() => setPage((p) => p - 1)}>
-							<img src={iconChevrons} alt="Chevrons Left" />
-						</button>
-					</li>
-					<For each={pager()}>
-						{(p) => {
-							const skip = p === null;
-							return (
-								<li classList={{ skip }}>
-									<Show
-										when={skip}
-										fallback={
-											<button
-												classList={{ selected: page() === p }}
-												onClick={() => p && setPage(p)}
-											>
-												<span class="type-label-lg">{p}</span>
-											</button>
-										}
-									>
-										<span class="type-label-lg">...</span>
-									</Show>
-								</li>
-							);
-						}}
-					</For>
+	return () => (
+		<ol role="list" class="pagination-page">
+			<li>
+				<button class="icon" disabled={page() <= 1} onClick={() => setPage((p) => p - 1)}>
+					<img src={iconChevrons} alt="Chevrons Left" />
+				</button>
+			</li>
+			<For each={pager()}>
+				{(p) => {
+					const skip = p === null;
+					return (
+						<li classList={{ skip }}>
+							<Show
+								when={skip}
+								fallback={
+									<button classList={{ selected: page() === p }} onClick={() => p && setPage(p)}>
+										<span class="type-label-lg">{p}</span>
+									</button>
+								}
+							>
+								<span class="type-label-lg">...</span>
+							</Show>
+						</li>
+					);
+				}}
+			</For>
+			<li>
+				<button
+					class="icon"
+					disabled={page() >= perPageAmount()}
+					onClick={() => setPage((p) => p + 1)}
+				>
+					<img src={iconChevrons} style={{ transform: 'rotate(180deg)' }} alt="Chevrons Right" />
+				</button>
+			</li>
+		</ol>
+	);
+}
+
+function createPerPageComponent(perPage: Accessor<number>, setPerPage: Setter<number>): Component {
+	return () => (
+		<ol role="list" class="pagination-per-page">
+			<For each={perPageOptions}>
+				{(option) => (
 					<li>
 						<button
-							class="icon"
-							disabled={page() >= pageAmount()}
-							onClick={() => setPage((p) => p + 1)}
+							classList={{ selected: perPage() === option }}
+							onClick={() => setPerPage(option)}
 						>
-							<img
-								src={iconChevrons}
-								style={{ transform: 'rotate(180deg)' }}
-								alt="Chevrons Right"
-							/>
+							<span class="type-label-lg">{option}</span>
 						</button>
 					</li>
-				</ol>
-				<ol role="list">
-					<For each={perPageOptions}>
-						{(option) => (
-							<li>
-								<button
-									classList={{ selected: perPage() === option }}
-									onClick={() => setPerPage(option)}
-								>
-									<span class="type-label-lg">{option}</span>
-								</button>
-							</li>
-						)}
-					</For>
-				</ol>
-			</nav>
-		);
-	};
+				)}
+			</For>
+		</ol>
+	);
 }
