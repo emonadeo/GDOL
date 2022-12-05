@@ -14,6 +14,7 @@ export interface Level {
 	gd_id?: number;
 	name: string;
 	video?: string;
+	requirement: number;
 	user: User;
 	verifier: User;
 	creators: User[];
@@ -113,3 +114,31 @@ export const LevelByRankData: RouteDataFunc<unknown, LevelByRankDataRes> = funct
 
 	return { level, records };
 };
+
+export async function archiveLevelByRank(rank: number, reason?: string): Promise<void> {
+	// TODO: Use OpenAPI
+	const res = await fetch(`${import.meta.env.VITE_GDOL_URL}/list/${rank}`, {
+		method: 'DELETE',
+		body: JSON.stringify({ reason }),
+	});
+
+	if (!res.ok) {
+		throw new Error(`Couldn't archive level`);
+	}
+}
+
+export async function addOrMoveLevel(
+	rank: number,
+	levelId: number,
+	reason?: string
+): Promise<void> {
+	// TODO: Use OpenAPI
+	const res = await fetch(`${import.meta.env.VITE_GDOL_URL}/list`, {
+		method: 'POST',
+		body: JSON.stringify({ rank, levelId, reason }),
+	});
+
+	if (!res.ok) {
+		throw new Error(`Couldn't add or move level`);
+	}
+}

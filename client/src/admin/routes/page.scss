@@ -1,0 +1,41 @@
+@use 'src/styles/color';
+@use 'src/styles/screen';
+
+@include screen.lg {
+	.page-dashboard {
+		display: grid;
+		grid-template-rows: max-content 12rem;
+		row-gap: 2rem;
+		padding: 4rem;
+
+		.review {
+			display: grid;
+			grid-template-columns: minmax(0, 1fr) 8rem;
+			grid-template-rows: minmax(0, 1fr) 3rem;
+			grid-template-areas:
+				'title title'
+				'status review';
+			padding: 2rem;
+			background-color: color.$surface;
+
+			.title {
+				grid-area: title;
+			}
+
+			.status {
+				grid-area: status;
+				align-self: end;
+			}
+
+			.cta {
+				grid-area: review;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				border-radius: 4px;
+				background-color: color.$primary;
+				color: color.$on-primary;
+			}
+		}
+	}
+}

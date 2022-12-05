@@ -1,0 +1,140 @@
+@use 'src/styles/color';
+
+.page-admin-list {
+	display: grid;
+	grid-auto-flow: column;
+	grid-auto-columns: minmax(0, 1fr);
+	grid-template-rows: minmax(0, 1fr);
+	transition: all 1s ease;
+
+	.list {
+		overflow: auto;
+
+		table {
+			width: 100%;
+
+			thead tr,
+			tbody tr {
+				height: 2.5rem;
+
+				td,
+				th {
+					height: 100%;
+					padding-inline: 1rem;
+					border: 1px solid transparent;
+					border-bottom-color: color.$surface;
+					text-align: start;
+
+					&.actions {
+						width: 0;
+					}
+
+					&.rank {
+						width: 0;
+						text-align: right;
+					}
+				}
+			}
+
+			thead tr {
+				th {
+					position: sticky;
+					top: 0;
+					background-color: color.$background;
+				}
+			}
+
+			tbody tr {
+				&.add {
+					height: 0;
+					position: relative;
+
+					td {
+						height: 0.5rem;
+						position: absolute;
+						padding: 0;
+						left: 0;
+						right: 0;
+						top: -0.25rem;
+						border: none;
+						cursor: url(/cursor_add.svg) 12 12, pointer;
+
+						&:hover {
+							background-color: cyan;
+						}
+					}
+				}
+
+				&:hover {
+					td {
+						border-block-color: color.$on-background;
+
+						&:first-child {
+							border-left-color: color.$on-background;
+						}
+
+						&:last-child {
+							border-right-color: color.$on-background;
+						}
+					}
+				}
+
+				td {
+					&:not(:first-child) {
+						border-left-color: color.$surface;
+					}
+
+					&.actions {
+						padding: 0;
+
+						button {
+							height: 2.5rem;
+							width: 2.5rem;
+							display: flex;
+							align-items: center;
+							justify-content: center;
+							background-color: transparent;
+
+							&:hover {
+								background-color: color.$surface;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.list-edit {
+		overflow: auto;
+		padding: 2rem;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		border-left: 1px solid color.$surface;
+
+		input {
+			height: 2.5rem;
+			padding-left: 1rem;
+		}
+
+		textarea {
+			display: block;
+			width: 100%;
+			resize: vertical;
+			padding: 1rem;
+		}
+
+		.actions {
+			display: flex;
+			justify-content: space-between;
+
+			button {
+				height: 2.5rem;
+				padding-inline: 1rem;
+				border-radius: 4px;
+				background-color: color.$surface;
+			}
+		}
+	}
+}

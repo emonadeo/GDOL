@@ -1,0 +1,44 @@
+@use 'src/styles/color';
+
+.sidebar {
+	display: flex;
+	flex-direction: column;
+	padding-block: 4rem;
+	border-right: 1px solid color.$surface;
+
+	h6 {
+		margin: 0 1rem 1rem 1rem;
+	}
+
+	ul {
+		margin-bottom: 2rem;
+
+		li {
+			a {
+				display: flex;
+				align-items: center;
+				height: 2.5rem;
+				padding-inline: 1rem;
+
+				&:hover {
+					background-color: color.$surface;
+				}
+			}
+		}
+	}
+
+	.actions {
+		flex: 1;
+		margin-bottom: 0;
+		display: flex;
+		align-items: flex-end;
+		padding-inline: 1rem;
+
+		button {
+			height: 2.5rem;
+			padding-inline: 1rem;
+			border-radius: 4px;
+			background-color: color.$surface;
+		}
+	}
+}

@@ -1,7 +1,7 @@
 @use 'src/styles/color';
 @use 'src/styles/screen';
 
-#app {
+#layout {
 	height: 100%;
 	display: grid;
 	grid-template-rows: minmax(0, 1fr) 4rem;
@@ -17,7 +17,7 @@
 }
 
 @include screen.sm {
-	#app {
+	#layout {
 		grid-template-rows: 4rem minmax(0, 1fr);
 		grid-template-areas:
 			'appbar'
