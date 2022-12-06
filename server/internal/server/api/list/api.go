@@ -7,10 +7,10 @@ import (
 
 func Bind(app core.App, group *echo.Group) {
 	api := api{app}
-	group.GET("", api.get)
-	group.POST("", api.post)
+	group.GET("", api.getList)
+	group.POST("", api.updateList)
 	group.GET("/:rank", api.getLevelByRank)
-	group.DELETE("/:rank", api.delete)
+	group.DELETE("/:rank", api.archiveLevelByRank)
 }
 
 type api struct {

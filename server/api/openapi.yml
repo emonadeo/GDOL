@@ -23,21 +23,6 @@ tags:
 
 components:
   schemas:
-    # Primitives
-    Timestamp: 
-      type: string
-      format: date-time
-      description: RFC 3339-formatted Timestamp of the List
-      example: 2018-11-13T20:20:39+00:00
-
-    Percentage:
-      type: integer
-      format: int16
-      minimum: 0
-      maximum: 100
-      example: 57
-
-    # Model
     Auth:
       type: object
       properties:
@@ -55,7 +40,10 @@ components:
       type: object
       properties:
         timestamp:
-          $ref: '#/components/schemas/Timestamp'
+          type: string
+          format: date-time
+          description: RFC 3339-formatted Timestamp of the List
+          example: 2018-11-13T20:20:39+00:00
         action:
           type: string
           description: Type of change
@@ -181,10 +169,17 @@ components:
       type: object
       properties:
         timestamp:
-          $ref: '#/components/schemas/Timestamp'
+          type: string
+          format: date-time
+          description: RFC 3339-formatted Timestamp of the List
+          example: 2018-11-13T20:20:39+00:00
         percentage:
+          type: integer
+          format: int16
           description: Progress on the level in percent
-          $ref: '#/components/schemas/Percentage'
+          minimum: 0
+          maximum: 100
+          example: 57
         video:
           type: string
           nullable: true
@@ -275,7 +270,8 @@ paths:
   '/changelog':
     get:
       summary: Get Changelog
-      description: TODO
+      description: Retrieves all entries of the list changelog
+      operationId: GetChangelog
       tags:
         - Changelog
       responses:
@@ -299,6 +295,7 @@ paths:
     get:
       summary: Get Records by Level
       description: Get all records on a level ordered by percentage and timestamp
+      operationId: GetRecordsByLevel
       tags:
         - Levels
         - Records
@@ -341,6 +338,7 @@ paths:
     get:
       summary: Get Level by List Rank
       description: Get a level by its rank on the list
+      operationId: GetLevelByListRank
       tags:
         - List
       responses:
@@ -356,10 +354,24 @@ paths:
         Inserts a given level into the list at a given rank.
         Moves the level if it is already on the list.
         Removes the level from the archive if it contains it.
+      operationId: UpdateList
       tags:
         - List
       security:
         - Token: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                level_id:
+                  type: integer
+                  format: int64
+                reason:
+                  type: string
+              required:
+                - level_id
       responses:
         '200':
           description: List Updated
@@ -368,6 +380,7 @@ paths:
     delete:
       summary: Archive Level by List Rank
       description: Removes a level from the list and appends it to archive.
+      operationId: ArchiveLevelByListRank
       tags:
         - List
       security:
@@ -392,6 +405,7 @@ paths:
     post:
       summary: Create Record
       description: Creates a record of a user on a level
+      operationId: CreateRecord
       tags:
         - Records
       security:
@@ -404,6 +418,7 @@ paths:
     delete:
       summary: Delete Record
       description: Deletes a record of a user on a level
+      operationId: DeleteRecord
       tags:
         - Records
       security:
@@ -419,6 +434,7 @@ paths:
     get:
       summary: Get Users
       description: Get all users ordered by score
+      operationId: GetUsers
       tags:
         - Users
       responses:
@@ -433,6 +449,7 @@ paths:
     post:
       summary: Create User
       description: Register a new user
+      operationId: CreateUser
       tags:
         - Users
       responses:
@@ -448,6 +465,8 @@ paths:
           type: integer
     get:
       summary: Get User by ID
+      description: Retrieves a user by a given ID
+      operationId: GetUserById
       tags:
         - Users
       responses:
@@ -455,6 +474,8 @@ paths:
           description: User Retrieved
     delete:
       summary: Delete User by ID
+      description: Permanently deletes a user with a given ID
+      operationId: DeleteUserById
       tags:
         - Users
       security:
@@ -474,6 +495,8 @@ paths:
           type: integer
     get:
       summary: Get Records by User
+      description: Retrieves all records of a given user
+      operationId: GetRecordsByUser
       tags:
         - Users
         - Records

@@ -4,7 +4,7 @@ import (
 	"github.com/labstack/echo/v5"
 )
 
-func (api api) get(c echo.Context) error {
+func (api api) getList(c echo.Context) error {
 	list, err := api.app.Store.List.Find(c.Request().Context())
 	if err != nil {
 		return err

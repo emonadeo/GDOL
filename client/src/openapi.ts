@@ -1,53 +1,17 @@
 import { RouteDataFunc } from '@solidjs/router';
 import { createResource, Resource } from 'solid-js';
-
-// TODO: Generate using OpenAPI
-export interface User {
-	id: number;
-	name: string;
-	nationality: string;
-}
-
-export interface Level {
-	rank: number;
-	id: number;
-	gd_id?: number;
-	name: string;
-	video?: string;
-	requirement: number;
-	user: User;
-	verifier: User;
-	creators: User[];
-}
-
-export interface UserWithScoreAndRank {
-	id: string;
-	name: string;
-	nationality?: string;
-	score: number;
-	rank: number;
-}
-
-export interface Record {
-	timestamp: string;
-	percentage: number;
-	video: string;
-}
-
-export type RecordWithUser = Record & { user: User };
-export type RecordWithLevel = Record & { level: Level };
+import { api } from 'src/api';
+import { Level, RecordWithUser, UserWithScoreAndRank } from 'src/generated/openapi';
 
 async function fetchList(): Promise<Level[]> {
-	// TODO: Use OpenAPI
-	const res = await fetch(`${import.meta.env.VITE_GDOL_URL}/list`);
+	const { data, error } = await api.list.getList();
 
-	if (!res.ok) {
+	if (error != null) {
 		// TODO: Show Error
 		throw new Error(`Couldn't fetch list`);
 	}
 
-	const levels: Level[] = await res.json();
-	return levels.map((lvl, i) => ({ ...lvl, rank: i + 1 }));
+	return data.map((lvl, i) => ({ ...lvl, rank: i + 1 }));
 }
 
 export const ListData: RouteDataFunc<unknown, Resource<Level[]>> = function () {
@@ -56,16 +20,14 @@ export const ListData: RouteDataFunc<unknown, Resource<Level[]>> = function () {
 };
 
 async function fetchUsers(): Promise<UserWithScoreAndRank[]> {
-	// TODO: Use OpenAPI
-	const res = await fetch(`${import.meta.env.VITE_GDOL_URL}/users`);
+	const { data, error } = await api.users.getUsers();
 
-	if (!res.ok) {
+	if (error != null) {
 		// TODO: Show Error
 		throw new Error(`Couldn't fetch users`);
 	}
 
-	const users: UserWithScoreAndRank[] = await res.json();
-	return users;
+	return data;
 }
 
 export const UsersData: RouteDataFunc<unknown, Resource<UserWithScoreAndRank[]>> = function () {
@@ -74,31 +36,27 @@ export const UsersData: RouteDataFunc<unknown, Resource<UserWithScoreAndRank[]>>
 };
 
 async function fetchLevelByRank(rank: number): Promise<Level> {
-	// TODO: Use OpenAPI
-	const res = await fetch(`${import.meta.env.VITE_GDOL_URL}/list/${rank}`);
+	const { data, error } = await api.list.getLevelByListRank(rank);
 
-	if (!res.ok) {
+	if (error != null) {
 		// TODO: Show Error
-		throw new Error(`Couldn't fetch users`);
+		throw new Error(`Couldn't fetch level`);
 	}
 
-	const level: Level = await res.json();
-	return level;
+	return data;
 }
 
 async function fetchLevelRecords(levelId: number | undefined): Promise<RecordWithUser[]> {
 	if (!levelId) return [];
 
-	// TODO: Use OpenAPI
-	const res = await fetch(`${import.meta.env.VITE_GDOL_URL}/levels/${levelId}/records`);
+	const { data, error } = await api.levels.getRecordsByLevel(levelId);
 
-	if (!res.ok) {
+	if (error != null) {
 		// TODO: Show Error
-		throw new Error(`Couldn't fetch users`);
+		throw new Error(`Couldn't fetch level records`);
 	}
 
-	const records: RecordWithUser[] = await res.json();
-	return records;
+	return data;
 }
 
 interface LevelByRankDataRes {
@@ -116,13 +74,9 @@ export const LevelByRankData: RouteDataFunc<unknown, LevelByRankDataRes> = funct
 };
 
 export async function archiveLevelByRank(rank: number, reason?: string): Promise<void> {
-	// TODO: Use OpenAPI
-	const res = await fetch(`${import.meta.env.VITE_GDOL_URL}/list/${rank}`, {
-		method: 'DELETE',
-		body: JSON.stringify({ reason }),
-	});
+	const { error } = await api.list.archiveLevelByListRank(rank, { reason });
 
-	if (!res.ok) {
+	if (error != null) {
 		throw new Error(`Couldn't archive level`);
 	}
 }
@@ -132,13 +86,9 @@ export async function addOrMoveLevel(
 	levelId: number,
 	reason?: string
 ): Promise<void> {
-	// TODO: Use OpenAPI
-	const res = await fetch(`${import.meta.env.VITE_GDOL_URL}/list`, {
-		method: 'POST',
-		body: JSON.stringify({ rank, levelId, reason }),
-	});
+	const { error } = await api.list.updateList(rank, { level_id: levelId, reason });
 
-	if (!res.ok) {
+	if (error != null) {
 		throw new Error(`Couldn't add or move level`);
 	}
 }

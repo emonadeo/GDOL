@@ -9,6 +9,13 @@
 			"problemMatcher": []
 		},
 		{
+			"label": "Generate",
+			"detail": "generate client and server code",
+			"dependsOn": ["Client: Generate", "Server: Generate"],
+			"dependsOrder": "parallel",
+			"problemMatcher": []
+		},
+		{
 			"label": "Client: Dev",
 			"detail": "vite",
 			"type": "npm",
@@ -34,6 +41,14 @@
 			"problemMatcher": []
 		},
 		{
+			"label": "Client: Generate",
+			"detail": "swagger-typescript-api -p ../server/api/openapi.yml -o ./src/generated -n openapi.ts",
+			"type": "npm",
+			"script": "gen",
+			"path": "client",
+			"problemMatcher": []
+		},
+		{
 			"label": "Server: Dev",
 			"detail": "pnpx nodemon --exec go run cmd/main.go --signal SIGTERM",
 			"type": "shell",
@@ -44,7 +59,7 @@
 			"problemMatcher": ["$go"]
 		},
 		{
-			"label": "Server: Generate Code",
+			"label": "Server: Generate",
 			"detail": "go generate",
 			"type": "shell",
 			"command": "go generate",

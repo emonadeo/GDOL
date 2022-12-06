@@ -8,7 +8,8 @@
 		"build": "vite build",
 		"serve": "vite preview",
 		"lint": "eslint .",
-		"fmt": "prettier --plugin-search-dir . --write ."
+		"fmt": "prettier --plugin-search-dir . --write .",
+		"gen": "swagger-typescript-api -p ../server/api/openapi.yml -o ./src/generated -n openapi.ts"
 	},
 	"devDependencies": {
 		"@solidjs/router": "^0.5.1",
@@ -24,6 +25,7 @@
 		"sass": "^1.56.1",
 		"solid-js": "^1.6.2",
 		"solid-transition-group": "^0.0.12",
+		"swagger-typescript-api": "^12.0.2",
 		"typescript": "^4.9.3",
 		"vite": "^3.2.4",
 		"vite-plugin-solid": "^2.4.0"

@@ -9,7 +9,7 @@ import (
 	"github.com/emonadeo/gdol/internal/util"
 )
 
-func (l List) DeleteByRank(ctx context.Context, rank int16, archive openapi.DeleteListRankJSONRequestBody) error {
+func (l List) DeleteByRank(ctx context.Context, rank int16, archive openapi.ArchiveLevelByListRankJSONRequestBody) error {
 	tx, err := l.DB.Begin()
 	if err != nil {
 		return err
