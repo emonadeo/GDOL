@@ -4,8 +4,9 @@ import (
 	"context"
 	"database/sql"
 	"strconv"
+	"time"
 
-	"github.com/emonadeo/gdol/internal/model"
+	"github.com/emonadeo/gdol/internal/openapi"
 	"github.com/emonadeo/gdol/internal/util"
 	"github.com/lib/pq"
 )
@@ -44,12 +45,12 @@ type Entry struct {
 	}
 }
 
-func (c Changelog) Find(ctx context.Context) ([]model.Changelog, error) {
+func (c Changelog) Find(ctx context.Context) ([]openapi.Changelog, error) {
 	rows, err := c.DB.QueryContext(ctx, sqlFind)
 	if err != nil {
 		return nil, err
 	}
-	var changelog []model.Changelog
+	var changelog []openapi.Changelog
 	for rows.Next() {
 		var entry Entry
 		var levelId []string
@@ -71,25 +72,30 @@ func (c Changelog) Find(ctx context.Context) ([]model.Changelog, error) {
 			return nil, err
 		}
 
-		levels := []model.Level{}
+		levels := []openapi.Level{}
 		for i := range levelId {
 			id, err := strconv.Atoi(levelId[i])
 			if err != nil {
-				return []model.Changelog{}, nil
+				return nil, err
 			}
-			levels = append(levels, model.Level{
+			levels = append(levels, openapi.Level{
 				Id:   int64(id),
 				Name: levelName[i],
 			})
 		}
 
-		changelog = append(changelog, model.Changelog{
-			Timestamp: entry.Timestamp,
-			Action:    entry.Action,
+		timestamp, err := time.Parse(time.RFC3339, entry.Timestamp)
+		if err != nil {
+			return nil, err
+		}
+
+		changelog = append(changelog, openapi.Changelog{
+			Timestamp: timestamp,
+			Action:    openapi.ChangelogAction(entry.Action),
 			From:      util.NullInt16(entry.From),
 			To:        util.NullInt16(entry.To),
 			Reason:    util.NullString(entry.Reason),
-			Level: model.Level{
+			Level: openapi.Level{
 				Id:   entry.Level.Id,
 				Name: entry.Level.Name,
 			},

@@ -3,14 +3,14 @@ package users
 import (
 	"context"
 
-	"github.com/emonadeo/gdol/internal/model"
+	"github.com/emonadeo/gdol/internal/openapi"
 	"github.com/emonadeo/gdol/internal/util"
 )
 
-func (u Users) FindByName(ctx context.Context, name string) (model.UserWithScoreAndRank, error) {
+func (u Users) FindByName(ctx context.Context, name string) (openapi.UserWithScoreAndRank, error) {
 	user, err := u.Qry.UsersFindByName(ctx, name)
 	if err != nil {
-		return model.UserWithScoreAndRank{}, err
+		return openapi.UserWithScoreAndRank{}, err
 	}
 
 	// TODO: Records
@@ -56,14 +56,12 @@ func (u Users) FindByName(ctx context.Context, name string) (model.UserWithScore
 	// 	})
 	// }
 
-	res := model.UserWithScoreAndRank{
-		User: model.User{
-			Id:          user.ID,
-			Name:        user.Name,
-			Nationality: util.NullString(user.Nationality),
-		},
-		Score: user.Score,
-		Rank:  user.Rank,
+	res := openapi.UserWithScoreAndRank{
+		Id:          user.ID,
+		Name:        user.Name,
+		Nationality: util.NullString(user.Nationality),
+		Score:       user.Score,
+		Rank:        user.Rank,
 		// Records: records,
 		// Levels:  levels,
 		// LevelsVerified: levelsVerified,

@@ -4,12 +4,12 @@ import (
 	"context"
 	"database/sql"
 
-	"github.com/emonadeo/gdol/internal/model"
+	"github.com/emonadeo/gdol/internal/openapi"
 	"github.com/emonadeo/gdol/internal/util"
 	"github.com/lib/pq"
 )
 
-func (l Levels) FindByRank(ctx context.Context, rank int16) (model.Level, error) {
+func (l Levels) FindByRank(ctx context.Context, rank int16) (openapi.Level, error) {
 	// Cannot use sqlc because of https://github.com/kyleconroy/sqlc/issues/185
 	row := l.DB.QueryRowContext(ctx, "SELECT * FROM list WHERE list.rank = $1", rank)
 
@@ -52,30 +52,30 @@ func (l Levels) FindByRank(ctx context.Context, rank int16) (model.Level, error)
 		pq.Array(&creatorsDiscordId),
 	)
 	if err != nil {
-		return model.Level{}, err
+		return openapi.Level{}, err
 	}
 
-	creators := []model.User{}
+	creators := []openapi.User{}
 	for i, id := range creatorsId {
-		creators = append(creators, model.User{
+		creators = append(creators, openapi.User{
 			Id:          id,
 			Name:        creatorsName[i],
 			Nationality: util.NullString(creatorsNationality[i]),
 		})
 	}
 
-	level := model.Level{
+	level := openapi.Level{
 		Id:          id,
 		Name:        name,
 		GdId:        util.NullInt64(gdId),
 		Video:       util.NullString(video),
 		Requirement: util.NullInt16(requirement),
-		User: model.User{
+		User: openapi.User{
 			Id:          userId,
 			Name:        userName,
 			Nationality: util.NullString(userNationality),
 		},
-		Verifier: model.User{
+		Verifier: openapi.User{
 			Id:          verifierId,
 			Name:        verifierName,
 			Nationality: util.NullString(verifierNationality),

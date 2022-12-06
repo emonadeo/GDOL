@@ -1,0 +1,482 @@
+openapi: 3.1.0
+info:
+  title: GDOL
+  version: 2.0.0-alpha.1
+  description: Geometry Dash Open List
+  contact:
+    name: Emonadeo
+    email: emonadeo@gmail.com
+    url: https://github.com/Emonadeo/GDOL
+  license:
+    name: MIT
+    url: https://spdx.org/licenses/MIT.html
+externalDocs:
+  url: https://github.com/Emonadeo/GDOL
+
+tags:
+  - name: Auth
+  - name: Changelog
+  - name: List
+  - name: Levels
+  - name: Records
+  - name: Users
+
+components:
+  schemas:
+    # Primitives
+    Timestamp: 
+      type: string
+      format: date-time
+      description: RFC 3339-formatted Timestamp of the List
+      example: 2018-11-13T20:20:39+00:00
+
+    Percentage:
+      type: integer
+      format: int16
+      minimum: 0
+      maximum: 100
+      example: 57
+
+    # Model
+    Auth:
+      type: object
+      properties:
+        access_token:
+          type: string
+          description: JWT
+        refresh_token:
+          type: string
+          description: JWT
+      required:
+        - access_token
+        - refresh_token
+    
+    Changelog:
+      type: object
+      properties:
+        timestamp:
+          $ref: '#/components/schemas/Timestamp'
+        action:
+          type: string
+          description: Type of change
+          enum: [ADD, MOVE, DELETE]
+        from:
+          type: integer
+          format: int16
+          nullable: true
+          description: Rank that the level got moved or deleted from
+          minimum: 1
+        to:
+          type: integer
+          format: int16
+          nullable: true
+          description: Rank that the level got moved or added to
+          minimum: 1
+        reason:
+          type: string
+          nullable: true
+          description: Optional reason for movement or addition
+        level:
+          $ref: '#/components/schemas/Level'
+        list:
+          type: array
+          description: State of the List after the changes
+          items:
+            $ref: '#/components/schemas/Level'
+      required:
+        - timestamp
+        - action
+        - level
+        - list
+
+    Level:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        name:
+          type: string
+          example: Chromatic Haze
+        gd_id:
+          type: integer
+          format: int64
+          nullable: true
+          example: 60587128
+        video:
+          type: string
+          nullable: true
+          description: URL to a video showcasing the level. In most cases this is the verification video.
+          example: https://www.youtube.com/watch?v=QZf8vX4DF0A
+        requirement:
+          type: integer
+          format: int16
+          nullable: true
+          description: Minimum required percentage to submit records
+        user:
+          description: User who published the level
+          $ref: '#/components/schemas/User'
+        verifier:
+          description: User who verified the level
+          $ref: '#/components/schemas/User'
+        creators:
+          type: array
+          description: All users involved in the creation of the level
+          items:
+            $ref: '#/components/schemas/User'
+      required:
+        - id
+        - name
+        - user
+        - verifier
+        - creators
+
+    LevelWithRank:
+      allOf:
+        - $ref: '#/components/schemas/Level'
+        - type: object
+          properties:
+            rank:
+              type: integer
+              minimum: 1
+              example: 1
+
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        name:
+          type: string
+          example: Gizbro
+        nationality:
+          type: string
+          example: US
+      required:
+        - id
+        - name
+    
+    UserWithScoreAndRank:
+      allOf:
+        - $ref: '#/components/schemas/User'
+        - type: object
+          properties:
+            score:
+              type: number
+              format: float
+              example: 6078.45
+            rank:
+              type: integer
+              format: int64
+              minimum: 1
+              example: 1
+          required:
+            - score
+            - rank
+    
+    Record:
+      type: object
+      properties:
+        timestamp:
+          $ref: '#/components/schemas/Timestamp'
+        percentage:
+          description: Progress on the level in percent
+          $ref: '#/components/schemas/Percentage'
+        video:
+          type: string
+          nullable: true
+      required:
+        - timestamp
+        - percentage
+        - video
+    
+    RecordWithUser:
+      allOf:
+        - $ref: '#/components/schemas/Record'
+        - type: object
+          properties:
+            user: 
+              $ref: '#/components/schemas/User'
+          required:
+          - user
+
+    RecordWithLevel:
+      allOf:
+        - $ref: '#/components/schemas/Record'
+        - type: object
+          properties:
+            level:
+              $ref: '#/components/schemas/Level'
+          required:
+          - level
+  
+  responses:
+    UnauthorizedError:
+      description: Access token is missing or invalid
+
+  securitySchemes:
+    Token:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+paths:
+  # Auth
+  '/auth':
+    get:
+      summary: Login
+      description: Generates a pair of access and refresh tokens
+      operationId: Auth
+      tags:
+        - Auth
+      parameters:
+        - name: code
+          in: query
+          required: true
+          description: Discord OAuth2 code
+          schema:
+            type: string
+            example: ABASDKJF
+      responses:
+        '200':
+          description: Authenticated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Auth'
+
+  '/auth/refresh':
+    post:
+      summary: Refresh
+      description: Generates a pair of access and refresh tokens
+      operationId: AuthRefresh
+      tags:
+        - Auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                refresh_token:
+                  type: string
+      responses:
+        '200':
+          description: Tokens Refreshed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Auth'
+  
+  # Changelog
+  '/changelog':
+    get:
+      summary: Get Changelog
+      description: TODO
+      tags:
+        - Changelog
+      responses:
+        '200':
+          description: Changelog Retrieved
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Changelog'
+
+  # Levels
+  '/levels/{id}/records':
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+    get:
+      summary: Get Records by Level
+      description: Get all records on a level ordered by percentage and timestamp
+      tags:
+        - Levels
+        - Records
+      responses:
+        '200':
+          description: Records Retrieved
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RecordWithUser'
+
+  # List
+  '/list':
+    get:
+      summary: Get Levels on List
+      description: Get all levels on the list ordered by rank
+      operationId: GetList
+      tags:
+        - List
+      responses:
+        '200':
+          description: Levels Retrieved
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Level'
+  '/list/{rank}':
+    parameters:
+      - name: rank
+        in: path
+        required: true
+        schema:
+          type: integer
+          minimum: 1
+          example: 1
+    get:
+      summary: Get Level by List Rank
+      description: Get a level by its rank on the list
+      tags:
+        - List
+      responses:
+        '200':
+          description: Level Retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Level'
+    post:
+      summary: Add/Move Level to List Rank
+      description: |
+        Inserts a given level into the list at a given rank.
+        Moves the level if it is already on the list.
+        Removes the level from the archive if it contains it.
+      tags:
+        - List
+      security:
+        - Token: []
+      responses:
+        '200':
+          description: List Updated
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+    delete:
+      summary: Archive Level by List Rank
+      description: Removes a level from the list and appends it to archive.
+      tags:
+        - List
+      security:
+        - Token: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              nullable: true
+              properties:
+                reason:
+                  type: string
+      responses:
+        '200':
+          description: Level Archived
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+  # Records
+  '/records':
+    post:
+      summary: Create Record
+      description: Creates a record of a user on a level
+      tags:
+        - Records
+      security:
+        - Token: []
+      responses:
+        '200':
+          description: Record Created
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+    delete:
+      summary: Delete Record
+      description: Deletes a record of a user on a level
+      tags:
+        - Records
+      security:
+        - Token: []
+      responses:
+        '200':
+          description: Record Deleted
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+  # Users
+  '/users':
+    get:
+      summary: Get Users
+      description: Get all users ordered by score
+      tags:
+        - Users
+      responses:
+        '200':
+          description: Users Retrieved
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserWithScoreAndRank'
+    post:
+      summary: Create User
+      description: Register a new user
+      tags:
+        - Users
+      responses:
+        '200':
+          description: User Created
+
+  '/users/{id}':
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+    get:
+      summary: Get User by ID
+      tags:
+        - Users
+      responses:
+        '200':
+          description: User Retrieved
+    delete:
+      summary: Delete User by ID
+      tags:
+        - Users
+      security:
+        - Token: []
+      responses:
+        '200':
+          description: User Deleted
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+  '/users/{id}/records':
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+    get:
+      summary: Get Records by User
+      tags:
+        - Users
+        - Records
+      responses:
+        '200':
+          description: Records Retrieved

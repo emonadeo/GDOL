@@ -44,20 +44,10 @@
 			"problemMatcher": ["$go"]
 		},
 		{
-			"label": "Server: Generate OpenAPI",
-			"detail": "swagger generate spec -o bin/openapi.yml",
+			"label": "Server: Generate Code",
+			"detail": "go generate",
 			"type": "shell",
-			"command": "mkdir -p bin && swagger generate spec -o bin/openapi.yml",
-			"problemMatcher": [],
-			"options": {
-				"cwd": "${workspaceFolder}/server"
-			}
-		},
-		{
-			"label": "Server: Generate ORM",
-			"detail": "sqlc generate",
-			"type": "shell",
-			"command": "sqlc generate",
+			"command": "go generate",
 			"problemMatcher": [],
 			"options": {
 				"cwd": "${workspaceFolder}/server"

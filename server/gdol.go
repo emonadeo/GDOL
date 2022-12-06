@@ -1,5 +1,8 @@
 package gdol
 
+//go:generate oapi-codegen --package openapi -generate types -o internal/openapi/openapi.gen.go api/openapi.yml
+//go:generate sqlc generate
+
 import (
 	"fmt"
 	"net"

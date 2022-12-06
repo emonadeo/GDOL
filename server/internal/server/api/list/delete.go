@@ -3,7 +3,7 @@ package list
 import (
 	"strconv"
 
-	"github.com/emonadeo/gdol/internal/model"
+	"github.com/emonadeo/gdol/internal/openapi"
 	"github.com/labstack/echo/v5"
 )
 
@@ -13,7 +13,7 @@ func (api api) delete(c echo.Context) error {
 		return err
 	}
 	// TODO: Get Reason from Body
-	err = api.app.Store.List.DeleteByRank(c.Request().Context(), int16(rank), model.ListArchive{})
+	err = api.app.Store.List.DeleteByRank(c.Request().Context(), int16(rank), openapi.DeleteListRankJSONRequestBody{})
 	if err != nil {
 		return err
 	}

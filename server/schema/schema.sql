@@ -106,7 +106,7 @@ ORDER BY
 CREATE VIEW users_with_score AS
 SELECT
 	users. *,
-	SUM(calc_score(rank, requirement, percentage)) :: float AS score
+	SUM(calc_score(rank, requirement, percentage)) :: real AS score
 FROM
 	(
 		-- Records

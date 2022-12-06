@@ -5,10 +5,11 @@ import (
 	"database/sql"
 
 	"github.com/emonadeo/gdol/generated/sqlc"
-	"github.com/emonadeo/gdol/internal/model"
+	"github.com/emonadeo/gdol/internal/openapi"
+	"github.com/emonadeo/gdol/internal/util"
 )
 
-func (l List) DeleteByRank(ctx context.Context, rank int16, archive model.ListArchive) error {
+func (l List) DeleteByRank(ctx context.Context, rank int16, archive openapi.DeleteListRankJSONRequestBody) error {
 	tx, err := l.DB.Begin()
 	if err != nil {
 		return err
@@ -20,10 +21,7 @@ func (l List) DeleteByRank(ctx context.Context, rank int16, archive model.ListAr
 			Int16: int16(rank),
 			Valid: true,
 		},
-		Reason: sql.NullString{
-			String: archive.Reason,
-			Valid:  archive.Reason != "",
-		},
+		Reason: util.StrPtrToNullString(archive.Reason),
 	})
 	if err != nil {
 		return err

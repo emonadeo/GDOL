@@ -3,7 +3,7 @@ package auth
 import (
 	"time"
 
-	"github.com/emonadeo/gdol/internal/model"
+	"github.com/emonadeo/gdol/internal/openapi"
 	"github.com/golang-jwt/jwt"
 )
 
@@ -13,8 +13,8 @@ const (
 	refreshTokenDuration = 7 * 24 * time.Hour
 )
 
-func CreateToken(userId string, roles []string) model.Auth {
-	return model.Auth{
+func CreateToken(userId string, roles []string) openapi.Auth {
+	return openapi.Auth{
 		AccessToken:  createAccessToken(userId, roles),
 		RefreshToken: createRefreshToken(userId),
 	}

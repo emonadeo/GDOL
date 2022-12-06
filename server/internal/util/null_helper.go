@@ -27,3 +27,15 @@ func NullInt64(v sql.NullInt64) *int64 {
 		return nil
 	}
 }
+
+func StrPtrToNullString(p *string) sql.NullString {
+	if p != nil {
+		return sql.NullString{
+			String: *p,
+			Valid:  *p != "",
+		}
+	}
+	return sql.NullString{
+		Valid: false,
+	}
+}
