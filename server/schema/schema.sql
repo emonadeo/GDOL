@@ -43,7 +43,8 @@ CREATE TABLE list_archive (
 
 CREATE TABLE list_log (
 	"id" bigserial primary key,
-	"list_level_ids" bigint [ ] not null,
+	"list_after_level_ids" bigint [ ] not null,
+	"list_before_level_ids" bigint [ ] not null,
 	"timestamp" timestamp with time zone default now () not null,
 	"action" list_log_action not null,
 	"level_id" bigint references levels (id) not null,
@@ -77,11 +78,11 @@ FROM
 		-- UNNEST WITH ORDINALITY is not working with sqlc: https://github.com/kyleconroy/sqlc/issues/1205 
 		SELECT
 			*,
-			generate_subscripts(list.list_level_ids, 1) :: smallint AS rank
+			generate_subscripts(list.list_after_level_ids, 1) :: smallint AS rank
 		FROM
 			(
 				SELECT
-					list_level_ids
+					list_after_level_ids
 				FROM
 					list_log
 				ORDER BY
@@ -90,7 +91,7 @@ FROM
 					1
 			) AS list
 	) AS list
-	JOIN levels ON levels.id = list.list_level_ids [ list.rank ]
+	JOIN levels ON levels.id = list.list_after_level_ids [ list.rank ]
 	JOIN users ON users.id = levels.user_id
 	JOIN users verifier ON verifier.id = levels.verifier_id
 	JOIN user_created_level ON user_created_level.level_id = levels.id

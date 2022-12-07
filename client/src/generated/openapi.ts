@@ -42,6 +42,8 @@ export interface Changelog {
 	level: Level;
 	/** State of the List after the changes */
 	list: Level[];
+	/** State of the List before the changes */
+	list_before: Level[];
 }
 
 export interface Level {

@@ -71,11 +71,17 @@ components:
           description: State of the List after the changes
           items:
             $ref: '#/components/schemas/Level'
+        list_before:
+          type: array
+          description: State of the List before the changes
+          items:
+            $ref: '#/components/schemas/Level'
       required:
         - timestamp
         - action
         - level
         - list
+        - list_before
 
     Level:
       type: object
