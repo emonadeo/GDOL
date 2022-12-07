@@ -1,7 +1,7 @@
 import { RouteDataFunc } from '@solidjs/router';
 import { createResource, Resource } from 'solid-js';
 import { api } from 'src/api';
-import { Level, RecordWithUser, UserWithScoreAndRank } from 'src/generated/openapi';
+import { Changelog, Level, RecordWithUser, UserWithScoreAndRank } from 'src/generated/openapi';
 
 async function fetchList(): Promise<Level[]> {
 	const { data, error } = await api.list.getList();
@@ -92,3 +92,19 @@ export async function addOrMoveLevel(
 		throw new Error(`Couldn't add or move level`);
 	}
 }
+
+async function fetchChangelog(): Promise<Changelog[]> {
+	const { data, error } = await api.changelog.getChangelog();
+
+	if (error != null) {
+		// TODO: Show Error
+		throw new Error(`Couldn't fetch users`);
+	}
+
+	return data;
+}
+
+export const ChangelogData: RouteDataFunc<unknown, Resource<Changelog[]>> = function () {
+	const [changelog] = createResource(fetchChangelog);
+	return changelog;
+};

@@ -47,7 +47,7 @@ components:
         action:
           type: string
           description: Type of change
-          enum: [ADD, MOVE, DELETE]
+          enum: [add, move, delete]
         from:
           type: integer
           format: int16

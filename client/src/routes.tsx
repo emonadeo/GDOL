@@ -3,7 +3,7 @@ import { lazy } from 'solid-js';
 
 import { routes as adminRoutes } from 'src/admin/routes';
 
-import { LevelByRankData, ListData, UsersData } from 'src/openapi';
+import { ChangelogData, LevelByRankData, ListData, UsersData } from 'src/openapi';
 
 export const routes: RouteDefinition[] = [
 	{
@@ -14,6 +14,11 @@ export const routes: RouteDefinition[] = [
 		path: '/',
 		component: lazy(() => import('src/routes/layout')),
 		children: [
+			{
+				path: '/changelog',
+				component: lazy(() => import('src/routes/changelog/page')),
+				data: ChangelogData,
+			},
 			{
 				path: '/list',
 				children: [

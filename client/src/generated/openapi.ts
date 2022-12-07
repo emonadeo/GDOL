@@ -24,7 +24,7 @@ export interface Changelog {
 	 */
 	timestamp: string;
 	/** Type of change */
-	action: 'ADD' | 'MOVE' | 'DELETE';
+	action: 'add' | 'move' | 'delete';
 	/**
 	 * Rank that the level got moved or deleted from
 	 * @format int16
