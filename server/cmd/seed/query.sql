@@ -69,15 +69,14 @@ VALUES
 INSERT INTO
 	"list_log" (
 		"action",
-		"list_after_level_ids",
-		"list_before_level_ids",
+		"list_level_ids",
 		"level_id",
 		"from",
 		"to",
 		"reason"
 	)
 VALUES
-	($1, $2, $3, $4, $5, $6, $7) RETURNING "id";
+	($1, $2, $3, $4, $5, $6) RETURNING "id";
 
 -- name: InsertRecords :exec
 INSERT INTO

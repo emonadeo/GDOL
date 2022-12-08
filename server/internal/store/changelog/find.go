@@ -16,10 +16,10 @@ func (c Changelog) Find(ctx context.Context) ([]openapi.Changelog, error) {
 	var entriess []openapi.Changelog
 	for _, entry := range entries {
 		var afterLevels []openapi.Level
-		for i, id := range entry.ListAfterLevelIds {
+		for i, id := range entry.ListLevelIds {
 			afterLevels = append(afterLevels, openapi.Level{
 				Id:   id,
-				Name: entry.ListAfterLevelNames[i],
+				Name: entry.ListLevelNames[i],
 			})
 		}
 

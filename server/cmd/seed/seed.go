@@ -109,7 +109,6 @@ func main() {
 			panic(err)
 		}
 
-		beforeLevelIds := currentLevelIds
 		currentLevelIds = append(currentLevelIds, levelId)
 
 		// Link creators
@@ -125,10 +124,9 @@ func main() {
 
 		// Insert level log
 		_, err = queries.InsertListLog(ctx, sqlc.InsertListLogParams{
-			Action:             sqlc.ListLogActionAdd,
-			LevelID:            levelId,
-			ListAfterLevelIds:  currentLevelIds,
-			ListBeforeLevelIds: beforeLevelIds,
+			Action:       sqlc.ListLogActionAdd,
+			LevelID:      levelId,
+			ListLevelIds: currentLevelIds,
 			From: sql.NullInt16{
 				Int16: 0,
 				Valid: false,
