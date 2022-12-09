@@ -399,6 +399,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ListSettings'
+      security:
+        - Token: []
       responses:
         '200':
           description: List Settings Updated

@@ -10,7 +10,7 @@ func Bind(app *core.App, group *echo.Group) {
 	api := api{app}
 	settings.Bind(app, group.Group("/settings"))
 	group.GET("", api.getList)
-	group.POST("", api.updateList)
+	group.POST("/:rank", api.updateList)
 	group.GET("/:rank", api.getLevelByRank)
 	group.DELETE("/:rank", api.archiveLevelByRank)
 }
