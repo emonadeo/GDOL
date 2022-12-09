@@ -1,7 +1,8 @@
 import { Accessor, Component, createMemo, createSignal, Setter } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
 import { api } from 'src/api';
-import { Level } from 'src/generated/openapi';
+import { ListChange } from 'src/components/listChange';
+import { Changelog, Level } from 'src/generated/openapi';
 
 import './edit.scss';
 
@@ -64,6 +65,59 @@ export const ListEdit: Component<ListEditProps> = function (props) {
 		() => props.state
 	);
 
+	// TODO: Clean up, along with src/components/listChange.tsx
+	const preview = createMemo<Changelog>(() => {
+		switch (props.state.constructor) {
+			case ListEditStateAdd: {
+				const state = props.state as ListEditStateAdd;
+				const level = {
+					name: 'Placeholder',
+				};
+				return {
+					action: 'add',
+					timestamp: new Date().toISOString(),
+					level,
+					list: [
+						...props.list.slice(0, state.index()),
+						level,
+						...props.list.slice(state.index()),
+					].slice(0, 150),
+					list_before: props.list,
+					to: state.index() + 1,
+				};
+			}
+			case ListEditStateArchive: {
+				const state = props.state as ListEditStateArchive;
+				return {
+					action: 'delete',
+					timestamp: new Date().toISOString(),
+					level: props.list.at(state.index())!,
+					list: props.list.filter((_, i) => i !== state.index()),
+					list_before: props.list,
+					from: state.index() + 1,
+				};
+			}
+			case ListEditStateMove: {
+				const state = props.state as ListEditStateMove;
+				const list_after = props.list.filter((_, i) => i !== state.index());
+				list_after.splice((state.to() || 1) - 1, 0, props.list.at(state.index())!);
+				return {
+					action: 'move',
+					timestamp: new Date().toISOString(),
+					level: props.list.at(state.index()),
+					list: list_after,
+					list_before: props.list,
+					reason: state.reason(),
+					from: state.index() + 1,
+					to: state.to(),
+				};
+			}
+			default:
+				// FIXME: Breaks Vite HMR
+				throw new Error(`Unknown List Edit State`);
+		}
+	});
+
 	function onReset(e: Event) {
 		props.onReset && props.onReset(e);
 	}
@@ -96,7 +150,7 @@ export const ListEdit: Component<ListEditProps> = function (props) {
 				}}
 			/>
 			<h6>Preview</h6>
-			<p>TODO</p>
+			<ListChange entry={preview()} />
 			<ul role="list" class="actions">
 				<li>
 					<button type="reset" class="type-label-lg">
@@ -175,7 +229,6 @@ const useListEditAdd: Edit<ListEditStateAdd> = function (list, state) {
 					max={maxRank()} // TODO: Fetch max_length
 					value={state().index() + 1}
 					onInput={(e) => {
-						// TODO: Validation
 						const value = Number((e.target as HTMLInputElement).value);
 						state().setIndex(value - 1);
 					}}
