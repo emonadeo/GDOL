@@ -9,7 +9,7 @@ import (
 	echoMiddleware "github.com/labstack/echo/v5/middleware"
 )
 
-func New(app core.App) (*echo.Echo, error) {
+func New(app *core.App) (*echo.Echo, error) {
 	e := echo.New()
 
 	// GZip

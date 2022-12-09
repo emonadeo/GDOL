@@ -6,14 +6,9 @@ import (
 )
 
 func (api api) getListSettings(c echo.Context) error {
-	// TODO
-	maxLength := 150
-	autoUnarchive := true
-	overrideRequirementAfter := 75
-
 	return c.JSON(200, openapi.ListSettings{
-		MaxLength:                &maxLength,
-		AutoUnarchive:            &autoUnarchive,
-		OverrideRequirementAfter: &overrideRequirementAfter,
+		MaxLength:                &api.app.Store.List.Settings.MaxLength,
+		AutoUnarchive:            &api.app.Store.List.Settings.AutoUnarchive,
+		OverrideRequirementAfter: api.app.Store.List.Settings.OverrideRequirementAfter,
 	})
 }

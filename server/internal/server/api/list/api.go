@@ -6,7 +6,7 @@ import (
 	"github.com/labstack/echo/v5"
 )
 
-func Bind(app core.App, group *echo.Group) {
+func Bind(app *core.App, group *echo.Group) {
 	api := api{app}
 	settings.Bind(app, group.Group("/settings"))
 	group.GET("", api.getList)
@@ -16,5 +16,5 @@ func Bind(app core.App, group *echo.Group) {
 }
 
 type api struct {
-	app core.App
+	app *core.App
 }

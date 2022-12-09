@@ -148,6 +148,7 @@ components:
       properties:
         max_length:
           type: integer
+          format: int16
           description: |
             The maximum amount of levels on the list.
             Automatically archives overflowing levels when decreased.
@@ -164,6 +165,7 @@ components:
           example: true
         override_requirement_after:
           type: integer
+          format: int16
           nullable: true
           minimum: 1
           description: |

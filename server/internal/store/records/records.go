@@ -11,8 +11,8 @@ type Records struct {
 	Qry *sqlc.Queries
 }
 
-func New(db *sql.DB, qry *sqlc.Queries) Records {
-	return Records{
+func New(db *sql.DB, qry *sqlc.Queries) *Records {
+	return &Records{
 		DB:  db,
 		Qry: qry,
 	}

@@ -11,8 +11,8 @@ type Levels struct {
 	Qry *sqlc.Queries
 }
 
-func New(db *sql.DB, qry *sqlc.Queries) Levels {
-	return Levels{
+func New(db *sql.DB, qry *sqlc.Queries) *Levels {
+	return &Levels{
 		DB:  db,
 		Qry: qry,
 	}

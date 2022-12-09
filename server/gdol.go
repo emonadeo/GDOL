@@ -114,7 +114,7 @@ func New() *GDOL {
 }
 
 func (gdol GDOL) Start() {
-	server, err := server.New(gdol.appWrapper.App)
+	server, err := server.New(&gdol.appWrapper.App)
 	if err != nil {
 		panic(err.Error())
 	}

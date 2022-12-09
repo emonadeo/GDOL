@@ -13,11 +13,11 @@ import (
 
 // TODO: Make configurable
 type Store struct {
-	Changelog changelog.Changelog
-	Levels    levels.Levels
-	List      list.List
-	Records   records.Records
-	Users     users.Users
+	Changelog *changelog.Changelog
+	Levels    *levels.Levels
+	List      *list.List
+	Records   *records.Records
+	Users     *users.Users
 }
 
 func New(postgresUrl string) (*Store, error) {

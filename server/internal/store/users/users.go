@@ -11,8 +11,8 @@ type Users struct {
 	Qry *sqlc.Queries
 }
 
-func New(db *sql.DB, qry *sqlc.Queries) Users {
-	return Users{
+func New(db *sql.DB, qry *sqlc.Queries) *Users {
+	return &Users{
 		DB:  db,
 		Qry: qry,
 	}

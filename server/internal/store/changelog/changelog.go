@@ -11,8 +11,8 @@ type Changelog struct {
 	Qry *sqlc.Queries
 }
 
-func New(db *sql.DB, qry *sqlc.Queries) Changelog {
-	return Changelog{
+func New(db *sql.DB, qry *sqlc.Queries) *Changelog {
+	return &Changelog{
 		DB:  db,
 		Qry: qry,
 	}
