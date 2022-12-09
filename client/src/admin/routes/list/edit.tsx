@@ -1,136 +1,268 @@
-import { Accessor, Component, createSignal, Match, Show, Switch } from 'solid-js';
-import { Level, archiveLevelByRank, addOrMoveLevel } from 'src/openapi';
+import { Accessor, Component, createMemo, createSignal, Setter } from 'solid-js';
+import { Dynamic } from 'solid-js/web';
+import { api } from 'src/api';
+import { Level } from 'src/generated/openapi';
 
-type ListEditMode = 'add' | 'archive' | 'move';
+import './edit.scss';
 
-interface ListEditState {
-	index: number;
-	mode: ListEditMode;
+/**
+ * Shared fields by all action-specific states
+ */
+export class ListEditState {
+	index: Accessor<number>;
+	setIndex: Setter<number>;
+	reason: Accessor<string | undefined>;
+	setReason: Setter<string | undefined>;
+
+	constructor(index: number) {
+		[this.index, this.setIndex] = createSignal<number>(index);
+		[this.reason, this.setReason] = createSignal<string>();
+	}
 }
 
-type ListEdit = [(index: number, mode: ListEditMode) => void, Component];
+/**
+ * Add action specific fields
+ */
+export class ListEditStateAdd extends ListEditState {
+	levelId: Accessor<number | undefined>;
+	setLevelId: Setter<number | undefined>;
 
-function createListEditComponent(
-	list: Accessor<Level[]>,
-	state: Accessor<ListEditState | undefined>,
-	onReset: () => void,
-	onSubmit: () => void
-): Component {
-	function reset() {
-		onReset();
+	constructor(index: number) {
+		super(index);
+		[this.levelId, this.setLevelId] = createSignal<number>();
+	}
+}
+
+/**
+ * Archive action specific fields
+ */
+export class ListEditStateArchive extends ListEditState {}
+
+/**
+ * Move action specific fields
+ */
+export class ListEditStateMove extends ListEditState {
+	to: Accessor<number | undefined>;
+	setTo: Setter<number | undefined>;
+
+	constructor(index: number) {
+		super(index);
+		[this.to, this.setTo] = createSignal();
+	}
+}
+
+interface ListEditProps {
+	list: Level[];
+	state: ListEditState;
+	onReset?: (e: Event) => void;
+	onSubmit?: () => void;
+}
+
+export const ListEdit: Component<ListEditProps> = function (props) {
+	const edit = useListEdit(
+		() => props.list,
+		() => props.state
+	);
+
+	function onReset(e: Event) {
+		props.onReset && props.onReset(e);
 	}
 
-	async function submit(e: Event) {
+	async function onSubmit(e: Event) {
 		e.preventDefault();
-		const _state = state();
-		if (!_state) return;
-		// Submit
-		switch (_state.mode) {
-			case 'add': {
-				break;
-			}
-			case 'archive': {
-				await archiveLevelByRank(_state.index + 1);
-				break;
-			}
-			case 'move': {
-				const levelId = list().at(_state.index)?.id;
-				if (levelId === undefined) {
-					throw new Error(`List is empty`);
-				}
-				await addOrMoveLevel(_state.index + 1, levelId);
-				break;
-			}
-		}
-		onSubmit();
+
+		await edit.onSubmit();
+
+		// Pass event to parent
+		props.onSubmit && props.onSubmit();
 	}
 
-	return function () {
+	return (
+		<form class="list-edit" onReset={onReset} onSubmit={onSubmit}>
+			{/* State-specific */}
+			<Dynamic component={edit.component} />
+			{/* Universal */}
+			<label for="reason" class="type-title-sm">
+				Reason
+			</label>
+			<textarea
+				class="type-body-lg"
+				name="reason"
+				id="reason"
+				rows="3"
+				autocomplete="off"
+				onInput={(e) => {
+					props.state.setReason((e.target as HTMLTextAreaElement).value || undefined);
+				}}
+			/>
+			<h6>Preview</h6>
+			<p>TODO</p>
+			<ul role="list" class="actions">
+				<li>
+					<button type="reset" class="type-label-lg">
+						Cancel
+					</button>
+				</li>
+				<li>
+					<button type="submit" class="type-label-lg">
+						Submit
+					</button>
+				</li>
+			</ul>
+		</form>
+	);
+};
+
+type Edit<T extends ListEditState> = (
+	list: Accessor<Level[]>,
+	state: Accessor<T>
+) => {
+	component: Component;
+	onSubmit: () => Promise<void>;
+};
+
+/**
+ * Maps a specific {@link ListEditState} to their Component
+ *
+ * @example
+ * ListEditStateAdd -> ListEditAdd
+ * ListEditStateArchive -> ListEditArchive
+ * ListEditStateMove -> ListEditMove
+ */
+const useListEdit: Edit<ListEditState> = function (list, state) {
+	switch (state().constructor) {
+		case ListEditStateAdd:
+			return useListEditAdd(list, state as Accessor<ListEditStateAdd>);
+		case ListEditStateArchive:
+			return useListEditArchive(list, state as Accessor<ListEditStateArchive>);
+		case ListEditStateMove:
+			return useListEditMove(list, state as Accessor<ListEditStateMove>);
+		default:
+			// FIXME: Breaks Vite HMR
+			throw new Error(`Unknown List Edit State`);
+	}
+};
+
+/**
+ * Form elements unique to Add Action ({@link ListEditStateAdd})
+ */
+const useListEditAdd: Edit<ListEditStateAdd> = function (list, state) {
+	const onSubmit = async function () {
+		const levelId = state().levelId();
+		if (levelId === undefined) throw new Error(`Level ID empty`);
+
+		const res = await api.list.updateList(state().index() + 1, {
+			level_id: levelId,
+			reason: state().reason(),
+		});
+	};
+
+	const component: Component = function () {
+		const maxRank = createMemo(() => Math.min(list().length + 1, 150));
+
 		return (
-			<Show when={state()} keyed>
-				{(state) => (
-					<form class="list-edit" onReset={reset} onSubmit={submit}>
-						<Switch>
-							<Match when={state.mode === 'add'}>
-								<h3>Add Level</h3>
-								<label for="rank" class="type-title-sm">
-									Rank
-								</label>
-								<input
-									class="type-label-lg"
-									name="rank"
-									id="rank"
-									type="number"
-									min={1}
-									max={list().length}
-									value={state.index + 1}
-									required
-								/>
-								<label for="level" class="type-title-sm">
-									Level
-								</label>
-								<input type="text" name="level" id="level" required />
-							</Match>
-							<Match when={state.mode === 'archive'}>
-								<h3>Archive {list().at(state.index)?.name}</h3>
-							</Match>
-							<Match when={state.mode === 'move'}>
-								<h3>Move {list().at(state.index)?.name}</h3>
-								<label for="to" class="type-title-sm">
-									To
-								</label>
-								<input
-									class="type-label-lg"
-									name="to"
-									id="to"
-									type="number"
-									min={1}
-									max={list().length}
-									value={state.index + 1}
-									required
-								/>
-							</Match>
-						</Switch>
-						<label for="reason" class="type-title-sm">
-							Reason
-						</label>
-						<textarea class="type-body-lg" name="reason" id="reason" rows="3" autocomplete="off" />
-						<h6>Preview</h6>
-						<p>TODO</p>
-						<ul role="list" class="actions">
-							<li>
-								<button type="reset" class="type-label-lg">
-									Cancel
-								</button>
-							</li>
-							<li>
-								<button type="submit" class="type-label-lg">
-									Submit
-								</button>
-							</li>
-						</ul>
-					</form>
-				)}
-			</Show>
+			<>
+				<h3>Add Level</h3>
+				<label for="rank" class="type-title-sm">
+					Rank
+				</label>
+				<input
+					class="type-label-lg"
+					name="rank"
+					id="rank"
+					type="number"
+					min={1}
+					max={maxRank()} // TODO: Fetch max_length
+					value={state().index() + 1}
+					onInput={(e) => {
+						// TODO: Validation
+						const value = Number((e.target as HTMLInputElement).value);
+						state().setIndex(value - 1);
+					}}
+					required
+				/>
+				<label for="level" class="type-title-sm">
+					Level
+				</label>
+				<input
+					type="text"
+					name="level"
+					id="level"
+					// TODO: Search for levels by name and resolve level ID
+					onInput={(e) => {
+						state().setLevelId(Number((e.target as HTMLInputElement).value));
+					}}
+					required
+				/>
+			</>
 		);
 	};
-}
 
-export function useListEdit(list: Accessor<Level[]>): ListEdit {
-	const [state, setState] = createSignal<ListEditState>();
+	return { component, onSubmit };
+};
 
-	const edit = (index: number, mode: ListEditMode) => {
-		setState({ index, mode });
+/**
+ * Form elements unique to Archive Action ({@link ListEditStateArchive})
+ */
+const useListEditArchive: Edit<ListEditStateArchive> = function (list, state) {
+	const onSubmit = async function () {
+		const res = await api.list.archiveLevelByListRank(state().index() + 1, {
+			reason: state().reason(),
+		});
 	};
 
-	function onReset() {
-		// Clear state
-		setState();
-	}
+	const component: Component = function () {
+		return (
+			<>
+				<h3>Archive {list().at(state().index())?.name}</h3>
+			</>
+		);
+	};
 
-	function onSubmit() {}
+	return { component, onSubmit };
+};
 
-	const component = createListEditComponent(list, state, onReset, onSubmit);
+/**
+ * Form elements unique to Move Action ({@link ListEditStateMove})
+ */
+const useListEditMove: Edit<ListEditStateMove> = function (list, state) {
+	const onSubmit = async function () {
+		const to = state().to();
+		if (to === undefined) throw Error(`'to' is empty`);
 
-	return [edit, component];
-}
+		const level = list().at(state().index());
+		if (!level) throw Error(`Rank exceeds list length`);
+
+		const res = await api.list.updateList(to, {
+			level_id: level.id,
+			reason: state().reason(),
+		});
+	};
+
+	const component: Component = function () {
+		return (
+			<>
+				<h3>Move {list().at(state().index())?.name}</h3>
+				<label for="to" class="type-title-sm">
+					To
+				</label>
+				<input
+					class="type-label-lg"
+					name="to"
+					id="to"
+					type="number"
+					min={1}
+					max={list().length}
+					value={state().to()}
+					onInput={(e) => {
+						const value = Number((e.target as HTMLInputElement).value);
+						state().setTo(Number.isNaN(value) ? undefined : value);
+					}}
+					required
+				/>
+			</>
+		);
+	};
+
+	return { component, onSubmit };
+};

@@ -30,7 +30,7 @@ const Page: Component = function () {
 									</div>
 									<div class="summary">
 										<p>
-											{dict[entry.action]}
+											{dict[entry.action] + ' '}
 											<a href={`/level/${entry.level.id}`}>{entry.level.name}</a>
 										</p>
 									</div>

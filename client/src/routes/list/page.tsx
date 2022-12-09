@@ -11,7 +11,7 @@ import { ListSidebar } from 'src/routes/list/sidebar';
 const observeScroll = _observeScroll;
 
 const Page: Component = function () {
-	const list = useRouteData<typeof ListData>();
+	const [list] = useRouteData<typeof ListData>();
 	const [scrollPosition, setScrollPosition] = createSignal(0);
 
 	return (

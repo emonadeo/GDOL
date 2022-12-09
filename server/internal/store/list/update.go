@@ -77,6 +77,7 @@ func (l List) Update(ctx context.Context, rank int16, levelId int64, reason *str
 	return nil
 }
 
+// TODO: Clean up
 func indexOf(slice []int64, id int64) int16 {
 	for i := int16(0); i < int16(len(slice)); i++ {
 		if slice[i] == id {

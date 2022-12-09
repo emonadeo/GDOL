@@ -1,7 +1,13 @@
 import { RouteDataFunc } from '@solidjs/router';
-import { createResource, Resource } from 'solid-js';
+import { createResource, Resource, ResourceReturn } from 'solid-js';
 import { api } from 'src/api';
-import { Changelog, Level, RecordWithUser, UserWithScoreAndRank } from 'src/generated/openapi';
+import {
+	Changelog,
+	Level,
+	ListSettings,
+	RecordWithUser,
+	UserWithScoreAndRank,
+} from 'src/generated/openapi';
 
 async function fetchList(): Promise<Level[]> {
 	const { data, error } = await api.list.getList();
@@ -14,9 +20,8 @@ async function fetchList(): Promise<Level[]> {
 	return data.map((lvl, i) => ({ ...lvl, rank: i + 1 }));
 }
 
-export const ListData: RouteDataFunc<unknown, Resource<Level[]>> = function () {
-	const [list] = createResource(fetchList);
-	return list;
+export const ListData: RouteDataFunc<unknown, ResourceReturn<Level[], unknown>> = function () {
+	return createResource(fetchList);
 };
 
 async function fetchUsers(): Promise<UserWithScoreAndRank[]> {
@@ -107,4 +112,20 @@ async function fetchChangelog(): Promise<Changelog[]> {
 export const ChangelogData: RouteDataFunc<unknown, Resource<Changelog[]>> = function () {
 	const [changelog] = createResource(fetchChangelog);
 	return changelog;
+};
+
+async function fetchListSettings(): Promise<ListSettings> {
+	const { data, error } = await api.list.getListSettings();
+
+	if (error != null) {
+		// TODO: Show Error
+		throw new Error(`Couldn't fetch users`);
+	}
+
+	return data;
+}
+
+export const ListSettingsData: RouteDataFunc<unknown, Resource<ListSettings>> = function () {
+	const [settings] = createResource(fetchListSettings);
+	return settings;
 };
