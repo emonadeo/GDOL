@@ -31,6 +31,30 @@ func NullInt64(v sql.NullInt64) *int64 {
 	}
 }
 
+func Int64PtrToNullInt64(p *int64) sql.NullInt64 {
+	if p != nil {
+		return sql.NullInt64{
+			Int64: *p,
+			Valid: *p != 0,
+		}
+	}
+	return sql.NullInt64{
+		Valid: false,
+	}
+}
+
+func Int16PtrToNullInt16(p *int16) sql.NullInt16 {
+	if p != nil {
+		return sql.NullInt16{
+			Int16: *p,
+			Valid: *p != 0,
+		}
+	}
+	return sql.NullInt16{
+		Valid: false,
+	}
+}
+
 func StrPtrToNullString(p *string) sql.NullString {
 	if p != nil {
 		return sql.NullString{

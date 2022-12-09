@@ -33,10 +33,10 @@ func (l List) Find(ctx context.Context) ([]openapi.Level, error) {
 		var verifierName string
 		var verifierNationality sql.NullString
 		var verifierDiscordId sql.NullString
-		var creatorsId []int64
-		var creatorsName []string
-		var creatorsNationality []sql.NullString
-		var creatorsDiscordId []sql.NullString
+		var creatorIds []int64
+		var creatorNames []string
+		var creatorNationalities []sql.NullString
+		var creatorDiscordIds []sql.NullString
 
 		rows.Scan(
 			&rank,
@@ -53,18 +53,18 @@ func (l List) Find(ctx context.Context) ([]openapi.Level, error) {
 			&verifierName,
 			&verifierNationality,
 			&verifierDiscordId,
-			pq.Array(&creatorsId),
-			pq.Array(&creatorsName),
-			pq.Array(&creatorsNationality),
-			pq.Array(&creatorsDiscordId),
+			pq.Array(&creatorIds),
+			pq.Array(&creatorNames),
+			pq.Array(&creatorNationalities),
+			pq.Array(&creatorDiscordIds),
 		)
 
 		creators := []openapi.User{}
-		for i, id := range creatorsId {
+		for i, id := range creatorIds {
 			creators = append(creators, openapi.User{
 				Id:          id,
-				Name:        creatorsName[i],
-				Nationality: util.NullString(creatorsNationality[i]),
+				Name:        creatorNames[i],
+				Nationality: util.NullString(creatorNationalities[i]),
 			})
 		}
 

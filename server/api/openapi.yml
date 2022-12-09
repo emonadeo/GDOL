@@ -328,6 +328,63 @@ paths:
                   $ref: '#/components/schemas/Changelog'
 
   # Levels
+  '/levels':
+    post:
+      summary: Create Level
+      description: Create a level
+      operationId: CreateLevel
+      tags:
+        - Levels
+      security:
+        - Token: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Chromatic Haze
+                gd_id:
+                  type: integer
+                  format: int64
+                  nullable: true
+                  example: 60587128
+                video:
+                  type: string
+                  nullable: true
+                  description: URL to a video showcasing the level. In most cases this is the verification video.
+                  example: https://www.youtube.com/watch?v=QZf8vX4DF0A
+                requirement:
+                  type: integer
+                  format: int16
+                  nullable: true
+                  description: Minimum required percentage to submit records
+                user_id:
+                  description: ID of the user who published the level
+                  type: integer
+                  format: int64
+                verifier_id:
+                  description: ID of the user who verified the level
+                  type: integer
+                  format: int64
+                creator_ids:
+                  type: array
+                  description: IDs of all users involved in the creation of the level
+                  items:
+                    type: integer
+                    format: int64
+              required:
+                - name
+                - user_id
+                - verifier_id
+                - creator_ids
+      responses:
+        '200':
+          description: Level Created
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
   '/levels/{id}/records':
     parameters:
       - name: id

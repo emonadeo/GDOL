@@ -41,6 +41,11 @@ func (l List) Update(ctx context.Context, rank int16, levelId int64, reason *str
 	listLevelIds = append(listLevelIds[:rank], listLevelIds[rank-1:]...)
 	listLevelIds[rank-1] = levelId
 
+	// Trim to max_length
+	if len(listLevelIds) > int(l.Settings.MaxLength) {
+		listLevelIds = listLevelIds[:l.Settings.MaxLength]
+	}
+
 	// Remove level from Archive (Doesn't error if level isn't in the archive)
 	err = qtx.ListUpdateDeleteArchive(ctx, levelId)
 	if err != nil {

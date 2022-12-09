@@ -68,10 +68,10 @@ SELECT
 	verifier.name AS verifier_name,
 	verifier.nationality AS verifier_nationality,
 	verifier.discord_id AS verifier_discord_id,
-	array_agg(creators.id) :: bigint [ ] AS creators_id,
-	array_agg(creators.name) :: text [ ] AS creators_name,
-	array_agg(creators.nationality) AS creators_nationality,
-	array_agg(creators.discord_id) AS creators_discord_id
+	array_remove(array_agg(creators.id), NULL) :: bigint [ ] AS creator_ids,
+	array_remove(array_agg(creators.name), NULL) :: text [ ] AS creator_names,
+	array_agg(creators.nationality) AS creator_nationalities,
+	array_agg(creators.discord_id) AS creator_discord_ids
 FROM
 	(
 		-- UNNEST WITH ORDINALITY is not working with sqlc: https://github.com/kyleconroy/sqlc/issues/1205 
@@ -93,8 +93,8 @@ FROM
 	JOIN levels ON levels.id = list.list_level_ids [ list.rank ]
 	JOIN users ON users.id = levels.user_id
 	JOIN users verifier ON verifier.id = levels.verifier_id
-	JOIN user_created_level ON user_created_level.level_id = levels.id
-	JOIN users creators ON creators.id = user_created_level.user_id
+	LEFT JOIN user_created_level ON user_created_level.level_id = levels.id
+	LEFT JOIN users creators ON creators.id = user_created_level.user_id
 GROUP BY
 	list.rank,
 	levels.id,
