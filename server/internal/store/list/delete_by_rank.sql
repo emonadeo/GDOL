@@ -9,7 +9,7 @@ INSERT INTO
   )
 SELECT
   array_remove(list_level_ids, list_level_ids [ $1 ]),
-  'delete',
+  'archive',
   list_level_ids [ $1 ],
   $1,
   $2

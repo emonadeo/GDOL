@@ -15,19 +15,11 @@ func (c Changelog) Find(ctx context.Context) ([]openapi.Changelog, error) {
 
 	var entriess []openapi.Changelog
 	for _, entry := range entries {
-		var afterLevels []openapi.Level
+		var list []openapi.Level
 		for i, id := range entry.ListLevelIds {
-			afterLevels = append(afterLevels, openapi.Level{
+			list = append(list, openapi.Level{
 				Id:   id,
 				Name: entry.ListLevelNames[i],
-			})
-		}
-
-		var beforeLevels []openapi.Level
-		for i, id := range entry.ListBeforeLevelIds {
-			beforeLevels = append(beforeLevels, openapi.Level{
-				Id:   id,
-				Name: entry.ListBeforeLevelNames[i],
 			})
 		}
 
@@ -41,8 +33,7 @@ func (c Changelog) Find(ctx context.Context) ([]openapi.Changelog, error) {
 				Id:   entry.LevelID,
 				Name: entry.LevelName,
 			},
-			List:       afterLevels,
-			ListBefore: beforeLevels,
+			List: list,
 		})
 	}
 	return entriess, nil

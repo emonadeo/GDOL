@@ -1,7 +1,7 @@
 import { Accessor, Component, createMemo, createSignal, Setter } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
 import { api } from 'src/api';
-import { ListChange } from 'src/components/listChange';
+import { ListChange } from 'src/components/changelog';
 import { Changelog, Level } from 'src/generated/openapi';
 
 import './edit.scss';
@@ -89,7 +89,7 @@ export const ListEdit: Component<ListEditProps> = function (props) {
 			case ListEditStateArchive: {
 				const state = props.state as ListEditStateArchive;
 				return {
-					action: 'delete',
+					action: 'archive',
 					timestamp: new Date().toISOString(),
 					level: props.list.at(state.index())!,
 					list: props.list.filter((_, i) => i !== state.index()),
@@ -150,7 +150,14 @@ export const ListEdit: Component<ListEditProps> = function (props) {
 				}}
 			/>
 			<h6>Preview</h6>
-			<ListChange entry={preview()} />
+			<ListChange
+				action={preview().action}
+				from={preview().from || undefined}
+				to={preview().to || undefined}
+				level={preview().level}
+				before={preview().list_before}
+				after={preview().list}
+			/>
 			<ul role="list" class="actions">
 				<li>
 					<button type="reset" class="type-label-lg">

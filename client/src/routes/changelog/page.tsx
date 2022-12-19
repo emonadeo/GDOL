@@ -1,6 +1,6 @@
 import { useRouteData } from '@solidjs/router';
 import { Component, For, Show } from 'solid-js';
-import { getIcon, ListChange } from 'src/components/listChange';
+import { getIcon, ListChange } from 'src/components/changelog_1';
 import { ChangelogData } from 'src/openapi';
 
 import './page.scss';

@@ -49,6 +49,16 @@
 			"problemMatcher": []
 		},
 		{
+			"label": "Server: Run",
+			"detail": "go run cmd/main.go",
+			"type": "shell",
+			"command": "go run cmd/main.go",
+			"options": {
+				"cwd": "${workspaceFolder}/server"
+			},
+			"problemMatcher": ["$go"]
+		},
+		{
 			"label": "Server: Dev",
 			"detail": "pnpx nodemon --exec go run cmd/main.go --signal SIGTERM",
 			"type": "shell",
@@ -56,7 +66,7 @@
 			"options": {
 				"cwd": "${workspaceFolder}/server"
 			},
-			"problemMatcher": ["$go"]
+			"problemMatcher": []
 		},
 		{
 			"label": "Server: Generate",

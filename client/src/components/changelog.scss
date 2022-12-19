@@ -1,14 +1,12 @@
 @use 'src/styles/color';
 
-.details-changes {
-	grid-column: 2 / span 2;
-	align-self: start;
-	justify-self: stretch;
+.list-change {
+	// FIXME: Predictable vertical size
 	display: grid;
-	grid-template-columns: 1fr 1.5rem 1fr;
+	grid-template-columns: minmax(0, 1fr) 1.5rem minmax(0, 1fr);
 	grid-auto-rows: max-content;
 	grid-auto-flow: column;
-	align-items: center;
+	align-items: stretch;
 	gap: 1rem 0.5rem;
 	color: rgba(color.$on-background, 0.4);
 	border-color: rgba(color.$on-background, 0.4);
@@ -23,8 +21,8 @@
 	.after {
 		display: flex;
 
-		&.begin,
-		&.end {
+		&.top,
+		&.bottom {
 			display: flex;
 			align-items: center;
 			gap: 0.5rem;
@@ -33,7 +31,7 @@
 			&::after {
 				content: '';
 				flex: 1;
-				height: 5px;
+				height: 50%;
 			}
 
 			&::before {
@@ -45,14 +43,14 @@
 			}
 		}
 
-		&.begin::before,
-		&.begin::after {
+		&.top::before,
+		&.top::after {
 			align-self: flex-end;
 			border-top: 1px solid rgba(color.$on-background, 0.4);
 		}
 
-		&.end::before,
-		&.end::after {
+		&.bottom::before,
+		&.bottom::after {
 			align-self: flex-start;
 			border-bottom: 1px solid rgba(color.$on-background, 0.4);
 		}
@@ -87,7 +85,7 @@
 		justify-content: end;
 		position: relative;
 
-		&.gradient {
+		&.leap {
 			background-image: linear-gradient(90deg, transparent, #00ff00);
 			align-self: stretch;
 		}
@@ -123,7 +121,11 @@
 	.after {
 		grid-column: 3;
 
-		&.gradient {
+		&:not(.top):not(.bottom) {
+			flex-direction: row-reverse;
+		}
+
+		&.leap {
 			background-image: linear-gradient(90deg, #ff0000, transparent);
 			align-self: stretch;
 		}

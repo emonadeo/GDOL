@@ -1,4 +1,4 @@
-CREATE TYPE list_log_action AS ENUM ('add', 'move', 'delete');
+CREATE TYPE list_log_action AS ENUM ('add', 'archive', 'move');
 
 CREATE TABLE users (
 	"id" bigserial primary key,

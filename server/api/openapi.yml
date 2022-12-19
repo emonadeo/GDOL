@@ -52,7 +52,7 @@ components:
         action:
           type: string
           description: Type of change
-          enum: [add, move, delete]
+          enum: [add, archive, move]
         from:
           type: integer
           format: int16
@@ -73,12 +73,7 @@ components:
           $ref: '#/components/schemas/Level'
         list:
           type: array
-          description: State of the List after the changes
-          items:
-            $ref: '#/components/schemas/Level'
-        list_before:
-          type: array
-          description: State of the List before the changes
+          description: List of Levels
           items:
             $ref: '#/components/schemas/Level'
       required:

@@ -91,6 +91,12 @@
 						color: rgba(color.$on-background, 0.4);
 					}
 				}
+
+				.list-change {
+					grid-column: 2 / span 2;
+					align-self: start;
+					justify-self: stretch;
+				}
 			}
 		}
 	}
