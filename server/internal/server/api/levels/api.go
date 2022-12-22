@@ -8,6 +8,7 @@ import (
 func Bind(app *core.App, group *echo.Group) {
 	api := api{app}
 	group.POST("", api.createLevel)
+	group.GET("", api.getLevels)
 	group.GET("/:id/records", api.getRecordsByLevelId)
 }
 

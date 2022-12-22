@@ -38,8 +38,12 @@ func (l List) Update(ctx context.Context, rank int16, levelId int64, reason *str
 	}
 
 	// Insert level into list
-	listLevelIds = append(listLevelIds[:rank], listLevelIds[rank-1:]...)
-	listLevelIds[rank-1] = levelId
+	if int(rank) >= len(listLevelIds) {
+		listLevelIds = append(listLevelIds, levelId)
+	} else {
+		listLevelIds = append(listLevelIds[:rank], listLevelIds[rank-1:]...)
+		listLevelIds[rank-1] = levelId
+	}
 
 	// Trim to max_length
 	if len(listLevelIds) > int(l.Settings.MaxLength) {

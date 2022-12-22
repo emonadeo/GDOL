@@ -324,6 +324,25 @@ paths:
 
   # Levels
   '/levels':
+    get:
+      summary: Get Levels
+      description: Get all levels
+      operationId: GetLevels
+      tags:
+        - Levels
+      security:
+        - Token: []
+      responses:
+        '200':
+          description: Levels Retrieved
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Level'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
     post:
       summary: Create Level
       description: Create a level

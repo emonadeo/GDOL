@@ -1,122 +1,119 @@
-import { Accessor, Component, createMemo, createSignal, Setter } from 'solid-js';
+import {
+	Accessor,
+	Component,
+	createMemo,
+	createResource,
+	createSignal,
+	For,
+	Setter,
+	Show,
+} from 'solid-js';
 import { Dynamic } from 'solid-js/web';
 import { api } from 'src/api';
-import { ListChange } from 'src/components/changelog';
-import { Changelog, Level } from 'src/generated/openapi';
+import {
+	ChangelogOverviewSim,
+	ExtractChangelogOverviewSimState,
+} from 'src/components/changelog/simulated';
+import { Level } from 'src/generated/openapi';
+import { fetchLevels, fetchListSettings } from 'src/openapi';
+import { ChangelogAction } from 'src/util/changelog';
 
 import './edit.scss';
 
 /**
  * Shared fields by all action-specific states
  */
-export class ListEditState {
-	index: Accessor<number>;
-	setIndex: Setter<number>;
+interface ListEditStateBase {
 	reason: Accessor<string | undefined>;
 	setReason: Setter<string | undefined>;
+}
 
-	constructor(index: number) {
-		[this.index, this.setIndex] = createSignal<number>(index);
-		[this.reason, this.setReason] = createSignal<string>();
-	}
+function createListEditStateBase(): ListEditStateBase {
+	const [reason, setReason] = createSignal<string | undefined>();
+	return { reason, setReason };
 }
 
 /**
  * Add action specific fields
  */
-export class ListEditStateAdd extends ListEditState {
-	levelId: Accessor<number | undefined>;
-	setLevelId: Setter<number | undefined>;
+export interface ListEditStateAdd extends ListEditStateBase {
+	action: 'add';
+	selected: Accessor<number>;
+	setSelected: Setter<number>;
+	to: Accessor<number | undefined>;
+	setTo: Setter<number | undefined>;
+}
 
-	constructor(index: number) {
-		super(index);
-		[this.levelId, this.setLevelId] = createSignal<number>();
-	}
+export function createListEditStateAdd(to = 1): ListEditStateAdd {
+	const [selected, setSelected] = createSignal<number>(0);
+	const [_to, setTo] = createSignal<number | undefined>(to);
+	return {
+		...createListEditStateBase(),
+		action: 'add',
+		selected,
+		setSelected,
+		to: _to,
+		setTo,
+	};
 }
 
 /**
  * Archive action specific fields
  */
-export class ListEditStateArchive extends ListEditState {}
+export interface ListEditStateArchive extends ListEditStateBase {
+	action: 'archive';
+	from: Accessor<number>;
+	setFrom: Setter<number>;
+}
+
+export function createListEditStateArchive(from: number): ListEditStateArchive {
+	const [_from, setFrom] = createSignal<number>(from);
+	return {
+		...createListEditStateBase(),
+		action: 'archive',
+		from: _from,
+		setFrom,
+	};
+}
 
 /**
  * Move action specific fields
  */
-export class ListEditStateMove extends ListEditState {
+export interface ListEditStateMove extends ListEditStateBase {
+	action: 'move';
+	from: Accessor<number>;
+	setFrom: Setter<number>;
 	to: Accessor<number | undefined>;
 	setTo: Setter<number | undefined>;
-
-	constructor(index: number) {
-		super(index);
-		[this.to, this.setTo] = createSignal();
-	}
 }
 
-interface ListEditProps {
+export function createListEditStateMove(from: number): ListEditStateMove {
+	const [_from, setFrom] = createSignal<number>(from);
+	const [to, setTo] = createSignal<number | undefined>();
+	return {
+		...createListEditStateBase(),
+		action: 'move',
+		from: _from,
+		setFrom,
+		to,
+		setTo,
+	};
+}
+
+export type ListEditState = ListEditStateAdd | ListEditStateArchive | ListEditStateMove;
+
+type ListEditProps = {
 	list: Level[];
 	state: ListEditState;
 	onReset?: (e: Event) => void;
 	onSubmit?: () => void;
-}
+};
 
 export const ListEdit: Component<ListEditProps> = function (props) {
 	const edit = useListEdit(
 		() => props.list,
 		() => props.state
 	);
-
-	// TODO: Clean up, along with src/components/listChange.tsx
-	const preview = createMemo<Changelog>(() => {
-		switch (props.state.constructor) {
-			case ListEditStateAdd: {
-				const state = props.state as ListEditStateAdd;
-				const level = {
-					name: 'Placeholder',
-				};
-				return {
-					action: 'add',
-					timestamp: new Date().toISOString(),
-					level,
-					list: [
-						...props.list.slice(0, state.index()),
-						level,
-						...props.list.slice(state.index()),
-					].slice(0, 150),
-					list_before: props.list,
-					to: state.index() + 1,
-				};
-			}
-			case ListEditStateArchive: {
-				const state = props.state as ListEditStateArchive;
-				return {
-					action: 'archive',
-					timestamp: new Date().toISOString(),
-					level: props.list.at(state.index())!,
-					list: props.list.filter((_, i) => i !== state.index()),
-					list_before: props.list,
-					from: state.index() + 1,
-				};
-			}
-			case ListEditStateMove: {
-				const state = props.state as ListEditStateMove;
-				const list_after = props.list.filter((_, i) => i !== state.index());
-				list_after.splice((state.to() || 1) - 1, 0, props.list.at(state.index())!);
-				return {
-					action: 'move',
-					timestamp: new Date().toISOString(),
-					level: props.list.at(state.index()),
-					list: list_after,
-					list_before: props.list,
-					reason: state.reason(),
-					from: state.index() + 1,
-					to: state.to(),
-				};
-			}
-			default:
-				// FIXME: Breaks Vite HMR
-				throw new Error(`Unknown List Edit State`);
-		}
-	});
 
 	function onReset(e: Event) {
 		props.onReset && props.onReset(e);
@@ -149,15 +146,14 @@ export const ListEdit: Component<ListEditProps> = function (props) {
 					props.state.setReason((e.target as HTMLTextAreaElement).value || undefined);
 				}}
 			/>
-			<h6>Preview</h6>
-			<ListChange
-				action={preview().action}
-				from={preview().from || undefined}
-				to={preview().to || undefined}
-				level={preview().level}
-				before={preview().list_before}
-				after={preview().list}
-			/>
+			<Show when={edit.changelog()} keyed>
+				{(p) => (
+					<>
+						<h6>Preview</h6>
+						<ChangelogOverviewSim list={props.list} reason={props.state.reason()} state={p} />
+					</>
+				)}
+			</Show>
 			<ul role="list" class="actions">
 				<li>
 					<button type="reset" class="type-label-lg">
@@ -174,11 +170,29 @@ export const ListEdit: Component<ListEditProps> = function (props) {
 	);
 };
 
-type Edit<T extends ListEditState> = (
+/**
+ * Map {@link ChangelogAction} to action-specific {@link ListEditState}
+ * @example
+ * 'add' -> ListEditStateAdd
+ * 'archive' -> ListEditStateArchive
+ * 'move' -> ListEditStateMove
+ */
+type PickListEditState<T extends ChangelogAction> = Extract<ListEditState, { action: T }>;
+
+/**
+ * Given the current list and a specific {@link ListEditState}
+ * (i.e. either of {@link ListEditStateAdd}, {@link ListEditStateArchive}, {@link ListEditStateMove})
+ * create
+ * - a `component` containing state-specific form elements,
+ * - a `changelog` that contains props passed to the rendered {@link ChangelogOverviewSim},
+ * - and an async `onSubmit` function, that calls the REST API.
+ */
+type Edit<T extends ChangelogAction = ChangelogAction> = (
 	list: Accessor<Level[]>,
-	state: Accessor<T>
+	state: Accessor<PickListEditState<T>>
 ) => {
 	component: Component;
+	changelog: Accessor<ExtractChangelogOverviewSimState<T> | undefined>;
 	onSubmit: () => Promise<void>;
 };
 
@@ -190,36 +204,62 @@ type Edit<T extends ListEditState> = (
  * ListEditStateArchive -> ListEditArchive
  * ListEditStateMove -> ListEditMove
  */
-const useListEdit: Edit<ListEditState> = function (list, state) {
-	switch (state().constructor) {
-		case ListEditStateAdd:
-			return useListEditAdd(list, state as Accessor<ListEditStateAdd>);
-		case ListEditStateArchive:
-			return useListEditArchive(list, state as Accessor<ListEditStateArchive>);
-		case ListEditStateMove:
-			return useListEditMove(list, state as Accessor<ListEditStateMove>);
+const useListEdit: Edit = function (list, state) {
+	const _state = state();
+	switch (_state.action) {
+		case 'add':
+			return useListEditAdd(list, () => _state);
+		case 'archive':
+			return useListEditArchive(list, () => _state);
+		case 'move':
+			return useListEditMove(list, () => _state);
 		default:
-			// FIXME: Breaks Vite HMR
 			throw new Error(`Unknown List Edit State`);
 	}
 };
 
 /**
- * Form elements unique to Add Action ({@link ListEditStateAdd})
+ * Add Action ({@link ListEditStateAdd})
  */
-const useListEditAdd: Edit<ListEditStateAdd> = function (list, state) {
-	const onSubmit = async function () {
-		const levelId = state().levelId();
-		if (levelId === undefined) throw new Error(`Level ID empty`);
+const useListEditAdd: Edit<'add'> = function (list, state) {
+	const [levels] = createResource(fetchLevels);
+	const [listSettings] = createResource(fetchListSettings);
 
-		const res = await api.list.updateList(state().index() + 1, {
-			level_id: levelId,
+	const levelsNotOnList = createMemo<Level[] | undefined>(() => {
+		return levels()?.filter((l) => list().findIndex((ll) => ll.id === l.id) === -1);
+	});
+
+	const onSubmit = async function () {
+		const level = levelsNotOnList()?.at(state().selected());
+		if (level === undefined) throw new Error(`No Level selected`);
+
+		const to = state().to();
+		if (to === undefined) throw new Error(`'To' empty`);
+
+		const res = await api.list.updateList(to, {
+			level_id: level.id,
 			reason: state().reason(),
 		});
 	};
 
+	const changelog = createMemo(() => {
+		const to = state().to();
+		const level = levelsNotOnList()?.at(state().selected());
+		if (to === undefined || level === undefined) return undefined;
+		return {
+			action: 'add',
+			level,
+			to,
+			maxLength: listSettings()?.max_length,
+		} as const;
+	});
+
 	const component: Component = function () {
-		const maxRank = createMemo(() => Math.min(list().length + 1, 150));
+		const maxRank = createMemo<number | undefined>(() => {
+			const settings = listSettings();
+			if (settings === undefined || settings.max_length === undefined) return undefined;
+			return Math.min(list().length + 1, settings.max_length);
+		});
 
 		return (
 			<>
@@ -233,64 +273,75 @@ const useListEditAdd: Edit<ListEditStateAdd> = function (list, state) {
 					id="rank"
 					type="number"
 					min={1}
-					max={maxRank()} // TODO: Fetch max_length
-					value={state().index() + 1}
+					max={maxRank()}
+					value={state().to()}
 					onInput={(e) => {
 						const value = Number((e.target as HTMLInputElement).value);
-						state().setIndex(value - 1);
+						state().setTo(value);
 					}}
 					required
 				/>
 				<label for="level" class="type-title-sm">
 					Level
 				</label>
-				<input
-					type="text"
+				<select
 					name="level"
 					id="level"
-					// TODO: Search for levels by name and resolve level ID
+					class="levels type-label-lg"
 					onInput={(e) => {
-						state().setLevelId(Number((e.target as HTMLInputElement).value));
+						state().setSelected(Number((e.target as HTMLInputElement).value));
 					}}
 					required
-				/>
+				>
+					<For each={levelsNotOnList()}>
+						{(level, i) => <option value={i()}>{level.name}</option>}
+					</For>
+				</select>
 			</>
 		);
 	};
 
-	return { component, onSubmit };
+	return { component, changelog, onSubmit };
 };
 
 /**
- * Form elements unique to Archive Action ({@link ListEditStateArchive})
+ * Archive Action ({@link ListEditStateArchive})
  */
-const useListEditArchive: Edit<ListEditStateArchive> = function (list, state) {
+const useListEditArchive: Edit<'archive'> = function (list, state) {
 	const onSubmit = async function () {
-		const res = await api.list.archiveLevelByListRank(state().index() + 1, {
+		const res = await api.list.archiveLevelByListRank(state().from(), {
 			reason: state().reason(),
 		});
 	};
 
+	const changelog = createMemo(() => {
+		return {
+			action: 'archive',
+			from: state().from(),
+		} as const;
+	});
+
 	const component: Component = function () {
 		return (
 			<>
-				<h3>Archive {list().at(state().index())?.name}</h3>
+				<h3>Archive {list().at(state().from() - 1)?.name}</h3>
+				{/* No additional archive-specific form elements */}
 			</>
 		);
 	};
 
-	return { component, onSubmit };
+	return { component, changelog, onSubmit };
 };
 
 /**
- * Form elements unique to Move Action ({@link ListEditStateMove})
+ * Move Action ({@link ListEditStateMove})
  */
-const useListEditMove: Edit<ListEditStateMove> = function (list, state) {
+const useListEditMove: Edit<'move'> = function (list, state) {
 	const onSubmit = async function () {
 		const to = state().to();
 		if (to === undefined) throw Error(`'to' is empty`);
 
-		const level = list().at(state().index());
+		const level = list().at(state().from() - 1);
 		if (!level) throw Error(`Rank exceeds list length`);
 
 		const res = await api.list.updateList(to, {
@@ -299,10 +350,20 @@ const useListEditMove: Edit<ListEditStateMove> = function (list, state) {
 		});
 	};
 
+	const changelog = createMemo(() => {
+		const to = state().to();
+		if (to === undefined) return undefined;
+		return {
+			action: 'move',
+			from: state().from(),
+			to,
+		} as const;
+	});
+
 	const component: Component = function () {
 		return (
 			<>
-				<h3>Move {list().at(state().index())?.name}</h3>
+				<h3>Move {list().at(state().from() - 1)?.name}</h3>
 				<label for="to" class="type-title-sm">
 					To
 				</label>
@@ -324,5 +385,5 @@ const useListEditMove: Edit<ListEditStateMove> = function (list, state) {
 		);
 	};
 
-	return { component, onSubmit };
+	return { component, changelog, onSubmit };
 };

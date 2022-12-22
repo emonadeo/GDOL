@@ -2,11 +2,11 @@
 import { useRouteData } from '@solidjs/router';
 import { Component, createSignal, For, Show } from 'solid-js';
 import {
+	createListEditStateAdd,
+	createListEditStateArchive,
+	createListEditStateMove,
 	ListEdit,
 	ListEditState,
-	ListEditStateAdd,
-	ListEditStateArchive,
-	ListEditStateMove,
 } from 'src/admin/routes/list/edit';
 import { ListData } from 'src/openapi';
 
@@ -54,14 +54,14 @@ const Page: Component = function () {
 						<For each={list()}>
 							{(level, i) => (
 								<>
-									<tr class="add" onClick={() => setEditState(new ListEditStateAdd(i()))}>
+									<tr class="add" onClick={() => setEditState(createListEditStateAdd(i() + 1))}>
 										<td colspan={5} />
 									</tr>
 									<tr>
 										<td class="actions move">
 											<button
 												class="type-label-lg"
-												onClick={() => setEditState(new ListEditStateMove(i()))}
+												onClick={() => setEditState(createListEditStateMove(i() + 1))}
 											>
 												<img src={iconMove} alt="Move" />
 											</button>
@@ -69,7 +69,7 @@ const Page: Component = function () {
 										<td class="actions archive">
 											<button
 												class="type-label-lg"
-												onClick={() => setEditState(new ListEditStateArchive(i()))}
+												onClick={() => setEditState(createListEditStateArchive(i() + 1))}
 											>
 												<img src={iconArchive} alt="Archive" />
 											</button>

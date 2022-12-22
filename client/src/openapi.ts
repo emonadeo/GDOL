@@ -1,13 +1,8 @@
 import { RouteDataFunc } from '@solidjs/router';
 import { createResource, Resource, ResourceReturn } from 'solid-js';
 import { api } from 'src/api';
-import {
-	Changelog,
-	Level,
-	ListSettings,
-	RecordWithUser,
-	UserWithScoreAndRank,
-} from 'src/generated/openapi';
+import { Level, ListSettings, RecordWithUser, UserWithScoreAndRank } from 'src/generated/openapi';
+import { Changelog } from 'src/util/changelog';
 
 async function fetchList(): Promise<Level[]> {
 	const { data, error } = await api.list.getList();
@@ -106,7 +101,37 @@ async function fetchChangelog(): Promise<Changelog[]> {
 		throw new Error(`Couldn't fetch users`);
 	}
 
-	return data;
+	return data.map((c, i, cs) => {
+		const common = {
+			timestamp: new Date(c.timestamp),
+			level: c.level,
+			before: i < cs.length ? cs.at(i + 1)?.list || [] : [],
+			after: c.list,
+			reason: c.reason || undefined,
+		};
+
+		switch (c.action) {
+			case 'add':
+				return {
+					...common,
+					action: 'add',
+					to: c.to as number,
+				};
+			case 'archive':
+				return {
+					...common,
+					action: 'archive',
+					from: c.from as number,
+				};
+			case 'move':
+				return {
+					...common,
+					action: 'move',
+					from: c.from as number,
+					to: c.to as number,
+				};
+		}
+	});
 }
 
 export const ChangelogData: RouteDataFunc<unknown, Resource<Changelog[]>> = function () {
@@ -114,12 +139,12 @@ export const ChangelogData: RouteDataFunc<unknown, Resource<Changelog[]>> = func
 	return changelog;
 };
 
-async function fetchListSettings(): Promise<ListSettings> {
+export async function fetchListSettings(): Promise<ListSettings> {
 	const { data, error } = await api.list.getListSettings();
 
 	if (error != null) {
 		// TODO: Show Error
-		throw new Error(`Couldn't fetch users`);
+		throw new Error(`Couldn't fetch list settings`);
 	}
 
 	return data;
@@ -129,3 +154,14 @@ export const ListSettingsData: RouteDataFunc<unknown, Resource<ListSettings>> = 
 	const [settings] = createResource(fetchListSettings);
 	return settings;
 };
+
+export async function fetchLevels(): Promise<Level[]> {
+	const { data, error } = await api.levels.getLevels();
+
+	if (error != null) {
+		// TODO: Show Error
+		throw new Error(`Couldn't fetch levels`);
+	}
+
+	return data;
+}

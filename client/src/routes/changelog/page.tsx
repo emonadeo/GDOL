@@ -1,14 +1,15 @@
 import { useRouteData } from '@solidjs/router';
 import { Component, For, Show } from 'solid-js';
-import { getIcon, ListChange } from 'src/components/changelog_1';
+import { ChangelogOverview } from 'src/components/changelog/overview';
 import { ChangelogData } from 'src/openapi';
+import { ChangelogAction, getChangelogIcon } from 'src/util/changelog';
 
 import './page.scss';
 
-const dict = {
+const dict: { [action in ChangelogAction]: string } = {
 	add: 'Added',
 	move: 'Moved',
-	delete: 'Archived',
+	archive: 'Archived',
 };
 
 const Page: Component = function () {
@@ -20,8 +21,6 @@ const Page: Component = function () {
 			<ol role="list" class="log">
 				<For each={changelog()}>
 					{(entry) => {
-						const isAdd = entry.action === 'add';
-						const isDelete = entry.action === 'delete';
 						return (
 							<>
 								<li class="entry">
@@ -35,18 +34,18 @@ const Page: Component = function () {
 										</p>
 									</div>
 									<div class="changes">
-										<Show when={entry.from != null && !isDelete}>
-											<p class="from">#{entry.from}</p>
+										<Show when={entry.action === 'move' && entry} keyed>
+											{(e) => <p class="from">#{e.from}</p>}
 										</Show>
 										<div class="icon">
-											<img src={getIcon(entry)} alt="change" />
+											<img src={getChangelogIcon(entry)} alt="change" />
 										</div>
-										<p class="to">#{isDelete ? entry.from : entry.to}</p>
+										<p class="to">#{entry.action === 'archive' ? entry.from : entry.to}</p>
 									</div>
 									<div class="actions">
 										<p />
 									</div>
-									<Show when={entry.reason || !isAdd}>
+									<Show when={entry.reason || entry.action !== 'add'}>
 										<div class="details">
 											<Show
 												when={entry.reason}
@@ -59,7 +58,7 @@ const Page: Component = function () {
 											</Show>
 										</div>
 									</Show>
-									<ListChange entry={entry} />
+									<ChangelogOverview {...entry} />
 								</li>
 							</>
 						);

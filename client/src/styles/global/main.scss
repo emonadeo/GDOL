@@ -32,14 +32,28 @@ a {
 	text-decoration: none;
 }
 
-// Default textfield style
-input[type='text'] {
+// Default shared form elements styles
+input,
+select,
+textarea {
 	display: block;
-	height: 42px;
-	padding-left: 0.75rem;
-	border: none;
+	border: 1px solid white;
 	border-radius: 4px;
 	background-color: color.$surface;
+}
+
+// Default input/select style
+input,
+select {
+	height: 42px;
+	padding-left: 0.75rem;
+}
+
+// Default textarea style
+textarea {
+	display: block;
+	padding: 0.75rem;
+	resize: vertical;
 }
 
 // Default button style

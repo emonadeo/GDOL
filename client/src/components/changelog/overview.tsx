@@ -1,22 +1,17 @@
-import { Component, createMemo, For, JSX, Show } from 'solid-js';
-import { Changelog, Level, LevelWithRank } from 'src/generated/openapi';
+import { Component, createMemo, For, Show } from 'solid-js';
+import { Level, LevelWithRank } from 'src/generated/openapi';
+import { Changelog, ChangelogAction, getChangelogIcon } from 'src/util/changelog';
 
-import iconAdd from 'src/assets/icons/changelog/add.svg';
-import iconDelete from 'src/assets/icons/changelog/delete.svg';
-import iconNoChange from 'src/assets/icons/changelog/no_change.svg';
-import iconLower from 'src/assets/icons/changelog/lower.svg';
-import iconRaise from 'src/assets/icons/changelog/raise.svg';
+import './overview.scss';
 
-import './changelog.scss';
-
-interface ListChangeColumnProps {
+interface ChangelogOverviewColumnProps {
 	after: boolean;
-	action: Changelog['action'];
+	action: ChangelogAction;
 	rank: number;
 	list: Level[];
 }
 
-const ListChangeColumn: Component<ListChangeColumnProps> = function (props) {
+const ChangelogOverviewColumn: Component<ChangelogOverviewColumnProps> = function (props) {
 	const slice = createMemo<Array<LevelWithRank | undefined>>(() => {
 		const listWithRank: Array<LevelWithRank | undefined> = props.list.map((lvl, i) => ({
 			...lvl,
@@ -70,43 +65,24 @@ const ListChangeColumn: Component<ListChangeColumnProps> = function (props) {
 	);
 };
 
-interface ListChangeProps {
-	action: Changelog['action'];
-	from?: number;
-	to?: number;
-	level: Level;
-	before: Level[];
-	after: Level[];
-}
-
-export const ListChange: Component<ListChangeProps> = function (props) {
-	const icon = createMemo<string>(() => {
-		switch (props.action) {
-			case 'add':
-				return iconAdd;
-			case 'archive':
-				return iconDelete;
-			case 'move':
-				if ((props.to as number) === (props.from as number)) return iconNoChange;
-				return (props.to as number) > (props.from as number) ? iconLower : iconRaise;
-		}
-	});
+export const ChangelogOverview: Component<Changelog> = function (props) {
+	const icon = createMemo<string>(() => getChangelogIcon(props));
 
 	return (
-		<div class="list-change">
-			<ListChangeColumn
+		<div class="changelog-overview">
+			<ChangelogOverviewColumn
 				after={false}
 				action={props.action}
-				rank={(props.action === 'add' ? props.to : props.from) as number}
+				rank={props.action === 'add' ? props.to : props.from}
 				list={props.before}
 			/>
 			<div class="icon">
 				<img src={icon()} alt="change" />
 			</div>
-			<ListChangeColumn
+			<ChangelogOverviewColumn
 				after={true}
 				action={props.action}
-				rank={(props.action === 'archive' ? props.from : props.to) as number}
+				rank={props.action === 'archive' ? props.from : props.to}
 				list={props.after}
 			/>
 		</div>
