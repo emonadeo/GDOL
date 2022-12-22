@@ -19,7 +19,11 @@
 					height: 100%;
 					display: flex;
 					align-items: center;
-					border-bottom: 1px solid color.$on-background;
+					border-bottom: 1px solid transparent;
+				}
+
+				&[aria-current='page'] a {
+					border-bottom-color: color.$on-background;
 				}
 			}
 		}

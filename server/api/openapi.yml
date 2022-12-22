@@ -136,7 +136,20 @@ components:
               minimum: 1
               example: 1
           required:
-          - rank
+            - rank
+
+    LevelArchived:
+      allOf:
+        - $ref: '#/components/schemas/Level'
+        - type: object
+          properties:
+            timestamp:
+              type: string
+              format: date-time
+              description: RFC 3339-formatted Timestamp of Archival
+              example: 2018-11-13T20:20:39+00:00
+          required:
+            - timestamp
 
     ListSettings:
       type: object
@@ -440,6 +453,22 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Level'
+  '/list/archive':
+    get:
+      summary: Get Archived Levels
+      description: Get all archived levels ordered by date
+      operationId: GetListArchive
+      tags:
+        - List
+      responses:
+        '200':
+          description: Levels Retrieved
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LevelArchived'
   '/list/settings':
     get:
       summary: Get List Settings

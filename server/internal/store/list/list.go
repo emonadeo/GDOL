@@ -4,6 +4,7 @@ import (
 	"database/sql"
 
 	"github.com/emonadeo/gdol/generated/sqlc"
+	"github.com/emonadeo/gdol/internal/store/list/archive"
 	"github.com/emonadeo/gdol/internal/store/list/settings"
 )
 
@@ -12,6 +13,7 @@ type List struct {
 	Qry *sqlc.Queries
 
 	Settings *settings.Settings
+	Archive  *archive.Archive
 }
 
 func New(db *sql.DB, qry *sqlc.Queries) *List {
@@ -20,5 +22,6 @@ func New(db *sql.DB, qry *sqlc.Queries) *List {
 		Qry: qry,
 
 		Settings: settings.New(),
+		Archive:  archive.New(db, qry),
 	}
 }

@@ -7,6 +7,7 @@ require (
 	github.com/joho/godotenv v1.4.0
 	github.com/labstack/echo/v5 v5.0.0-20220717203827-74022662be4a
 	github.com/lib/pq v1.10.7
+	github.com/rs/zerolog v1.28.0
 	github.com/spf13/viper v1.14.0
 )
 
@@ -20,7 +21,6 @@ require (
 	github.com/mitchellh/mapstructure v1.5.0 // indirect
 	github.com/pelletier/go-toml v1.9.5 // indirect
 	github.com/pelletier/go-toml/v2 v2.0.6 // indirect
-	github.com/rs/zerolog v1.28.0 // indirect
 	github.com/spf13/afero v1.9.3 // indirect
 	github.com/spf13/cast v1.5.0 // indirect
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect

@@ -1,21 +1,13 @@
-import { useMatch } from '@solidjs/router';
 import { Component } from 'solid-js';
 
-import logo from 'src/assets/logo.svg';
+import { ariaCurrent } from 'src/util/aria';
 
+import logo from 'src/assets/logo.svg';
 import iconMenu from 'src/assets/icons/menu.svg';
 import iconSearch from 'src/assets/icons/search.svg';
 import iconUser from 'src/assets/icons/user.svg';
 
 import './appbar.scss';
-
-/**
- * Checks if the active route matches {@link path}. Returns 'page' if it does, false otherwise
- * See {@link https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current}
- */
-function ariaCurrent(path: string): 'page' | false {
-	return !!useMatch(() => path)() && 'page';
-}
 
 export const AppBar: Component = function () {
 	return (

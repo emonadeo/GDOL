@@ -1,7 +1,13 @@
 import { RouteDataFunc } from '@solidjs/router';
 import { createResource, Resource, ResourceReturn } from 'solid-js';
 import { api } from 'src/api';
-import { Level, ListSettings, RecordWithUser, UserWithScoreAndRank } from 'src/generated/openapi';
+import {
+	Level,
+	LevelArchived,
+	ListSettings,
+	RecordWithUser,
+	UserWithScoreAndRank,
+} from 'src/generated/openapi';
 import { Changelog } from 'src/util/changelog';
 
 async function fetchList(): Promise<Level[]> {
@@ -155,6 +161,22 @@ export const ListSettingsData: RouteDataFunc<unknown, Resource<ListSettings>> = 
 	return settings;
 };
 
+export async function fetchListArchive(): Promise<LevelArchived[]> {
+	const { data, error } = await api.list.getListArchive();
+
+	if (error != null) {
+		// TODO: Show Error
+		throw new Error(`Couldn't fetch list settings`);
+	}
+
+	return data;
+}
+
+export const ListArchiveData: RouteDataFunc<unknown, Resource<LevelArchived[]>> = function () {
+	const [settings] = createResource(fetchListArchive);
+	return settings;
+};
+
 export async function fetchLevels(): Promise<Level[]> {
 	const { data, error } = await api.levels.getLevels();
 
@@ -165,3 +187,8 @@ export async function fetchLevels(): Promise<Level[]> {
 
 	return data;
 }
+
+export const LevelsData: RouteDataFunc<unknown, Resource<Level[]>> = function () {
+	const [settings] = createResource(fetchLevels);
+	return settings;
+};

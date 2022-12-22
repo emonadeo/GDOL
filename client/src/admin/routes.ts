@@ -1,6 +1,6 @@
 import { RouteDefinition } from '@solidjs/router';
 import { lazy } from 'solid-js';
-import { ListData, ListSettingsData } from 'src/openapi';
+import { ListArchiveData, ListData, ListSettingsData } from 'src/openapi';
 
 export const routes: RouteDefinition[] = [
 	{
@@ -19,6 +19,11 @@ export const routes: RouteDefinition[] = [
 						path: '/',
 						component: lazy(() => import('./routes/list/page')),
 						data: ListData,
+					},
+					{
+						path: '/archive',
+						component: lazy(() => import('./routes/list/archive/page')),
+						data: ListArchiveData,
 					},
 					{
 						path: '/settings',
