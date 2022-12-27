@@ -1,3 +1,12 @@
+// TODO: Intermediary State
+// Option 1: Table component as CSS Module
+//     Caveat: Verbose
+// Option 2: Table component as simple SolidJS Component that only adds styling
+//     Caveat: Boilerplate and potential lack of type-safety (JSX.Element)
+// Option 3: Table component as complex SolidJS Component with a smart interface
+//     Caveat: Unflexible (Action buttons?)
+// (Currently: Option 3)
+
 /* @refresh reload */
 import { useRouteData } from '@solidjs/router';
 import { Component, createSignal, For, Show } from 'solid-js';
@@ -14,6 +23,8 @@ import iconArchive from 'src/assets/icons/admin/archive.svg';
 import iconMove from 'src/assets/icons/admin/move.svg';
 
 import './page.scss';
+
+import { AdminTable } from 'src/admin/components/table';
 
 const Page: Component = function () {
 	const [list, { refetch }] = useRouteData<typeof ListData>();
@@ -32,66 +43,37 @@ const Page: Component = function () {
 	return (
 		<div class="page-admin-list">
 			<div class="list">
-				<table>
-					<thead>
-						<tr>
-							<th class="actions" colspan={2}></th>
-							<th class="rank">
-								<p class="type-title-sm">Rank</p>
-							</th>
-							<th class="name">
-								<p class="type-title-sm">Name</p>
-							</th>
-							<th class="user">
-								<p class="type-title-sm">User</p>
-							</th>
-							<th class="requirement">
-								<p class="type-title-sm">Req.</p>
-							</th>
-						</tr>
-					</thead>
-					<tbody>
-						<For each={list()}>
-							{(level, i) => (
-								<>
-									<tr class="add" onClick={() => setEditState(createListEditStateAdd(i() + 1))}>
-										<td colspan={5} />
-									</tr>
-									<tr>
-										<td class="actions move">
-											<button
-												class="type-label-lg"
-												onClick={() => setEditState(createListEditStateMove(i() + 1))}
-											>
-												<img src={iconMove} alt="Move" />
-											</button>
-										</td>
-										<td class="actions archive">
-											<button
-												class="type-label-lg"
-												onClick={() => setEditState(createListEditStateArchive(i() + 1))}
-											>
-												<img src={iconArchive} alt="Archive" />
-											</button>
-										</td>
-										<td class="rank">
-											<p class="mono">{level.rank}</p>
-										</td>
-										<td class="name">
-											<p>{level.name}</p>
-										</td>
-										<td class="user">
-											<p>{level.user.name}</p>
-										</td>
-										<td class="requirement">
-											<p class="mono">{level.requirement}%</p>
-										</td>
-									</tr>
-								</>
-							)}
-						</For>
-					</tbody>
-				</table>
+				<Show when={list()} keyed>
+					{(l) => (
+						<AdminTable
+							rows={l.map((lvl) => ({
+								rank: lvl.rank,
+								name: lvl.name,
+								user: lvl.user.name,
+								req: lvl.requirement,
+							}))}
+							head={{
+								rank: 'Rank',
+								name: 'Name',
+								user: 'User',
+								req: 'Requirement',
+							}}
+							actions={[
+								{
+									label: 'Archive',
+									icon: iconArchive,
+									onClick: (i) => setEditState(createListEditStateArchive(i + 1)),
+								},
+								{
+									label: 'Move',
+									icon: iconMove,
+									onClick: (i) => setEditState(createListEditStateMove(i + 1)),
+								},
+							]}
+							onAdd={(i) => setEditState(createListEditStateAdd(i + 1))}
+						/>
+					)}
+				</Show>
 			</div>
 			<Show when={editState()} keyed>
 				{(state) => (

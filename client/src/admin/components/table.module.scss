@@ -1,0 +1,95 @@
+@use 'src/styles/color';
+
+.table {
+	width: 100%;
+
+	thead tr,
+	tbody tr {
+		height: 2.5rem;
+
+		td,
+		th {
+			height: 100%;
+			padding-inline: 1rem;
+			border: 1px solid transparent;
+			border-bottom-color: color.$surface;
+			text-align: start;
+
+			&.table-action {
+				width: 0;
+			}
+
+			&.rank {
+				width: 0;
+				text-align: right;
+			}
+		}
+	}
+
+	thead tr {
+		th {
+			position: sticky;
+			top: 0;
+			background-color: color.$background;
+		}
+	}
+
+	tbody tr {
+		&.table-add-row {
+			height: 0;
+			position: relative;
+
+			td {
+				height: 0.5rem;
+				position: absolute;
+				padding: 0;
+				left: 0;
+				right: 0;
+				top: -0.25rem;
+				border: none;
+				cursor: url(/cursor_add.svg) 12 12, pointer;
+
+				&:hover {
+					background-color: cyan;
+				}
+			}
+		}
+
+		&:hover {
+			td {
+				border-block-color: color.$on-background;
+
+				&:first-child {
+					border-left-color: color.$on-background;
+				}
+
+				&:last-child {
+					border-right-color: color.$on-background;
+				}
+			}
+		}
+
+		td {
+			&:not(:first-child) {
+				border-left-color: color.$surface;
+			}
+
+			&.table-action {
+				padding: 0;
+
+				button {
+					height: 2.5rem;
+					width: 2.5rem;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					background-color: transparent;
+
+					&:hover {
+						background-color: color.$surface;
+					}
+				}
+			}
+		}
+	}
+}

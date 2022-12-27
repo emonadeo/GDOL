@@ -1,19 +1,9 @@
 @use 'src/styles/screen';
 @use 'src/styles/color';
 
-#layout {
+.layout {
 	height: 100%;
 	display: grid;
 	grid-template-columns: 16rem minmax(0, 1fr);
 	grid-template-rows: minmax(0, 1fr);
-	grid-template-areas: 'sidebar page';
-
-	.sidebar {
-		grid-area: sidebar;
-	}
-
-	.page {
-		grid-area: page;
-		overflow-y: auto;
-	}
 }

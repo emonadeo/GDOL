@@ -1,0 +1,15 @@
+{
+	"sqltools.connections": [
+		{
+			"previewLimit": 50,
+			"server": "localhost",
+			"port": 5432,
+			"driver": "PostgreSQL",
+			"name": "GDOL",
+			"database": "gdol",
+			"username": "user",
+			"password": "password"
+		}
+	],
+	"typescript.tsdk": "client/node_modules/typescript/lib"
+}

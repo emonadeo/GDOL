@@ -4,13 +4,14 @@ import { api } from 'src/api';
 import {
 	Level,
 	LevelArchived,
+	LevelWithRank,
 	ListSettings,
 	RecordWithUser,
 	UserWithScoreAndRank,
 } from 'src/generated/openapi';
 import { Changelog } from 'src/util/changelog';
 
-async function fetchList(): Promise<Level[]> {
+async function fetchList(): Promise<LevelWithRank[]> {
 	const { data, error } = await api.list.getList();
 
 	if (error != null) {
@@ -21,7 +22,10 @@ async function fetchList(): Promise<Level[]> {
 	return data.map((lvl, i) => ({ ...lvl, rank: i + 1 }));
 }
 
-export const ListData: RouteDataFunc<unknown, ResourceReturn<Level[], unknown>> = function () {
+export const ListData: RouteDataFunc<
+	unknown,
+	ResourceReturn<LevelWithRank[], unknown>
+> = function () {
 	return createResource(fetchList);
 };
 
