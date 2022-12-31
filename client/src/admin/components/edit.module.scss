@@ -1,0 +1,27 @@
+@use 'src/styles/color';
+
+.edit {
+	overflow: auto;
+	padding: 2rem;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	border-left: 1px solid color.$surface;
+
+	input {
+		height: 2.5rem;
+		padding-left: 1rem;
+	}
+
+	.edit-actions {
+		display: flex;
+		justify-content: space-between;
+
+		button {
+			height: 2.5rem;
+			padding-inline: 1rem;
+			border-radius: 4px;
+			background-color: color.$surface;
+		}
+	}
+}

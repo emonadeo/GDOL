@@ -14,6 +14,10 @@
 		margin-bottom: 2rem;
 
 		li {
+			&[aria-current='page'] {
+				border-left: 1px solid color.$on-surface;
+			}
+
 			a {
 				display: flex;
 				align-items: center;

@@ -3,6 +3,14 @@
 .table {
 	width: 100%;
 
+	thead {
+		position: sticky;
+		top: 0;
+		background-color: rgba(color.$background, 0.3);
+		backdrop-filter: blur(0.5rem);
+		z-index: 1;
+	}
+
 	thead tr,
 	tbody tr {
 		height: 2.5rem;
@@ -14,6 +22,7 @@
 			border: 1px solid transparent;
 			border-bottom-color: color.$surface;
 			text-align: start;
+			white-space: nowrap;
 
 			&.table-action {
 				width: 0;
@@ -23,14 +32,6 @@
 				width: 0;
 				text-align: right;
 			}
-		}
-	}
-
-	thead tr {
-		th {
-			position: sticky;
-			top: 0;
-			background-color: color.$background;
 		}
 	}
 

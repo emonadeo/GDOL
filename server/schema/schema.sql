@@ -128,7 +128,7 @@ FROM
 		FROM
 			list
 	) AS records_and_verifications
-	JOIN users ON records_and_verifications.user_id = users.id
+	RIGHT JOIN users ON records_and_verifications.user_id = users.id
 GROUP BY
 	users.id
 ORDER BY

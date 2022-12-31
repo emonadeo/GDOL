@@ -40,7 +40,7 @@ components:
       required:
         - access_token
         - refresh_token
-    
+
     Changelog:
       type: object
       properties:
@@ -70,12 +70,12 @@ components:
           nullable: true
           description: Optional reason for movement or addition
         level:
-          $ref: '#/components/schemas/Level'
+          $ref: "#/components/schemas/Level"
         list:
           type: array
           description: List of Levels
           items:
-            $ref: '#/components/schemas/Level'
+            $ref: "#/components/schemas/Level"
       required:
         - timestamp
         - action
@@ -110,15 +110,15 @@ components:
           description: Minimum required percentage to submit records
         user:
           description: User who published the level
-          $ref: '#/components/schemas/User'
+          $ref: "#/components/schemas/User"
         verifier:
           description: User who verified the level
-          $ref: '#/components/schemas/User'
+          $ref: "#/components/schemas/User"
         creators:
           type: array
           description: All users involved in the creation of the level
           items:
-            $ref: '#/components/schemas/User'
+            $ref: "#/components/schemas/User"
       required:
         - id
         - name
@@ -128,7 +128,7 @@ components:
 
     LevelWithRank:
       allOf:
-        - $ref: '#/components/schemas/Level'
+        - $ref: "#/components/schemas/Level"
         - type: object
           properties:
             rank:
@@ -140,7 +140,7 @@ components:
 
     LevelArchived:
       allOf:
-        - $ref: '#/components/schemas/Level'
+        - $ref: "#/components/schemas/Level"
         - type: object
           properties:
             timestamp:
@@ -178,7 +178,7 @@ components:
           minimum: 1
           description: |
             Override requirement percentage with 100% of levels at or below the specified rank.
-            If e.g. set to 75, all levels at or below rank 75 will have their requirement overridden with 100%. 
+            If e.g. set to 75, all levels at or below rank 75 will have their requirement overridden with 100%.
           example: 75
 
     User:
@@ -197,10 +197,10 @@ components:
       required:
         - id
         - name
-    
+
     UserWithScoreAndRank:
       allOf:
-        - $ref: '#/components/schemas/User'
+        - $ref: "#/components/schemas/User"
         - type: object
           properties:
             score:
@@ -215,7 +215,7 @@ components:
           required:
             - score
             - rank
-    
+
     Record:
       type: object
       properties:
@@ -238,27 +238,27 @@ components:
         - timestamp
         - percentage
         - video
-    
+
     RecordWithUser:
       allOf:
-        - $ref: '#/components/schemas/Record'
+        - $ref: "#/components/schemas/Record"
         - type: object
           properties:
-            user: 
-              $ref: '#/components/schemas/User'
+            user:
+              $ref: "#/components/schemas/User"
           required:
-          - user
+            - user
 
     RecordWithLevel:
       allOf:
-        - $ref: '#/components/schemas/Record'
+        - $ref: "#/components/schemas/Record"
         - type: object
           properties:
             level:
-              $ref: '#/components/schemas/Level'
+              $ref: "#/components/schemas/Level"
           required:
-          - level
-  
+            - level
+
   responses:
     UnauthorizedError:
       description: Access token is missing or invalid
@@ -271,7 +271,7 @@ components:
 
 paths:
   # Auth
-  '/auth':
+  "/auth":
     get:
       summary: Login
       description: Generates a pair of access and refresh tokens
@@ -285,16 +285,55 @@ paths:
           description: Discord OAuth2 code
           schema:
             type: string
-            example: ABASDKJF
       responses:
-        '200':
+        "200":
           description: Authenticated
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Auth'
-
-  '/auth/refresh':
+                $ref: "#/components/schemas/Auth"
+        "400":
+          description: Invalid Code
+        "404":
+          description: User Not Found
+    post:
+      summary: Register
+      description: |
+        Sign up a new user with a given discord code.
+        Subsequently generates a pair of access and refresh tokens.
+      operationId: AuthRegister
+      tags:
+        - Auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                code:
+                  type: string
+                  description: Discord OAuth2 code
+                name:
+                  type: string
+                  description: Unique Username
+                  example: Gizbro
+              required:
+                - code
+                - name
+      responses:
+        "200":
+          description: Registered and Authenticated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Auth"
+        "400":
+          description: |
+            Bad Request
+            * Invalid Code
+            * User with given code already exists
+            * Username is already taken
+  "/auth/refresh":
     post:
       summary: Refresh
       description: Generates a pair of access and refresh tokens
@@ -309,16 +348,18 @@ paths:
               properties:
                 refresh_token:
                   type: string
+              required:
+                - refresh_token
       responses:
-        '200':
+        "200":
           description: Tokens Refreshed
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Auth'
-  
+                $ref: "#/components/schemas/Auth"
+
   # Changelog
-  '/changelog':
+  "/changelog":
     get:
       summary: Get Changelog
       description: Retrieves all entries of the list changelog
@@ -326,17 +367,17 @@ paths:
       tags:
         - Changelog
       responses:
-        '200':
+        "200":
           description: Changelog Retrieved
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Changelog'
+                  $ref: "#/components/schemas/Changelog"
 
   # Levels
-  '/levels':
+  "/levels":
     get:
       summary: Get Levels
       description: Get all levels
@@ -346,16 +387,16 @@ paths:
       security:
         - Token: []
       responses:
-        '200':
+        "200":
           description: Levels Retrieved
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Level'
-        '401':
-          $ref: '#/components/responses/UnauthorizedError'
+                  $ref: "#/components/schemas/Level"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
     post:
       summary: Create Level
       description: Create a level
@@ -408,11 +449,11 @@ paths:
                 - verifier_id
                 - creator_ids
       responses:
-        '200':
+        "200":
           description: Level Created
-        '401':
-          $ref: '#/components/responses/UnauthorizedError'
-  '/levels/{id}/records':
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+  "/levels/{id}/records":
     parameters:
       - name: id
         in: path
@@ -427,17 +468,17 @@ paths:
         - Levels
         - Records
       responses:
-        '200':
+        "200":
           description: Records Retrieved
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/RecordWithUser'
+                  $ref: "#/components/schemas/RecordWithUser"
 
   # List
-  '/list':
+  "/list":
     get:
       summary: Get Levels on List
       description: Get all levels on the list ordered by rank
@@ -445,15 +486,15 @@ paths:
       tags:
         - List
       responses:
-        '200':
+        "200":
           description: Levels Retrieved
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Level'
-  '/list/archive':
+                  $ref: "#/components/schemas/Level"
+  "/list/archive":
     get:
       summary: Get Archived Levels
       description: Get all archived levels ordered by date
@@ -461,15 +502,15 @@ paths:
       tags:
         - List
       responses:
-        '200':
+        "200":
           description: Levels Retrieved
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/LevelArchived'
-  '/list/settings':
+                  $ref: "#/components/schemas/LevelArchived"
+  "/list/settings":
     get:
       summary: Get List Settings
       description: Get settings and meta information about the list
@@ -477,13 +518,13 @@ paths:
       tags:
         - List
       responses:
-        '200':
+        "200":
           description: List Settings Retrieved
           content:
             application/json:
               schema:
                 allOf:
-                  - $ref: '#/components/schemas/ListSettings'
+                  - $ref: "#/components/schemas/ListSettings"
                 required:
                   - max_length
                   - auto_unarchive
@@ -498,15 +539,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ListSettings'
+              $ref: "#/components/schemas/ListSettings"
       security:
         - Token: []
       responses:
-        '200':
+        "200":
           description: List Settings Updated
-        '401':
-          $ref: '#/components/responses/UnauthorizedError'
-  '/list/{rank}':
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+  "/list/{rank}":
     parameters:
       - name: rank
         in: path
@@ -522,12 +563,12 @@ paths:
       tags:
         - List
       responses:
-        '200':
+        "200":
           description: Level Retrieved
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Level'
+                $ref: "#/components/schemas/Level"
     post:
       summary: Add/Move Level to List Rank
       description: |
@@ -553,10 +594,10 @@ paths:
               required:
                 - level_id
       responses:
-        '200':
+        "200":
           description: List Updated
-        '401':
-          $ref: '#/components/responses/UnauthorizedError'
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
     delete:
       summary: Archive Level by List Rank
       description: Removes a level from the list and appends it to archive.
@@ -575,13 +616,13 @@ paths:
                 reason:
                   type: string
       responses:
-        '200':
+        "200":
           description: Level Archived
-        '401':
-          $ref: '#/components/responses/UnauthorizedError'
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
 
   # Records
-  '/records':
+  "/records":
     post:
       summary: Create Record
       description: Creates a record of a user on a level
@@ -591,10 +632,10 @@ paths:
       security:
         - Token: []
       responses:
-        '200':
+        "200":
           description: Record Created
-        '401':
-          $ref: '#/components/responses/UnauthorizedError'
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
     delete:
       summary: Delete Record
       description: Deletes a record of a user on a level
@@ -604,13 +645,13 @@ paths:
       security:
         - Token: []
       responses:
-        '200':
+        "200":
           description: Record Deleted
-        '401':
-          $ref: '#/components/responses/UnauthorizedError'
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
 
   # Users
-  '/users':
+  "/users":
     get:
       summary: Get Users
       description: Get all users ordered by score
@@ -618,25 +659,45 @@ paths:
       tags:
         - Users
       responses:
-        '200':
+        "200":
           description: Users Retrieved
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/UserWithScoreAndRank'
+                  $ref: "#/components/schemas/UserWithScoreAndRank"
     post:
       summary: Create User
-      description: Register a new user
+      description: |
+        Create a new user.
+        This can only be used by staff users with `users:write` permission.
+        To register, use `POST /auth` instead.
       operationId: CreateUser
       tags:
         - Users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                nationality:
+                  type: string
+                discord_id:
+                  type: string
+              required:
+                - name
       responses:
-        '200':
+        "200":
           description: User Created
-
-  '/users/{id}':
+        "400":
+          description: Invalid Request
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+  "/users/{id}":
     parameters:
       - name: id
         in: path
@@ -650,8 +711,40 @@ paths:
       tags:
         - Users
       responses:
-        '200':
+        "200":
           description: User Retrieved
+    patch:
+      summary: Update User by ID
+      description: |
+        Modify an existing user with a given ID.
+        Authenticated users may modify their own `name` and/or `nationality`.
+        `discord_id` and/or `banned` can only be modified by a user with `users:write` permission.
+      operationId: UpdateUser
+      tags:
+        - Users
+      security:
+        - Token: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                nationality:
+                  type: string
+                discord_id:
+                  type: string
+                banned:
+                  type: boolean
+      responses:
+        "200":
+          description: User Updated
+        "400":
+          description: Invalid Request
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
     delete:
       summary: Delete User by ID
       description: Permanently deletes a user with a given ID
@@ -661,12 +754,11 @@ paths:
       security:
         - Token: []
       responses:
-        '200':
+        "200":
           description: User Deleted
-        '401':
-          $ref: '#/components/responses/UnauthorizedError'
-
-  '/users/{id}/records':
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+  "/users/{id}/records":
     parameters:
       - name: id
         in: path
@@ -681,5 +773,5 @@ paths:
         - Users
         - Records
       responses:
-        '200':
+        "200":
           description: Records Retrieved

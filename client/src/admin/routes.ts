@@ -1,6 +1,6 @@
 import { RouteDefinition } from '@solidjs/router';
 import { lazy } from 'solid-js';
-import { ListArchiveData, ListData, ListSettingsData } from 'src/openapi';
+import { LevelsData, ListArchiveData, ListData, ListSettingsData } from 'src/openapi';
 
 export const routes: RouteDefinition[] = [
 	{
@@ -31,6 +31,11 @@ export const routes: RouteDefinition[] = [
 						data: ListSettingsData,
 					},
 				],
+			},
+			{
+				path: '/levels',
+				component: lazy(() => import('./routes/levels/page')),
+				data: LevelsData,
 			},
 		],
 	},

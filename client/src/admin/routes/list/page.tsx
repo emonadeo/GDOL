@@ -1,15 +1,6 @@
-// TODO: Intermediary State
-// Option 1: Table component as CSS Module
-//     Caveat: Verbose
-// Option 2: Table component as simple SolidJS Component that only adds styling
-//     Caveat: Boilerplate and potential lack of type-safety (JSX.Element)
-// Option 3: Table component as complex SolidJS Component with a smart interface
-//     Caveat: Unflexible (Action buttons?)
-// (Currently: Option 3)
-
 /* @refresh reload */
 import { useRouteData } from '@solidjs/router';
-import { Component, createSignal, For, Show } from 'solid-js';
+import { Component, createSignal, Show } from 'solid-js';
 import {
 	createListEditStateAdd,
 	createListEditStateArchive,

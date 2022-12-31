@@ -11,7 +11,7 @@ import {
 } from 'src/generated/openapi';
 import { Changelog } from 'src/util/changelog';
 
-async function fetchList(): Promise<LevelWithRank[]> {
+export async function fetchList(): Promise<LevelWithRank[]> {
 	const { data, error } = await api.list.getList();
 
 	if (error != null) {
@@ -29,7 +29,7 @@ export const ListData: RouteDataFunc<
 	return createResource(fetchList);
 };
 
-async function fetchUsers(): Promise<UserWithScoreAndRank[]> {
+export async function fetchUsers(): Promise<UserWithScoreAndRank[]> {
 	const { data, error } = await api.users.getUsers();
 
 	if (error != null) {
@@ -45,7 +45,7 @@ export const UsersData: RouteDataFunc<unknown, Resource<UserWithScoreAndRank[]>>
 	return users;
 };
 
-async function fetchLevelByRank(rank: number): Promise<Level> {
+export async function fetchLevelByRank(rank: number): Promise<Level> {
 	const { data, error } = await api.list.getLevelByListRank(rank);
 
 	if (error != null) {
@@ -56,7 +56,7 @@ async function fetchLevelByRank(rank: number): Promise<Level> {
 	return data;
 }
 
-async function fetchLevelRecords(levelId: number | undefined): Promise<RecordWithUser[]> {
+export async function fetchLevelRecords(levelId: number | undefined): Promise<RecordWithUser[]> {
 	if (!levelId) return [];
 
 	const { data, error } = await api.levels.getRecordsByLevel(levelId);
@@ -103,7 +103,7 @@ export async function addOrMoveLevel(
 	}
 }
 
-async function fetchChangelog(): Promise<Changelog[]> {
+export async function fetchChangelog(): Promise<Changelog[]> {
 	const { data, error } = await api.changelog.getChangelog();
 
 	if (error != null) {
@@ -177,8 +177,8 @@ export async function fetchListArchive(): Promise<LevelArchived[]> {
 }
 
 export const ListArchiveData: RouteDataFunc<unknown, Resource<LevelArchived[]>> = function () {
-	const [settings] = createResource(fetchListArchive);
-	return settings;
+	const [levels] = createResource(fetchListArchive);
+	return levels;
 };
 
 export async function fetchLevels(): Promise<Level[]> {
@@ -193,6 +193,6 @@ export async function fetchLevels(): Promise<Level[]> {
 }
 
 export const LevelsData: RouteDataFunc<unknown, Resource<Level[]>> = function () {
-	const [settings] = createResource(fetchLevels);
-	return settings;
+	const [levels] = createResource(fetchLevels);
+	return levels;
 };
