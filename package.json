@@ -1,0 +1,21 @@
+{
+	"name": "gdol",
+	"version": "1.0.0",
+	"description": "monorepo",
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"scripts": {
+		"lint": "eslint .",
+		"fmt": "prettier --plugin-search-dir . --write ."
+	},
+	"devDependencies": {
+		"prettier": "^2.8.3",
+		"turbo": "^1.7.0"
+	},
+	"packageManager": "pnpm@7.25.0",
+	"engines": {
+		"pnpm": "^7.0.0"
+	},
+	"type": "module"
+}

@@ -1,0 +1,7 @@
+node_modules/
+
+# Terraform
+.terraform
+.terraform.*
+terraform.tdstate
+*.tf

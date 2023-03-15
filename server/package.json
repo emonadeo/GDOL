@@ -1,0 +1,33 @@
+{
+	"name": "@gdol/server",
+	"version": "2.0.0",
+	"description": "",
+	"type": "module",
+	"main": "src/server.ts",
+	"scripts": {
+		"gen:openapi": "tsx ./openapi.ts",
+		"gen:sql": "dotenv -c -- npx pgtyped -c pgtypedrc.json"
+	},
+	"keywords": [],
+	"author": "Emonadeo",
+	"license": "ISC",
+	"dependencies": {
+		"@trpc/server": "^10.9.0",
+		"trpc-openapi": "^1.1.1",
+		"zod": "^3.20.2"
+	},
+	"devDependencies": {
+		"@gdol/config": "workspace:^1.0.0",
+		"@pgtyped/cli": "2.1.0",
+		"@pgtyped/runtime": "^2.1.0",
+		"@types/dotenv-flow": "^3.2.0",
+		"@types/node": "^18.15.3",
+		"@types/pg": "^8.6.6",
+		"dotenv-cli": "^7.1.0",
+		"dotenv-flow": "^3.2.0",
+		"eslint": "^8.36.0",
+		"pg": "^8.10.0",
+		"tsx": "^3.12.5",
+		"typescript": "5.0.0-beta"
+	}
+}

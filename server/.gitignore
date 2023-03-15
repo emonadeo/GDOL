@@ -1,10 +1,2 @@
-bin/
-tmp/
-generated/
-
-gin-bin
-
-.env.local
-.env.*.local
-
-*.gen.go
+node_modules/
+dist/

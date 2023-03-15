@@ -1,5 +1,5 @@
 {
-	"name": "client",
+	"name": "@gdol/client",
 	"version": "2.0.0",
 	"private": "true",
 	"scripts": {
@@ -9,19 +9,18 @@
 		"serve": "vite preview",
 		"lint": "eslint .",
 		"fmt": "prettier --plugin-search-dir . --write .",
-		"gen": "swagger-typescript-api -p ../server/api/openapi.yml -o ./src/generated -n openapi.ts"
+		"gen": "swagger-typescript-api -p ../server-legacy/api/openapi.yml -o ./src/generated -n openapi.ts"
 	},
 	"devDependencies": {
+		"@gdol/config": "workspace:^1.0.0",
 		"@solidjs/router": "^0.5.1",
 		"@types/node": "^18.11.9",
 		"@typescript-eslint/eslint-plugin": "^5.44.0",
 		"@typescript-eslint/parser": "^5.44.0",
 		"eslint": "^8.28.0",
-		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-solid": "^0.9.1",
 		"fuzzysort": "^2.0.4",
 		"modern-css-reset": "^1.4.0",
-		"prettier": "^2.8.0",
 		"sass": "^1.56.1",
 		"solid-js": "^1.6.2",
 		"solid-transition-group": "^0.0.12",

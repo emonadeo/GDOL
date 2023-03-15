@@ -1,0 +1,15 @@
+{
+	"compilerOptions": {
+		"strict": true,
+		"target": "ES2022",
+		"module": "ES2022",
+		"moduleResolution": "Bundler",
+		"allowImportingTsExtensions": true,
+		"allowSyntheticDefaultImports": true,
+		"esModuleInterop": true,
+		"noEmit": true,
+		"importsNotUsedAsValues": "remove",
+		"preserveValueImports": false,
+		"isolatedModules": true
+	}
+}

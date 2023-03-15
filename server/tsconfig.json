@@ -1,0 +1,3 @@
+{
+	"extends": "@gdol/config/tsconfig.json"
+}

@@ -1,0 +1,10 @@
+bin/
+tmp/
+generated/
+
+gin-bin
+
+.env.local
+.env.*.local
+
+*.gen.go

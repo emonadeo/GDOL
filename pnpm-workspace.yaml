@@ -1,0 +1,7 @@
+packages:
+  - 'client'
+  - 'config'
+  - 'server'
+  - 'server-adapter-node'
+  - 'server-adapter-vercel'
+  - 'server-adapter-cloudflare'

@@ -1,5 +1,8 @@
 node_modules/
+dist/
 tmp/
+generated/
+*.local
 
 # Editor directories and files
 .vscode/*

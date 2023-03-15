@@ -1,23 +1,8 @@
 {
 	"root": true,
 	"env": {
-		"browser": true,
-		"es2021": true
+		"browser": true
 	},
-	"extends": [
-		"eslint:recommended",
-		"plugin:@typescript-eslint/recommended",
-		"plugin:solid/typescript",
-		"prettier"
-	],
-	"overrides": [],
-	"parser": "@typescript-eslint/parser",
-	"parserOptions": {
-		"ecmaVersion": "latest",
-		"sourceType": "module"
-	},
-	"plugins": ["@typescript-eslint", "solid"],
-	"rules": {
-		"@typescript-eslint/no-namespace": "off"
-	}
+	"extends": ["@gdol/config", "plugin:solid/typescript"],
+	"plugins": ["solid"]
 }
