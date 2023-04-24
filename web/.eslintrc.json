@@ -1,0 +1,58 @@
+{
+	"root": true,
+	"env": {
+		"es2022": true
+	},
+	"extends": [
+		"eslint:recommended",
+		"plugin:@typescript-eslint/recommended",
+		"plugin:@typescript-eslint/strict",
+		"plugin:astro/recommended",
+		"plugin:astro/jsx-a11y-strict",
+		"prettier"
+	],
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"project": "./tsconfig.json",
+		"ecmaVersion": "latest",
+		"sourceType": "module"
+	},
+	"overrides": [
+		{
+			"files": ["*.ts", "*.tsx"],
+			"extends": ["plugin:solid/typescript", "plugin:jsx-a11y/strict"]
+		},
+		{
+			"files": "*.astro",
+			"parser": "astro-eslint-parser",
+			"parserOptions": {
+				"parser": "@typescript-eslint/parser",
+				"extraFileExtensions": ".astro"
+			}
+		}
+	],
+	"plugins": ["@typescript-eslint", "astro", "solid", "import"],
+	"rules": {
+		"@typescript-eslint/no-namespace": "off",
+		"import/extensions": ["error", "ignorePackages"],
+		"import/order": [
+			"error",
+			{
+				"alphabetize": {
+					"order": "asc"
+				},
+				"newlines-between": "always"
+			}
+		],
+		"import/no-default-export": "error"
+	},
+	"settings": {
+		"import/parsers": {
+			"@typescript-eslint/parser": [".ts", ".tsx"]
+		},
+		"import/resolver": {
+			"typescript": true,
+			"node": true
+		}
+	}
+}

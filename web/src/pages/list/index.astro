@@ -1,0 +1,18 @@
+---
+import { page } from './index.css.ts';
+import { ListLevels } from './levels.tsx';
+import { ListSidebar } from './sidebar.tsx';
+
+import { api } from 'src/api.ts';
+import IndexLayout from 'src/layouts/index.astro';
+
+const res = await api.list.$get();
+const levels = await res.json();
+---
+
+<IndexLayout>
+	<div class={page}>
+		<ListSidebar client:load length={levels.length} />
+		<ListLevels client:load levels={levels} />
+	</div>
+</IndexLayout>

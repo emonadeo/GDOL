@@ -1,0 +1,21 @@
+{
+	"name": "gdol",
+	"version": "0.1.0",
+	"description": "",
+	"scripts": {
+		"build:api": "deno task build:api",
+		"build:web": "deno task build:web",
+		"dev:api": "deno task dev:api",
+		"dev:web": "deno task dev:web",
+		"lint:web": "deno task lint:web",
+		"fmt": "prettier --write ."
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"prettier": "^2.8.7",
+		"prettier-plugin-astro": "^0.8.0",
+		"prettier-plugin-sql-cst": "^0.8.2"
+	}
+}

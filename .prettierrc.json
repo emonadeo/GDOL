@@ -1,0 +1,29 @@
+{
+	"useTabs": true,
+	"singleQuote": true,
+	"trailingComma": "es5",
+	"printWidth": 100,
+	"plugins": ["prettier-plugin-astro", "prettier-plugin-sql-cst"],
+	"pluginSearchDirs": ["."],
+	"overrides": [
+		{
+			"files": ["*.yml", "*.yaml"],
+			"options": {
+				"useTabs": false,
+				"tabWidth": 4
+			}
+		},
+		{
+			"files": ["*.svg"],
+			"options": {
+				"parser": "html"
+			}
+		},
+		{
+			"files": ["*.sql"],
+			"options": {
+				"parser": "sqlite"
+			}
+		}
+	]
+}

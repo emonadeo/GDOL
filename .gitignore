@@ -1,0 +1,33 @@
+# build output
+dist/
+
+# generated types
+.astro/
+
+# dependencies
+node_modules/
+
+# temporary files
+temp/
+
+# non-pnpm lock files
+package-lock.json
+yarn.lock
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# local environment variables
+*.local
+
+# macOS-specific files
+.DS_Store
+
+# SQLite database
+*.db
+
+# database seed data
+_seed_data/

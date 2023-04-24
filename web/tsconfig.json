@@ -1,0 +1,24 @@
+{
+	"extends": "astro/tsconfigs/strictest",
+	"compilerOptions": {
+		"strict": true,
+		"target": "ES2022",
+		"module": "ES2022",
+		"moduleResolution": "Bundler",
+		"allowImportingTsExtensions": true,
+		"allowSyntheticDefaultImports": true,
+		"esModuleInterop": true,
+		"noEmit": true,
+		"importsNotUsedAsValues": "remove",
+		"preserveValueImports": false,
+		"isolatedModules": true,
+		"jsx": "preserve",
+		"jsxImportSource": "solid-js",
+		"baseUrl": ".",
+		"paths": {
+			"src/*": ["./src/*"],
+			"server/*": ["./../server/*"],
+			"https://deno.land/x/hono@v3.1.5/mod.ts": ["hono"]
+		}
+	}
+}

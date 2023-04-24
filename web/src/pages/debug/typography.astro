@@ -1,0 +1,24 @@
+---
+import { main } from './typography.css.ts';
+
+import IndexLayout from 'src/layouts/index.astro';
+import { mono, body_medium, body_small } from 'src/styles/atomic/typography.css.ts';
+
+---
+
+<IndexLayout>
+	<main class={main}>
+		<h1>Display Large</h1>
+		<h2>Display Medium</h2>
+		<h3>Display Small</h3>
+		<h4>Title Large</h4>
+		<h5>Title Medium</h5>
+		<h6>Title Small</h6>
+		<p>Body Large</p>
+		<p class={mono}>Body Large Mono</p>
+		<p class={body_medium}>Body Medium</p>
+		<p class:list={[body_medium, mono]}>Body Medium Mono</p>
+		<p class={body_small}>Body Small</p>
+		<p class:list={[body_small, mono]}>Body Small Mono</p>
+	</main>
+</IndexLayout>

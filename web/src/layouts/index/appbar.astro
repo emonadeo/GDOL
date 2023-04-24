@@ -1,0 +1,91 @@
+---
+---
+
+<style lang="scss">
+	@use 'src/styles/color';
+	@use 'src/styles/screen';
+
+	$height: 4rem;
+
+	.appbar {
+		grid-area: appbar;
+		display: grid;
+		grid-template-columns: 4rem minmax(0, 1fr) 4rem 4rem;
+
+		.menu,
+		.search,
+		.user {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.location {
+			display: flex;
+			align-items: center;
+		}
+
+		.search,
+		.user {
+			border-left: 1px solid color.$surface;
+		}
+	}
+
+	@include screen.lt-sm {
+		.appbar {
+			border-top: 1px solid color.$surface;
+		}
+	}
+
+	@include screen.sm {
+		.appbar {
+			border-bottom: 1px solid color.$surface;
+
+			.menu {
+				border-right: 1px solid color.$surface;
+			}
+
+			.location {
+				padding-left: 2rem;
+			}
+		}
+	}
+
+	@include screen.lg {
+		.appbar {
+			// TODO: Unify Grid Layout
+			grid-template-columns: calc(8rem + 4px) 1fr 4rem 4rem;
+			padding-left: calc(6rem + 1px);
+
+			.logo {
+				height: 27px;
+				align-self: center;
+			}
+
+			.links {
+				display: flex;
+				gap: 4rem;
+
+				.link {
+					a {
+						height: $height;
+						display: flex;
+						align-items: center;
+						color: inherit;
+						border-bottom: 1px solid transparent;
+					}
+
+					&[aria-current='page'] a {
+						border-bottom-color: color.$on-surface;
+					}
+				}
+			}
+		}
+	}
+
+	@include screen.xl {
+		.appbar {
+			grid-template-columns: calc(9.5rem + 4px) 1fr 4rem 4rem;
+		}
+	}
+</style>
