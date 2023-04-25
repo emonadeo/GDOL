@@ -6,7 +6,9 @@ const outDir = 'dist/';
 const keep = ['.git'];
 
 const sources = [
-	'api/',
+	'api/routes',
+	'api/mod.ts',
+	'api/types.ts',
 	'cmd/',
 	'migrations/',
 	'store/',

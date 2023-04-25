@@ -2,7 +2,7 @@
 	"tasks": {
 		"atlas:clean": "atlas schema clean --url \"sqlite://gdol.db\"",
 		"atlas:apply": "atlas schema apply --url \"sqlite://gdol.db\" --to \"file://store/schema.hcl\"",
-		"build": "deno task build:api && deno task build:web",
+		"build": "deno task build:api && deno task build:web && deno run --allow-all scripts/build.ts",
 		"build:api": "deno run --unstable --allow-all scripts/build_api.ts",
 		"build:web": "cd web && pnpm build",
 		"dev": "deno run --unstable --allow-all cli.ts --no-web --port 3001",
