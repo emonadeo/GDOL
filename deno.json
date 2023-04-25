@@ -1,14 +1,14 @@
 {
 	"tasks": {
+		"atlas:clean": "atlas schema clean --url \"sqlite://gdol.db\"",
+		"atlas:apply": "atlas schema apply --url \"sqlite://gdol.db\" --to \"file://store/schema.hcl\"",
 		"build": "deno task build:api && deno task build:web",
 		"build:api": "deno run --unstable --allow-all scripts/build_api.ts",
 		"build:web": "cd web && pnpm build",
-		"db:seed": "deno run --allow-all --unstable scripts/seed.ts",
-		"db:clean": "atlas schema clean --url \"sqlite://gdol.db\"",
-		"db:apply": "atlas schema apply --url \"sqlite://gdol.db\" --to \"file://store/schema.hcl\"",
 		"dev": "deno run --unstable --allow-all cli.ts --no-web --port 3001",
 		"dev:api": "deno run --unstable --allow-all --watch scripts/build_api.ts",
 		"dev:web": "cd web && pnpm dev",
+		"seed": "deno run --unstable --allow-all cli.ts seed",
 		"fmt": "pnpm fmt",
 		"lint:web": "cd web && pnpm lint"
 	}

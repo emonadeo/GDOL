@@ -41,7 +41,7 @@ async function seedList(db: Database) {
 	const list = (await import(`./${_seed_data_dir}/_list.json`, _json)).default as string[];
 	const length = list.length;
 	for (const [i, slug] of list.entries()) {
-		console.log(`seeding level ${slug}`);
+		console.log(`Seeding level ${slug}`);
 		const level = (await import(`./${_seed_data_dir}/${slug}.json`, _json)).default as SeedLevel;
 		const levelId = seedLevel(db, level);
 		levelIds.push(levelId);
@@ -81,7 +81,7 @@ function seedLevel(db: Database, level: SeedLevel): number {
 		});
 
 	if (result === undefined) {
-		console.error('inserting level returned undefined id');
+		console.error('Inserting level returned undefined id');
 		return -1;
 	}
 
@@ -144,7 +144,7 @@ function seedUser(db: Database, user: SeedUser): number {
 		.value<[number]>(user.name);
 
 	if (insertResult === undefined) {
-		console.error('inserting user returned undefined id');
+		console.error('Inserting user returned undefined id');
 		return -1;
 	}
 
