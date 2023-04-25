@@ -1,0 +1,36 @@
+{
+	"name": "Shitty rosedynamix",
+	"user": {
+		"name": "TravelChimp"
+	},
+	"verifier": {
+		"name": "iRaily"
+	},
+	"creators": [],
+	"gd_id": 85493158,
+	"requirement": 100,
+	"video": "https://youtu.be/rGu7DTKTNyo",
+	"records": [
+		{
+			"user": {
+				"name": "KasiaUwU"
+			},
+			"video": "https://youtu.be/gfMRm8OwHqs",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "ZerniasX"
+			},
+			"video": "https://youtu.be/wJ1d6sk5okU",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "lucap123"
+			},
+			"video": "https://www.youtube.com/watch?v=uczbPAjLPmY",
+			"percentage": 100
+		}
+	]
+}

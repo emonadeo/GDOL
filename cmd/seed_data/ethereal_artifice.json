@@ -1,0 +1,105 @@
+{
+	"name": "Shitty Ethereal Artifice",
+	"user": {
+		"name": "Andrew14916"
+	},
+	"verifier": {
+		"name": "Andrew14916"
+	},
+	"creators": [
+		{
+			"name": "Luke"
+		},
+		{
+			"name": "Chspchips"
+		},
+		{
+			"name": "Brooke"
+		},
+		{
+			"name": "Strix"
+		},
+		{
+			"name": "RadioY"
+		},
+		{
+			"name": "Whitar"
+		},
+		{
+			"name": "Myz"
+		},
+		{
+			"name": "SupaX_"
+		},
+		{
+			"name": "IHas"
+		},
+		{
+			"name": "Microwaveee"
+		},
+		{
+			"name": "T333"
+		}
+	],
+	"gd_id": 77046044,
+	"requirement": 60,
+	"video": "https://youtu.be/1z6zX5iFBYI",
+	"records": [
+		{
+			"user": {
+				"name": "T333"
+			},
+			"video": "https://youtu.be/6VR4gYvHrwg",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "attrixia"
+			},
+			"video": "https://www.youtube.com/watch?v=nn7Pjo3LfjQ",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Riptide"
+			},
+			"video": "https://youtu.be/e7QnBKvzy-A",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "BrightBird"
+			},
+			"video": "https://www.youtube.com/watch?v=Ib0CpI6j8vM",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Emonadeo"
+			},
+			"video": "https://www.youtube.com/watch?v=hine6oSk-60",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "bnuuy"
+			},
+			"video": "https://youtu.be/qrZMO6M6SiI",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "KasiaUwU"
+			},
+			"video": "https://youtu.be/5KGIbNxSgIQ",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "ZerniasX"
+			},
+			"video": "https://youtu.be/ro3AXcWnm4",
+			"percentage": 100
+		}
+	]
+}

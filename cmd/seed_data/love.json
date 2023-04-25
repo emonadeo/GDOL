@@ -1,0 +1,85 @@
+{
+	"name": "Shitty Love",
+	"user": {
+		"name": "Luke"
+	},
+	"verifier": {
+		"name": "Slayer"
+	},
+	"creators": [],
+	"gd_id": 75362770,
+	"requirement": 61,
+	"video": "https://youtu.be/p5ccDrubv5U",
+	"records": [
+		{
+			"user": {
+				"name": "iRaily"
+			},
+			"video": "https://www.youtube.com/watch?v=FkGyxYNJdkk",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Delay"
+			},
+			"video": "https://www.youtube.com/watch?v=Cj8poEINvHg",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "driftracers"
+			},
+			"video": "https://youtu.be/_x92l1mJqbE",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "KylashTheKiller"
+			},
+			"video": "https://youtu.be/18e9AOgODrE",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Dandy Chiggins"
+			},
+			"video": "https://youtu.be/gWjyat2XNjE",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "biskit"
+			},
+			"video": "https://youtu.be/adk_q9MZNzY",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "sodaman"
+			},
+			"video": "https://www.youtube.com/watch?v=mmicXiTYztE",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Samuuu18"
+			},
+			"video": "https://youtu.be/W5Kl7ODnL_4",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "LzKlauss"
+			},
+			"video": "https://www.youtube.com/watch?v=GNrPzJS6GJc",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "LeyroGD"
+			},
+			"video": "https://youtu.be/AB0vH0atVs0",
+			"percentage": 100
+		}
+	]
+}

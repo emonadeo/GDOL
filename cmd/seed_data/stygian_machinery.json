@@ -1,0 +1,50 @@
+{
+	"name": "Shitty Stygian Machinery",
+	"user": {
+		"name": "HargChucu"
+	},
+	"verifier": {
+		"name": "iRaily"
+	},
+	"creators": [
+		{
+			"name": "HargChucu"
+		},
+		{
+			"name": "Chspchips"
+		}
+	],
+	"gd_id": 72810786,
+	"requirement": 100,
+	"video": "https://youtu.be/naQa-EG4ipg",
+	"records": [
+		{
+			"user": {
+				"name": "Fh1r"
+			},
+			"video": "https://www.youtube.com/watch?v=g0d4szBEjag",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "BlueTomcat"
+			},
+			"video": "https://youtu.be/_HvW_8qXCQo",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Brinnn"
+			},
+			"video": "https://youtu.be/RVKlkyZNHuE",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "HargChucu"
+			},
+			"video": "https://youtu.be/0fcKV0Vwwrg",
+			"percentage": 100
+		}
+	]
+}

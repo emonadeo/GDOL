@@ -1,0 +1,119 @@
+{
+	"name": "Shitty Kumbiareta",
+	"user": {
+		"name": "Mau3cio"
+	},
+	"verifier": {
+		"name": "qb1"
+	},
+	"creators": [
+		{
+			"name": "Mau3cio"
+		},
+		{
+			"name": "Fernamg2041"
+		},
+		{
+			"name": "BetaGD"
+		},
+		{
+			"name": "AugustVN"
+		}
+	],
+	"gd_id": 81298073,
+	"requirement": 100,
+	"video": "https://youtu.be/0sSerj9o9EQ",
+	"records": [
+		{
+			"user": {
+				"name": "Alaniz004"
+			},
+			"video": "https://youtu.be/0GR4bJsjKQo",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Freikz"
+			},
+			"video": "https://youtu.be/Uc456qwHSp0",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Dr4QuiTo"
+			},
+			"video": "https://www.youtube.com/watch?v=SJO_86jxGrI&ab_channel=Dr4QuiTo",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "ObvSilver"
+			},
+			"video": "https://www.youtube.com/watch?v=SJO_86jxGrI&ab_channel=Dr4QuiTo",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Breakcore"
+			},
+			"video": "https://www.youtube.com/watch?v=S4X4fVxH0qc",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Riptide"
+			},
+			"video": "https://youtu.be/9eke7sH2n9I",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "JaByUs"
+			},
+			"video": "https://youtu.be/vbSGMRf7FEY",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "WilzX"
+			},
+			"video": "https://www.youtube.com/watch?v=AS3KxOPS7tI",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Ashlie"
+			},
+			"video": "https://youtu.be/GB7id1vC9pc",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Andrew14916"
+			},
+			"video": "https://www.youtube.com/watch?v=KutS3U_GbSE",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Guri"
+			},
+			"video": "https://www.youtube.com/watch?v=9qzo1ViKDdU",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Demons [GD]"
+			},
+			"video": "https://youtu.be/16tp0Er8MMg",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "SarcasticMuch"
+			},
+			"video": "https://youtu.be/zHastx2APuk",
+			"percentage": 100
+		}
+	]
+}

@@ -1,0 +1,78 @@
+{
+	"name": "Shitty Vengeance",
+	"user": {
+		"name": "IDeltaPhantomI"
+	},
+	"verifier": {
+		"name": "IDeltaPhantomI"
+	},
+	"creators": [
+		{
+			"name": "Shochare"
+		},
+		{
+			"name": "IDeltaPhantomI"
+		}
+	],
+	"gd_id": 78653522,
+	"requirement": 61,
+	"video": "https://youtu.be/oWCY75-8N-4",
+	"records": [
+		{
+			"user": {
+				"name": "LzKlauss"
+			},
+			"video": "https://www.youtube.com/watch?v=QgUPKRHZI60",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "biskit"
+			},
+			"video": "https://youtu.be/qR2hyIzk0Xo",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "domi77"
+			},
+			"video": "https://www.youtube.com/watch?v=txMsYUkRAWc",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "BrightBird"
+			},
+			"video": "https://youtu.be/iTUKXJLj82o",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "KylashTheKiller"
+			},
+			"video": "https://youtu.be/vkGuVd9TnjM",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Riptide"
+			},
+			"video": "https://youtu.be/nagw_U8iZdI",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "ItzMira"
+			},
+			"video": "https://youtu.be/-Qtph_NrFFM",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "KasiaUwU"
+			},
+			"video": "https://youtu.be/TuK4AGHJAdg",
+			"percentage": 100
+		}
+	]
+}

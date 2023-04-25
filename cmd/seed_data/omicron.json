@@ -1,0 +1,36 @@
+{
+	"name": "Shitty Omicron",
+	"user": {
+		"name": "Nico721GD"
+	},
+	"verifier": {
+		"name": "LBoke"
+	},
+	"creators": [],
+	"gd_id": 72527818,
+	"requirement": 100,
+	"video": "https://youtu.be/OClrjXEP33w",
+	"records": [
+		{
+			"user": {
+				"name": "KylashTheKiller"
+			},
+			"video": "https://youtu.be/AT7Pn2oK22E",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Shel"
+			},
+			"video": "https://youtu.be/MTn6GtHLcOA",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "KasiaUwU"
+			},
+			"video": "https://youtu.be/uk6PM96POxA",
+			"percentage": 100
+		}
+	]
+}

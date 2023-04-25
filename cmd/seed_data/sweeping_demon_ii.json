@@ -1,0 +1,36 @@
+{
+	"name": "Shitty Sweeping Demon II",
+	"user": {
+		"name": "Deceit"
+	},
+	"verifier": {
+		"name": "skeeb"
+	},
+	"creators": [],
+	"gd_id": 83162283,
+	"requirement": 61,
+	"video": "https://youtu.be/9d6MSzOZBYc",
+	"records": [
+		{
+			"user": {
+				"name": "KylashTheKiller"
+			},
+			"video": "https://www.youtube.com/watch?v=dAgirzVIdqE",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Dandy Chiggins"
+			},
+			"video": "https://youtu.be/vkPy5p25ArM",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "GD CrimsonKing22"
+			},
+			"video": "https://www.youtube.com/watch?v=OVxYQmDMz6s",
+			"percentage": 100
+		}
+	]
+}

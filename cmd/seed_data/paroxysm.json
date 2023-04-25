@@ -1,0 +1,50 @@
+{
+	"name": "Shitty Paroxysm",
+	"user": {
+		"name": "iRaily"
+	},
+	"verifier": {
+		"name": "iRaily"
+	},
+	"creators": [],
+	"gd_id": 77799812,
+	"requirement": 100,
+	"video": "https://youtu.be/FM3hD2Sb9Q8",
+	"records": [
+		{
+			"user": {
+				"name": "DogeyBoi"
+			},
+			"video": "https://www.youtube.com/watch?v=v27eRA6wD1M",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "fakeiwnl"
+			},
+			"video": "https://www.youtube.com/watch?v=4Fed0zpep2M",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "FedeXD"
+			},
+			"video": "https://www.youtube.com/watch?v=toksCI_M5rY",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "wiz"
+			},
+			"video": "https://youtu.be/JpPzty1Ah4U",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Riptide"
+			},
+			"video": "https://youtu.be/7A7D60qkdsg",
+			"percentage": 100
+		}
+	]
+}

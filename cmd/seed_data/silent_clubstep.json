@@ -1,0 +1,85 @@
+{
+	"name": "Shitty Silent clubstep",
+	"user": {
+		"name": "Prometheus"
+	},
+	"verifier": {
+		"name": "Achlys"
+	},
+	"creators": [],
+	"gd_id": 86205420,
+	"requirement": 53,
+	"video": "https://www.youtube.com/watch?v=qGhKLGaEPd4",
+	"records": [
+		{
+			"user": {
+				"name": "woi"
+			},
+			"video": "https://www.youtube.com/watch?v=LL16jEX8FCA",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Prometheus"
+			},
+			"video": "https://youtu.be/RHh_-n5nyuU",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Sloppy Joe Gaming"
+			},
+			"video": "https://www.youtube.com/watch?v=-HMixCX4oRM",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Dandy Chiggins"
+			},
+			"video": "https://youtu.be/5ZvBu8hy3zo",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "kwazd"
+			},
+			"video": "https://youtu.be/Osc7PparS2E",
+			"percentage": 72
+		},
+		{
+			"user": {
+				"name": "KylashTheKiller"
+			},
+			"video": "https://youtu.be/ICGDz1yFJag",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "kwazd"
+			},
+			"video": "https://www.youtube.com/watch?v=wtj-KyB48cU",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "FullyDiverse"
+			},
+			"video": "https://youtu.be/NASvmJT48FE",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Kenos Song"
+			},
+			"video": "https://www.youtube.com/watch?v=2VINrCvMiL8",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Samuuu18"
+			},
+			"video": "https://www.youtube.com/watch?v=Fcmu-ilN97Q",
+			"percentage": 100
+		}
+	]
+}

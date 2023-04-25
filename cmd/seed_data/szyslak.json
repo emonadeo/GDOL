@@ -1,0 +1,43 @@
+{
+	"name": "Shitty SZYSLAK",
+	"user": {
+		"name": "Normus"
+	},
+	"verifier": {
+		"name": "Normus"
+	},
+	"creators": [],
+	"gd_id": 87525092,
+	"requirement": 56,
+	"video": "https://www.youtube.com/watch?v=W21B9BBkbaI",
+	"records": [
+		{
+			"user": {
+				"name": "ZeusGD"
+			},
+			"video": "https://youtu.be/rlcGrUZehns",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Riptide"
+			},
+			"video": "https://www.youtube.com/watch?v=4h2GNTT4dXo",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "ZerniasX"
+			},
+			"video": "https://www.youtube.com/watch?v=WVwAN3Fzuk8",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "KasiaUwU"
+			},
+			"video": "https://youtu.be/AOwbn8tSe4g",
+			"percentage": 100
+		}
+	]
+}

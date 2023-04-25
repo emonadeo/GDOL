@@ -1,0 +1,64 @@
+{
+	"name": "Shitty Electro Paracosm",
+	"user": {
+		"name": "iRaily"
+	},
+	"verifier": {
+		"name": "PilBoom"
+	},
+	"creators": [
+		{
+			"name": "iRaily"
+		},
+		{
+			"name": "Chspchips"
+		}
+	],
+	"gd_id": 79439102,
+	"requirement": 100,
+	"video": "https://youtu.be/eh00azQ4jd0",
+	"records": [
+		{
+			"user": {
+				"name": "Fh1r"
+			},
+			"video": "https://www.youtube.com/watch?v=LUBhAG4DBzE",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "iRaily"
+			},
+			"video": "https://youtu.be/I9t-QUIVgTk",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Delay"
+			},
+			"video": "https://www.youtube.com/watch?v=mXbDTtNltAs",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "MinYong"
+			},
+			"video": "https://www.youtube.com/watch?v=vUGOmQJO3fQ",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "ObvSilver"
+			},
+			"video": "https://youtu.be/x2xC0ISXKJg",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "DaddyCat"
+			},
+			"video": "https://youtu.be/iQtDtmDuR7Y",
+			"percentage": 100
+		}
+	]
+}

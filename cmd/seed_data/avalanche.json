@@ -1,0 +1,36 @@
+{
+	"name": "Shitty Avalanche",
+	"user": {
+		"name": "NoCtrl"
+	},
+	"verifier": {
+		"name": "NoCtrl"
+	},
+	"creators": [],
+	"gd_id": 81102114,
+	"requirement": 100,
+	"video": "https://youtu.be/4GXzR2li3ZE",
+	"records": [
+		{
+			"user": {
+				"name": "Snakez363"
+			},
+			"video": "https://youtu.be/zICM-jwqeS4",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Kar0l"
+			},
+			"video": "https://www.youtube.com/watch?v=S6ISs1Nq_IU",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "bnuuy"
+			},
+			"video": "https://youtu.be/g6e9KpnMTnw",
+			"percentage": 100
+		}
+	]
+}

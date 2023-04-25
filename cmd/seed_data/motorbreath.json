@@ -1,0 +1,43 @@
+{
+	"name": "Shitty Motorbreath",
+	"user": {
+		"name": "Deceit"
+	},
+	"verifier": {
+		"name": "Achlys"
+	},
+	"creators": [],
+	"gd_id": 82636878,
+	"requirement": 100,
+	"video": "https://youtu.be/3oP_xcrZRKc",
+	"records": [
+		{
+			"user": {
+				"name": "Riptide"
+			},
+			"video": "https://youtu.be/15o2R3rVhT4",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Vision"
+			},
+			"video": "https://youtu.be/0CnyXszngxI",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Demons [GD]"
+			},
+			"video": "https://youtu.be/xO-idjlQYmQ",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "spacebar_key"
+			},
+			"video": "https://www.youtube.com/watch?v=_bCkGqtZaAY",
+			"percentage": 100
+		}
+	]
+}

@@ -1,0 +1,36 @@
+{
+	"name": "Shitty EXPLICIT",
+	"user": {
+		"name": "vKaii"
+	},
+	"verifier": {
+		"name": "vKaii"
+	},
+	"creators": [],
+	"gd_id": 87022401,
+	"requirement": 100,
+	"video": "https://youtu.be/lRdNxqtvaUk",
+	"records": [
+		{
+			"user": {
+				"name": "ObvSilver"
+			},
+			"video": "https://youtu.be/8wlgNst7cOA",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "ZerniasX"
+			},
+			"video": "https://youtu.be/SzLFiv_WitY",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "LAMINGTON"
+			},
+			"video": "https://www.youtube.com/watch?v=lM0_3ehjS3I",
+			"percentage": 100
+		}
+	]
+}

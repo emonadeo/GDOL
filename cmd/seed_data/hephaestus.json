@@ -1,0 +1,64 @@
+{
+	"name": "Shitty Hephaestus",
+	"user": {
+		"name": "Deceit"
+	},
+	"verifier": {
+		"name": "Ryoui"
+	},
+	"creators": [],
+	"gd_id": 84559550,
+	"requirement": 100,
+	"video": "https://youtu.be/kznXdWn0cwo",
+	"records": [
+		{
+			"user": {
+				"name": "Microwaveee"
+			},
+			"video": "https://www.youtube.com/watch?v=lYMua3PygxE",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Riptide"
+			},
+			"video": "https://www.youtube.com/watch?v=muOS0yTdFK0",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Bnuuy"
+			},
+			"video": "https://www.youtube.com/watch?v=Ag4YLX1y8q0",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "BrightBird"
+			},
+			"video": "https://www.youtube.com/watch?v=kXh5Bq7dzV0",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "ObvSilver"
+			},
+			"video": "https://youtu.be/-vz9a-qLUBU",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "jonah"
+			},
+			"video": "https://youtu.be/ohDE7aywTZk",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Dandy Chiggins"
+			},
+			"video": "https://youtu.be/NdDCppHF4WU",
+			"percentage": 100
+		}
+	]
+}

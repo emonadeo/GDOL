@@ -1,0 +1,57 @@
+{
+	"name": "Shitty Worse Trip",
+	"user": {
+		"name": "FireRift"
+	},
+	"verifier": {
+		"name": "Luke"
+	},
+	"creators": [],
+	"gd_id": 80485353,
+	"requirement": 100,
+	"video": "https://youtu.be/9N_UnC06Oyk",
+	"records": [
+		{
+			"user": {
+				"name": "Riptide"
+			},
+			"video": "https://youtu.be/xCzaU9nWTsI",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Samuuu18"
+			},
+			"video": "https://www.twitch.tv/videos/1528399906",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "biskit"
+			},
+			"video": "https://youtu.be/ZGwjZrSAaVw",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Stell06"
+			},
+			"video": "https://www.youtube.com/watch?v=55ZRh76n_H4",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Demons [GD]"
+			},
+			"video": "https://youtu.be/q6cjyd5y-XQ",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Boshy"
+			},
+			"video": "https://youtu.be/Hi8_sGxWoWE",
+			"percentage": 100
+		}
+	]
+}

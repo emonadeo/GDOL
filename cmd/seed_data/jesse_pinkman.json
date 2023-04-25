@@ -1,0 +1,57 @@
+{
+	"name": "Shitty Jesse Pinkman",
+	"user": {
+		"name": "FireRift"
+	},
+	"verifier": {
+		"name": "GhostFire"
+	},
+	"creators": [],
+	"gd_id": 86162611,
+	"requirement": 59,
+	"video": "https://youtu.be/WqjagU72tPo",
+	"records": [
+		{
+			"user": {
+				"name": "asmallsock"
+			},
+			"video": "https://youtu.be/Pg8UrzMChxk",
+			"percentage": 96
+		},
+		{
+			"user": {
+				"name": "Samuuu18"
+			},
+			"video": "https://youtu.be/TpMEa-MR12A",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "JaByUs"
+			},
+			"video": "https://youtu.be/677aK1N1uz0",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Dandy Chiggins"
+			},
+			"video": "https://youtu.be/c_JYHJ5wyZw",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "ZerniasX"
+			},
+			"video": "https://youtu.be/Qm_5240lBX4",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Gd Leaf"
+			},
+			"video": "https://youtu.be/p3GXXKwd1Ys",
+			"percentage": 100
+		}
+	]
+}

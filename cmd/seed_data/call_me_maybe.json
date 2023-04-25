@@ -1,0 +1,43 @@
+{
+	"name": "Shitty Call Me Maybe",
+	"user": {
+		"name": "Deceit"
+	},
+	"verifier": {
+		"name": "asmallsock"
+	},
+	"creators": [],
+	"gd_id": 82522238,
+	"requirement": 66,
+	"video": "https://youtu.be/K-1B610SJsA",
+	"records": [
+		{
+			"user": {
+				"name": "Dandy Chiggins"
+			},
+			"video": "https://youtu.be/WWvN_2E7v30",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "JaByUs"
+			},
+			"video": "https://youtu.be/0MrXl2MYxHw",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Fh1r"
+			},
+			"video": "https://youtu.be/vjdrs1PrdKA",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "ZerniasX"
+			},
+			"video": "https://youtu.be/pWIfY0ivISI",
+			"percentage": 100
+		}
+	]
+}

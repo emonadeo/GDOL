@@ -1,0 +1,57 @@
+{
+	"name": "Shitty p00p",
+	"user": {
+		"name": "AcropolisBoy"
+	},
+	"verifier": {
+		"name": "Magmeta"
+	},
+	"creators": [],
+	"gd_id": 80789926,
+	"requirement": 59,
+	"video": "https://youtu.be/2pjalH1_xDA",
+	"records": [
+		{
+			"user": {
+				"name": "GDMeric"
+			},
+			"video": "https://youtu.be/Tl8dGQBqTPg",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Shel"
+			},
+			"video": "https://youtu.be/DAcZ_dxQ7Qo",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "BrightBird"
+			},
+			"video": "https://youtu.be/qblI7XfnljA",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Dandy Chiggins"
+			},
+			"video": "https://youtu.be/GO4tyDiSSsE",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "KylashTheKiller"
+			},
+			"video": "https://youtu.be/C1iXyiEAd5I",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "ItzVmark"
+			},
+			"video": "https://www.youtube.com/watch?v=NDkQJwYhl4M",
+			"percentage": 100
+		}
+	]
+}

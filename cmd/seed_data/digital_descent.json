@@ -1,0 +1,85 @@
+{
+	"name": "Shitty Digital Descent",
+	"user": {
+		"name": "SupaX_"
+	},
+	"verifier": {
+		"name": "SupaX_"
+	},
+	"creators": [],
+	"gd_id": 66914377,
+	"requirement": 100,
+	"video": "https://youtu.be/z2CPRGzD0e0",
+	"records": [
+		{
+			"user": {
+				"name": "Riptide"
+			},
+			"video": "https://youtu.be/SPdaPjBULgc",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "homegrowntag"
+			},
+			"video": "https://youtu.be/pcChtJmsi0Y",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "ObvSilver"
+			},
+			"video": "https://youtu.be/FFWx8mtw65o",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "JASM1818"
+			},
+			"video": "https://youtu.be/OQpBqkRZdSI",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Shel"
+			},
+			"video": "https://youtu.be/om91c7Oj0oE",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "StarXV"
+			},
+			"video": "https://youtu.be/dAVGXzo1LgA?t=447",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "natertot07"
+			},
+			"video": "https://youtu.be/4S13r-9o3ao",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "BrightBird"
+			},
+			"video": "https://youtu.be/3zLFJbs6uUI",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "guec"
+			},
+			"video": "https://www.youtube.com/watch?v=ETD9vd2qxgI&t=1s",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "luis."
+			},
+			"video": "https://www.youtube.com/watch?v=JccCpM7msfg",
+			"percentage": 100
+		}
+	]
+}

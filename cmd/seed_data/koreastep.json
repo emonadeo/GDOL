@@ -1,0 +1,78 @@
+{
+	"name": "Shitty koreastep",
+	"user": {
+		"name": "Bluestone"
+	},
+	"verifier": {
+		"name": "Davine_007"
+	},
+	"creators": [],
+	"gd_id": 75783295,
+	"requirement": 64,
+	"video": "https://youtu.be/P9opw6uqhmM",
+	"records": [
+		{
+			"user": {
+				"name": "Lisa"
+			},
+			"video": "https://www.youtube.com/watch?v=F0K1ylQLCZY",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "LzKlauss"
+			},
+			"video": "https://www.youtube.com/watch?v=U-_O5s1y9vY",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "MinYong"
+			},
+			"video": "https://www.youtube.com/watch?v=kZjWXFymJtg",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Prometheus"
+			},
+			"video": "https://youtu.be/jXAiaT7mmTA",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Andrxw"
+			},
+			"video": "https://www.youtube.com/watch?v=oxH_R_KOUEk",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Delay"
+			},
+			"video": "https://www.youtube.com/watch?v=shzFPyMBmyE&t=9s",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "biskit"
+			},
+			"video": "https://youtu.be/DY0UGadquf4",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Samuuu18"
+			},
+			"video": "https://youtu.be/q9TyB0QpGKg",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "KasiaUwU"
+			},
+			"video": "https://youtu.be/qiY0pXP0I5Q",
+			"percentage": 100
+		}
+	]
+}

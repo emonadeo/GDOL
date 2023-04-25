@@ -1,0 +1,120 @@
+{
+	"name": "Shitty Loochiverse",
+	"user": {
+		"name": "Kobra456"
+	},
+	"verifier": {
+		"name": "Kobra456"
+	},
+	"creators": [],
+	"gd_id": 86228104,
+	"requirement": 52,
+	"video": "https://youtu.be/MOsFyuiXt3Q",
+	"records": [
+		{
+			"user": {
+				"name": "Dandy Chiggins"
+			},
+			"video": "https://www.youtube.com/watch?v=zepMPlVUCC8",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "KylashTheKiller"
+			},
+			"video": "https://www.youtube.com/watch?v=Fb4S3nJIlCI",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Samuuu18"
+			},
+			"video": "https://youtu.be/feTaop3FG90",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Neltumn"
+			},
+			"video": "https://www.youtube.com/watch?v=yhI92N1rH5s&t=2s",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "skeeb"
+			},
+			"video": "https://www.youtube.com/watch?v=b5H8IubpMgA",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Tunax"
+			},
+			"video": "https://youtu.be/FlyC4CzqMCw",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Normus"
+			},
+			"video": "https://youtu.be/Bx1haBHm9kk",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "zepynr"
+			},
+			"video": "https://youtu.be/gDgZv77WwKE",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "mist3red"
+			},
+			"video": "https://www.youtube.com/watch?v=GO8Lg7aNZDs",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "BarbequeSauce"
+			},
+			"video": "https://www.youtube.com/watch?v=hjSdBWbO8Eo",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "FullyDiverse"
+			},
+			"video": "https://youtu.be/wEpy26jkDJ4",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "cr1t1cal_err0r"
+			},
+			"video": "https://www.youtube.com/watch?v=PH7bP5V936o",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Nsaynchkn"
+			},
+			"video": "https://youtu.be/Y2cntCx1Cqw",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Creig"
+			},
+			"video": "https://youtu.be/6IKjMmFWLOw",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Vink"
+			},
+			"video": "https://youtu.be/nPdaCJ9Gv40",
+			"percentage": 100
+		}
+	]
+}

@@ -1,0 +1,71 @@
+{
+	"name": "Shitty Aquatic Auroras",
+	"user": {
+		"name": "SarcasticMuch"
+	},
+	"verifier": {
+		"name": "Dandy Chiggins"
+	},
+	"creators": [],
+	"gd_id": 85402108,
+	"requirement": 57,
+	"video": "https://youtu.be/LEM2BpshzXQ",
+	"records": [
+		{
+			"user": {
+				"name": "BrightBird"
+			},
+			"video": "https://youtu.be/NnKi_EKIpJA",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "IKuster"
+			},
+			"video": "https://youtu.be/3v5rKElWiVI",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "sydno"
+			},
+			"video": "https://www.youtube.com/watch?v=qxaUE5UdYCE",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "qzkk"
+			},
+			"video": "https://www.youtube.com/watch?v=jg2bNDuCz6U",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "woi"
+			},
+			"video": "https://youtu.be/jxRFsxFG1BE",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Dylinator"
+			},
+			"video": "https://youtu.be/aXb4WFJVLeU?t=379",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Kenos Song"
+			},
+			"video": "https://youtu.be/tQHSMPL0Zm4",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Neltumn"
+			},
+			"video": "https://youtu.be/rGNkkxLLAGg",
+			"percentage": 100
+		}
+	]
+}

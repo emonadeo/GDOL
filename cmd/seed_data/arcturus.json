@@ -1,0 +1,75 @@
+{
+	"name": "Shitty arcturus",
+	"user": {
+		"name": "Prometheus"
+	},
+	"verifier": {
+		"name": "belowkelvin0"
+	},
+	"creators": [
+		{
+			"name": "Prometheus"
+		}
+	],
+	"gd_id": 84028249,
+	"requirement": 57,
+	"video": "https://youtu.be/jYsywpNys1Q",
+	"records": [
+		{
+			"user": {
+				"name": "Dandy Chiggins"
+			},
+			"video": "https://youtu.be/6oFSel2z6oc",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "vKaii"
+			},
+			"video": "https://www.youtube.com/watch?v=3uEgbKZGmL4&t=2s",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "NoFuns"
+			},
+			"video": "https://youtu.be/A2xL8-tVL6M",
+			"percentage": 91
+		},
+		{
+			"user": {
+				"name": "LRub1x"
+			},
+			"video": "https://youtu.be/YNM2NPbYP0Y",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Goulzz"
+			},
+			"video": "https://www.youtube.com/watch?v=ti7Z0VYAfIU",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "miguel6456"
+			},
+			"video": "https://youtu.be/-uK6ws5exsA",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Tunax"
+			},
+			"video": "https://youtu.be/aKXGFi1GhN8",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Dylinator"
+			},
+			"video": "https://youtu.be/aXb4WFJVLeU?t=995",
+			"percentage": 100
+		}
+	]
+}

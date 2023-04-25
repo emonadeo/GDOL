@@ -1,0 +1,29 @@
+{
+	"name": "Shitty Hyper Paracosm",
+	"user": {
+		"name": "SarcasticMuch"
+	},
+	"verifier": {
+		"name": "KylashTheKiller"
+	},
+	"creators": [
+		{
+			"name": "SarcasticMuch"
+		},
+		{
+			"name": "Ryoui"
+		}
+	],
+	"gd_id": 88851206,
+	"requirement": 56,
+	"video": "https://www.youtube.com/watch?v=0SCNJEIzQnc",
+	"records": [
+		{
+			"user": {
+				"name": "Neltumn"
+			},
+			"video": "https://www.youtube.com/watch?v=-G8uOkDs4Zk",
+			"percentage": 100
+		}
+	]
+}

@@ -1,0 +1,64 @@
+{
+	"name": "Shitty Africa Circles",
+	"user": {
+		"name": "Ryoui"
+	},
+	"verifier": {
+		"name": "Lawnmower"
+	},
+	"creators": [
+		{
+			"name": "Nybia"
+		},
+		{
+			"name": "Ryoui"
+		}
+	],
+	"gd_id": 87284914,
+	"requirement": 51,
+	"video": "https://youtu.be/UAF8N_SWJSY",
+	"records": [
+		{
+			"user": {
+				"name": "ZerniasX"
+			},
+			"video": "https://youtu.be/ylyMXe-JUKE",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "BarbequeSauce"
+			},
+			"video": "https://youtu.be/TWWFlvxppN0",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Dylinator"
+			},
+			"video": "https://youtu.be/aXb4WFJVLeU?t=693",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Kenos Song"
+			},
+			"video": "https://www.youtube.com/watch?v=wcQ8xqnuaHU",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "zepynr"
+			},
+			"video": "https://youtu.be/eMk6KrxDHX0",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Darkreeper1"
+			},
+			"video": "https://www.youtube.com/watch?v=UCERe04M4BQ",
+			"percentage": 100
+		}
+	]
+}

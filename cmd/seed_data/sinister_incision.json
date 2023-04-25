@@ -1,0 +1,64 @@
+{
+	"name": "Shitty Sinister Incision",
+	"user": {
+		"name": "Acidius"
+	},
+	"verifier": {
+		"name": "iRaily"
+	},
+	"creators": [
+		{
+			"name": "Acidius"
+		},
+		{
+			"name": "Chspchips"
+		}
+	],
+	"gd_id": 73543902,
+	"requirement": 100,
+	"video": "https://youtu.be/Qw456N69tIs",
+	"records": [
+		{
+			"user": {
+				"name": "Shel"
+			},
+			"video": "https://youtu.be/v1fnyAKGDUM",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "BlueTomcat"
+			},
+			"video": "https://youtu.be/U_3onLoQYQ8",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Armani"
+			},
+			"video": "https://youtu.be/EKIDoYenbwU",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Riptide"
+			},
+			"video": "https://youtu.be/KsIaD5RHlLw",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Chronic"
+			},
+			"video": "https://www.youtube.com/watch?v=d0tXwcUObhw",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "sSaturn"
+			},
+			"video": "https://youtu.be/OTP_1qylUaU",
+			"percentage": 100
+		}
+	]
+}

@@ -1,0 +1,43 @@
+{
+	"name": "Shitty The Reaper",
+	"user": {
+		"name": "Kyoto"
+	},
+	"verifier": {
+		"name": "Kacro"
+	},
+	"creators": [],
+	"gd_id": 82281053,
+	"requirement": 61,
+	"video": "https://youtu.be/FvGveVrIArE",
+	"records": [
+		{
+			"user": {
+				"name": "KylashTheKiller"
+			},
+			"video": "https://youtu.be/AKBuiDp2hPo",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "skeeb"
+			},
+			"video": "https://www.youtube.com/watch?v=BkagoicOO3U",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "BrightBird"
+			},
+			"video": "https://youtu.be/za4_AiFaI1s",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Dandy Chiggins"
+			},
+			"video": "https://www.youtube.com/watch?v=TlnyW57J0dg",
+			"percentage": 100
+		}
+	]
+}

@@ -1,0 +1,36 @@
+{
+	"name": "Shitty Factory Realm X",
+	"user": {
+		"name": "Dep96"
+	},
+	"verifier": {
+		"name": "JJw128"
+	},
+	"creators": [],
+	"gd_id": 80791649,
+	"requirement": 100,
+	"video": "https://youtu.be/ticz0O6ByTo",
+	"records": [
+		{
+			"user": {
+				"name": "Dep96"
+			},
+			"video": "https://www.youtube.com/watch?v=X_zQVwmZ31Y",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Riptide"
+			},
+			"video": "https://youtu.be/Nvr4IKGxL4s",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "iRaily"
+			},
+			"video": "https://youtu.be/HJIFoIfOT1w",
+			"percentage": 100
+		}
+	]
+}

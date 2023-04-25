@@ -1,0 +1,89 @@
+{
+	"name": "Shitty Eternal Moment",
+	"user": {
+		"name": "sarcasticmuch"
+	},
+	"verifier": {
+		"name": "Dandy Chiggins"
+	},
+	"creators": [
+		{
+			"name": "sarcasticmuch"
+		}
+	],
+	"gd_id": 83407310,
+	"requirement": 62,
+	"video": "https://youtu.be/6VuMVbOoMIo",
+	"records": [
+		{
+			"user": {
+				"name": "BrightBird"
+			},
+			"video": "https://www.youtube.com/watch?v=bB8-Kkaraw4",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "KylashTheKiller"
+			},
+			"video": "https://youtu.be/4aSUI-yd1iw",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Ratio"
+			},
+			"video": "https://www.youtube.com/watch?v=G5JUHmF7t1c",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "GD CrimsonKing22"
+			},
+			"video": "https://www.youtube.com/watch?v=4w9Vruqw6HM",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Kenos Song"
+			},
+			"video": "https://youtu.be/gGMSurBexBk",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "attrixia"
+			},
+			"video": "https://youtu.be/olEDasAe9rw",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Tunax"
+			},
+			"video": "https://youtu.be/1tRJWfUx1Ys",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "BarbequeSauce"
+			},
+			"video": "https://www.youtube.com/watch?v=tgzmJ4e-fZA",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "FullyDiverse"
+			},
+			"video": "https://youtu.be/Xr-sPVxXaJA",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "SarcasticMuch"
+			},
+			"video": "https://youtu.be/SFH7pL1MN0c",
+			"percentage": 63
+		}
+	]
+}

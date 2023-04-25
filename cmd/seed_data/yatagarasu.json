@@ -1,0 +1,88 @@
+{
+	"name": "Shitty Yatagarasu",
+	"user": {
+		"name": "SupaX_"
+	},
+	"verifier": {
+		"name": "TravelChimp"
+	},
+	"creators": [
+		{
+			"name": "SupaX_"
+		},
+		{
+			"name": "HdLink13"
+		},
+		{
+			"name": "fice"
+		},
+		{
+			"name": "iRaily"
+		},
+		{
+			"name": "Fishyyy"
+		},
+		{
+			"name": "Whitar"
+		},
+		{
+			"name": "Whitar"
+		},
+		{
+			"name": "SkyStorm"
+		},
+		{
+			"name": "AugustVN"
+		},
+		{
+			"name": "NourTheKing"
+		},
+		{
+			"name": "TheRealAiden"
+		},
+		{
+			"name": "Whiliams"
+		},
+		{
+			"name": "Waaab"
+		},
+		{
+			"name": "AlexFiter"
+		},
+		{
+			"name": "Prometheus"
+		},
+		{
+			"name": "Atotakai"
+		},
+		{
+			"name": "Chspchips"
+		}
+	],
+	"gd_id": 81848970,
+	"requirement": 58,
+	"video": "https://www.youtube.com/watch?v=MSbmqpwWJz8",
+	"records": [
+		{
+			"user": {
+				"name": "KylashTheKiller"
+			},
+			"video": "https://youtu.be/t4YrsndJKNQ",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "KasiaUwU"
+			},
+			"video": "https://youtu.be/P-gY0OqD0Gw",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "skyv"
+			},
+			"video": "https://youtu.be/d-S-_J1F8y4",
+			"percentage": 100
+		}
+	]
+}

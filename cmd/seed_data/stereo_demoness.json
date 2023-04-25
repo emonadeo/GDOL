@@ -1,0 +1,57 @@
+{
+	"name": "Shitty Stereo Demoness",
+	"user": {
+		"name": "Prometheus"
+	},
+	"verifier": {
+		"name": "Shel"
+	},
+	"creators": [],
+	"gd_id": 77655241,
+	"requirement": 100,
+	"video": "https://youtu.be/3LP7rMOBYSs",
+	"records": [
+		{
+			"user": {
+				"name": "MinYong"
+			},
+			"video": "https://www.youtube.com/watch?v=kZjWXFymJtg",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "LzKlauss"
+			},
+			"video": "https://www.youtube.com/watch?v=OUlvyfpyRb0",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Prometheus"
+			},
+			"video": "https://youtu.be/QQQiQxNc2wM",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "KylashTheKiller"
+			},
+			"video": "https://youtu.be/hlgG9R-S5qo",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "sodaman"
+			},
+			"video": "https://www.youtube.com/watch?v=PuK4hZp1D18",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Mau3cio"
+			},
+			"video": "https://youtu.be/XeFEqhYRMm0",
+			"percentage": 100
+		}
+	]
+}

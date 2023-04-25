@@ -1,0 +1,76 @@
+{
+	"name": "Shitty Ragnarok",
+	"user": {
+		"name": "Prometheus"
+	},
+	"verifier": {
+		"name": "Shel"
+	},
+	"creators": [
+		{
+			"name": "Prometheus"
+		},
+		{
+			"name": "T333"
+		},
+		{
+			"name": "Sushiboys"
+		},
+		{
+			"name": "Liebe"
+		},
+		{
+			"name": "Salsa"
+		},
+		{
+			"name": "RealBigFlopa"
+		},
+		{
+			"name": "iHas"
+		},
+		{
+			"name": "L0GAN"
+		},
+		{
+			"name": "Fernamg"
+		},
+		{
+			"name": "CarlIsBored"
+		},
+		{
+			"name": "iRaily"
+		},
+		{
+			"name": "Kiwi1938"
+		},
+		{
+			"name": "Chspchips"
+		}
+	],
+	"gd_id": 81673888,
+	"requirement": 56,
+	"video": "https://youtu.be/-xz4XyDPbfI",
+	"records": [
+		{
+			"user": {
+				"name": "KylashTheKiller"
+			},
+			"video": "https://youtu.be/DepqfpnXHuw",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "BrightBird"
+			},
+			"video": "https://www.youtube.com/watch?v=bLaL0nenNTo",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Kenos Song"
+			},
+			"video": "https://youtu.be/rVGp4yP5YYA",
+			"percentage": 100
+		}
+	]
+}

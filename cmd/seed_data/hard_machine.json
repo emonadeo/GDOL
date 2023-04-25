@@ -1,0 +1,109 @@
+{
+	"name": "Shitty Hard Machine",
+	"user": {
+		"name": "Bluestone"
+	},
+	"verifier": {
+		"name": "Prometheus"
+	},
+	"creators": [
+		{
+			"name": "Bluestone"
+		},
+		{
+			"name": "Prometheus"
+		},
+		{
+			"name": "Ryoui"
+		}
+	],
+	"gd_id": 81344398,
+	"requirement": 55,
+	"video": "https://youtu.be/KpHJpPoGknk",
+	"records": [
+		{
+			"user": {
+				"name": "biskit"
+			},
+			"video": "https://youtu.be/dHi8jfMJBeI",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Kenos Song"
+			},
+			"video": "https://youtu.be/kTKVXhpxbyM",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Dandy Chiggins"
+			},
+			"video": "https://youtu.be/QSQOQt7DBTw",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "KylashTheKiller"
+			},
+			"video": "https://youtu.be/FqWhcTm26wc",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "MinYong"
+			},
+			"video": "https://youtu.be/FvG1e6aLXiE",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "putr1ckk"
+			},
+			"video": "https://youtu.be/IKIpci0az9E",
+			"percentage": 90
+		},
+		{
+			"user": {
+				"name": "GD CrimsonKing22"
+			},
+			"video": "https://www.youtube.com/watch?v=Ii6CSn9bhD4",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "h4tecr1me."
+			},
+			"video": "https://www.youtube.com/watch?v=PANbX8UvC2w",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "BarbequeSauce"
+			},
+			"video": "https://m.youtube.com/watch?v=HQXH61M0nAA&feature=youtu.be",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "zrK"
+			},
+			"video": "https://www.youtube.com/watch?v=NnmJkKreYtc",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "bull2k"
+			},
+			"video": "https://youtu.be/kI_vVnwIET0",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "lonifer"
+			},
+			"video": "https://www.youtube.com/watch?v=CPYpAEeT2E0&t",
+			"percentage": 94
+		}
+	]
+}

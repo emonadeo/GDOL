@@ -1,0 +1,57 @@
+{
+	"name": "Shitty Unnerfed Allegiance",
+	"user": {
+		"name": "Sovola"
+	},
+	"verifier": {
+		"name": "Magmeta"
+	},
+	"creators": [],
+	"gd_id": 78908225,
+	"requirement": 100,
+	"video": "https://youtu.be/RnA2RYf_RQI",
+	"records": [
+		{
+			"user": {
+				"name": "T333"
+			},
+			"video": "https://www.youtube.com/watch?v=m_1tTvqeaI0",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "biskit"
+			},
+			"video": "https://www.youtube.com/watch?v=VJemNT3BSS0",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Dxst"
+			},
+			"video": "https://www.youtube.com/watch?v=4EHdmoh8rUM",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "danialves555"
+			},
+			"video": "https://youtu.be/GfuFXp5jgSA",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "AgiLityGMD"
+			},
+			"video": "https://youtu.be/t545Qcgq7is",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Dylinator"
+			},
+			"video": "https://youtu.be/aXb4WFJVLeU?t=1746",
+			"percentage": 100
+		}
+	]
+}

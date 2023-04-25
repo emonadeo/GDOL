@@ -1,0 +1,100 @@
+{
+	"name": "Shitty Cersia Difficult",
+	"user": {
+		"name": "Prometheus"
+	},
+	"verifier": {
+		"name": "Magmeta"
+	},
+	"creators": [
+		{
+			"name": "Prometheus"
+		},
+		{
+			"name": "sarcasticmuch"
+		},
+		{
+			"name": "TravelChimp"
+		},
+		{
+			"name": "zFice"
+		},
+		{
+			"name": "Bluestone"
+		},
+		{
+			"name": "Kiwi1938"
+		},
+		{
+			"name": "Spaace"
+		}
+	],
+	"gd_id": 77433701,
+	"requirement": 100,
+	"video": "https://youtu.be/_m3sXd4K0ys",
+	"records": [
+		{
+			"user": {
+				"name": "Shel"
+			},
+			"video": "https://www.youtube.com/watch?v=4p_A4mM4uwI",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "attrixia"
+			},
+			"video": "https://www.youtube.com/watch?v=cG4-tK1RHZs",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Prometheus"
+			},
+			"video": "https://youtu.be/3oBkp310jOU",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "MinYong"
+			},
+			"video": "https://www.youtube.com/watch?v=kZjWXFymJtg",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Riptide"
+			},
+			"video": "https://www.youtube.com/watch?v=-oDT8M7aFyM",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "IDeltaPhantomI"
+			},
+			"video": "https://youtu.be/vdHvzSh6e2M",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "KylashTheKiller"
+			},
+			"video": "https://youtu.be/hlgG9R-S5qo",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Skhinner13"
+			},
+			"video": "https://youtu.be/9IcTO0qs_no",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Dijinald Cactus"
+			},
+			"video": "https://www.youtube.com/watch?v=u0jzaMkl2Lw",
+			"percentage": 100
+		}
+	]
+}

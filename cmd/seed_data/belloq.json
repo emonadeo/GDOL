@@ -1,0 +1,111 @@
+{
+	"name": "Shitty Belloq",
+	"user": {
+		"name": "iRaily"
+	},
+	"verifier": {
+		"name": "Maesile"
+	},
+	"creators": [
+		{
+			"name": "iRaily"
+		},
+		{
+			"name": "NourTheKing"
+		},
+		{
+			"name": "FireRift"
+		},
+		{
+			"name": "TravelChimp"
+		},
+		{
+			"name": "MamaMauve"
+		},
+		{
+			"name": "Helbrein"
+		},
+		{
+			"name": "Whitar"
+		},
+		{
+			"name": "SupaX_"
+		},
+		{
+			"name": "70n0fh4y"
+		},
+		{
+			"name": "Chspchips"
+		},
+		{
+			"name": "T333"
+		},
+		{
+			"name": "Kiwi1938"
+		},
+		{
+			"name": "zFice7"
+		}
+	],
+	"gd_id": 80629578,
+	"requirement": 59,
+	"video": "https://youtu.be/r3kQBjvIljk",
+	"records": [
+		{
+			"user": {
+				"name": "KylashTheKiller"
+			},
+			"video": "https://youtu.be/vdJo7XV-4P8",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Dandy Chiggins"
+			},
+			"video": "https://youtu.be/no2FnoYAGBM",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Shel"
+			},
+			"video": "https://youtu.be/1coYY3-MJj0",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Riptide"
+			},
+			"video": "https://www.youtube.com/watch?v=oFpv5MhDbz8",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "BrightBird"
+			},
+			"video": "https://youtu.be/hYMiHHliF9A",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Samuuu18"
+			},
+			"video": "https://www.twitch.tv/videos/1560820514",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Hasik"
+			},
+			"video": "https://youtu.be/9OGsh20C80A",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Snakez363"
+			},
+			"video": "https://www.youtube.com/watch?v=1Is5VazlKH8",
+			"percentage": 100
+		}
+	]
+}

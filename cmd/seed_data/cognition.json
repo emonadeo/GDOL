@@ -1,0 +1,46 @@
+{
+	"name": "Shitty Cognition",
+	"user": {
+		"name": "Rixen Ace"
+	},
+	"verifier": {
+		"name": "Rixen Ace"
+	},
+	"creators": [
+		{
+			"name": "Rixen Ace"
+		},
+		{
+			"name": "Prometheus"
+		},
+		{
+			"name": "Quick"
+		}
+	],
+	"gd_id": 87099040,
+	"requirement": 53,
+	"video": "https://youtu.be/Z6zaRqVpHmQ",
+	"records": [
+		{
+			"user": {
+				"name": "Dylinator"
+			},
+			"video": "https://www.youtube.com/watch?v=6Sz6aWsWDSM",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "FullyDiverse"
+			},
+			"video": "https://youtu.be/IkAxPOHnHcw",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Lawnmower"
+			},
+			"video": "https://www.twitch.tv/piesy/v/1794098084?sr=a&t=349s",
+			"percentage": 100
+		}
+	]
+}

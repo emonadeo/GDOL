@@ -1,0 +1,71 @@
+{
+	"name": "Shitty SUPERHATEMEWORLD",
+	"user": {
+		"name": "vKaii"
+	},
+	"verifier": {
+		"name": "vKaii"
+	},
+	"creators": [],
+	"gd_id": 85844400,
+	"requirement": 59,
+	"video": "https://youtu.be/DbG5vIWSSoE",
+	"records": [
+		{
+			"user": {
+				"name": "Prometheus"
+			},
+			"video": "https://youtu.be/T9qIUhp-FqY",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "lonifer"
+			},
+			"video": "https://youtu.be/N67u1o5kzIY",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Moment"
+			},
+			"video": "https://youtu.be/os_nR93Nu_Y",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Dep96"
+			},
+			"video": "https://www.youtube.com/watch?v=gbHxn6_Pvxc",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Dandy Chiggins"
+			},
+			"video": "https://youtu.be/_aB_TaGWhCc",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "BarbequeSauce"
+			},
+			"video": "https://youtu.be/ntMSRG-NeE4",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Sloppy Joe Gaming"
+			},
+			"video": "https://www.youtube.com/watch?v=giIJ5qJr5jM",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "KasiaUwU"
+			},
+			"video": "https://youtu.be/kBu2pdsSioc",
+			"percentage": 100
+		}
+	]
+}
