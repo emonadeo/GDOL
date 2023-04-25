@@ -1,4 +1,5 @@
-import { dnt_build, dnt_emptyDir, version } from '../deps.ts';
+import { build, emptyDir } from 'https://deno.land/x/dnt@0.34.0/mod.ts';
+import { version } from '../deps.ts';
 
 // watch entry points
 import '../api/mod.ts';
@@ -8,9 +9,9 @@ const outDir = './api/dist';
 
 const honoVersion = '3.1.6';
 
-await dnt_emptyDir(outDir);
+await emptyDir(outDir);
 
-await dnt_build({
+await build({
 	compilerOptions: {
 		lib: ['dom', 'es2022'],
 		skipLibCheck: true,

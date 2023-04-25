@@ -8,8 +8,8 @@
 		"dev": "deno run --unstable --allow-all cli.ts --no-web --port 3001",
 		"dev:api": "deno run --unstable --allow-all --watch scripts/build_api.ts",
 		"dev:web": "cd web && pnpm dev",
-		"seed": "deno run --unstable --allow-all cli.ts seed",
 		"fmt": "pnpm fmt",
-		"lint:web": "cd web && pnpm lint"
+		"lint:web": "cd web && pnpm lint",
+		"seed": "deno run --unstable --allow-all cli.ts seed"
 	}
 }
