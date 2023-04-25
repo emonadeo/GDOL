@@ -4,11 +4,8 @@ import { DataType, Property } from 'csstype';
 type A<T, N extends number> = (readonly T[] & { length: N }) | [never];
 
 type GridTemplateArea = string;
-type GridTemplateAreas<R extends number, C extends number> = A<
-	A<GridTemplateArea, C & object>,
-	R & object
->;
-type GridTemplateDimensions<N extends number> = A<DataType.TrackBreadth<string & object>, N>;
+type GridTemplateAreas<R extends number, C extends number> = A<A<GridTemplateArea, C & {}>, R & {}>;
+type GridTemplateDimensions<N extends number> = A<DataType.TrackBreadth<string & {}>, N>;
 
 export function createGridTemplate<R extends number, C extends number>(template: {
 	areas: GridTemplateAreas<R, C>;
