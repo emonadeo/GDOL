@@ -1,7 +1,7 @@
 import { Database } from '../../deps.ts';
 import { Level } from '../../types/mod.ts';
 
-const query = await Deno.readTextFile(new URL('./find.sql', import.meta.url));
+const query = await (await fetch(new URL('./find.sql', import.meta.url))).text();
 
 type RawLevel = {
 	level_id: number;
