@@ -1,0 +1,40 @@
+{
+	"name": "Shitty Jelly Shots",
+	"user": {
+		"name": "Kobra456"
+	},
+	"verifier": {
+		"name": "Kobra456"
+	},
+	"creators": [
+		{
+			"name": "Kobra456"
+		}
+	],
+	"gd_id": 82584248,
+	"requirement": 57,
+	"video": "https://youtu.be/URDt-ACNQuA",
+	"records": [
+		{
+			"user": {
+				"name": "bnuuy"
+			},
+			"video": "https://www.youtube.com/watch?v=a1mnBEP02NI",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "vKaii"
+			},
+			"video": "https://www.youtube.com/watch?v=ouBFaS31E2o",
+			"percentage": 58
+		},
+		{
+			"user": {
+				"name": "KasiaUwU"
+			},
+			"video": "https://youtu.be/z5dNMALGvD4",
+			"percentage": 100
+		}
+	]
+}

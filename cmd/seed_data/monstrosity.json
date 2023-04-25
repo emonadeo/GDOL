@@ -1,0 +1,29 @@
+{
+	"name": "Shitty MONSTROSITY",
+	"user": {
+		"name": "Kobra456"
+	},
+	"verifier": {
+		"name": "Kobra456"
+	},
+	"creators": [],
+	"gd_id": 81042577,
+	"requirement": 100,
+	"video": "https://youtu.be/0iexUuajm6g",
+	"records": [
+		{
+			"user": {
+				"name": "Vaoen"
+			},
+			"video": "https://youtu.be/Bsc-86meQTk",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "danialves555"
+			},
+			"video": "https://youtu.be/7yVoGHNI38A",
+			"percentage": 100
+		}
+	]
+}

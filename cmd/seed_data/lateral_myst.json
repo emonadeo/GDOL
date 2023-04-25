@@ -1,0 +1,36 @@
+{
+	"name": "Shitty Lateral Myst",
+	"user": {
+		"name": "Experience43"
+	},
+	"verifier": {
+		"name": "Davine_007"
+	},
+	"creators": [
+		{
+			"name": "Experience43"
+		},
+		{
+			"name": "Leafly"
+		}
+	],
+	"gd_id": 86853012,
+	"requirement": 100,
+	"video": " https://youtu.be/Jy_WUNGeOUo",
+	"records": [
+		{
+			"user": {
+				"name": "T333"
+			},
+			"video": "https://www.youtube.com/watch?v=3jrPpkMRK_8",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "KasiaUwU"
+			},
+			"video": "https://youtu.be/J2T2Uiw0oQg",
+			"percentage": 100
+		}
+	]
+}

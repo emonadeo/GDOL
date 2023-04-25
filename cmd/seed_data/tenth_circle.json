@@ -1,0 +1,64 @@
+{
+	"name": "Shitty Tenth Circle",
+	"user": {
+		"name": "Whitar"
+	},
+	"verifier": {
+		"name": "Shel"
+	},
+	"creators": [],
+	"gd_id": 81877515,
+	"requirement": 100,
+	"video": "https://youtu.be/R6DPssKSoOQ",
+	"records": [
+		{
+			"user": {
+				"name": "Samuuu18"
+			},
+			"video": "https://www.twitch.tv/videos/1567053521",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Hasik"
+			},
+			"video": "https://youtu.be/IjiPdwUbobc",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "GD Fayo"
+			},
+			"video": "https://youtu.be/y6dBNqVWuws",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Koda"
+			},
+			"video": "https://www.youtube.com/watch?v=3ZyouGvenuk",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "ZerniasX"
+			},
+			"video": "https://youtu.be/SETsCIzGD_0",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "LzKlauss"
+			},
+			"video": "https://www.youtube.com/watch?v=J1kIVt1hsGk",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "guec"
+			},
+			"video": "https://youtu.be/sXlzxEhKlCA",
+			"percentage": 100
+		}
+	]
+}

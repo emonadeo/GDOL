@@ -1,0 +1,29 @@
+{
+	"name": "Shitty Ddiamond",
+	"user": {
+		"name": "lucap123"
+	},
+	"verifier": {
+		"name": "lucap123"
+	},
+	"creators": [],
+	"gd_id": 86200661,
+	"requirement": 65,
+	"video": "https://www.youtube.com/watch?v=gV133q0-tD0",
+	"records": [
+		{
+			"user": {
+				"name": "Sloppy Joe Gaming"
+			},
+			"video": "https://www.youtube.com/watch?v=t0EPpsTh8ew",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "KasiaUwU"
+			},
+			"video": "https://youtu.be/CHo8O8oAoDA",
+			"percentage": 100
+		}
+	]
+}

@@ -1,0 +1,67 @@
+{
+	"name": "Shitty Erebus",
+	"user": {
+		"name": "AzielGD"
+	},
+	"verifier": {
+		"name": "AzielGD"
+	},
+	"creators": [
+		{
+			"name": "AzielGD"
+		},
+		{
+			"name": "Atotakai"
+		},
+		{
+			"name": "Fice"
+		}
+	],
+	"gd_id": 81073908,
+	"requirement": 62,
+	"video": "https://youtu.be/21fSaRPZiEU",
+	"records": [
+		{
+			"user": {
+				"name": "AleczD"
+			},
+			"video": "https://www.youtube.com/watch?v=yyJoTYeQdQ0",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Pichufleta"
+			},
+			"video": "https://www.youtube.com/watch?v=bb4sh_ulHNM",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Majesstic"
+			},
+			"video": "https://youtu.be/Nw4YSzBGZmg",
+			"percentage": 62
+		},
+		{
+			"user": {
+				"name": "KasiaUwU"
+			},
+			"video": "https://youtu.be/r6m5ofmLZtw",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "woi"
+			},
+			"video": "https://www.youtube.com/watch?v=vj5IVHjkxw0",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "iRaily"
+			},
+			"video": "https://www.youtube.com/watch?v=30mI1b1wdhg",
+			"percentage": 100
+		}
+	]
+}

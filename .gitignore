@@ -28,6 +28,3 @@ pnpm-debug.log*
 
 # SQLite database
 *.db
-
-# database seed data
-_seed_data/

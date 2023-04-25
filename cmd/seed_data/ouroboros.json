@@ -1,0 +1,140 @@
+{
+	"name": "Shitty Ouroboros",
+	"user": {
+		"name": "TravelChimp"
+	},
+	"verifier": {
+		"name": "Grixi"
+	},
+	"creators": [
+		{
+			"name": "TravelChimp"
+		},
+		{
+			"name": "AugustVN"
+		},
+		{
+			"name": "BlueTomcat"
+		},
+		{
+			"name": "AcropolisBoy"
+		},
+		{
+			"name": "Pandaa"
+		},
+		{
+			"name": "Ryoui"
+		},
+		{
+			"name": "NoCtrl"
+		},
+		{
+			"name": "Whitar"
+		},
+		{
+			"name": "Grixi"
+		},
+		{
+			"name": "Chaotrix"
+		},
+		{
+			"name": "Chspchips"
+		}
+	],
+	"gd_id": 79516866,
+	"requirement": 69,
+	"video": "https://youtu.be/GM8XJAlJXcc",
+	"records": [
+		{
+			"user": {
+				"name": "KylashTheKiller"
+			},
+			"video": "https://youtu.be/JA3YkWLWv3U",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Hulunn"
+			},
+			"video": "https://www.youtube.com/watch?v=yh-O9aoKwbQ",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Shel"
+			},
+			"video": "https://youtu.be/vg00xQUFCQE",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Riptide"
+			},
+			"video": "https://youtu.be/afwuX3rNIf0",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Shemenzy"
+			},
+			"video": "https://www.youtube.com/watch?v=0Yhe3ucTySo&t=18s",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "StarXV"
+			},
+			"video": "https://youtu.be/UwnPObWXlHI",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "kri1s5"
+			},
+			"video": "https://youtu.be/oXGSsYqbM4Y",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Samuuu18"
+			},
+			"video": "https://youtu.be/JBgq6B9-Ys8",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "T333"
+			},
+			"video": "https://www.youtube.com/watch?v=qtdGQ6Uvemg&lc=UgzjcOL7qfjzUrwoSRd4AaABAg",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "JumbleJee"
+			},
+			"video": "https://www.youtube.com/watch?v=GlWKn5Q2GcE",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Klöstflow"
+			},
+			"video": "https://youtu.be/0fyqFKJwtVY",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "BrightBird"
+			},
+			"video": "https://youtu.be/3CgFlkDQOZ8",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Hubertos"
+			},
+			"video": "https://youtu.be/Tl-pXanLggc",
+			"percentage": 100
+		}
+	]
+}

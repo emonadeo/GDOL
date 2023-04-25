@@ -1,0 +1,80 @@
+{
+	"name": "Shitty Shock Breaker",
+	"user": {
+		"name": "qb1"
+	},
+	"verifier": {
+		"name": "qb1"
+	},
+	"creators": [
+		{
+			"name": "Strix"
+		},
+		{
+			"name": "dookyfarts"
+		},
+		{
+			"name": "Fernamg2041"
+		},
+		{
+			"name": "Emerald"
+		},
+		{
+			"name": "Experience43"
+		},
+		{
+			"name": "AVRG"
+		},
+		{
+			"name": "Whitar"
+		},
+		{
+			"name": "Logan"
+		},
+		{
+			"name": "Kiwi1938"
+		},
+		{
+			"name": "foin"
+		},
+		{
+			"name": "TravelChimp"
+		},
+		{
+			"name": "zFice7"
+		}
+	],
+	"gd_id": 78127700,
+	"requirement": 100,
+	"video": "https://youtu.be/H4VGFIIobtA",
+	"records": [
+		{
+			"user": {
+				"name": "Riptide"
+			},
+			"video": "https://youtu.be/ENNFHGkww4c",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "iRaily"
+			},
+			"video": "https://youtu.be/hOcBcyecjV4",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "CrokyTheKiwi"
+			},
+			"video": "https://youtu.be/ZaFhC5OzImw",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Shel"
+			},
+			"video": "https://youtu.be/3hvrYR6c2kc",
+			"percentage": 100
+		}
+	]
+}

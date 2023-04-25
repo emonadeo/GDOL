@@ -1,0 +1,63 @@
+{
+	"name": "Shitty CHROMA FINALE",
+	"user": {
+		"name": "Itzpentol"
+	},
+	"verifier": {
+		"name": "LinedriveGD"
+	},
+	"creators": [
+		{
+			"name": "Itzpentol"
+		},
+		{
+			"name": "Bonuskey"
+		},
+		{
+			"name": "Chspchips"
+		},
+		{
+			"name": "iRaily"
+		}
+	],
+	"gd_id": 77671870,
+	"requirement": 57,
+	"video": "https://youtu.be/yWkSmP9euUc",
+	"records": [
+		{
+			"user": {
+				"name": "LzKlauss"
+			},
+			"video": "https://www.youtube.com/watch?v=ON1IZwP-r8s",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Oblivion7"
+			},
+			"video": "https://www.youtube.com/watch?v=M3vy_sKkBYo&ab_channel=Oblivion7",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "biskit"
+			},
+			"video": "https://youtu.be/PJDRNko2aLA",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "KasiaUwU"
+			},
+			"video": "https://youtu.be/7FibV-hG8bY",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Rykryk"
+			},
+			"video": "https://www.youtube.com/watch?v=TWk22HorZ2M",
+			"percentage": 100
+		}
+	]
+}

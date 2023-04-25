@@ -1,0 +1,50 @@
+{
+	"name": "Shitty Mayhem",
+	"user": {
+		"name": "TravelChimp"
+	},
+	"verifier": {
+		"name": "Shel"
+	},
+	"creators": [
+		{
+			"name": "TravelChimp"
+		},
+		{
+			"name": "Kiwi1938"
+		},
+		{
+			"name": "Bern"
+		},
+		{
+			"name": "Deceit"
+		},
+		{
+			"name": "Swan"
+		},
+		{
+			"name": "IHas"
+		},
+		{
+			"name": "Ryoui"
+		},
+		{
+			"name": "Kobra"
+		},
+		{
+			"name": "Prometheus"
+		}
+	],
+	"gd_id": 89446146,
+	"requirement": 57,
+	"video": "https://www.youtube.com/watch?v=tpFyfqXYQqY",
+	"records": [
+		{
+			"user": {
+				"name": "mist3red"
+			},
+			"video": "https://youtu.be/KkfWWJkuTpU",
+			"percentage": 100
+		}
+	]
+}

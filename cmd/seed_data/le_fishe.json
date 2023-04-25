@@ -1,0 +1,22 @@
+{
+	"name": "Shitty Le Fishe",
+	"user": {
+		"name": "/Swan"
+	},
+	"verifier": {
+		"name": "TheKalvinator"
+	},
+	"creators": [],
+	"gd_id": 82572431,
+	"requirement": 100,
+	"video": "https://youtu.be/_ra6quQ3rSw",
+	"records": [
+		{
+			"user": {
+				"name": "sodaman"
+			},
+			"video": "https://youtu.be/O_m4w-JAYbk",
+			"percentage": 100
+		}
+	]
+}

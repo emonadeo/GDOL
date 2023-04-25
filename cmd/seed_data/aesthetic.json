@@ -1,0 +1,85 @@
+{
+	"name": "Shitty Aesthetic",
+	"user": {
+		"name": "Whitar"
+	},
+	"verifier": {
+		"name": "Andrew14916"
+	},
+	"creators": [],
+	"gd_id": 78632408,
+	"requirement": 100,
+	"video": "https://youtu.be/7YAJRQ6EvEI",
+	"records": [
+		{
+			"user": {
+				"name": "Shel"
+			},
+			"video": "https://youtu.be/KIE2QdhBhCM",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "KylashTheKiller"
+			},
+			"video": "https://www.youtube.com/watch?v=W7JRBGb0-N4",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Decin0"
+			},
+			"video": "https://youtu.be/wXP7cQn1_x4",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "LBoke"
+			},
+			"video": "https://youtu.be/nnF-xuq1D9s",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Vink"
+			},
+			"video": "https://youtu.be/orjVKN9LS58",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "iRaily"
+			},
+			"video": "https://youtu.be/NPiMQbue0Gk",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "V1PEX7"
+			},
+			"video": "https://youtu.be/2YLw21KS7JU",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Snakez363"
+			},
+			"video": "https://youtu.be/-52nJv-Cy9Q",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Riptide"
+			},
+			"video": "https://youtu.be/AV0e6XFdy3w",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "bnuuy"
+			},
+			"video": "https://youtu.be/OOLblhOj-5Y",
+			"percentage": 100
+		}
+	]
+}

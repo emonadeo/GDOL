@@ -1,0 +1,68 @@
+{
+	"name": "Shitty Thinking Space",
+	"user": {
+		"name": "AzielGD"
+	},
+	"verifier": {
+		"name": "AleczD"
+	},
+	"creators": [
+		{
+			"name": "Kiwi1938"
+		}
+	],
+	"gd_id": 81879096,
+	"requirement": 68,
+	"video": "https://youtu.be/fdZegi2UWfo",
+	"records": [
+		{
+			"user": {
+				"name": "bnuuy"
+			},
+			"video": "https://youtu.be/kKnBdYTLm6U",
+			"percentage": 80
+		},
+		{
+			"user": {
+				"name": "lilWC"
+			},
+			"video": "https://youtu.be/iVGXqkuPw_w",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "I Eat Tea Bagz"
+			},
+			"video": "https://youtu.be/fZzaRXDrStA",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "FuPlug"
+			},
+			"video": "https://www.youtube.com/watch?v=QmiYD46K3ZA",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "KasiaUwU"
+			},
+			"video": "https://youtu.be/qq18TVJuAoQ",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "lucap123"
+			},
+			"video": "https://www.youtube.com/watch?v=UP4ZkWldt28",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Kenos Song"
+			},
+			"video": "https://youtu.be/LRP4U4eA9kg",
+			"percentage": 100
+		}
+	]
+}

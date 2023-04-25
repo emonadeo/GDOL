@@ -1,0 +1,29 @@
+{
+	"name": "Shitty Stereo Lament",
+	"user": {
+		"name": "Prometheus"
+	},
+	"verifier": {
+		"name": "ZerniasX"
+	},
+	"creators": [],
+	"gd_id": 86937384,
+	"requirement": 100,
+	"video": "https://youtu.be/ig0vWZk2Ykw",
+	"records": [
+		{
+			"user": {
+				"name": "Prometheus"
+			},
+			"video": "https://youtu.be/OnJ_82kJR_g",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "guec"
+			},
+			"video": "https://youtu.be/ZeT5DKSHR30",
+			"percentage": 100
+		}
+	]
+}

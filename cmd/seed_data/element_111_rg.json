@@ -1,0 +1,36 @@
+{
+	"name": "Shitty Element 111 Rg",
+	"user": {
+		"name": "CarlIsBored"
+	},
+	"verifier": {
+		"name": "ZerniasX"
+	},
+	"creators": [],
+	"gd_id": 81580547,
+	"requirement": 64,
+	"video": "https://youtu.be/nEOvH-vj4jI",
+	"records": [
+		{
+			"user": {
+				"name": "guec"
+			},
+			"video": "https://www.youtube.com/watch?v=ETD9vd2qxgI&t=1s",
+			"percentage": 73
+		},
+		{
+			"user": {
+				"name": "KasiaUwU"
+			},
+			"video": "https://youtu.be/n5as-fLISqc",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Prometheus"
+			},
+			"video": "https://youtu.be/suzhZ2wwbKk",
+			"percentage": 100
+		}
+	]
+}

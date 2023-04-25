@@ -1,0 +1,47 @@
+{
+	"name": "Shitty Descent Into Exile",
+	"user": {
+		"name": "iRaily"
+	},
+	"verifier": {
+		"name": "iRaily"
+	},
+	"creators": [
+		{
+			"name": "iRaily"
+		},
+		{
+			"name": "Chspchips"
+		},
+		{
+			"name": "Ryoui"
+		},
+		{
+			"name": "GalaxyGaming"
+		},
+		{
+			"name": "Fh1r"
+		},
+		{
+			"name": "NourTheKing"
+		},
+		{
+			"name": "Acidius"
+		},
+		{
+			"name": "Prometheus"
+		}
+	],
+	"gd_id": 88754652,
+	"requirement": 68,
+	"video": "https://www.youtube.com/watch?v=7IFAjOiuH2U",
+	"records": [
+		{
+			"user": {
+				"name": "Fh1r"
+			},
+			"video": "https://www.youtube.com/watch?v=rt804FWLl3g",
+			"percentage": 100
+		}
+	]
+}

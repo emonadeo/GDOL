@@ -1,0 +1,57 @@
+{
+	"name": "Shitty AfterCataBath",
+	"user": {
+		"name": "Prometheus"
+	},
+	"verifier": {
+		"name": "KylashTheKiller"
+	},
+	"creators": [
+		{
+			"name": "Prometheus"
+		},
+		{
+			"name": "CarlIsBored"
+		},
+		{
+			"name": "Sorrym8"
+		},
+		{
+			"name": "WeezL"
+		},
+		{
+			"name": "zFice7"
+		},
+		{
+			"name": "NourTheKing"
+		},
+		{
+			"name": "LairotCaf62"
+		},
+		{
+			"name": "Seabroly"
+		},
+		{
+			"name": "Pandaa"
+		}
+	],
+	"gd_id": 82164293,
+	"requirement": 57,
+	"video": "https://youtu.be/Tz-VDWf-lKk",
+	"records": [
+		{
+			"user": {
+				"name": "homegrowntag"
+			},
+			"video": "https://youtu.be/mTk3hm2RzvA",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "KasiaUwU"
+			},
+			"video": "https://youtu.be/VSwzadtV1Ec",
+			"percentage": 100
+		}
+	]
+}

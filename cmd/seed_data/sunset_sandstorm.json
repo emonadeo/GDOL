@@ -1,0 +1,71 @@
+{
+	"name": "Shitty Sunset Sandstorm",
+	"user": {
+		"name": "Lil_Creator"
+	},
+	"verifier": {
+		"name": "KylashTheKiller"
+	},
+	"creators": [],
+	"gd_id": 81051306,
+	"requirement": 52,
+	"video": "https://youtu.be/eZ33m5pzE0g",
+	"records": [
+		{
+			"user": {
+				"name": "Riptide"
+			},
+			"video": "https://youtu.be/BHF_xnnO7Ew",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "RazerJCZ"
+			},
+			"video": "https://youtu.be/fGIX8kZvOtk",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "biskit"
+			},
+			"video": "https://www.youtube.com/watch?v=6SkJAuAhQUU",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Shel"
+			},
+			"video": "https://youtu.be/7aI0V0SJJKs",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "zCodeB0y"
+			},
+			"video": "https://youtu.be/jnPHtDSIsrU",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "zAbyss"
+			},
+			"video": "https://youtu.be/TvS-czk0k8A",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "WellNot"
+			},
+			"video": "https://youtu.be/m6q2iADntxg",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "KasiaUwU"
+			},
+			"video": "https://youtu.be/beZxSbyMOiM",
+			"percentage": 100
+		}
+	]
+}

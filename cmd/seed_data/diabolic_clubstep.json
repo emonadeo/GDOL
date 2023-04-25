@@ -1,0 +1,51 @@
+{
+	"name": "Shitty Diabolic Clubstep",
+	"user": {
+		"name": "CarlIsBored"
+	},
+	"verifier": {
+		"name": "skyv"
+	},
+	"creators": [
+		{
+			"name": "CarlIsBored"
+		},
+		{
+			"name": "L0GAN"
+		},
+		{
+			"name": "Kiwi1938"
+		},
+		{
+			"name": "TravelChimp"
+		},
+		{
+			"name": "Prometheus"
+		},
+		{
+			"name": "Salsa"
+		},
+		{
+			"name": "sarcasticmuch"
+		}
+	],
+	"gd_id": 87646701,
+	"requirement": 48,
+	"video": "https://youtu.be/i7TFbB8t56A",
+	"records": [
+		{
+			"user": {
+				"name": "ZerniasX"
+			},
+			"video": "https://youtu.be/j5FsUpnCnro",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "KasiaUwU"
+			},
+			"video": "https://youtu.be/Y4Dqhq-ERb8",
+			"percentage": 100
+		}
+	]
+}

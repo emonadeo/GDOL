@@ -1,0 +1,29 @@
+{
+	"name": "Shitty Cautious",
+	"user": {
+		"name": "Kiwi1938"
+	},
+	"verifier": {
+		"name": "Kiwi1938"
+	},
+	"creators": [
+		{
+			"name": "Kiwi1938"
+		},
+		{
+			"name": "Prometheus"
+		}
+	],
+	"gd_id": 89827431,
+	"requirement": 65,
+	"video": "https://youtu.be/9cFFEN1YvlI",
+	"records": [
+		{
+			"user": {
+				"name": "KasiaUwU"
+			},
+			"video": "https://youtu.be/CnkK_eCzJNs",
+			"percentage": 100
+		}
+	]
+}

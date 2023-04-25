@@ -1,0 +1,29 @@
+{
+	"name": "Shitty RGB",
+	"user": {
+		"name": "T333"
+	},
+	"verifier": {
+		"name": "T333"
+	},
+	"creators": [
+		{
+			"name": "MrMcCheesy"
+		},
+		{
+			"name": "T333"
+		}
+	],
+	"gd_id": 80874056,
+	"requirement": 100,
+	"video": "https://youtu.be/835WmmU9k-I",
+	"records": [
+		{
+			"user": {
+				"name": "Riptide"
+			},
+			"video": "https://youtu.be/AhNT5xvp-B0",
+			"percentage": 100
+		}
+	]
+}

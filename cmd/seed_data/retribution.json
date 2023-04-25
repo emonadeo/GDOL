@@ -1,0 +1,22 @@
+{
+	"name": "Shitty Retribution",
+	"user": {
+		"name": "Sovola"
+	},
+	"verifier": {
+		"name": "Riptide"
+	},
+	"creators": [],
+	"gd_id": 81739200,
+	"requirement": 100,
+	"video": "https://www.youtube.com/watch?v=L0aGR2wxhBE",
+	"records": [
+		{
+			"user": {
+				"name": "WellNot"
+			},
+			"video": "https://youtu.be/d5qZ-25xpZk",
+			"percentage": 100
+		}
+	]
+}

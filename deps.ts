@@ -1,3 +1,9 @@
+export const version = '0.1.0';
+export const databasePath = 'gdol.db';
+
+export { exists as std_exists } from 'https://deno.land/std@0.184.0/fs/mod.ts';
+export { type Handler, serve as std_serve } from 'https://deno.land/std@0.184.0/http/server.ts';
+export { contentType as std_contentType } from 'https://deno.land/std@0.184.0/media_types/mod.ts';
 export {
 	sort as semver_sort,
 	valid as semver_valid,
@@ -12,6 +18,4 @@ export {
 
 export { Database } from 'https://deno.land/x/sqlite3@0.9.1/mod.ts';
 
-export { serve as std_serve } from 'https://deno.land/std@0.183.0/http/server.ts';
-export { contentType as std_contentType } from 'https://deno.land/std@0.183.0/media_types/mod.ts';
-export { parse as std_flags_parse } from 'https://deno.land/std@0.183.0/flags/mod.ts';
+export { Command } from 'https://deno.land/x/cliffy@v0.25.7/command/mod.ts';

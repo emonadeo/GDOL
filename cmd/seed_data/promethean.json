@@ -1,0 +1,64 @@
+{
+	"name": "Shitty Promethean",
+	"user": {
+		"name": "Prometheus"
+	},
+	"verifier": {
+		"name": "TravelChimp"
+	},
+	"creators": [
+		{
+			"name": "Prometheus"
+		},
+		{
+			"name": "WhiteGokey"
+		}
+	],
+	"gd_id": 83437210,
+	"requirement": 66,
+	"video": "https://youtu.be/6P1VkqmI1HU",
+	"records": [
+		{
+			"user": {
+				"name": "Andrxw"
+			},
+			"video": "https://www.youtube.com/watch?v=qx1RXB0znrA",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Dandy Chiggins"
+			},
+			"video": "https://youtu.be/oAWZ9myDTr8",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Cornbread"
+			},
+			"video": "https://youtu.be/-eJosYRfB4A",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Tunax"
+			},
+			"video": "https://youtu.be/5eKX2igDges",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "KasiaUwU"
+			},
+			"video": "https://youtu.be/zr-gTrMEtI8",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Neltumn"
+			},
+			"video": "https://youtu.be/S0ScBWI-ZzI",
+			"percentage": 100
+		}
+	]
+}

@@ -1,0 +1,80 @@
+{
+	"name": "Shitty Athanatos",
+	"user": {
+		"name": "strix"
+	},
+	"verifier": {
+		"name": "Venomio"
+	},
+	"creators": [
+		{
+			"name": "strix"
+		},
+		{
+			"name": "Bluestone"
+		},
+		{
+			"name": "Tai0"
+		},
+		{
+			"name": "DoublesSymbol"
+		},
+		{
+			"name": "hexuri"
+		}
+	],
+	"gd_id": 80011366,
+	"requirement": 100,
+	"video": "https://youtu.be/lOnHKdG4G-o",
+	"records": [
+		{
+			"user": {
+				"name": "woi"
+			},
+			"video": "https://www.youtube.com/watch?v=_dk9w8nD2f4",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "biskit"
+			},
+			"video": "https://www.youtube.com/watch?v=LArEWl9HB8k",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "92004JACOB"
+			},
+			"video": "https://youtu.be/RGrjrbzsvc8",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "homegrowntag"
+			},
+			"video": "https://youtu.be/DY8XzCXgkTs",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Andrxw"
+			},
+			"video": "https://www.youtube.com/watch?v=5VVRTXWx3VY",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Freikz"
+			},
+			"video": "https://youtu.be/7unbof4U6y4",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "danialves555"
+			},
+			"video": "https://youtu.be/6O13Wz5UoPU",
+			"percentage": 100
+		}
+	]
+}

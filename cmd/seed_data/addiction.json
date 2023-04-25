@@ -1,0 +1,50 @@
+{
+	"name": "Shitty Addiction",
+	"user": {
+		"name": "Dxst"
+	},
+	"verifier": {
+		"name": "Dxst"
+	},
+	"creators": [
+		{
+			"name": "Dxst"
+		},
+		{
+			"name": "Deceit"
+		}
+	],
+	"gd_id": 88935260,
+	"requirement": 100,
+	"video": "https://www.youtube.com/watch?v=P8b6NPXb4lw",
+	"records": [
+		{
+			"user": {
+				"name": "ObvSilver"
+			},
+			"video": "https://youtu.be/RG1PnnLD_C8",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Maceh"
+			},
+			"video": "https://youtu.be/0Tp-fjAM0nU",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "spacebar_key"
+			},
+			"video": "https://www.youtube.com/watch?v=6nDBwD1Iiag",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "KasiaUwU"
+			},
+			"video": "https://www.youtube.com/watch?v=QwXG5MGEHFM",
+			"percentage": 100
+		}
+	]
+}

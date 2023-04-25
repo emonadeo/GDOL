@@ -1,0 +1,57 @@
+{
+	"name": "Shitty Necromancer",
+	"user": {
+		"name": "MiloKelly"
+	},
+	"verifier": {
+		"name": "kacro"
+	},
+	"creators": [],
+	"gd_id": 81148398,
+	"requirement": 100,
+	"video": "https://youtu.be/wvUqLI_Tc3Q",
+	"records": [
+		{
+			"user": {
+				"name": "RazerJCZ"
+			},
+			"video": "https://www.youtube.com/watch?v=hoKufdaTvA4",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Shel"
+			},
+			"video": "https://youtu.be/IVzw67NbAE8",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "biskit"
+			},
+			"video": "https://youtu.be/cErikjo-h5I",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Prometheus"
+			},
+			"video": "https://youtu.be/TaTOHv_e0eU",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "wiz"
+			},
+			"video": "https://youtu.be/Fq1Fg3P0Z9M",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "JaByUs"
+			},
+			"video": "https://youtu.be/9zURb7oYxIg",
+			"percentage": 100
+		}
+	]
+}

@@ -1,0 +1,81 @@
+{
+	"name": "Shitty Dark Flare",
+	"user": {
+		"name": "iRaily"
+	},
+	"verifier": {
+		"name": "Delay"
+	},
+	"creators": [
+		{
+			"name": "iRaily"
+		},
+		{
+			"name": "70n0fh4y"
+		},
+		{
+			"name": "Prometheus"
+		},
+		{
+			"name": "AugustVN"
+		},
+		{
+			"name": "SupaX_"
+		},
+		{
+			"name": "Luke"
+		},
+		{
+			"name": "Chspchips"
+		},
+		{
+			"name": "Pandaa"
+		},
+		{
+			"name": "GalaxyGaming"
+		},
+		{
+			"name": "Kiwi1938"
+		},
+		{
+			"name": "AcropolisBoy"
+		},
+		{
+			"name": "Experience43"
+		},
+		{
+			"name": "IntriZ"
+		},
+		{
+			"name": "Fernamg2041"
+		},
+		{
+			"name": "FireRift"
+		},
+		{
+			"name": "MinYong"
+		},
+		{
+			"name": "TravelChimp"
+		}
+	],
+	"gd_id": 85481067,
+	"requirement": 55,
+	"video": "https://youtu.be/5qFxyDkAMPs",
+	"records": [
+		{
+			"user": {
+				"name": "Fh1r"
+			},
+			"video": "https://youtu.be/l_BWjzwjRw8",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "iRaily"
+			},
+			"video": "https://youtu.be/Wuj7qUaZGSY",
+			"percentage": 100
+		}
+	]
+}

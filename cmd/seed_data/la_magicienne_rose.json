@@ -1,0 +1,57 @@
+{
+	"name": "Shitty La Magicienne Rose",
+	"user": {
+		"name": "DrPumpkin357"
+	},
+	"verifier": {
+		"name": "Alaniz004"
+	},
+	"creators": [],
+	"gd_id": 80759606,
+	"requirement": 59,
+	"video": "https://youtu.be/M4jqW3Ob2Ck",
+	"records": [
+		{
+			"user": {
+				"name": "iRaily"
+			},
+			"video": "https://youtu.be/Ywqbdtd8UOo",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "biskit"
+			},
+			"video": "https://www.youtube.com/watch?v=HSIFPgfCUz0",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Marke"
+			},
+			"video": "https://www.youtube.com/watch?v=SQZALBVHqtY",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "KasiaUwU"
+			},
+			"video": "https://youtu.be/S0TpDCqVBLw",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Dandy Chiggins"
+			},
+			"video": "https://youtu.be/0EIW7mnRcdU",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "ZerniasX"
+			},
+			"video": "https://youtu.be/ocY-iEYQASc",
+			"percentage": 100
+		}
+	]
+}

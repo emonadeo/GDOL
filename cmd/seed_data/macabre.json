@@ -1,0 +1,71 @@
+{
+	"name": "Shitty Macabre",
+	"user": {
+		"name": "Whitar"
+	},
+	"verifier": {
+		"name": "Shel"
+	},
+	"creators": [],
+	"gd_id": 78160646,
+	"requirement": 60,
+	"video": "https://youtu.be/7Aveij0ST04",
+	"records": [
+		{
+			"user": {
+				"name": "LzKlauss"
+			},
+			"video": "https://www.youtube.com/watch?v=8gskwv3y4hk&t=0s",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Samuuu18"
+			},
+			"video": "https://youtu.be/AuyoTjbzIzg",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Davine_007"
+			},
+			"video": "https://youtu.be/gmql-llLH24",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "biskit"
+			},
+			"video": "https://www.youtube.com/watch?v=lYA2RQWDM3g",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Andrxw"
+			},
+			"video": "https://www.youtube.com/watch?v=WN9WL90hOmc",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Riptide"
+			},
+			"video": "https://youtu.be/R03dcYI6q7I",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Zentersack"
+			},
+			"video": "https://www.youtube.com/watch?v=W8L0zLXKNg8",
+			"percentage": 64
+		},
+		{
+			"user": {
+				"name": "KasiaUwU"
+			},
+			"video": "https://youtu.be/Ca05u5iKZJ4",
+			"percentage": 100
+		}
+	]
+}

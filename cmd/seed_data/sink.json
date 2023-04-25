@@ -1,0 +1,22 @@
+{
+	"name": "Shitty Sink",
+	"user": {
+		"name": "Dipper552"
+	},
+	"verifier": {
+		"name": "Dipper552"
+	},
+	"creators": [],
+	"gd_id": 88439096,
+	"requirement": 100,
+	"video": "https://www.youtube.com/watch?v=2dgv3unYHB4",
+	"records": [
+		{
+			"user": {
+				"name": "KasiaUwU"
+			},
+			"video": "https://youtu.be/W-QyhKHA0QU",
+			"percentage": 100
+		}
+	]
+}

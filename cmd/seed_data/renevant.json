@@ -1,0 +1,64 @@
+{
+	"name": "Shitty Renevant",
+	"user": {
+		"name": "Ikhanny"
+	},
+	"verifier": {
+		"name": "MyuuXz"
+	},
+	"creators": [
+		{
+			"name": "Ikhanny"
+		},
+		{
+			"name": "ItzOpimy"
+		}
+	],
+	"gd_id": 86671813,
+	"requirement": 62,
+	"video": "https://youtu.be/GvPXi4wRmQU",
+	"records": [
+		{
+			"user": {
+				"name": "LzKlauss"
+			},
+			"video": "https://www.youtube.com/watch?v=fRMzlEZx0O4",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Samuuu18"
+			},
+			"video": "https://youtu.be/Za9atXilt4I",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "AzielGD"
+			},
+			"video": "https://youtu.be/kwpRSQZAgCY",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Dandy Chiggins"
+			},
+			"video": "https://youtu.be/4ox6x4lP76M",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Ratio"
+			},
+			"video": "https://www.youtube.com/watch?v=vAOXdyLkAiM&feature=youtu.be",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Lawnmower"
+			},
+			"video": "https://www.youtube.com/watch?v=ZzLzz-WvSHc",
+			"percentage": 100
+		}
+	]
+}

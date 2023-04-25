@@ -1,0 +1,43 @@
+{
+	"name": "Shitty Glacial Core",
+	"user": {
+		"name": "Fh1r"
+	},
+	"verifier": {
+		"name": "iRaily"
+	},
+	"creators": [],
+	"gd_id": 78134098,
+	"requirement": 100,
+	"video": "https://youtu.be/dqDD5BrV2qM",
+	"records": [
+		{
+			"user": {
+				"name": "ZerniasX"
+			},
+			"video": "https://youtu.be/ctsrlrFllV0",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "LzKlauss"
+			},
+			"video": "https://youtu.be/QKMiTjBzqaU",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Samuuu18"
+			},
+			"video": "https://youtu.be/vLsKvlG3AuI",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Haze"
+			},
+			"video": "https://youtu.be/NR3dnZWYmfI",
+			"percentage": 100
+		}
+	]
+}

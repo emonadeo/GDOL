@@ -1,0 +1,43 @@
+{
+	"name": "Shitty Surge of the Shield",
+	"user": {
+		"name": "BlueTomcat"
+	},
+	"verifier": {
+		"name": "MinYong"
+	},
+	"creators": [
+		{
+			"name": "BlueTomcat"
+		},
+		{
+			"name": "Chspchips"
+		}
+	],
+	"gd_id": 82103734,
+	"requirement": 61,
+	"video": "https://youtu.be/ehy88_Qu5eE",
+	"records": [
+		{
+			"user": {
+				"name": "Riptide"
+			},
+			"video": "https://youtu.be/4JcGDQQcHBg",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "bnuuy"
+			},
+			"video": "https://www.youtube.com/watch?v=RXXJhFjp6fY",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "KasiaUwU"
+			},
+			"video": "https://youtu.be/3cweX1USkeU",
+			"percentage": 100
+		}
+	]
+}

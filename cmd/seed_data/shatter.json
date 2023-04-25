@@ -1,0 +1,57 @@
+{
+	"name": "Shitty SHATTER",
+	"user": {
+		"name": "Lil_Creator"
+	},
+	"verifier": {
+		"name": "Lil_Creator"
+	},
+	"creators": [],
+	"gd_id": 68049573,
+	"requirement": 62,
+	"video": "https://youtu.be/TXT4uSfkwU0",
+	"records": [
+		{
+			"user": {
+				"name": "RealBigFlopa"
+			},
+			"video": "https://www.youtube.com/watch?v=ACr6ou728gQ",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Riptide"
+			},
+			"video": "https://www.youtube.com/watch?v=sdNHN0bpTNs",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "EggCorn"
+			},
+			"video": "https://www.youtube.com/watch?v=bvlPPQvXrog",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "ZerniasX"
+			},
+			"video": "https://youtu.be/-m13G5ll7Jg",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Dylinator"
+			},
+			"video": "https://youtu.be/84Ba1tbCjIg",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "lucap123"
+			},
+			"video": "https://www.youtube.com/watch?v=dXcH37WnPMU",
+			"percentage": 100
+		}
+	]
+}

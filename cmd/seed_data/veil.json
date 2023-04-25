@@ -1,0 +1,78 @@
+{
+	"name": "Shitty VEIL",
+	"user": {
+		"name": "Maxiops35"
+	},
+	"verifier": {
+		"name": "Maxiops35"
+	},
+	"creators": [
+		{
+			"name": "Maxiops35"
+		},
+		{
+			"name": "Zazzoo"
+		}
+	],
+	"gd_id": 81532406,
+	"requirement": 61,
+	"video": "https://youtu.be/jVYxsjCVCJo",
+	"records": [
+		{
+			"user": {
+				"name": "donut737"
+			},
+			"video": "https://youtu.be/ka96ly9UF-I",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "NotD4N1"
+			},
+			"video": "https://youtu.be/ygkUROFgv_8",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "TheInsanePro"
+			},
+			"video": "https://youtu.be/-vOF_U57QGY",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Riptide"
+			},
+			"video": "https://youtu.be/75RTeajJTVM",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Emonadeo"
+			},
+			"video": "https://www.youtube.com/watch?v=gbN748mOhLs",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Troy3"
+			},
+			"video": "https://youtu.be/Mnwix8W5anM",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "AnTy15"
+			},
+			"video": "https://www.youtube.com/watch?v=692mIcorlrg",
+			"percentage": 72
+		},
+		{
+			"user": {
+				"name": "Vink"
+			},
+			"video": "https://youtu.be/egSl9tJfVWs",
+			"percentage": 100
+		}
+	]
+}

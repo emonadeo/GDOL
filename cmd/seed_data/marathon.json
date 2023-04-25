@@ -1,0 +1,85 @@
+{
+	"name": "Shitty Marathon",
+	"user": {
+		"name": "Kiwi1938"
+	},
+	"verifier": {
+		"name": "Kiwi1938"
+	},
+	"creators": [],
+	"gd_id": 89827406,
+	"requirement": 63,
+	"video": "https://youtu.be/xhwaXuV-g38",
+	"records": [
+		{
+			"user": {
+				"name": "KylashTheKiller"
+			},
+			"video": "https://www.youtube.com/watch?v=oEZ2oYyPyeM",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "BrightBird"
+			},
+			"video": "https://youtu.be/9qHwX5TqYjE",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Shel"
+			},
+			"video": "https://youtu.be/h4zNoude4BQ",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Vaoen"
+			},
+			"video": "https://www.twitch.tv/videos/1308926299",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Dougieman"
+			},
+			"video": "https://youtu.be/8-QXxEzmXGw",
+			"percentage": 74
+		},
+		{
+			"user": {
+				"name": "Kenos Song"
+			},
+			"video": "https://www.youtube.com/watch?v=h4_zLCHY0D0",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "BBGameGuru"
+			},
+			"video": "https://www.youtube.com/watch?v=5KASVJPAIbU",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "biskit"
+			},
+			"video": "https://www.youtube.com/watch?v=a32ktDJ4HsA",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Dandy Chiggins"
+			},
+			"video": "https://youtu.be/59KEEyfbFrM",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "GameExplorers"
+			},
+			"video": "https://www.youtube.com/watch?v=KwxBsvKs5pY",
+			"percentage": 100
+		}
+	]
+}

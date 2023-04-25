@@ -6,7 +6,7 @@
 		"db:seed": "deno run --allow-all --unstable scripts/seed.ts",
 		"db:clean": "atlas schema clean --url \"sqlite://gdol.db\"",
 		"db:apply": "atlas schema apply --url \"sqlite://gdol.db\" --to \"file://store/schema.hcl\"",
-		"dev": "deno run --unstable --allow-all scripts/dev.ts",
+		"dev": "deno run --unstable --allow-all cli.ts --no-web --port 3001",
 		"dev:api": "deno run --unstable --allow-all --watch scripts/build_api.ts",
 		"dev:web": "cd web && pnpm dev",
 		"fmt": "pnpm fmt",

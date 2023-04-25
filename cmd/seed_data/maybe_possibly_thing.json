@@ -1,0 +1,108 @@
+{
+	"name": "Shitty Maybe Possibly Thing",
+	"user": {
+		"name": "Dofar"
+	},
+	"verifier": {
+		"name": "Dofar"
+	},
+	"creators": [
+		{
+			"name": "Sovola"
+		},
+		{
+			"name": "Dofar"
+		},
+		{
+			"name": "Chsp"
+		},
+		{
+			"name": "Prometheus"
+		},
+		{
+			"name": "Kiwi1938"
+		}
+	],
+	"gd_id": 84670628,
+	"requirement": 100,
+	"video": "https://youtu.be/BM_JvluMhhk",
+	"records": [
+		{
+			"user": {
+				"name": "DeNora17"
+			},
+			"video": "https://www.youtube.com/watch?v=mbOcPMnQ2pg",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Moisty"
+			},
+			"video": "https://youtu.be/Uq1Z0yZUGhY",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "homegrowntag"
+			},
+			"video": "https://youtu.be/dAniGtaycNM",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Rixen Ace"
+			},
+			"video": "https://youtube.com/watch?v=LdDa6-18ThU&feature=shares",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Fra4"
+			},
+			"video": "https://youtu.be/4kMOdidYE0s",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "LingherZ"
+			},
+			"video": "https://www.youtube.com/watch?v=06SRxDzJcQw",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "NiXaNTy"
+			},
+			"video": "https://www.youtube.com/watch?v=z8BSaTkrPbI",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Demons [GD]"
+			},
+			"video": "https://youtu.be/0D-TsuL1kxo",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "kwir9n"
+			},
+			"video": "https://youtu.be/h_mMI4faJVo",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Riptide"
+			},
+			"video": "https://youtu.be/Aza65M4HA7M",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Kling1803"
+			},
+			"video": "https://youtu.be/zbs8qdigPD0",
+			"percentage": 100
+		}
+	]
+}

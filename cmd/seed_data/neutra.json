@@ -1,0 +1,40 @@
+{
+	"name": "Shitty NEUTRA",
+	"user": {
+		"name": "Prometheus"
+	},
+	"verifier": {
+		"name": "Riptide"
+	},
+	"creators": [
+		{
+			"name": "/Swan"
+		}
+	],
+	"gd_id": 89035771,
+	"requirement": 51,
+	"video": "https://youtu.be/_R6mZHylfsI",
+	"records": [
+		{
+			"user": {
+				"name": "GD CrimsonKing22"
+			},
+			"video": "https://www.youtube.com/watch?v=Dh93yc5t_0k",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Dandy Chiggins"
+			},
+			"video": "https://youtu.be/Xk3hmjKUrcY",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "FullyDiverse"
+			},
+			"video": "https://youtu.be/-Od8hjoGSGw",
+			"percentage": 100
+		}
+	]
+}

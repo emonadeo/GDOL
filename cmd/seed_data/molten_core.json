@@ -1,0 +1,50 @@
+{
+	"name": "Shitty Molten Core",
+	"user": {
+		"name": "sarcasticmuch"
+	},
+	"verifier": {
+		"name": "qzkk"
+	},
+	"creators": [],
+	"gd_id": 85527602,
+	"requirement": 63,
+	"video": "https://youtu.be/kDyKcT1rbRI",
+	"records": [
+		{
+			"user": {
+				"name": "Dandy Chiggins"
+			},
+			"video": "https://www.youtube.com/watch?v=vlayncqHdq0",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "woi"
+			},
+			"video": "https://youtu.be/R3XlFxJ8kRg",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "ZerniasX"
+			},
+			"video": "https://youtu.be/JOyNVuBvz2E",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Dylinator"
+			},
+			"video": "https://youtu.be/aXb4WFJVLeU?t=1352",
+			"percentage": 100
+		},
+		{
+			"user": {
+				"name": "Neltumn"
+			},
+			"video": "https://www.youtube.com/watch?v=zXbglnMyELU",
+			"percentage": 100
+		}
+	]
+}

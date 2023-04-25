@@ -1,4 +1,4 @@
-import { dnt_build, dnt_emptyDir } from '../deps.ts';
+import { dnt_build, dnt_emptyDir, version } from '../deps.ts';
 
 // watch entry points
 import '../api/mod.ts';
@@ -34,7 +34,7 @@ await dnt_build({
 	outDir,
 	package: {
 		name: '@gdol/api',
-		version: '0.1.0',
+		version: version,
 	},
 	scriptModule: false,
 	shims: {

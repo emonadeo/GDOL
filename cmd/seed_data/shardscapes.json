@@ -1,0 +1,22 @@
+{
+	"name": "Shitty Shardscapes",
+	"user": {
+		"name": "Luke"
+	},
+	"verifier": {
+		"name": "KylashTheKiller"
+	},
+	"creators": [],
+	"gd_id": 81535285,
+	"requirement": 61,
+	"video": "https://youtu.be/G7VGrfpivrI",
+	"records": [
+		{
+			"user": {
+				"name": "ElBrocasYT"
+			},
+			"video": "https://www.youtube.com/watch?v=IYeTcyT-0s4",
+			"percentage": 100
+		}
+	]
+}

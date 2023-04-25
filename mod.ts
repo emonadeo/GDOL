@@ -1,68 +1,132 @@
 import { createApi } from './api/mod.ts';
+import { migrations } from './migrations/mod.ts';
 
-import { Hono, std_serve, std_contentType, Database } from './deps.ts';
+import {
+	Hono,
+	std_serve,
+	std_contentType,
+	Database,
+	Handler,
+	semver_valid,
+	semver_sort,
+	databasePath,
+} from './deps.ts';
+
+export type GdolServeOptions = {
+	port?: number;
+	web?: boolean;
+};
+
+export type GdolHandlerOptions = GdolServeOptions;
 
 export class Gdol {
 	db: Database;
 
 	constructor() {
-		this.db = new Database('gdol.db');
+		this.db = new Database(databasePath);
 	}
 
-	async serve(options?: { port?: number }) {
+	async serve(options?: GdolServeOptions): Promise<void> {
 		const port = options?.port ?? 80;
+
+		// run migrations if database is empty
+		if ((await Deno.readFile(databasePath)).length === 0) {
+			console.log('Initializing Database');
+			await this.migrate();
+		}
+
+		await std_serve(await this.handler(options), { port });
+	}
+
+	async handler(options?: GdolHandlerOptions): Promise<Handler> {
+		const port = options?.port ?? 80;
+		const web = options?.web ?? true;
+
+		const router = new Hono();
+
+		// serve api
+		router.route('/api', createApi(this.db));
+
+		if (!web) {
+			return router.fetch;
+		}
+
+		// serve web
 		Deno.env.set('GDOL_API_URL', `http://127.0.0.1:${port}/api/`);
 		const { handle } = await import('./web/dist/server/entry.mjs');
-		const router = createRouter(handle, this.db);
-		await std_serve(router.fetch, { port });
 		Deno.env.delete('GDOL_API_URL');
-	}
-}
+		router.all('*', async (c) => {
+			const request = c.req.raw;
 
-function createRouter(handle: (req: Request) => Promise<Response>, db: Database) {
-	const router = new Hono();
+			// attempt to serve client
+			const clientResponse = (await handle(request)) as Response;
+			if (clientResponse.status !== 404) {
+				return clientResponse;
+			}
 
-	router.route('/api', createApi(db));
-
-	router.all('*', async (c) => {
-		const request = c.req.raw;
-
-		// attempt to serve client
-		const clientResponse = (await handle(request)) as Response;
-		if (clientResponse.status !== 404) {
-			return clientResponse;
-		}
-
-		// if request path not found in client, try to fetch a static file instead
-		const requestUrl = new URL(request.url);
-		try {
-			const response = await fetch(
-				new URL(`.${requestUrl.pathname}`, new URL('./web/dist/client/', import.meta.url))
-			);
-			if (!response.ok) {
+			// if request path not found in client, try to fetch a static file instead
+			const requestUrl = new URL(request.url);
+			try {
+				const response = await fetch(
+					new URL(`.${requestUrl.pathname}`, new URL('./web/dist/client/', import.meta.url))
+				);
+				if (!response.ok) {
+					return c.notFound();
+				}
+				// set content type if not set
+				const suffix = requestUrl.pathname.split('.').at(-1);
+				if (response.headers.get('Content-Type') !== null || suffix === undefined) {
+					return response;
+				}
+				const contentTypeValue = std_contentType(`.${suffix}`);
+				if (contentTypeValue === undefined) {
+					return response;
+				}
+				return new Response(response.body, {
+					headers: {
+						...response.headers,
+						'Content-Type': contentTypeValue,
+					},
+				});
+			} catch (_) {
+				// return 404 if fetch error
+				// this happens if you try to fetch a local file `file://...` that doesn't exist
 				return c.notFound();
 			}
-			// set content type if not set
-			const suffix = requestUrl.pathname.split('.').at(-1);
-			if (response.headers.get('Content-Type') !== null || suffix === undefined) {
-				return response;
-			}
-			const contentTypeValue = std_contentType(`.${suffix}`);
-			if (contentTypeValue === undefined) {
-				return response;
-			}
-			return new Response(response.body, {
-				headers: {
-					...response.headers,
-					'Content-Type': contentTypeValue,
-				},
-			});
-		} catch (_) {
-			// return 404 if fetch error
-			// this happens if you try to fetch a local file `file://...` that doesn't exist
-			return c.notFound();
-		}
-	});
+		});
 
-	return router;
+		return router.fetch;
+	}
+
+	async migrate(): Promise<void> {
+		let migrationFiles = [];
+		for await (const fileName of migrations) {
+			if (fileName.slice(-4) !== '.sql') {
+				console.warn(databasePath);
+				continue;
+			}
+			const semver = semver_valid(fileName.slice(0, -4));
+			if (semver === null) {
+				console.error('Skipped invalid migration:', fileName);
+				continue;
+			}
+			migrationFiles.push(fileName);
+		}
+
+		migrationFiles = semver_sort(migrationFiles);
+
+		for (const migrationFile of migrationFiles) {
+			const migration = await (
+				await fetch(new URL(`./migrations/${migrationFile}`, import.meta.url))
+			).text();
+			try {
+				console.info('Running migration', migrationFile);
+				this.db.run(migration);
+			} catch (_) {
+				console.error(
+					`Failed to run migration ${migrationFile}. Perhaps it is already initialized?`
+				);
+			}
+		}
+	}
 }
