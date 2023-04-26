@@ -8,7 +8,6 @@ const keep = ['.git'];
 const sources = [
 	'api/routes',
 	'api/mod.ts',
-	'api/types.ts',
 	'cmd/',
 	'migrations/',
 	'store/',
