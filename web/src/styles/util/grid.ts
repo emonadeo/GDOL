@@ -1,19 +1,28 @@
 import { generateIdentifier } from '@vanilla-extract/css';
 import { DataType, Property } from 'csstype';
 
-type A<T, N extends number> = (readonly T[] & { length: N }) | [never];
+type Tuple<TItem, TLength extends number> = (readonly TItem[] & { length: TLength }) | [never];
 
 type GridTemplateArea = string;
-type GridTemplateAreas<R extends number, C extends number> = A<A<GridTemplateArea, C & {}>, R & {}>;
-type GridTemplateDimensions<N extends number> = A<DataType.TrackBreadth<string & {}>, N>;
+type GridTemplateAreas<TRowCount extends number, TColumnCount extends number> = Tuple<
+	Tuple<GridTemplateArea | null, TColumnCount & {}>,
+	TRowCount & {}
+>;
+type GridTemplateDimensions<TCount extends number> = Tuple<
+	DataType.TrackBreadth<string & {}>,
+	TCount
+>;
 
-export function createGridTemplate<R extends number, C extends number>(template: {
-	areas: GridTemplateAreas<R, C>;
-	rows: GridTemplateDimensions<R>;
-	columns: GridTemplateDimensions<C>;
+export function createGridTemplate<
+	TRowCount extends number,
+	TColumnCount extends number
+>(template: {
+	areas: GridTemplateAreas<TRowCount, TColumnCount>;
+	rows: GridTemplateDimensions<TRowCount>;
+	columns: GridTemplateDimensions<TColumnCount>;
 }): Property.GridTemplate {
 	return `${template.areas
-		.map((row, i) => `"${row.join(' ')}" ${template.rows[i]}`)
+		.map((row, i) => `"${row.map((area) => area ?? '.').join(' ')}" ${template.rows[i]}`)
 		.join(' ')} / ${template.columns.join(' ')}`;
 }
 
@@ -21,8 +30,8 @@ export function createGridArea(debugId?: string): GridTemplateArea {
 	return generateIdentifier(debugId);
 }
 
-export function gridTemplateAreas<R extends number, C extends number>(
-	areas: GridTemplateAreas<R, C>
+export function gridTemplateAreas<TRowCount extends number, TColumnCount extends number>(
+	areas: GridTemplateAreas<TRowCount, TColumnCount>
 ): Property.GridTemplateAreas {
-	return areas.map((row) => `"${row.join(' ')}"`).join(' ');
+	return areas.map((row) => `"${row.map((area) => area ?? '.').join(' ')}"`).join(' ');
 }

@@ -1,0 +1,106 @@
+---
+import {
+	page,
+	h1,
+	changelogs,
+	changelog,
+	date,
+	summary,
+	changes,
+	from,
+	icon,
+	to,
+	details,
+	no_reason,
+	overview,
+} from './index.css.ts';
+
+import { api } from 'src/api.ts';
+import { ChangelogOverview } from 'src/components/changelog/overview.tsx';
+import IndexLayout from 'src/layouts/index.astro';
+import { mono } from 'src/styles/atomic/typography.css.ts';
+import { Changelog, getChangelogIcon } from 'src/util/changelog.ts';
+
+const res = await api.changelog.$get();
+const cls = await res.json();
+
+const dict = new Map([
+	['add', 'Added'],
+	['move', 'Moved'],
+	['archive', 'Archived'],
+] as const);
+
+const clss: Changelog[] = cls.map((c, i, cs) => {
+	const common = {
+		timestamp: new Date(c.timestamp),
+		level: c.level,
+		before: i < cs.length ? cs.at(i + 1)?.list ?? [] : [],
+		after: c.list,
+		reason: c.reason,
+	};
+
+	switch (c.action) {
+		case 'add':
+			return {
+				...common,
+				action: 'add',
+				to: c.to as number,
+			};
+		case 'archive':
+			return {
+				...common,
+				action: 'archive',
+				from: c.from as number,
+			};
+		case 'move':
+			return {
+				...common,
+				action: 'move',
+				from: c.from as number,
+				to: c.to as number,
+			};
+	}
+});
+---
+
+<IndexLayout>
+	<div class={page}>
+		<h1 class={h1}>Changelog</h1>
+		<ol class={changelogs}>
+			{
+				clss.map((cl) => (
+					<li class={changelog}>
+						<div class={date}>
+							<p class={mono}>{new Date(cl.timestamp).toLocaleDateString()}</p>
+						</div>
+						<div class={summary}>
+							<p>
+								{dict.get(cl.action)} <a href={`/level/${cl.level.id}`}>{cl.level.name}</a>
+							</p>
+						</div>
+						<div class={changes}>
+							{cl.action === 'move' && <p class:list={[from, mono]}>#{cl.from}</p>}
+							<div class={icon}>
+								<img src={getChangelogIcon(cl)} alt="change" />
+							</div>
+							<p class:list={[to, mono]}>#{cl.action === 'archive' ? cl.from : cl.to}</p>
+						</div>
+						{(cl.reason || cl.action !== 'add') && (
+							<div class={details}>
+								{cl.reason ? (
+									<p>
+										<span>Reason: </span>
+										<span>{cl.reason}</span>
+									</p>
+								) : (
+									<p class={no_reason}>No Reason specified</p>
+								)}
+							</div>
+						)}
+						<div class={overview}>{<ChangelogOverview {...cl} />}</div>
+					</li>
+				))
+			}
+		</ol>
+	</div>
+</IndexLayout>

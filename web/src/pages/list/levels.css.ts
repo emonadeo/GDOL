@@ -42,16 +42,18 @@ export const level = style([
 	}),
 	md({
 		display: 'grid',
+		gap: '1rem 2rem',
 		gridTemplate: createGridTemplate({
 			rows: ['max-content', 'max-content'],
 			columns: ['minmax(0, 2fr)', 'minmax(0, 3fr)'],
 			areas: [
-				[area_rank, ''],
+				[area_rank, null],
 				[area_thumbnail, area_meta],
 			],
 		}),
 	}),
 	lg({
+		gap: '2rem',
 		gridTemplate: createGridTemplate({
 			rows: ['max-content'],
 			columns: ['max-content', 'minmax(0, 1fr)', 'minmax(0, 2fr)'],

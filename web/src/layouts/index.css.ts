@@ -1,4 +1,5 @@
 import { style } from '@vanilla-extract/css';
+import { screens } from 'src/styles/atomic/screens.css';
 
 import { lg, lt_sm, sm, xl } from 'src/styles/screens.ts';
 import { colors } from 'src/styles/theme/colors.css.ts';

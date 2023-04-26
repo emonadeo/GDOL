@@ -83,7 +83,7 @@ Orozco, Héctor Gómez, Superunion
 
 [Code New Roman](https://www.cdnfonts.com/code-new-roman.font) by Sam Radian
 
-### Other
+#### Other
 
 [Tailwind](https://tailwindcss.com/): CSS Reset adapted from Tailwind's
-[preflight.css](https://github.com/tailwindlabs/tailwindcss/blob/v3.3.1/src/css/preflight.css)
+[preflight.css](https://github.com/tailwindlabs/tailwindcss/blob/v3.3.1/src/css/preflight.css).

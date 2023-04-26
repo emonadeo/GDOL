@@ -20,9 +20,9 @@ import { label_large } from 'src/styles/atomic/typography.css.ts';
 
 observeHeight;
 
-interface ListSidebarProps {
+type ListSidebarProps = {
 	length: number;
-}
+};
 
 const stopsHeight = 64;
 const stopsMinGap = 64;

@@ -5,7 +5,7 @@
 		"build": "deno task build:api && deno task build:web && deno run --allow-all scripts/build.ts",
 		"build:api": "deno run --unstable --allow-all scripts/build_api.ts",
 		"build:web": "cd web && pnpm build",
-		"dev": "deno run --unstable --allow-all cli.ts --no-web --port 3001",
+		"dev": "deno run --unstable --allow-all --watch cli.ts --no-web --port 3001",
 		"dev:api": "deno run --unstable --allow-all --watch scripts/build_api.ts",
 		"dev:web": "cd web && pnpm dev",
 		"fmt": "pnpm fmt",

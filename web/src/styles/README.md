@@ -8,4 +8,5 @@
 | `/theme`    |             |
 | `/util`     |             |
 
-Styles are written fully in TypeScript using [`@vanilla-extract/css`](https://vanilla-extract.style/)
+Styles are written fully in TypeScript using
+[`@vanilla-extract/css`](https://vanilla-extract.style/)

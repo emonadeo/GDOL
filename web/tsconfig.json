@@ -16,9 +16,7 @@
 		"jsxImportSource": "solid-js",
 		"baseUrl": ".",
 		"paths": {
-			"src/*": ["./src/*"],
-			"server/*": ["./../server/*"],
-			"https://deno.land/x/hono@v3.1.5/mod.ts": ["hono"]
+			"src/*": ["./src/*"]
 		}
 	}
 }

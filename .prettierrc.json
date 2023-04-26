@@ -15,13 +15,13 @@
 			}
 		},
 		{
-			"files": ["*.svg"],
+			"files": "*.svg",
 			"options": {
 				"parser": "html"
 			}
 		},
 		{
-			"files": ["*.sql"],
+			"files": "*.sql",
 			"options": {
 				"parser": "sqlite"
 			}
