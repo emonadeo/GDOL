@@ -3860,7 +3860,7 @@ import { Server } from "https://deno.land/std@0.177.0/http/server.ts";
 import { serveFile } from "https://deno.land/std@0.177.0/http/file_server.ts";
 import { fromFileUrl } from "https://deno.land/std@0.177.0/path/mod.ts";
 
-// dist/server/chunks/pages/all.19b87c29.mjs
+// dist/server/chunks/pages/all.3ac8e769.mjs
 var ERROR = Symbol("error");
 function castError(err) {
   if (err instanceof Error)
@@ -4588,6 +4588,19 @@ function ssr(t, ...nodes) {
     t
   };
 }
+function ssrClassList(value) {
+  if (!value)
+    return "";
+  let classKeys = Object.keys(value), result = "";
+  for (let i = 0, len = classKeys.length; i < len; i++) {
+    const key = classKeys[i], classValue = !!value[key];
+    if (!key || key === "undefined" || !classValue)
+      continue;
+    i && (result += " ");
+    result += escape2(key);
+  }
+  return result;
+}
 function ssrAttribute(key, value, isBoolean) {
   return isBoolean ? value ? " " + key : "" : value != null ? ` ${key}="${value}"` : "";
 }
@@ -4710,12 +4723,13 @@ var body_medium = "vehg0xb";
 var body_small = "vehg0xc";
 var display_medium = "vehg0x2";
 var label_large = "vehg0x7";
+var label_medium = "vehg0x8";
 var mono = "vehg0x0";
 var title_medium = "vehg0x5";
-var $$Astro$3 = createAstro();
-var $$Index$2 = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$3, $$props, $$slots);
-  Astro2.self = $$Index$2;
+var $$Astro$4 = createAstro();
+var $$Index$3 = createComponent(async ($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$4, $$props, $$slots);
+  Astro2.self = $$Index$3;
   function ariaCurrent(matcher) {
     return matcher.test(Astro2.url.pathname) && "page";
   }
@@ -4748,7 +4762,6 @@ var $$Index$2 = createComponent(async ($$result, $$props, $$slots) => {
 		<!-- CDN Fonts -->
 		<link rel="preconnect" href="https://fonts.cdnfonts.com">
 		<link href="http://fonts.cdnfonts.com/css/code-new-roman" rel="stylesheet">
-		<link href="http://fonts.cdnfonts.com/css/press-start-2p" rel="stylesheet">
 	${renderHead($$result)}</head>
 	<body${addAttribute(body, "class")}>
 		<nav${addAttribute(nav$1, "class")}>
@@ -4799,172 +4812,51 @@ var $$Index$2 = createComponent(async ($$result, $$props, $$slots) => {
 		</div>
 	</body></html>`;
 }, "/Users/emonadeo/Development/GDOL-v4/web/src/layouts/index.astro");
-var $$Astro$2 = createAstro();
-var $$Index$1 = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$2, $$props, $$slots);
-  Astro2.self = $$Index$1;
-  return renderTemplate`${renderComponent($$result, "IndexLayout", $$Index$2, {})}`;
+var $$Astro$3 = createAstro();
+var $$Index$2 = createComponent(async ($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$3, $$props, $$slots);
+  Astro2.self = $$Index$2;
+  return renderTemplate`${renderComponent($$result, "IndexLayout", $$Index$3, {}, { "default": ($$result2) => renderTemplate`
+	${maybeRenderHead($$result2)}<div></div>
+` })}`;
 }, "/Users/emonadeo/Development/GDOL-v4/web/src/pages/index.astro");
-var $$file$2 = "/Users/emonadeo/Development/GDOL-v4/web/src/pages/index.astro";
-var $$url$2 = "";
+var $$file$3 = "/Users/emonadeo/Development/GDOL-v4/web/src/pages/index.astro";
+var $$url$3 = "";
 var _page0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: $$Index$1,
-  file: $$file$2,
-  url: $$url$2
+  default: $$Index$2,
+  file: $$file$3,
+  url: $$url$3
 }, Symbol.toStringTag, { value: "Module" }));
-var main = "_1dnlsa30";
+var changelog = "_3oq8ka3";
+var changelogs = "_3oq8ka2";
+var changes = "_3oq8ka7";
+var date = "_3oq8ka5 _3oq8ka4";
+var details = "_3oq8kab";
+var from = "_3oq8ka8";
+var h1 = "_3oq8ka1";
+var icon = "_3oq8ka9";
+var no_reason = "_3oq8kac";
+var overview$1 = "_3oq8kad";
+var page$1 = "_3oq8ka0";
+var summary = "_3oq8ka6 _3oq8ka4";
+var to = "_3oq8kaa";
 var _page1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  main
+  changelog,
+  changelogs,
+  changes,
+  date,
+  details,
+  from,
+  h1,
+  icon,
+  no_reason,
+  overview: overview$1,
+  page: page$1,
+  summary,
+  to
 }, Symbol.toStringTag, { value: "Module" }));
-var $$Astro$1 = createAstro();
-var $$Typography = createComponent(async ($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$1, $$props, $$slots);
-  Astro2.self = $$Typography;
-  return renderTemplate`${renderComponent($$result, "IndexLayout", $$Index$2, {}, { "default": ($$result2) => renderTemplate`
-	${maybeRenderHead($$result2)}<main${addAttribute(main, "class")}>
-		<h1>Display Large</h1>
-		<h2>Display Medium</h2>
-		<h3>Display Small</h3>
-		<h4>Title Large</h4>
-		<h5>Title Medium</h5>
-		<h6>Title Small</h6>
-		<p>Body Large</p>
-		<p${addAttribute(mono, "class")}>Body Large Mono</p>
-		<p${addAttribute(body_medium, "class")}>Body Medium</p>
-		<p${addAttribute([body_medium, mono], "class:list")}>Body Medium Mono</p>
-		<p${addAttribute(body_small, "class")}>Body Small</p>
-		<p${addAttribute([body_small, mono], "class:list")}>Body Small Mono</p>
-	</main>
-` })}`;
-}, "/Users/emonadeo/Development/GDOL-v4/web/src/pages/debug/typography.astro");
-var $$file$1 = "/Users/emonadeo/Development/GDOL-v4/web/src/pages/debug/typography.astro";
-var $$url$1 = "/debug/typography";
-var _page2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  default: $$Typography,
-  file: $$file$1,
-  url: $$url$1
-}, Symbol.toStringTag, { value: "Module" }));
-var page = "ju8x7t0";
-var _page3 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  page
-}, Symbol.toStringTag, { value: "Module" }));
-var level = "nd4jxx4";
-var levels2 = "nd4jxx3";
-var meta = "nd4jxx7";
-var meta_name = "nd4jxx8";
-var outline = "nd4jxx9";
-var rank = "nd4jxx5";
-var thumbnail = "nd4jxx6";
-var _page6 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  level,
-  levels: levels2,
-  meta,
-  meta_name,
-  outline,
-  rank,
-  thumbnail
-}, Symbol.toStringTag, { value: "Module" }));
-var [scrollPosition, setScrollPosition] = createSignal(0);
-var _page7 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  scrollPosition,
-  setScrollPosition
-}, Symbol.toStringTag, { value: "Module" }));
-function getYoutubeIdFromUrl(url) {
-  return url.match(/.*(?:youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=)([^#&?]*).*/)?.[1] ?? "";
-}
-var _tmpl$$1 = ["<main", "><ol>", "</ol></main>"];
-var _tmpl$2$1 = ["<li", "><a", ' href="', '"><div', '><span class="', '">', '</span><span class="', '">', "</span><span", ">", "</span></div><img", ' src="', '" alt="Thumbnail"><div', "><h2", ">", "</h2><p>", "</p></div></a></li>"];
-var ListLevels = function(props) {
-  return ssr(_tmpl$$1, ssrHydrationKey() + ssrAttribute("class", escape2(levels2, true), false), escape2(createComponent2(For, {
-    get each() {
-      return props.levels;
-    },
-    children: (level2, i) => createComponent2(ListLevel, {
-      get rank() {
-        return i() + 1;
-      },
-      level: level2
-    })
-  })));
-};
-var ListLevel = function(props) {
-  return ssr(_tmpl$2$1, ssrHydrationKey() + ssrAttribute("id", escape2(props.rank.toString(), true), false), ssrAttribute("class", escape2(level, true), false), `/list/${escape2(props.rank, true)}`, ssrAttribute("class", escape2(rank, true), false), `${escape2(display_medium, true) || ""} ${props.rank < 100 ? escape2(escape2(outline, true), true) : ""}`, escape2(Math.floor(props.rank / 100 % 10)), `${escape2(display_medium, true) || ""} ${props.rank < 10 ? escape2(escape2(outline, true), true) : ""}`, escape2(Math.floor(props.rank / 10 % 10)), ssrAttribute("class", escape2(display_medium, true), false), escape2(Math.floor(props.rank % 10)), ssrAttribute("class", escape2(thumbnail, true), false), `https://img.youtube.com/vi/${escape2(getYoutubeIdFromUrl(props.level.video ?? "https://www.youtube.com/watch?v=oHg5SJYRHA0"), true)}/mqdefault.jpg`, ssrAttribute("class", escape2(meta, true), false), ssrAttribute("class", escape2(meta_name, true), false), escape2(props.level.name), escape2(props.level.user.name));
-};
-var archive = "_61viavc";
-var button_collapse = "_61viav3";
-var button_collapse_icon = { collapsed: "_61viav4", uncollapsed: "_61viav6 _61viav4" };
-var minimap = "_61viav7";
-var minimap_scroll_indicator = "_61viava";
-var minimap_stop = "_61viav9";
-var minimap_stop_connector = "_61viavb";
-var minimap_stops = "_61viav8";
-var nav = { collapsed: "_61viav1 _61viav0", uncollapsed: "_61viav2 _61viav0" };
-var _page5 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  archive,
-  button_collapse,
-  button_collapse_icon,
-  minimap,
-  minimap_scroll_indicator,
-  minimap_stop,
-  minimap_stop_connector,
-  minimap_stops,
-  nav
-}, Symbol.toStringTag, { value: "Module" }));
-var iconChevrons = "/_astro/chevrons.b6700f81.svg";
-var _tmpl$ = ["<aside", "><nav", "><div", "><!--#-->", "<!--/--><ol", ">", "</ol></div><div><a", ' href="/archive">Archive</a></div></nav><button', "><img", "></button></aside>"];
-var _tmpl$2 = ["<li", "><a", ' href="', '">', "</a></li>"];
-var _tmpl$3 = ["<div", "></div>"];
-var _tmpl$4 = ["<svg", ' height="', '" viewBox="0 0 1 2" style="', '"><polygon points="1,0 1,2 0,1" fill="#ffffff"></polygon></svg>'];
-var stopsHeight = 64;
-var stopsMinGap = 64;
-var minStopsAmount = 2;
-var maxStopsAmount = 5;
-var ListSidebar = function(props) {
-  const [collapsed, setCollapsed] = createSignal(true);
-  const [scrollHeight, setScrollHeight] = createSignal(0);
-  const stopsAmount = createMemo(() => {
-    const n = Math.trunc((scrollHeight() + stopsMinGap) / (stopsHeight + stopsMinGap));
-    return Math.min(Math.max(n, minStopsAmount), maxStopsAmount);
-  });
-  const stops = createMemo(() => {
-    const n = stopsAmount();
-    return Array.from({
-      length: n
-    }, (_2, i) => Math.trunc(i * ((props.length - 1) / (n - 1)) + 1));
-  });
-  return ssr(_tmpl$, ssrHydrationKey(), ssrAttribute("class", escape2(nav[collapsed() ? "collapsed" : "uncollapsed"], true), false), ssrAttribute("class", escape2(minimap, true), false), escape2(createComponent2(ScrollIndicator, {
-    get position() {
-      return scrollPosition();
-    },
-    get height() {
-      return scrollHeight();
-    }
-  })), ssrAttribute("class", escape2(minimap_stops, true), false), escape2(createComponent2(For, {
-    get each() {
-      return stops();
-    },
-    children: (stop2, i) => [ssr(_tmpl$2, ssrHydrationKey(), ssrAttribute("class", escape2([minimap_stop, label_large].join(" "), true), false), `#${escape2(stop2, true)}`, escape2(stop2)), createComponent2(Show, {
-      get when() {
-        return i() < stopsAmount() - 1;
-      },
-      get children() {
-        return ssr(_tmpl$3, ssrHydrationKey() + ssrAttribute("class", escape2(minimap_stop_connector, true), false));
-      }
-    })]
-  })), ssrAttribute("class", escape2([archive, label_large].join(" "), true), false), ssrAttribute("class", escape2([button_collapse, screens.lt_sm].join(" "), true), false), ssrAttribute("class", escape2(button_collapse_icon[collapsed() ? "collapsed" : "uncollapsed"], true), false) + ssrAttribute("src", escape2(iconChevrons, true), false) + ssrAttribute("alt", collapsed() ? "uncollapse" : "collapse", false));
-};
-var ScrollIndicator = function(props) {
-  const padding = 32;
-  const width = 6;
-  return ssr(_tmpl$4, ssrHydrationKey() + ssrAttribute("class", escape2(minimap_scroll_indicator, true), false) + ssrAttribute("width", escape2(width, true), false), escape2(width, true) * 2, `top:${escape2(props.position, true) * (escape2(props.height, true) - 2 * escape2(padding, true)) + escape2(padding, true) - escape2(width, true)}px`);
-};
 var getPathFromURL = (url, strict = true) => {
   const queryIndex = url.indexOf("?", 8);
   const result = url.substring(url.indexOf("/", 8), queryIndex === -1 ? url.length : queryIndex);
@@ -5113,13 +5005,361 @@ var hc = (baseUrl, options) => createProxy(async (opts) => {
 var api = hc(
   Deno.env.get("GDOL_API_URL")
 );
+var after = "f5s7p66";
+var before = "f5s7p65";
+var bottom = "f5s7p63 f5s7p61";
+var leap = "f5s7p67";
+var level_name = "f5s7p6b";
+var overview = "f5s7p60";
+var overview_icon = "f5s7p6c";
+var rank$1 = "f5s7p6a";
+var row = "f5s7p64";
+var self = "f5s7p68";
+var stripe = "f5s7p69";
+var top = "f5s7p62 f5s7p61";
+var iconAdd = "/_astro/add.2fb9021e.svg";
+var iconDelete = "/_astro/delete.5896359e.svg";
+var iconLower = "/_astro/lower.c8cc77e0.svg";
+var iconNoChange = "/_astro/no_change.dac6bf0d.svg";
+var iconRaise = "/_astro/raise.e8ddbb8c.svg";
+function getChangelogIcon(changelog2) {
+  switch (changelog2.action) {
+    case "add":
+      return iconAdd;
+    case "archive":
+      return iconDelete;
+    case "move":
+      if (changelog2.to === changelog2.from)
+        return iconNoChange;
+      return changelog2.to > changelog2.from ? iconLower : iconRaise;
+  }
+}
+var _tmpl$$2 = ["<div", ' class="', '"><p', ">Top of List</p></div>"];
+var _tmpl$2$2 = ["<div", ' class="', '"><p', ">End of List</p></div>"];
+var _tmpl$3$1 = ["<div", ' class="', '"></div>'];
+var _tmpl$4$1 = ["<div", ' class="', '"><div', "></div><p", ">", '</p><p class="', '">#<!--#-->', "<!--/--></p></div>"];
+var _tmpl$5 = ["<div", "><!--#-->", "<!--/--><div", "><img", ' alt="change"></div><!--#-->', "<!--/--></div>"];
+var ChangelogOverviewColumn = function(props) {
+  const slice = createMemo(() => {
+    const listWithRank = props.list.map((lvl, i) => ({
+      ...lvl,
+      rank: i + 1
+    }));
+    if (!props.after && props.action === "add" || props.after && props.action === "archive") {
+      listWithRank.splice(props.rank - 1, 0, void 0);
+    }
+    const start2 = Math.max(props.rank - 2, 0);
+    const end = Math.min(props.rank, props.list.length) + 1;
+    return listWithRank.slice(start2, end);
+  });
+  const classList = createMemo(() => ({
+    [after]: props.after,
+    [before]: !props.after
+  }));
+  const isSelf = (rank2) => {
+    if (props.after && props.action === "archive")
+      return false;
+    if (!props.after && props.action === "add")
+      return false;
+    return rank2 === props.rank;
+  };
+  return [createComponent2(Show, {
+    get when() {
+      return props.rank === 1;
+    },
+    get children() {
+      return ssr(_tmpl$$2, ssrHydrationKey(), `${escape2(top, true) || ""} ${escape2(ssrClassList(classList()), true) || ""}`, ssrAttribute("class", escape2(label_medium, true), false));
+    }
+  }), createComponent2(For, {
+    get each() {
+      return slice();
+    },
+    children: (level2) => createComponent2(Show, {
+      keyed: true,
+      when: level2,
+      get fallback() {
+        return ssr(_tmpl$3$1, ssrHydrationKey(), `${escape2(leap, true) || ""} ${escape2(ssrClassList(classList()), true) || ""}`);
+      },
+      children: (level22) => ssr(_tmpl$4$1, ssrHydrationKey(), `${escape2(row, true) || ""} ${escape2(ssrClassList({
+        [self]: isSelf(level22.rank),
+        ...classList()
+      }), true) || ""}`, ssrAttribute("class", escape2(stripe, true), false), ssrAttribute("class", escape2(level_name, true), false), escape2(level22.name), `${escape2(rank$1, true)} ${escape2(mono, true)}`, escape2(level22.rank))
+    })
+  }), createComponent2(Show, {
+    get when() {
+      return (isSelf(props.rank) ? props.rank : props.rank - 1) === props.list.length;
+    },
+    get children() {
+      return ssr(_tmpl$2$2, ssrHydrationKey(), `${escape2(bottom, true) || ""} ${escape2(ssrClassList(classList()), true) || ""}`, ssrAttribute("class", escape2(label_medium, true), false));
+    }
+  })];
+};
+var ChangelogOverview = function(props) {
+  const icon2 = createMemo(() => getChangelogIcon(props));
+  return ssr(_tmpl$5, ssrHydrationKey() + ssrAttribute("class", escape2(overview, true), false), escape2(createComponent2(ChangelogOverviewColumn, {
+    after: false,
+    get action() {
+      return props.action;
+    },
+    get rank() {
+      return props.action === "add" ? props.to : props.from;
+    },
+    get list() {
+      return props.before;
+    }
+  })), ssrAttribute("class", escape2(overview_icon, true), false), ssrAttribute("src", escape2(icon2(), true), false), escape2(createComponent2(ChangelogOverviewColumn, {
+    after: true,
+    get action() {
+      return props.action;
+    },
+    get rank() {
+      return props.action === "archive" ? props.from : props.to;
+    },
+    get list() {
+      return props.after;
+    }
+  })));
+};
+var $$Astro$2 = createAstro();
+var $$Index$1 = createComponent(async ($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$2, $$props, $$slots);
+  Astro2.self = $$Index$1;
+  const res = await api.changelog.$get();
+  const cls = await res.json();
+  const dict = /* @__PURE__ */ new Map([
+    ["add", "Added"],
+    ["move", "Moved"],
+    ["archive", "Archived"]
+  ]);
+  const clss = cls.map((c, i, cs) => {
+    const common = {
+      timestamp: new Date(c.timestamp),
+      level: c.level,
+      before: i < cs.length ? cs.at(i + 1)?.list ?? [] : [],
+      after: c.list,
+      reason: c.reason
+    };
+    switch (c.action) {
+      case "add":
+        return {
+          ...common,
+          action: "add",
+          to: c.to
+        };
+      case "archive":
+        return {
+          ...common,
+          action: "archive",
+          from: c.from
+        };
+      case "move":
+        return {
+          ...common,
+          action: "move",
+          from: c.from,
+          to: c.to
+        };
+    }
+  });
+  return renderTemplate`${renderComponent($$result, "IndexLayout", $$Index$3, {}, { "default": ($$result2) => renderTemplate`
+	${maybeRenderHead($$result2)}<div${addAttribute(page$1, "class")}>
+		<h1${addAttribute(h1, "class")}>Changelog</h1>
+		<ol${addAttribute(changelogs, "class")}>
+			${clss.map((cl) => renderTemplate`<li${addAttribute(changelog, "class")}>
+						<div${addAttribute(date, "class")}>
+							<p${addAttribute(mono, "class")}>${new Date(cl.timestamp).toLocaleDateString()}</p>
+						</div>
+						<div${addAttribute(summary, "class")}>
+							<p>
+								${dict.get(cl.action)} <a${addAttribute(`/level/${cl.level.id}`, "href")}>${cl.level.name}</a>
+							</p>
+						</div>
+						<div${addAttribute(changes, "class")}>
+							${cl.action === "move" && renderTemplate`<p${addAttribute([from, mono], "class:list")}>#${cl.from}</p>`}
+							<div${addAttribute(icon, "class")}>
+								<img${addAttribute(getChangelogIcon(cl), "src")} alt="change">
+							</div>
+							<p${addAttribute([to, mono], "class:list")}>#${cl.action === "archive" ? cl.from : cl.to}</p>
+						</div>
+						${(cl.reason || cl.action !== "add") && renderTemplate`<div${addAttribute(details, "class")}>
+								${cl.reason ? renderTemplate`<p>
+										<span>Reason: </span>
+										<span>${cl.reason}</span>
+									</p>` : renderTemplate`<p${addAttribute(no_reason, "class")}>No Reason specified</p>`}
+							</div>`}
+						<div${addAttribute(overview$1, "class")}>${renderTemplate`${renderComponent($$result2, "ChangelogOverview", ChangelogOverview, { ...cl })}`}</div>
+					</li>`)}
+		</ol>
+	</div>
+` })}`;
+}, "/Users/emonadeo/Development/GDOL-v4/web/src/pages/changelog/index.astro");
+var $$file$2 = "/Users/emonadeo/Development/GDOL-v4/web/src/pages/changelog/index.astro";
+var $$url$2 = "/changelog";
+var _page2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  default: $$Index$1,
+  file: $$file$2,
+  url: $$url$2
+}, Symbol.toStringTag, { value: "Module" }));
+var main = "_1dnlsa30";
+var _page3 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  main
+}, Symbol.toStringTag, { value: "Module" }));
+var $$Astro$1 = createAstro();
+var $$Typography = createComponent(async ($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$1, $$props, $$slots);
+  Astro2.self = $$Typography;
+  return renderTemplate`${renderComponent($$result, "IndexLayout", $$Index$3, {}, { "default": ($$result2) => renderTemplate`
+	${maybeRenderHead($$result2)}<main${addAttribute(main, "class")}>
+		<h1>Display Large</h1>
+		<h2>Display Medium</h2>
+		<h3>Display Small</h3>
+		<h4>Title Large</h4>
+		<h5>Title Medium</h5>
+		<h6>Title Small</h6>
+		<p>Body Large</p>
+		<p${addAttribute(mono, "class")}>Body Large Mono</p>
+		<p${addAttribute(body_medium, "class")}>Body Medium</p>
+		<p${addAttribute([body_medium, mono], "class:list")}>Body Medium Mono</p>
+		<p${addAttribute(body_small, "class")}>Body Small</p>
+		<p${addAttribute([body_small, mono], "class:list")}>Body Small Mono</p>
+	</main>
+` })}`;
+}, "/Users/emonadeo/Development/GDOL-v4/web/src/pages/debug/typography.astro");
+var $$file$1 = "/Users/emonadeo/Development/GDOL-v4/web/src/pages/debug/typography.astro";
+var $$url$1 = "/debug/typography";
+var _page4 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  default: $$Typography,
+  file: $$file$1,
+  url: $$url$1
+}, Symbol.toStringTag, { value: "Module" }));
+var page = "ju8x7t0";
+var _page5 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  page
+}, Symbol.toStringTag, { value: "Module" }));
+var level = "nd4jxx4";
+var levels2 = "nd4jxx3";
+var meta = "nd4jxx7";
+var meta_name = "nd4jxx8";
+var outline = "nd4jxx9";
+var rank = "nd4jxx5";
+var thumbnail = "nd4jxx6";
+var _page8 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  level,
+  levels: levels2,
+  meta,
+  meta_name,
+  outline,
+  rank,
+  thumbnail
+}, Symbol.toStringTag, { value: "Module" }));
+var [scrollPosition, setScrollPosition] = createSignal(0);
+var _page9 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  scrollPosition,
+  setScrollPosition
+}, Symbol.toStringTag, { value: "Module" }));
+function getYoutubeIdFromUrl(url) {
+  return url.match(/.*(?:youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=)([^#&?]*).*/)?.[1] ?? "";
+}
+var _tmpl$$1 = ["<main", "><ol>", "</ol></main>"];
+var _tmpl$2$1 = ["<li", "><a", ' href="', '"><div', '><span class="', '">', '</span><span class="', '">', "</span><span", ">", "</span></div><img", ' src="', '" alt="Thumbnail"><div', "><h2", ">", "</h2><p>", "</p></div></a></li>"];
+var ListLevels = function(props) {
+  return ssr(_tmpl$$1, ssrHydrationKey() + ssrAttribute("class", escape2(levels2, true), false), escape2(createComponent2(For, {
+    get each() {
+      return props.levels;
+    },
+    children: (level2, i) => createComponent2(ListLevel, {
+      get rank() {
+        return i() + 1;
+      },
+      level: level2
+    })
+  })));
+};
+var ListLevel = function(props) {
+  return ssr(_tmpl$2$1, ssrHydrationKey() + ssrAttribute("id", escape2(props.rank.toString(), true), false), ssrAttribute("class", escape2(level, true), false), `/list/${escape2(props.rank, true)}`, ssrAttribute("class", escape2(rank, true), false), `${escape2(display_medium, true) || ""} ${props.rank < 100 ? escape2(escape2(outline, true), true) : ""}`, escape2(Math.floor(props.rank / 100 % 10)), `${escape2(display_medium, true) || ""} ${props.rank < 10 ? escape2(escape2(outline, true), true) : ""}`, escape2(Math.floor(props.rank / 10 % 10)), ssrAttribute("class", escape2(display_medium, true), false), escape2(Math.floor(props.rank % 10)), ssrAttribute("class", escape2(thumbnail, true), false), `https://img.youtube.com/vi/${escape2(getYoutubeIdFromUrl(props.level.video ?? "https://www.youtube.com/watch?v=oHg5SJYRHA0"), true)}/mqdefault.jpg`, ssrAttribute("class", escape2(meta, true), false), ssrAttribute("class", escape2(meta_name, true), false), escape2(props.level.name), escape2(props.level.user.name));
+};
+var archive = "_61viavc";
+var button_collapse = "_61viav3";
+var button_collapse_icon = { collapsed: "_61viav4", uncollapsed: "_61viav6 _61viav4" };
+var minimap = "_61viav7";
+var minimap_scroll_indicator = "_61viava";
+var minimap_stop = "_61viav9";
+var minimap_stop_connector = "_61viavb";
+var minimap_stops = "_61viav8";
+var nav = { collapsed: "_61viav1 _61viav0", uncollapsed: "_61viav2 _61viav0" };
+var _page7 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  archive,
+  button_collapse,
+  button_collapse_icon,
+  minimap,
+  minimap_scroll_indicator,
+  minimap_stop,
+  minimap_stop_connector,
+  minimap_stops,
+  nav
+}, Symbol.toStringTag, { value: "Module" }));
+var iconChevrons = "/_astro/chevrons.b6700f81.svg";
+var _tmpl$ = ["<aside", "><nav", "><div", "><!--#-->", "<!--/--><ol", ">", "</ol></div><div><a", ' href="/archive">Archive</a></div></nav><button', "><img", "></button></aside>"];
+var _tmpl$2 = ["<li", "><a", ' href="', '">', "</a></li>"];
+var _tmpl$3 = ["<div", "></div>"];
+var _tmpl$4 = ["<svg", ' height="', '" viewBox="0 0 1 2" style="', '"><polygon points="1,0 1,2 0,1" fill="#ffffff"></polygon></svg>'];
+var stopsHeight = 64;
+var stopsMinGap = 64;
+var minStopsAmount = 2;
+var maxStopsAmount = 5;
+var ListSidebar = function(props) {
+  const [collapsed, setCollapsed] = createSignal(true);
+  const [scrollHeight, setScrollHeight] = createSignal(0);
+  const stopsAmount = createMemo(() => {
+    const n = Math.trunc((scrollHeight() + stopsMinGap) / (stopsHeight + stopsMinGap));
+    return Math.min(Math.max(n, minStopsAmount), maxStopsAmount);
+  });
+  const stops = createMemo(() => {
+    const n = stopsAmount();
+    return Array.from({
+      length: n
+    }, (_2, i) => Math.trunc(i * ((props.length - 1) / (n - 1)) + 1));
+  });
+  return ssr(_tmpl$, ssrHydrationKey(), ssrAttribute("class", escape2(nav[collapsed() ? "collapsed" : "uncollapsed"], true), false), ssrAttribute("class", escape2(minimap, true), false), escape2(createComponent2(ScrollIndicator, {
+    get position() {
+      return scrollPosition();
+    },
+    get height() {
+      return scrollHeight();
+    }
+  })), ssrAttribute("class", escape2(minimap_stops, true), false), escape2(createComponent2(For, {
+    get each() {
+      return stops();
+    },
+    children: (stop2, i) => [ssr(_tmpl$2, ssrHydrationKey(), ssrAttribute("class", escape2([minimap_stop, label_large].join(" "), true), false), `#${escape2(stop2, true)}`, escape2(stop2)), createComponent2(Show, {
+      get when() {
+        return i() < stopsAmount() - 1;
+      },
+      get children() {
+        return ssr(_tmpl$3, ssrHydrationKey() + ssrAttribute("class", escape2(minimap_stop_connector, true), false));
+      }
+    })]
+  })), ssrAttribute("class", escape2([archive, label_large].join(" "), true), false), ssrAttribute("class", escape2([button_collapse, screens.lt_sm].join(" "), true), false), ssrAttribute("class", escape2(button_collapse_icon[collapsed() ? "collapsed" : "uncollapsed"], true), false) + ssrAttribute("src", escape2(iconChevrons, true), false) + ssrAttribute("alt", collapsed() ? "uncollapse" : "collapse", false));
+};
+var ScrollIndicator = function(props) {
+  const padding = 32;
+  const width = 6;
+  return ssr(_tmpl$4, ssrHydrationKey() + ssrAttribute("class", escape2(minimap_scroll_indicator, true), false) + ssrAttribute("width", escape2(width, true), false), escape2(width, true) * 2, `top:${escape2(props.position, true) * (escape2(props.height, true) - 2 * escape2(padding, true)) + escape2(padding, true) - escape2(width, true)}px`);
+};
 var $$Astro = createAstro();
 var $$Index = createComponent(async ($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro, $$props, $$slots);
   Astro2.self = $$Index;
   const res = await api.list.$get();
   const levels3 = await res.json();
-  return renderTemplate`${renderComponent($$result, "IndexLayout", $$Index$2, {}, { "default": ($$result2) => renderTemplate`
+  return renderTemplate`${renderComponent($$result, "IndexLayout", $$Index$3, {}, { "default": ($$result2) => renderTemplate`
 	${maybeRenderHead($$result2)}<div${addAttribute(page, "class")}>
 		${renderComponent($$result2, "ListSidebar", ListSidebar, { "client:load": true, "length": levels3.length, "client:component-hydration": "load", "client:component-path": "/Users/emonadeo/Development/GDOL-v4/web/src/pages/list/sidebar.tsx", "client:component-export": "ListSidebar" })}
 		${renderComponent($$result2, "ListLevels", ListLevels, { "client:load": true, "levels": levels3, "client:component-hydration": "load", "client:component-path": "/Users/emonadeo/Development/GDOL-v4/web/src/pages/list/levels.tsx", "client:component-export": "ListLevels" })}
@@ -5128,7 +5368,7 @@ var $$Index = createComponent(async ($$result, $$props, $$slots) => {
 }, "/Users/emonadeo/Development/GDOL-v4/web/src/pages/list/index.astro");
 var $$file = "/Users/emonadeo/Development/GDOL-v4/web/src/pages/list/index.astro";
 var $$url = "/list";
-var _page4 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+var _page6 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: $$Index,
   file: $$file,
@@ -5286,9 +5526,9 @@ var server_default2 = {
   check: check2,
   renderToStaticMarkup: renderToStaticMarkup2
 };
-var pageMap = /* @__PURE__ */ new Map([["src/pages/index.astro", _page0], ["src/pages/debug/typography.css.ts", _page1], ["src/pages/debug/typography.astro", _page2], ["src/pages/list/index.css.ts", _page3], ["src/pages/list/index.astro", _page4], ["src/pages/list/sidebar.css.ts", _page5], ["src/pages/list/levels.css.ts", _page6], ["src/pages/list/store.ts", _page7]]);
+var pageMap = /* @__PURE__ */ new Map([["src/pages/index.astro", _page0], ["src/pages/changelog/index.css.ts", _page1], ["src/pages/changelog/index.astro", _page2], ["src/pages/debug/typography.css.ts", _page3], ["src/pages/debug/typography.astro", _page4], ["src/pages/list/index.css.ts", _page5], ["src/pages/list/index.astro", _page6], ["src/pages/list/sidebar.css.ts", _page7], ["src/pages/list/levels.css.ts", _page8], ["src/pages/list/store.ts", _page9]]);
 var renderers = [Object.assign({ "name": "astro:jsx", "serverEntrypoint": "astro/jsx/server.js", "jsxImportSource": "astro" }, { ssr: server_default }), Object.assign({ "name": "@astrojs/solid-js", "clientEntrypoint": "@astrojs/solid-js/client.js", "serverEntrypoint": "@astrojs/solid-js/server.js", "jsxImportSource": "solid-js" }, { ssr: server_default2 })];
-var _manifest2 = Object.assign(deserializeManifest({ "adapterName": "@astrojs/deno", "routes": [{ "file": "", "links": ["/_astro/typography.c05cac1f.css", "/_astro/typography.a4a23d97.css"], "scripts": [], "routeData": { "route": "/", "type": "page", "pattern": "^\\/$", "segments": [], "params": [], "component": "src/pages/index.astro", "pathname": "/", "prerender": false, "_meta": { "trailingSlash": "ignore" } } }, { "file": "", "links": ["/_astro/typography.css.8cb8d15c.css"], "scripts": [], "routeData": { "route": "/debug/typography.css", "type": "endpoint", "pattern": "^\\/debug\\/typography\\.css$", "segments": [[{ "content": "debug", "dynamic": false, "spread": false }], [{ "content": "typography.css", "dynamic": false, "spread": false }]], "params": [], "component": "src/pages/debug/typography.css.ts", "pathname": "/debug/typography.css", "prerender": false, "_meta": { "trailingSlash": "ignore" } } }, { "file": "", "links": ["/_astro/typography.css.8cb8d15c.css", "/_astro/typography.c05cac1f.css", "/_astro/typography.a4a23d97.css"], "scripts": [], "routeData": { "route": "/debug/typography", "type": "page", "pattern": "^\\/debug\\/typography\\/?$", "segments": [[{ "content": "debug", "dynamic": false, "spread": false }], [{ "content": "typography", "dynamic": false, "spread": false }]], "params": [], "component": "src/pages/debug/typography.astro", "pathname": "/debug/typography", "prerender": false, "_meta": { "trailingSlash": "ignore" } } }, { "file": "", "links": ["/_astro/index.css.460ad287.css"], "scripts": [], "routeData": { "route": "/list.css", "type": "endpoint", "pattern": "^\\/list\\.css$", "segments": [[{ "dynamic": false, "spread": false, "content": "list.css" }]], "params": [], "component": "src/pages/list/index.css.ts", "pathname": "/list.css", "prerender": false, "_meta": { "trailingSlash": "ignore" } } }, { "file": "", "links": ["/_astro/index.css.460ad287.css", "/_astro/levels.css.11c46dd1.css", "/_astro/typography.c05cac1f.css", "/_astro/typography.a4a23d97.css", "/_astro/sidebar.css.3783a87b.css"], "scripts": [], "routeData": { "route": "/list", "type": "page", "pattern": "^\\/list\\/?$", "segments": [[{ "content": "list", "dynamic": false, "spread": false }]], "params": [], "component": "src/pages/list/index.astro", "pathname": "/list", "prerender": false, "_meta": { "trailingSlash": "ignore" } } }, { "file": "", "links": ["/_astro/typography.c05cac1f.css", "/_astro/sidebar.css.3783a87b.css"], "scripts": [], "routeData": { "route": "/list/sidebar.css", "type": "endpoint", "pattern": "^\\/list\\/sidebar\\.css$", "segments": [[{ "content": "list", "dynamic": false, "spread": false }], [{ "content": "sidebar.css", "dynamic": false, "spread": false }]], "params": [], "component": "src/pages/list/sidebar.css.ts", "pathname": "/list/sidebar.css", "prerender": false, "_meta": { "trailingSlash": "ignore" } } }, { "file": "", "links": ["/_astro/typography.c05cac1f.css", "/_astro/levels.css.11c46dd1.css"], "scripts": [], "routeData": { "route": "/list/levels.css", "type": "endpoint", "pattern": "^\\/list\\/levels\\.css$", "segments": [[{ "content": "list", "dynamic": false, "spread": false }], [{ "content": "levels.css", "dynamic": false, "spread": false }]], "params": [], "component": "src/pages/list/levels.css.ts", "pathname": "/list/levels.css", "prerender": false, "_meta": { "trailingSlash": "ignore" } } }, { "file": "", "links": [], "scripts": [], "routeData": { "route": "/list/store", "type": "endpoint", "pattern": "^\\/list\\/store$", "segments": [[{ "content": "list", "dynamic": false, "spread": false }], [{ "content": "store", "dynamic": false, "spread": false }]], "params": [], "component": "src/pages/list/store.ts", "pathname": "/list/store", "prerender": false, "_meta": { "trailingSlash": "ignore" } } }], "base": "/", "markdown": { "drafts": false, "syntaxHighlight": "shiki", "shikiConfig": { "langs": [], "theme": "github-dark", "wrap": false }, "remarkPlugins": [], "rehypePlugins": [], "remarkRehype": {}, "gfm": true, "smartypants": true }, "pageMap": null, "componentMetadata": [["/Users/emonadeo/Development/GDOL-v4/web/src/pages/debug/typography.astro", { "propagation": "none", "containsHead": true }], ["/Users/emonadeo/Development/GDOL-v4/web/src/pages/index.astro", { "propagation": "none", "containsHead": true }], ["/Users/emonadeo/Development/GDOL-v4/web/src/pages/list/index.astro", { "propagation": "none", "containsHead": true }]], "renderers": [], "entryModules": { "\0@astrojs-ssr-virtual-entry": "_@astrojs-ssr-virtual-entry.mjs", "@astrojs/solid-js/client.js": "_astro/client.f82ae169.js", "/Users/emonadeo/Development/GDOL-v4/web/src/pages/list/levels.tsx": "_astro/levels.18a1bc19.js", "/Users/emonadeo/Development/GDOL-v4/web/src/pages/list/sidebar.tsx": "_astro/sidebar.2712b7c7.js", "astro:scripts/before-hydration.js": "" }, "assets": ["/_astro/chevrons.b6700f81.svg", "/_astro/search.c48d62e6.svg", "/_astro/menu.37fa5928.svg", "/_astro/user.8a2db488.svg", "/_astro/logo.3d3d7bbc.svg", "/_astro/index.css.460ad287.css", "/_astro/sidebar.css.3783a87b.css", "/_astro/levels.css.11c46dd1.css", "/_astro/typography.c05cac1f.css", "/_astro/typography.css.8cb8d15c.css", "/_astro/typography.a4a23d97.css", "/_astro/client.f82ae169.js", "/_astro/levels.18a1bc19.js", "/_astro/sidebar.2712b7c7.js", "/_astro/typography.css.f4d642f8.js", "/_astro/web.80c27d7b.js"] }), {
+var _manifest2 = Object.assign(deserializeManifest({ "adapterName": "@astrojs/deno", "routes": [{ "file": "", "links": ["/_astro/index.c05cac1f.css", "/_astro/index.a4a23d97.css"], "scripts": [], "routeData": { "route": "/", "type": "page", "pattern": "^\\/$", "segments": [], "params": [], "component": "src/pages/index.astro", "pathname": "/", "prerender": false, "_meta": { "trailingSlash": "ignore" } } }, { "file": "", "links": ["/_astro/index.c05cac1f.css", "/_astro/index.css.854a1683.css"], "scripts": [], "routeData": { "route": "/changelog.css", "type": "endpoint", "pattern": "^\\/changelog\\.css$", "segments": [[{ "dynamic": false, "spread": false, "content": "changelog.css" }]], "params": [], "component": "src/pages/changelog/index.css.ts", "pathname": "/changelog.css", "prerender": false, "_meta": { "trailingSlash": "ignore" } } }, { "file": "", "links": ["/_astro/index.css.854a1683.css", "/_astro/index.c05cac1f.css", "/_astro/index.a4a23d97.css", "/_astro/index.9bd8933e.css"], "scripts": [], "routeData": { "route": "/changelog", "type": "page", "pattern": "^\\/changelog\\/?$", "segments": [[{ "content": "changelog", "dynamic": false, "spread": false }]], "params": [], "component": "src/pages/changelog/index.astro", "pathname": "/changelog", "prerender": false, "_meta": { "trailingSlash": "ignore" } } }, { "file": "", "links": ["/_astro/typography.css.8cb8d15c.css"], "scripts": [], "routeData": { "route": "/debug/typography.css", "type": "endpoint", "pattern": "^\\/debug\\/typography\\.css$", "segments": [[{ "content": "debug", "dynamic": false, "spread": false }], [{ "content": "typography.css", "dynamic": false, "spread": false }]], "params": [], "component": "src/pages/debug/typography.css.ts", "pathname": "/debug/typography.css", "prerender": false, "_meta": { "trailingSlash": "ignore" } } }, { "file": "", "links": ["/_astro/typography.css.8cb8d15c.css", "/_astro/index.c05cac1f.css", "/_astro/index.a4a23d97.css"], "scripts": [], "routeData": { "route": "/debug/typography", "type": "page", "pattern": "^\\/debug\\/typography\\/?$", "segments": [[{ "content": "debug", "dynamic": false, "spread": false }], [{ "content": "typography", "dynamic": false, "spread": false }]], "params": [], "component": "src/pages/debug/typography.astro", "pathname": "/debug/typography", "prerender": false, "_meta": { "trailingSlash": "ignore" } } }, { "file": "", "links": ["/_astro/index.css.460ad287.css"], "scripts": [], "routeData": { "route": "/list.css", "type": "endpoint", "pattern": "^\\/list\\.css$", "segments": [[{ "dynamic": false, "spread": false, "content": "list.css" }]], "params": [], "component": "src/pages/list/index.css.ts", "pathname": "/list.css", "prerender": false, "_meta": { "trailingSlash": "ignore" } } }, { "file": "", "links": ["/_astro/index.css.460ad287.css", "/_astro/levels.css.7efc5fe3.css", "/_astro/index.c05cac1f.css", "/_astro/index.a4a23d97.css", "/_astro/sidebar.css.3783a87b.css"], "scripts": [], "routeData": { "route": "/list", "type": "page", "pattern": "^\\/list\\/?$", "segments": [[{ "content": "list", "dynamic": false, "spread": false }]], "params": [], "component": "src/pages/list/index.astro", "pathname": "/list", "prerender": false, "_meta": { "trailingSlash": "ignore" } } }, { "file": "", "links": ["/_astro/index.c05cac1f.css", "/_astro/sidebar.css.3783a87b.css"], "scripts": [], "routeData": { "route": "/list/sidebar.css", "type": "endpoint", "pattern": "^\\/list\\/sidebar\\.css$", "segments": [[{ "content": "list", "dynamic": false, "spread": false }], [{ "content": "sidebar.css", "dynamic": false, "spread": false }]], "params": [], "component": "src/pages/list/sidebar.css.ts", "pathname": "/list/sidebar.css", "prerender": false, "_meta": { "trailingSlash": "ignore" } } }, { "file": "", "links": ["/_astro/index.c05cac1f.css", "/_astro/levels.css.7efc5fe3.css"], "scripts": [], "routeData": { "route": "/list/levels.css", "type": "endpoint", "pattern": "^\\/list\\/levels\\.css$", "segments": [[{ "content": "list", "dynamic": false, "spread": false }], [{ "content": "levels.css", "dynamic": false, "spread": false }]], "params": [], "component": "src/pages/list/levels.css.ts", "pathname": "/list/levels.css", "prerender": false, "_meta": { "trailingSlash": "ignore" } } }, { "file": "", "links": [], "scripts": [], "routeData": { "route": "/list/store", "type": "endpoint", "pattern": "^\\/list\\/store$", "segments": [[{ "content": "list", "dynamic": false, "spread": false }], [{ "content": "store", "dynamic": false, "spread": false }]], "params": [], "component": "src/pages/list/store.ts", "pathname": "/list/store", "prerender": false, "_meta": { "trailingSlash": "ignore" } } }], "base": "/", "markdown": { "drafts": false, "syntaxHighlight": "shiki", "shikiConfig": { "langs": [], "theme": "github-dark", "wrap": false }, "remarkPlugins": [], "rehypePlugins": [], "remarkRehype": {}, "gfm": true, "smartypants": true }, "pageMap": null, "componentMetadata": [["/Users/emonadeo/Development/GDOL-v4/web/src/pages/changelog/index.astro", { "propagation": "none", "containsHead": true }], ["/Users/emonadeo/Development/GDOL-v4/web/src/pages/debug/typography.astro", { "propagation": "none", "containsHead": true }], ["/Users/emonadeo/Development/GDOL-v4/web/src/pages/index.astro", { "propagation": "none", "containsHead": true }], ["/Users/emonadeo/Development/GDOL-v4/web/src/pages/list/index.astro", { "propagation": "none", "containsHead": true }]], "renderers": [], "entryModules": { "\0@astrojs-ssr-virtual-entry": "_@astrojs-ssr-virtual-entry.mjs", "/Users/emonadeo/Development/GDOL-v4/web/src/pages/list/sidebar.tsx": "_astro/sidebar.2712b7c7.js", "/Users/emonadeo/Development/GDOL-v4/web/src/pages/list/levels.tsx": "_astro/levels.18a1bc19.js", "@astrojs/solid-js/client.js": "_astro/client.f82ae169.js", "astro:scripts/before-hydration.js": "" }, "assets": ["/_astro/chevrons.b6700f81.svg", "/_astro/search.c48d62e6.svg", "/_astro/menu.37fa5928.svg", "/_astro/logo.3d3d7bbc.svg", "/_astro/user.8a2db488.svg", "/_astro/add.2fb9021e.svg", "/_astro/lower.c8cc77e0.svg", "/_astro/no_change.dac6bf0d.svg", "/_astro/delete.5896359e.svg", "/_astro/raise.e8ddbb8c.svg", "/_astro/index.9bd8933e.css", "/_astro/index.css.460ad287.css", "/_astro/index.c05cac1f.css", "/_astro/levels.css.7efc5fe3.css", "/_astro/index.css.854a1683.css", "/_astro/typography.css.8cb8d15c.css", "/_astro/sidebar.css.3783a87b.css", "/_astro/index.a4a23d97.css", "/_astro/client.f82ae169.js", "/_astro/levels.18a1bc19.js", "/_astro/sidebar.2712b7c7.js", "/_astro/typography.css.f4d642f8.js", "/_astro/web.80c27d7b.js"] }), {
   pageMap,
   renderers
 });
