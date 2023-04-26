@@ -1,4 +1,4 @@
-import { ChangelogListLevel, Changelog as Cl } from '@gdol/api/types';
+import { ChangelogListLevel, Changelog as Cl } from '@gdol/node';
 
 import iconAdd from 'src/assets/icons/changelog/add.svg';
 import iconDelete from 'src/assets/icons/changelog/delete.svg';

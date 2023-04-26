@@ -1,4 +1,4 @@
-import { ChangelogListLevel } from '@gdol/api/types';
+import { ChangelogListLevel } from '@gdol/node';
 import { Component, createMemo, For, Show } from 'solid-js';
 
 import {

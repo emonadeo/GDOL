@@ -1,4 +1,4 @@
-import { Level } from '@gdol/api/types';
+import { Level } from '@gdol/node';
 import { For, Component } from 'solid-js';
 
 import { levels, level, rank, outline, thumbnail, meta, meta_name } from './levels.css.ts';

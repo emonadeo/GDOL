@@ -1,7 +1,12 @@
-import { Api } from '@gdol/api';
+import { Api } from '@gdol/node';
 import { hc } from 'hono/client';
 
+// TODO: type-safety
+
+declare namespace Deno {
+	const env: Map<string, string>;
+}
+
 export const api = hc<Api>(
-	// TODO: type-safety
 	import.meta.env.DEV ? import.meta.env.GDOL_API_URL : Deno.env.get('GDOL_API_URL')!
 );

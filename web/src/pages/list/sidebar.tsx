@@ -90,10 +90,10 @@ export const ListSidebar: Component<ListSidebarProps> = function (props) {
 };
 
 // Scroll Indicator
-interface ScrollIndicatorProps {
+type ScrollIndicatorProps = {
 	position: number;
 	height: number;
-}
+};
 
 export const ScrollIndicator: Component<ScrollIndicatorProps> = function (props) {
 	const padding = 32;

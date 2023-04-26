@@ -6,10 +6,10 @@
 		"atlas:clean": "deno task atlas:clean",
 		"atlas:apply": "deno task atlas:apply",
 		"build": "deno task build",
-		"build:api": "deno task build:api",
+		"build:node": "deno task build:node",
 		"build:web": "deno task build:web",
-		"dev": "deno dev",
 		"dev:api": "deno task dev:api",
+		"dev:node": "deno task dev:node",
 		"dev:web": "deno task dev:web",
 		"fmt": "prettier --write .",
 		"lint:web": "deno task lint:web",
@@ -17,7 +17,7 @@
 	},
 	"license": "MIT",
 	"devDependencies": {
-		"prettier": "^2.8.7",
+		"prettier": "^2.8.8",
 		"prettier-plugin-astro": "^0.8.0",
 		"prettier-plugin-sql-cst": "^0.8.2"
 	}

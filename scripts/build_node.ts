@@ -2,10 +2,9 @@ import { build, emptyDir } from 'https://deno.land/x/dnt@0.34.0/mod.ts';
 import { version } from '../deps.ts';
 
 // watch entry points
-import '../api/mod.ts';
-import '../types/mod.ts';
+import '../mod_node.ts';
 
-const outDir = './api/dist';
+const outDir = './node';
 
 const honoVersion = '3.1.6';
 
@@ -13,33 +12,30 @@ await emptyDir(outDir);
 
 await build({
 	compilerOptions: {
-		lib: ['dom', 'es2022'],
+		lib: ['dom', 'es2021'],
+		importHelpers: true,
 		skipLibCheck: true,
+		target: 'ES2021',
 	},
-	entryPoints: [
-		'./api/mod.ts',
-		{
-			name: './types',
-			path: './types/mod.ts',
-		},
-	],
+	entryPoints: ['./mod_node.ts'],
 	esModule: true,
 	declaration: true,
+	skipSourceOutput: true,
 	importMap: 'deno.json',
 	mappings: {
 		[`https://deno.land/x/hono@v${honoVersion}/mod.ts`]: {
 			name: 'hono',
 			version: honoVersion,
+			peerDependency: true,
 		},
 	},
 	outDir,
 	package: {
-		name: '@gdol/api',
+		name: '@gdol/node',
 		version: version,
 	},
 	scriptModule: false,
 	shims: {
-		undici: true,
 		deno: true,
 	},
 	test: false,
