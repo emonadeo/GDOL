@@ -19,12 +19,6 @@
 			"options": {
 				"parser": "html"
 			}
-		},
-		{
-			"files": "*.sql",
-			"options": {
-				"parser": "sqlite"
-			}
 		}
 	]
 }

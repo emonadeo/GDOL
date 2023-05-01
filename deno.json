@@ -9,6 +9,7 @@
 		"dev:node": "deno run --unstable --allow-all --watch scripts/build_api.ts",
 		"dev:web": "cd web && pnpm dev",
 		"fmt": "pnpm fmt",
+		"fmt:sql": "pnpm fmt:sql",
 		"lint:web": "cd web && pnpm lint",
 		"seed": "deno run --unstable --allow-all cli.ts seed"
 	}

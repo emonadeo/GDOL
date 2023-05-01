@@ -53,7 +53,7 @@ async function seedList(db: Database) {
 			i,
 			length,
 			list_level_ids: JSON.stringify(levelIds),
-			action: 'ADD',
+			action: 'add',
 			level_id: levelId,
 			to: levelIds.length,
 			reason: 'Seeded',

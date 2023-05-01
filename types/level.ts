@@ -10,3 +10,7 @@ export type Level = {
 	video?: string;
 	requirement?: number;
 };
+
+export type LevelWithRank = Level & {
+	rank: number;
+};

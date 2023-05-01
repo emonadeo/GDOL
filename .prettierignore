@@ -1,2 +1,4 @@
-node_modules/
+cmd/seed_data/
 dist/
+node/
+node_modules/

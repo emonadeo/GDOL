@@ -28,23 +28,23 @@ function levelFromRaw(level: RawLevel): Level {
 	return {
 		id: level.level_id,
 		name: level.level_name,
-		gd_id: level.level_gd_id || undefined,
-		video: level.level_video || undefined,
-		requirement: level.level_requirement || undefined,
+		gd_id: level.level_gd_id ?? undefined,
+		video: level.level_video ?? undefined,
+		requirement: level.level_requirement ?? undefined,
 		user: {
 			id: level.user_id,
 			name: level.user_name,
-			nationality: level.user_nationality || undefined,
+			nationality: level.user_nationality ?? undefined,
 		},
 		verifier: {
 			id: level.verifier_id,
 			name: level.verifier_name,
-			nationality: level.verifier_nationality || undefined,
+			nationality: level.verifier_nationality ?? undefined,
 		},
 		creators: creator_ids.map((creator_id, i) => ({
 			id: creator_id,
 			name: creator_names.at(i) as string,
-			nationality: (creator_nationalities.at(i) as string | null) || undefined,
+			nationality: creator_nationalities.at(i) ?? undefined,
 		})),
 	};
 }

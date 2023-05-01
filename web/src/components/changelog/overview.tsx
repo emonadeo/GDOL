@@ -1,4 +1,4 @@
-import { ChangelogListLevel } from '@gdol/node';
+import { Changelog, ChangelogLevel, ChangelogAction } from '@gdol/node';
 import { Component, createMemo, For, Show } from 'solid-js';
 
 import {
@@ -17,9 +17,9 @@ import {
 } from './overview.css.ts';
 
 import { label_medium, mono } from 'src/styles/atomic/typography.css.ts';
-import { Changelog, ChangelogAction, getChangelogIcon } from 'src/util/changelog.ts';
+import { getChangelogIcon } from 'src/util/changelog.ts';
 
-type LevelWithRank = ChangelogListLevel & {
+type ChangelogLevelWithRank = ChangelogLevel & {
 	rank: number;
 };
 
@@ -27,12 +27,12 @@ type ChangelogOverviewColumnProps = {
 	after: boolean;
 	action: ChangelogAction;
 	rank: number;
-	list: ChangelogListLevel[];
+	list: ChangelogLevel[];
 };
 
 const ChangelogOverviewColumn: Component<ChangelogOverviewColumnProps> = function (props) {
-	const slice = createMemo<Array<LevelWithRank | undefined>>(() => {
-		const listWithRank: Array<LevelWithRank | undefined> = props.list.map((lvl, i) => ({
+	const slice = createMemo<Array<ChangelogLevelWithRank | undefined>>(() => {
+		const listWithRank: Array<ChangelogLevelWithRank | undefined> = props.list.map((lvl, i) => ({
 			...lvl,
 			rank: i + 1,
 		}));
@@ -84,25 +84,29 @@ const ChangelogOverviewColumn: Component<ChangelogOverviewColumnProps> = functio
 	);
 };
 
-export const ChangelogOverview: Component<Changelog> = function (props) {
-	const icon = createMemo<string>(() => getChangelogIcon(props));
+export type ChangelogOverviewProps = {
+	changelog: Changelog;
+};
+
+export const ChangelogOverview: Component<ChangelogOverviewProps> = function (props) {
+	const icon = createMemo<string>(() => getChangelogIcon(props.changelog));
 
 	return (
 		<div class={overview}>
 			<ChangelogOverviewColumn
 				after={false}
-				action={props.action}
-				rank={props.action === 'add' ? props.to : props.from}
-				list={props.before}
+				action={props.changelog.action}
+				rank={props.changelog.action === 'add' ? props.changelog.to : props.changelog.from}
+				list={props.changelog.listBefore}
 			/>
 			<div class={overview_icon}>
 				<img src={icon()} alt="change" />
 			</div>
 			<ChangelogOverviewColumn
 				after={true}
-				action={props.action}
-				rank={props.action === 'archive' ? props.from : props.to}
-				list={props.after}
+				action={props.changelog.action}
+				rank={props.changelog.action === 'archive' ? props.changelog.from : props.changelog.to}
+				list={props.changelog.listAfter}
 			/>
 		</div>
 	);

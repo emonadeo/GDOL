@@ -12,6 +12,7 @@
 		"dev:node": "deno task dev:node",
 		"dev:web": "deno task dev:web",
 		"fmt": "prettier --write .",
+		"fmt:sql": "prettier --write **/*.sql",
 		"lint:web": "deno task lint:web",
 		"seed": "deno task seed"
 	},

@@ -19,7 +19,7 @@ import { api } from 'src/api.ts';
 import { ChangelogOverview } from 'src/components/changelog/overview.tsx';
 import IndexLayout from 'src/layouts/index.astro';
 import { mono } from 'src/styles/atomic/typography.css.ts';
-import { Changelog, getChangelogIcon } from 'src/util/changelog.ts';
+import { getChangelogIcon } from 'src/util/changelog.ts';
 
 const res = await api.changelog.$get();
 const cls = await res.json();
@@ -29,38 +29,6 @@ const dict = new Map([
 	['move', 'Moved'],
 	['archive', 'Archived'],
 ] as const);
-
-const clss: Changelog[] = cls.map((c, i, cs) => {
-	const common = {
-		timestamp: new Date(c.timestamp),
-		level: c.level,
-		before: i < cs.length ? cs.at(i + 1)?.list ?? [] : [],
-		after: c.list,
-		reason: c.reason,
-	};
-
-	switch (c.action) {
-		case 'add':
-			return {
-				...common,
-				action: 'add',
-				to: c.to as number,
-			};
-		case 'archive':
-			return {
-				...common,
-				action: 'archive',
-				from: c.from as number,
-			};
-		case 'move':
-			return {
-				...common,
-				action: 'move',
-				from: c.from as number,
-				to: c.to as number,
-			};
-	}
-});
 ---
 
 <IndexLayout>
@@ -68,7 +36,7 @@ const clss: Changelog[] = cls.map((c, i, cs) => {
 		<h1 class={h1}>Changelog</h1>
 		<ol class={changelogs}>
 			{
-				clss.map((cl) => (
+				cls.map((cl) => (
 					<li class={changelog}>
 						<div class={date}>
 							<p class={mono}>{new Date(cl.timestamp).toLocaleDateString()}</p>
@@ -97,7 +65,7 @@ const clss: Changelog[] = cls.map((c, i, cs) => {
 								)}
 							</div>
 						)}
-						<div class={overview}>{<ChangelogOverview {...cl} />}</div>
+						<div class={overview}>{<ChangelogOverview changelog={cl} />}</div>
 					</li>
 				))
 			}

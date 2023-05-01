@@ -1,5 +1,6 @@
 import { createApi } from './api/mod.ts';
 import { migrations } from './migrations/mod.ts';
+import { score } from './score.ts';
 
 import {
 	Hono,
@@ -24,6 +25,7 @@ export class Gdol {
 
 	constructor() {
 		this.db = new Database(databasePath);
+		this.db.function('gdol_score', score);
 	}
 
 	async serve(options?: GdolServeOptions): Promise<void> {
