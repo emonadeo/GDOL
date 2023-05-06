@@ -1,8 +1,7 @@
 ---
-import 'src/styles/global/mod.css.ts';
+import BaseLayout from './base.astro';
 import {
-	body,
-	main,
+	container,
 	nav,
 	nav_logo,
 	nav_links,
@@ -11,6 +10,7 @@ import {
 	nav_location,
 	nav_search,
 	nav_user,
+	slot,
 } from './index.css.ts';
 
 import img_icon_menu from 'src/assets/icons/menu.svg';
@@ -19,114 +19,76 @@ import img_icon_user from 'src/assets/icons/user.svg';
 import img_logo from 'src/assets/logo.svg';
 import { screens } from 'src/styles/atomic/screens.css.ts';
 import { title_medium } from 'src/styles/atomic/typography.css.ts';
+import { ariaCurrent } from 'src/util/aria_current.ts';
 
-/**
- * Checks if the active route matches {@link path}. Returns 'page' if it does, false otherwise
- * See {@link https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current}
- */
-function ariaCurrent(matcher: RegExp): 'page' | false {
-	return matcher.test(Astro.url.pathname) && 'page';
-}
+type Props = {
+	className?: string;
+};
+
+const { className } = Astro.props;
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="generator" content={Astro.generator} />
-
-		<title>GDOL</title>
-
-		<!-- Favicon -->
-		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-		<!-- TODO: <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
-		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-		<link rel="manifest" href="/site.webmanifest" />
-
-		<!-- Fonts -->
-
-		<!-- Fontshare -->
-		<link rel="preconnect" href="https://api.fontshare.com" />
-		<link
-			href="https://api.fontshare.com/css?f[]=clash-display@600&display=swap"
-			rel="stylesheet"
-		/>
-
-		<!-- Google Fonts -->
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Lexend:wght@500&family=Press+Start+2P&display=swap"
-			rel="stylesheet"
-		/>
-
-		<!-- CDN Fonts -->
-		<link rel="preconnect" href="https://fonts.cdnfonts.com" />
-		<link href="http://fonts.cdnfonts.com/css/code-new-roman" rel="stylesheet" />
-	</head>
-	<body class={body}>
-		<nav class={nav}>
-			{/* Menu */}
-			<a class:list={[nav_menu, screens.lt_lg]} href="/menu">
-				<img src={img_icon_menu} alt="Menu" width={24} height={24} />
-			</a>
-			{/* Location */}
-			<div class:list={[nav_location, screens.lt_lg]}>
-				<p class={title_medium}>List</p>
-			</div>
-			{/* Logo */}
-			<img class:list={[nav_logo, screens.lg]} src={img_logo} alt="Logo" />
-			{/* Pages */}
-			<ul class:list={[nav_links, screens.lg]}>
-				<li>
-					<a
-						class:list={[nav_links_a, title_medium]}
-						href="/"
-						aria-current={ariaCurrent(new RegExp('^/$'))}
-					>
-						Home
-					</a>
-				</li>
-				<li>
-					<a
-						class:list={[nav_links_a, title_medium]}
-						href="/list"
-						aria-current={ariaCurrent(new RegExp('^/list($|/)'))}
-					>
-						List
-					</a>
-				</li>
-				<li>
-					<a
-						class:list={[nav_links_a, title_medium]}
-						href="/leaderboard"
-						aria-current={ariaCurrent(new RegExp('^/leaderboard($|/)'))}
-					>
-						Leaderboard
-					</a>
-				</li>
-				<li>
-					<a
-						class:list={[nav_links_a, title_medium]}
-						href="/more"
-						aria-current={ariaCurrent(new RegExp('^/more($|/)'))}
-					>
-						More
-					</a>
-				</li>
-			</ul>
-			{/* Search */}
-			<a class={nav_search} class="search" href="/search">
-				<img src={img_icon_search} alt="Search" width={24} height={24} />
-			</a>
-			{/* User */}
-			<a class={nav_user} class="user" href="/profile">
-				<img src={img_icon_user} alt="User" width={24} height={24} />
-			</a>
-		</nav>
-		<div class={main}>
-			<slot />
+<BaseLayout className={container}>
+	<nav class={nav}>
+		{/* Menu */}
+		<a class:list={[nav_menu, screens.lt_lg]} href="/menu">
+			<img src={img_icon_menu} alt="Menu" width={24} height={24} />
+		</a>
+		{/* Location */}
+		<div class:list={[nav_location, screens.lt_lg]}>
+			<p class={title_medium}>List</p>
 		</div>
-	</body>
-</html>
+		{/* Logo */}
+		<img class:list={[nav_logo, screens.lg]} src={img_logo} alt="Logo" />
+		{/* Pages */}
+		<ul class:list={[nav_links, screens.lg]}>
+			<li>
+				<a
+					class:list={[nav_links_a, title_medium]}
+					href="/"
+					aria-current={ariaCurrent(Astro, new RegExp('^/$'))}
+				>
+					Home
+				</a>
+			</li>
+			<li>
+				<a
+					class:list={[nav_links_a, title_medium]}
+					href="/list"
+					aria-current={ariaCurrent(Astro, new RegExp('^/list($|/)'))}
+				>
+					List
+				</a>
+			</li>
+			<li>
+				<a
+					class:list={[nav_links_a, title_medium]}
+					href="/leaderboard"
+					aria-current={ariaCurrent(Astro, new RegExp('^/leaderboard($|/)'))}
+				>
+					Leaderboard
+				</a>
+			</li>
+			<li>
+				<a
+					class:list={[nav_links_a, title_medium]}
+					href="/more"
+					aria-current={ariaCurrent(Astro, new RegExp('^/more($|/)'))}
+				>
+					More
+				</a>
+			</li>
+		</ul>
+		{/* Search */}
+		<a class={nav_search} class="search" href="/search">
+			<img src={img_icon_search} alt="Search" width={24} height={24} />
+		</a>
+		{/* User */}
+		<a class={nav_user} class="user" href="/profile">
+			<img src={img_icon_user} alt="User" width={24} height={24} />
+		</a>
+	</nav>
+	<div class:list={[slot, className]}>
+		<slot />
+	</div>
+</BaseLayout>

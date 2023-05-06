@@ -1,0 +1,50 @@
+---
+import { container, nav, tab, tabs } from './index.css.ts';
+
+import AdminLayout from 'src/layouts/admin/index.astro';
+import { title_medium } from 'src/styles/atomic/typography.css.ts';
+import { ariaCurrent } from 'src/util/aria_current.ts';
+
+type Props = {
+	className?: string;
+};
+
+const { className } = Astro.props;
+---
+
+<AdminLayout className={container}>
+	<nav class={nav}>
+		<ul class={tabs}>
+			<li>
+				<a
+					href="/admin/list"
+					class:list={[tab, title_medium]}
+					aria-current={ariaCurrent(Astro, new RegExp('^/admin/list(|/)$'))}
+				>
+					List
+				</a>
+			</li>
+			<li>
+				<a
+					href="/admin/list/archive"
+					class:list={[tab, title_medium]}
+					aria-current={ariaCurrent(Astro, new RegExp('^/admin/list/archive($|/)'))}
+				>
+					Archive
+				</a>
+			</li>
+			<li>
+				<a
+					href="/admin/list/settings"
+					class:list={[tab, title_medium]}
+					aria-current={ariaCurrent(Astro, new RegExp('^/admin/list/settings($|/)'))}
+				>
+					Settings
+				</a>
+			</li>
+		</ul>
+	</nav>
+	<div class={className}>
+		<slot />
+	</div>
+</AdminLayout>

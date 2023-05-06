@@ -1,0 +1,51 @@
+---
+import 'src/styles/global/mod.css.ts';
+import { body } from './base.css.ts';
+
+type Props = {
+	className?: string;
+};
+
+const { className } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="generator" content={Astro.generator} />
+
+		<title>GDOL</title>
+
+		<!-- Favicon -->
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+		<!-- TODO: <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+		<link rel="manifest" href="/site.webmanifest" />
+
+		<!-- Fonts -->
+
+		<!-- Fontshare -->
+		<link rel="preconnect" href="https://api.fontshare.com" />
+		<link
+			href="https://api.fontshare.com/css?f[]=clash-display@600&display=swap"
+			rel="stylesheet"
+		/>
+
+		<!-- Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Lexend:wght@500&family=Press+Start+2P&display=swap"
+			rel="stylesheet"
+		/>
+
+		<!-- CDN Fonts -->
+		<link rel="preconnect" href="https://fonts.cdnfonts.com" />
+		<link href="http://fonts.cdnfonts.com/css/code-new-roman" rel="stylesheet" />
+	</head>
+	<body class={className}>
+		<slot />
+	</body>
+</html>

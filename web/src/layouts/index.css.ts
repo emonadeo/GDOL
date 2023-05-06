@@ -5,13 +5,13 @@ import { colors } from 'src/styles/theme/colors.css.ts';
 import { createGridArea, createGridTemplate } from 'src/styles/util/grid.ts';
 
 const areaNav = createGridArea();
-const areaMain = createGridArea();
+const areaSlot = createGridArea();
 
-export const body = style([
+export const container = style([
 	{
 		display: 'grid',
 		gridTemplate: createGridTemplate({
-			areas: [[areaMain], [areaNav]],
+			areas: [[areaSlot], [areaNav]],
 			rows: ['minmax(0, 1fr)', '4rem'],
 			columns: ['minmax(0, 1fr)'],
 		}),
@@ -20,16 +20,16 @@ export const body = style([
 	},
 	sm({
 		gridTemplate: createGridTemplate({
-			areas: [[areaNav], [areaMain]],
+			areas: [[areaNav], [areaSlot]],
 			rows: ['4rem', 'minmax(0, 1fr)'],
 			columns: ['minmax(0, 1fr)'],
 		}),
 	}),
 ]);
 
-export const main = style([
+export const slot = style([
 	{
-		gridArea: areaMain,
+		gridArea: areaSlot,
 	},
 ]);
 
