@@ -45,7 +45,7 @@ const { className } = Astro.props;
 		<link rel="preconnect" href="https://fonts.cdnfonts.com" />
 		<link href="http://fonts.cdnfonts.com/css/code-new-roman" rel="stylesheet" />
 	</head>
-	<body class={className}>
+	<body class:list={[body, className]}>
 		<slot />
 	</body>
 </html>

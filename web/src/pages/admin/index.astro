@@ -1,5 +1,17 @@
 ---
+import { container, review, title, status, cta } from './index.css.ts';
+
 import AdminLayout from 'src/layouts/admin/index.astro';
+import { label_large } from 'src/styles/atomic/typography.css.ts';
 ---
 
-<AdminLayout />
+<AdminLayout className={container}>
+	<p>Hello Username</p>
+	<div class={review}>
+		<h3 class={title}>13 New Submissions</h3>
+		<div class={status}>
+			<p>Currently Reviewing: 0 other users</p>
+		</div>
+		<a href="/" class:list={[cta, label_large]}>Review</a>
+	</div>
+</AdminLayout>

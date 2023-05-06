@@ -15,8 +15,6 @@ export const container = style([
 			rows: ['minmax(0, 1fr)', '4rem'],
 			columns: ['minmax(0, 1fr)'],
 		}),
-		backgroundColor: colors.background,
-		color: colors.onBackground,
 	},
 	sm({
 		gridTemplate: createGridTemplate({
