@@ -3,14 +3,13 @@ import { migrations } from './migrations/mod.ts';
 import { score } from './score.ts';
 
 import {
-	Hono,
-	std_serve,
-	std_contentType,
 	Database,
-	Handler,
-	semver_valid,
-	semver_sort,
+	Hono,
 	databasePath,
+	semver_canParse,
+	semver_compare,
+	semver_parse,
+	std_contentType,
 } from './deps.ts';
 
 export type GdolServeOptions = {
@@ -37,10 +36,10 @@ export class Gdol {
 			await this.migrate();
 		}
 
-		await std_serve(await this.handler(options), { port });
+		Deno.serve({ port }, await this.handler(options));
 	}
 
-	async handler(options?: GdolHandlerOptions): Promise<Handler> {
+	async handler(options?: GdolHandlerOptions): Promise<Deno.ServeHandler> {
 		const port = options?.port ?? 80;
 		const web = options?.web ?? true;
 
@@ -101,13 +100,13 @@ export class Gdol {
 	}
 
 	async migrate(): Promise<void> {
-		let migrationFiles = [];
+		const migrationFiles: string[] = [];
 		for await (const fileName of migrations) {
 			if (fileName.slice(-4) !== '.sql') {
 				console.warn(databasePath);
 				continue;
 			}
-			const semver = semver_valid(fileName.slice(0, -4));
+			const semver = semver_canParse(fileName.slice(0, -4));
 			if (semver === null) {
 				console.error('Skipped invalid migration:', fileName);
 				continue;
@@ -115,7 +114,7 @@ export class Gdol {
 			migrationFiles.push(fileName);
 		}
 
-		migrationFiles = semver_sort(migrationFiles);
+		migrationFiles.sort((a, b) => semver_compare(semver_parse(a), semver_parse(b)));
 
 		for (const migrationFile of migrationFiles) {
 			const migration = await (

@@ -11,7 +11,7 @@
 GDOL requires [Deno](https://deno.com/manual/getting_started/installation) (>= v1.32.5).
 
 ```console
-deno run --unstable --allow-all https://deno.land/x/gdol/cli.ts
+deno run --unstable-ffi --allow-all https://deno.land/x/gdol/cli.ts
 ```
 
 When running for the first time, it will create `gdol.db` file in the directory the command was run
@@ -37,7 +37,7 @@ await gdol.serve();
 Running it works the same as any other Deno application:
 
 ```console
-deno run --unstable --allow-all my_app.ts
+deno run --unstable-ffi --allow-all my_app.ts
 ```
 
 ## Contributing

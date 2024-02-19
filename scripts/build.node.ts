@@ -1,25 +1,25 @@
-import { build, emptyDir } from 'https://deno.land/x/dnt@0.34.0/mod.ts';
+import { build, emptyDir } from 'https://deno.land/x/dnt@0.40.0/mod.ts';
 import { version } from '../deps.ts';
 
 // watch entry points
-import '../mod_node.ts';
+import '../mod.node.ts';
 
-const outDir = './node';
+const outDir = './dist/node/';
 
-const honoVersion = '3.1.6';
+const honoVersion = '4.0.5';
 
 await emptyDir(outDir);
 
 await build({
 	compilerOptions: {
-		lib: ['dom', 'es2021'],
+		lib: ['DOM', 'ES2021'],
 		importHelpers: true,
 		skipLibCheck: true,
 		target: 'ES2021',
 	},
-	entryPoints: ['./mod_node.ts'],
+	entryPoints: ['./mod.node.ts'],
 	esModule: true,
-	declaration: true,
+	declaration: 'inline',
 	skipSourceOutput: true,
 	importMap: 'deno.json',
 	mappings: {

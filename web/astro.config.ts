@@ -17,20 +17,12 @@ export default defineConfig({
 	}),
 	integrations: [solidJs()],
 	vite: {
-		plugins: [
-			vanillaExtractPlugin({
-				emitCssInSsr: true,
-			}),
-		],
+		plugins: [vanillaExtractPlugin()],
 		resolve: {
 			alias: [
 				{
 					find: '/^src/',
 					replacement: resolve(__dirname, 'src'),
-				},
-				{
-					find: '/^server/',
-					replacement: resolve(__dirname, '..', 'server'),
 				},
 			],
 		},

@@ -1,7 +1,7 @@
 import { copy } from 'https://deno.land/std@0.184.0/fs/mod.ts';
 import { join } from 'https://deno.land/std@0.184.0/path/mod.ts';
 
-const outDir = 'dist/';
+const outDir = './dist/gdol/';
 
 const keep = ['.git'];
 

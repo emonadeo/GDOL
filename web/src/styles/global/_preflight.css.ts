@@ -2,7 +2,7 @@
  * @file Ported from https://unpkg.com/tailwindcss@3.3.1/src/css/preflight.css
  */
 
-import { GlobalStyleRule, globalStyle } from '@vanilla-extract/css';
+import { globalStyle, GlobalStyleRule } from '@vanilla-extract/css';
 
 import { preflight } from 'src/styles/internal/layers.css.ts';
 

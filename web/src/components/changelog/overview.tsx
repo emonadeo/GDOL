@@ -1,4 +1,4 @@
-import { Changelog, ChangelogLevel, ChangelogAction } from '@gdol/node';
+import { Changelog, ChangelogAction, ChangelogLevel } from '@gdol/node';
 import { Component, createMemo, For, Show } from 'solid-js';
 
 import {
@@ -10,10 +10,10 @@ import {
 	overview,
 	overview_icon,
 	rank,
+	row,
+	self,
 	stripe,
 	top,
-	self,
-	row,
 } from './overview.css.ts';
 
 import { label_medium, mono } from 'src/styles/atomic/typography.css.ts';
@@ -44,7 +44,10 @@ const ChangelogOverviewColumn: Component<ChangelogOverviewColumnProps> = functio
 		return listWithRank.slice(start, end);
 	});
 
-	const classList = createMemo(() => ({ [after]: props.after, [before]: !props.after }));
+	const classList = createMemo(() => ({
+		[after]: props.after,
+		[before]: !props.after,
+	}));
 
 	const isSelf = (rank: number) => {
 		if (props.after && props.action === 'archive') return false;

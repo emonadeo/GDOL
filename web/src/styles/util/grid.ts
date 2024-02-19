@@ -15,7 +15,7 @@ type GridTemplateDimensions<TCount extends number> = Tuple<
 
 export function createGridTemplate<
 	TRowCount extends number,
-	TColumnCount extends number
+	TColumnCount extends number,
 >(template: {
 	areas: GridTemplateAreas<TRowCount, TColumnCount>;
 	rows: GridTemplateDimensions<TRowCount>;

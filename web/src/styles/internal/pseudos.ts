@@ -1,4 +1,4 @@
-import { StyleRule, globalStyle } from '@vanilla-extract/css';
+import { globalStyle, StyleRule } from '@vanilla-extract/css';
 import { SimplePseudos } from 'csstype';
 
 import { mapObject } from 'src/util/map_object.ts';

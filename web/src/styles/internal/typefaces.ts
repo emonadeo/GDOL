@@ -1,4 +1,4 @@
-import { FontMetrics, createStyleObject } from '@capsizecss/core';
+import { createStyleObject, FontMetrics } from '@capsizecss/core';
 import metricsLexend from '@capsizecss/metrics/lexend';
 import { StyleRule } from '@vanilla-extract/css';
 

@@ -1,7 +1,7 @@
 import { Level } from '@gdol/node';
-import { For, Component } from 'solid-js';
+import { Component, For } from 'solid-js';
 
-import { levels, level, rank, outline, thumbnail, meta, meta_name } from './levels.css.ts';
+import { level, levels, meta, meta_name, outline, rank, thumbnail } from './levels.css.ts';
 import { setScrollPosition } from './store.ts';
 
 import { observeScroll } from 'src/directives/observeScroll.ts';

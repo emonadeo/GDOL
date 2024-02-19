@@ -12,8 +12,11 @@ export const container = style([
 
 export const sidebar = style([
 	{
-		display: 'flex',
-		flexDirection: 'column',
+		display: 'grid',
+		gridTemplateRows: '1fr',
+		gridAutoFlow: 'row',
+		gridAutoRows: 'max-content',
+		alignItems: 'start',
 		paddingBlock: '4rem',
 		borderRightWidth: 1,
 		borderRightStyle: 'solid',
@@ -23,7 +26,9 @@ export const sidebar = style([
 
 export const categories = style([
 	{
-		marginBottom: '2rem',
+		display: 'flex',
+		flexDirection: 'column',
+		gap: 1,
 	},
 ]);
 

@@ -1,6 +1,6 @@
 import { styleVariants } from '@vanilla-extract/css';
 
-import { lt_lg, lt_md, lt_sm, lt_xl, lt_xxl, sm, md, lg, xl, xxl } from 'src/styles/screens.ts';
+import { lg, lt_lg, lt_md, lt_sm, lt_xl, lt_xxl, md, sm, xl, xxl } from 'src/styles/screens.ts';
 
 const ruleDisplayNone = { display: 'none !important' };
 

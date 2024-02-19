@@ -1,7 +1,7 @@
 import {
-	FontRule,
 	clashDisplay,
 	codeNewRoman,
+	FontRule,
 	lexend,
 	pressStart,
 } from 'src/styles/internal/typefaces.ts';
