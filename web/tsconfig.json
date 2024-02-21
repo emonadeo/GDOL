@@ -18,7 +18,6 @@
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
 		"noUncheckedIndexedAccess": true,
-		"exactOptionalPropertyTypes": true,
 		"allowImportingTsExtensions": true,
 		"allowUnreachableCode": false,
 		"allowUnusedLabels": false,

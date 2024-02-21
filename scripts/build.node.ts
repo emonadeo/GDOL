@@ -19,7 +19,7 @@ await build({
 	},
 	entryPoints: ['./mod.node.ts'],
 	esModule: true,
-	declaration: 'inline',
+	declaration: 'separate',
 	skipSourceOutput: true,
 	importMap: 'deno.json',
 	mappings: {
