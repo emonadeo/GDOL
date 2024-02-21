@@ -4,8 +4,8 @@ import { score } from './score.ts';
 
 import {
 	Database,
-	Hono,
 	databasePath,
+	Hono,
 	semver_canParse,
 	semver_compare,
 	semver_parse,

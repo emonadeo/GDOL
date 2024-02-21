@@ -1,15 +1,21 @@
 {
 	"tasks": {
-		"atlas:clean": "atlas schema clean --url \"sqlite://gdol.db\"",
-		"atlas:apply": "atlas schema apply --url \"sqlite://gdol.db\" --to \"file://store/schema.hcl\"",
 		"build": "deno task build:node && deno task build:web && deno run --allow-all scripts/build.ts",
 		"build:node": "deno run --unstable-ffi --allow-all scripts/build.node.ts",
 		"build:web": "cd web && pnpm build",
-		"dev:api": "deno run --unstable-ffi --allow-all --watch cli.ts --no-web --port 3001",
+		"check": "deno check cli.ts",
+		"check:web": "cd web && pnpm check",
+		"dev": "deno run --unstable-ffi --allow-all --watch cli.ts --no-web --port 3001",
 		"dev:node": "deno run --unstable-ffi --allow-all --watch scripts/build.node.ts",
 		"dev:web": "cd web && pnpm dev",
-		"fmt": "pnpm fmt",
+		"fmt": "pnpm prettier --write .",
+		"lint": "deno lint",
 		"lint:web": "cd web && pnpm lint",
-		"seed": "deno run --unstable-ffi --allow-all cli.ts seed"
+		"migrate:apply": "atlas schema apply --url \"sqlite://gdol.db\" --to \"file://store/schema.hcl\"",
+		"migrate:clean": "atlas schema clean --url \"sqlite://gdol.db\"",
+		"migrate:seed": "deno run --unstable-ffi --allow-all cli.ts seed"
+	},
+	"lint": {
+		"exclude": ["web/", "dist/node"]
 	}
 }

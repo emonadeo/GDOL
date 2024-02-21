@@ -33,8 +33,14 @@ function changelogFromRaw(changelog: RawChangelog): Changelog {
 			id: changelog.level_id,
 			name: changelog.level_name,
 		},
-		listBefore: listBeforeLevelIds.map((id, i) => ({ id, name: listBeforeLevelNames[i] })),
-		listAfter: listAfterLevelIds.map((id, i) => ({ id, name: listAfterLevelNames[i] })),
+		listBefore: listBeforeLevelIds.map((id, i) => ({
+			id,
+			name: listBeforeLevelNames[i],
+		})),
+		listAfter: listAfterLevelIds.map((id, i) => ({
+			id,
+			name: listAfterLevelNames[i],
+		})),
 	};
 }
 

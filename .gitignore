@@ -15,6 +15,9 @@ temp/
 package-lock.json
 yarn.lock
 
+# deno lock file
+deno.lock
+
 # logs
 npm-debug.log*
 yarn-debug.log*
