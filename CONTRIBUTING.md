@@ -67,15 +67,19 @@ Use loops, mutations, and `break`/`continue`/`return` statements instead. Simple
 
 ### Naming conventions
 
-Folders and Files use `snake_case`.
+> [!NOTE]
+> Naming conventions may be disregarded if required (e.g. `pnpm-workspace.yaml`).
 
-CSS-in-JS Constants and Variables ([`@vanilla-extract/css`](https://vanilla-extract.style/documentation/getting-started/)) use `snake_case`.
-
-Components (Astro, SolidJS) and Types use `PascalCase`.
-
-Other JS/TS Constants, Variables and Functions (_except_ Components) use `camelCase`.
-
-Naming conventions may be disregarded if required (e.g. `pnpm-workspace.yaml`).
+| Subject                                                                                                              | Case                   |
+| -------------------------------------------------------------------------------------------------------------------- | ---------------------- |
+| Folders                                                                                                              | `snake_case`           |
+| Files                                                                                                                | `snake_case`           |
+| Top-Level Constants `const`                                                                                          | `SCREAMING_SNAKE_CASE` |
+| [CSS-in-JS](https://vanilla-extract.style/documentation/getting-started/) `const` (not top-level), `let`, `function` | `snake_case`           |
+| JS/TS `const` (not top-level), `let`, `function`                                                                     | `PascalCase`           |
+| `class`                                                                                                              | `PascalCase`           |
+| Components (Astro, SolidJS)                                                                                          | `PascalCase`           |
+| Types                                                                                                                | `PascalCase`           |
 
 ### Imports and Exports
 
