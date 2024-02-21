@@ -32,14 +32,14 @@ const { className } = Astro.props;
 	<nav class={nav}>
 		{/* Menu */}
 		<a class:list={[nav_menu, screens.lt_lg]} href="/menu">
-			<img src={img_icon_menu} alt="Menu" width={24} height={24} />
+			<img src={img_icon_menu.src} alt="Menu" width={24} height={24} />
 		</a>
 		{/* Location */}
 		<div class:list={[nav_location, screens.lt_lg]}>
 			<p class={title_medium}>List</p>
 		</div>
 		{/* Logo */}
-		<img class:list={[nav_logo, screens.lg]} src={img_logo} alt="Logo" />
+		<img class:list={[nav_logo, screens.lg]} src={img_logo.src} alt="Logo" />
 		{/* Pages */}
 		<ul class:list={[nav_links, screens.lg]}>
 			<li>
@@ -81,11 +81,11 @@ const { className } = Astro.props;
 		</ul>
 		{/* Search */}
 		<a class={nav_search} class="search" href="/search">
-			<img src={img_icon_search} alt="Search" width={24} height={24} />
+			<img src={img_icon_search.src} alt="Search" width={24} height={24} />
 		</a>
 		{/* User */}
 		<a class={nav_user} class="user" href="/profile">
-			<img src={img_icon_user} alt="User" width={24} height={24} />
+			<img src={img_icon_user.src} alt="User" width={24} height={24} />
 		</a>
 	</nav>
 	<div class:list={[slot, className]}>

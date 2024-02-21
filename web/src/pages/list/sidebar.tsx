@@ -81,7 +81,7 @@ export const ListSidebar: Component<ListSidebarProps> = function (props) {
 			>
 				<img
 					class={button_collapse_icon[collapsed() ? 'collapsed' : 'uncollapsed']}
-					src={iconChevrons}
+					src={iconChevrons.src}
 					alt={collapsed() ? 'uncollapse' : 'collapse'}
 				/>
 			</button>

@@ -18,7 +18,7 @@ export const observeHeight = function (el: Element, value: Accessor<Setter<numbe
 // See https://www.solidjs.com/docs/latest/api#use___
 declare module 'solid-js' {
 	namespace JSX {
-		// have to use interface for declaration merging
+		// interface needed for declaration merging
 		// eslint-disable-next-line @typescript-eslint/consistent-type-definitions
 		interface Directives {
 			observeHeight: Setter<number>;

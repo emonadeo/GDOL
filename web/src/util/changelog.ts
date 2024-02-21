@@ -9,11 +9,11 @@ import iconRaise from 'src/assets/icons/changelog/raise.svg';
 export function getChangelogIcon(changelog: Changelog): string {
 	switch (changelog.action) {
 		case 'add':
-			return iconAdd;
+			return iconAdd.src;
 		case 'archive':
-			return iconDelete;
+			return iconDelete.src;
 		case 'move':
-			if (changelog.to === changelog.from) return iconNoChange;
-			return changelog.to > changelog.from ? iconLower : iconRaise;
+			if (changelog.to === changelog.from) return iconNoChange.src;
+			return changelog.to > changelog.from ? iconLower.src : iconRaise.src;
 	}
 }

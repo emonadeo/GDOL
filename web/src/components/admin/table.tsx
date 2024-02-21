@@ -1,4 +1,4 @@
-import { Component, createMemo, For, JSX, Show } from 'solid-js';
+import { createMemo, For, Show } from 'solid-js';
 
 import {
 	table,

@@ -6,10 +6,10 @@ import { typography } from './layers.css.ts';
 import { merge } from './merge.ts';
 import { MediaQueries } from './screens.ts';
 
-interface FontOptions {
+type FontOptions = {
 	capHeight: number;
 	lineGap: number;
-}
+};
 
 type StyleRuleWithFontOptions = { fontOptions?: FontOptions } & StyleRule;
 
@@ -38,8 +38,8 @@ function createTypeface(metrics: FontMetrics): (rule: ComplexFontRule) => StyleR
 			},
 		];
 
-		rules.forEach((rule) => {
-			if ('@media' in rule) {
+		for (const rule of rules) {
+			if (rule['@media']) {
 				const queries = rule['@media'];
 				Object.entries(queries).forEach(([query, queryRule]) => {
 					const { fontOptions, ...queryRuleWithoutFontOptions } = queryRule;
@@ -62,7 +62,7 @@ function createTypeface(metrics: FontMetrics): (rule: ComplexFontRule) => StyleR
 				});
 			}
 
-			if ('fontOptions' in rule) {
+			if (rule.fontOptions) {
 				const { fontOptions, ...ruleWithoutFontOptions } = rule;
 				styleRules.push({
 					...ruleWithoutFontOptions,
@@ -73,7 +73,7 @@ function createTypeface(metrics: FontMetrics): (rule: ComplexFontRule) => StyleR
 					}),
 				});
 			}
-		});
+		}
 
 		return { '@layer': { [typography]: merge(styleRules) } };
 	};

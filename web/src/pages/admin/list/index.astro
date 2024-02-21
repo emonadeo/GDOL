@@ -6,7 +6,6 @@ import iconArchive from 'src/assets/icons/admin/archive.svg';
 import iconMove from 'src/assets/icons/admin/move.svg';
 import { AdminTable } from 'src/components/admin/table.tsx';
 import AdminListLayout from 'src/layouts/admin/list/index.astro';
-import { mono } from 'src/styles/atomic/typography.css.ts';
 
 const res = await api.list.$get();
 const list = await res.json();
@@ -29,12 +28,12 @@ const list = await res.json();
 		actions={[
 			{
 				label: 'Archive',
-				icon: iconArchive,
+				icon: iconArchive.src,
 				onClick: () => {},
 			},
 			{
 				label: 'Move',
-				icon: iconMove,
+				icon: iconMove.src,
 				onClick: () => {},
 			},
 		]}
